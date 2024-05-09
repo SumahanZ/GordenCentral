@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1037521507097",
+    "project_id": "tugasakhirskripsi-pn",
+    "storage_bucket": "tugasakhirskripsi-pn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037521507097:android:4fb450be05aa16130deb88",
+        "android_client_info": {
+          "package_name": "com.example.tugas_akhir_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv4i0RI4cmmgc03zXL2bAPgMuOjPOAbKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
