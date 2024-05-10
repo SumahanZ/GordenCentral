@@ -78,7 +78,6 @@ dependencies:
   firebase_core: ^2.30.1
   firebase_messaging: ^14.9.1
   flutter_local_notifications: ^17.1.2
-  whatsfile: ^0.0.2
   
 
 dev_dependencies:

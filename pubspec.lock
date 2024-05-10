@@ -1501,14 +1501,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
-  whatsfile:
-    dependency: "direct main"
-    description:
-      name: whatsfile
-      sha256: "470a703861c03175573a596a5c65425d799127ceda5cc9b4c2b86e03f4adb2a0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   win32:
     dependency: transitive
     description:

@@ -9,7 +9,6 @@
 #include <firebase_core/firebase_core_plugin_c_api.h>
 #include <printing/printing_plugin.h>
 #include <rive_common/rive_plugin.h>
-#include <whatsfile/whatsfile_plugin_c_api.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
   FirebaseCorePluginCApiRegisterWithRegistrar(
@@ -18,6 +17,4 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("PrintingPlugin"));
   RivePluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("RivePlugin"));
-  WhatsfilePluginCApiRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("WhatsfilePluginCApi"));
 }

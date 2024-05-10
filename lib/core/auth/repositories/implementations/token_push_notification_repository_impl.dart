@@ -28,8 +28,6 @@ class PushNotificationRepositoryImpl {
       final token =
           supported ? await FirebaseMessaging.instance.getToken() : null;
 
-          print(token);
-
       ref
           .read(sharedPreferenceRepositoryProvider)
           .saveCurrentDeviceToken(deviceToken: token);

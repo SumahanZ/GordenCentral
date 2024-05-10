@@ -6,7 +6,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   firebase_core
   printing
   rive_common
-  whatsfile
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

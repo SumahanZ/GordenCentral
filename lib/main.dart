@@ -12,12 +12,13 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: "TugasAkhirSkripsi-PN",
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   LocalNotificationHelper.initHelper();
   FirebaseHelper.initHelper();
-  
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -32,8 +33,11 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration()).then((_) {
-      ref.read(authViewModelProvider.notifier).getUserInformation().then((_));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref
+          .read(authViewModelProvider.notifier)
+          .getUserInformation()
+          .then((value) => null);
     });
   }
 
