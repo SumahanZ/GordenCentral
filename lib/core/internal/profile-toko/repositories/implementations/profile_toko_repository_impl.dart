@@ -84,7 +84,7 @@ Future<
           Either<ApiError, Toko?>,
           Either<ApiError, List<KatalogProduk>>
         )>
-    fetchProfileInformation(FetchProfileInformationRef ref, int tokoId) async {
+    fetchProfileInformation(FetchProfileInformationRef ref) async {
   final value1 = await ref.watch(fetchBerandaTokoProvider.future);
   final value2 = await ref.watch(fetchTokoInformationProvider.future);
   final value3 = await ref.watch(fetchKatalogProdukTokoPreview.future);
@@ -658,8 +658,6 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
       };
       var url = Uri.http(
           ApiVariables.baseURL, "${ApiVariables.internalEditProdukURL}/$produkId");
-
-      print(productSaved);
 
       final response = await _client.post(
         url,

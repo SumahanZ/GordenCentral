@@ -7,6 +7,7 @@ import 'package:tugas_akhir_project/core/auth/repositories/implementations/image
 import 'package:tugas_akhir_project/core/auth/repositories/implementations/shared_preference_repository_impl.dart';
 import 'package:tugas_akhir_project/models/toko_information_request.dart';
 import 'package:tugas_akhir_project/widgets/global_providers/enrolled_toko_state.dart';
+import 'package:tugas_akhir_project/widgets/global_providers/internal_state.dart';
 import 'package:tugas_akhir_project/widgets/global_providers/user_state.dart';
 import 'package:tugas_akhir_project/models/user.dart';
 part 'auth_viewmodel.g.dart';
@@ -239,21 +240,56 @@ class AuthViewModel extends _$AuthViewModel {
   //   });
   // }
 
+  // Future<User?> getUserInformation() async {
+  //   final authRepository = ref.read(authRepositoryProvider);
+  //   state = const AsyncLoading();
+  //   final apiResult = await authRepository.getUserData(ref: ref).run();
+  //   final apiResultToko = await authRepository.getEnrolledToko(ref: ref).run();
+
+  //   apiResult.match((l) => state = AsyncValue.error(l, StackTrace.current),
+  //       (user) async {
+  //     if (user?.type != "customer") {
+  //       apiResultToko.match(
+  //           (l) => state = AsyncValue.error(l, StackTrace.current), (toko) {
+  //         toko != null
+  //             ? ref
+  //                 .read(enrolledTokoStateProvider.notifier)
+  //                 .update((state) => toko)
+  //             : null;
+  //       });
+
+  //       try {
+  //         state = const AsyncData<void>(null);
+  //       } catch (error) {
+  //         if (kDebugMode) {
+  //           print(error.toString());
+  //         }
+  //       }
+  //     }
+  //     ref.read(userStateProvider.notifier).update((state) => user);
+  //     return user;
+  //   });
+  //   return null;
+  // }
+
   Future<User?> getUserInformation() async {
     final authRepository = ref.read(authRepositoryProvider);
     state = const AsyncLoading();
     final apiResult = await authRepository.getUserData(ref: ref).run();
+    //get internal data here, if exist update internalStateProvider
     final apiResultToko = await authRepository.getEnrolledToko(ref: ref).run();
 
     apiResult.match((l) => state = AsyncValue.error(l, StackTrace.current),
         (user) async {
       if (user?.type != "customer") {
         apiResultToko.match(
-            (l) => state = AsyncValue.error(l, StackTrace.current), (toko) {
-          toko != null
-              ? ref
-                  .read(enrolledTokoStateProvider.notifier)
-                  .update((state) => toko)
+            (l) => state = AsyncValue.error(l, StackTrace.current), (internal) {
+          internal?.toko != null
+              ? () {
+                  ref
+                      .read(enrolledTokoStateProvider.notifier)
+                      .update((state) => internal?.toko);
+                }
               : null;
         });
 
@@ -274,7 +310,7 @@ class AuthViewModel extends _$AuthViewModel {
   void logOut() async {
     final logOutResult =
         await ref.read(authRepositoryProvider).logOut(ref: ref).run();
-    logOutResult.match((l) => print(l.message), (r) {
+    logOutResult.match((l) => null, (r) {
       ref.read(sharedPreferenceRepositoryProvider).deleteToken();
       ref.read(userStateProvider.notifier).update((state) => null);
       ref.read(enrolledTokoStateProvider.notifier).update((state) => null);

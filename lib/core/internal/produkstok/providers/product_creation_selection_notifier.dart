@@ -62,10 +62,8 @@ class ProductCreationSelectionNotifier
       required List<Map<String, String>> colors,
       required List<String> categories}) {
 
-        print(sizes);
     final productSelection =
         ProductSelection(sizes: sizes, colors: colors, categories: categories);
-        print(productSelection);
     state = productSelection;
   }
 

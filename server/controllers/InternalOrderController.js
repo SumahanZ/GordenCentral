@@ -175,8 +175,6 @@ module.exports = {
 
             const mappedStatus = orderStatuses.map(e => e.toJSON())
 
-            console.log(mappedStatus)
-
             return res.status(200).json(mappedStatus);
         } catch (error) {
             await t.rollback();

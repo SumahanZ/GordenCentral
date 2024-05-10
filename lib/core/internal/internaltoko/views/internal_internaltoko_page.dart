@@ -155,7 +155,6 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: () {
-                                                        print("test");
                                                         ref
                                                             .read(
                                                                 internalTokoViewModelProvider

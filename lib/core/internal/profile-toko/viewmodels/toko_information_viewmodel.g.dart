@@ -7,7 +7,7 @@ part of 'toko_information_viewmodel.dart';
 // **************************************************************************
 
 String _$tokoInformationViewModelHash() =>
-    r'439fcc11939e37455c713076781f4450daed3f48';
+    r'037eca047968a2f9bf7f12ed5b27ffbed6f0de47';
 
 /// See also [TokoInformationViewModel].
 @ProviderFor(TokoInformationViewModel)

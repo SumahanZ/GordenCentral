@@ -53,7 +53,6 @@ class ProdukCard extends ConsumerWidget {
                 const Divider(),
                 ListTile(
                   onTap: () {
-                    print("test");
                   },
                   shape: const RoundedRectangleBorder(),
                   contentPadding:

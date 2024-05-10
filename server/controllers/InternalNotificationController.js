@@ -42,13 +42,9 @@ module.exports = {
                 transaction: t
             })
 
-            console.log(tokoNotifications)
-
             await t.commit();
 
             const mappedFoundNotifications = tokoNotifications.map(e => e.toJSON())
-
-            console.log(mappedFoundNotifications)
 
             return res.status(200).json(mappedFoundNotifications);
         } catch (error) {

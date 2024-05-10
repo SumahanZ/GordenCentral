@@ -73,7 +73,6 @@ class _InternalAddLaporanBarangMasukPageState
                         const Divider(),
                         ListTile(
                           onTap: () {
-                            print("test");
                           },
                           shape: const RoundedRectangleBorder(),
                           contentPadding: const EdgeInsets.symmetric(

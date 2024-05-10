@@ -85,8 +85,6 @@ module.exports = {
                 }]
             })
 
-            console.log(cart);
-
             if (!cart) {
                 await t.rollback();
                 return res.status(400).json({ error: "keranjang yang terkait dengan pelanggan tidak ada" })
@@ -261,7 +259,8 @@ module.exports = {
 
             const internals = await models.internal.findAll({
                 where: {
-                    tokoId: createdOrder.tokoId
+                    tokoId: createdOrder.tokoId,
+                    status: "joined"
                 },
                 include: {
                     model: models.user,

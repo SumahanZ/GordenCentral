@@ -331,6 +331,8 @@ module.exports = {
 
             const createdCatalog = await toko.createCatalog({ name: name }, { transaction: t })
 
+            console.log(produkIdList)
+
             for (const produkId of produkIdList) {
                 const foundProduk = await models.produk.findOne({ where: { id: produkId }, transaction: t })
                 await createdCatalog.addProduct(foundProduk, { transaction: t })
@@ -377,15 +379,6 @@ module.exports = {
                     as: "products",
                     include: [{
                         model: models.promo
-                    }, {
-                        model: models.produkrating,
-                        as: "rating",
-                        attributes: {
-                            include: [
-                                [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
-                                [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
-                            ]
-                        },
                     }],
                 }
             })
@@ -398,8 +391,12 @@ module.exports = {
             const mappedData = foundCatalogs.map(catalog => {
                 const catalogJSON = catalog.dataValues;
                 catalogJSON.products = catalogJSON.products.map(product => product.dataValues);
+                console.log(catalogJSON.products)
                 return catalogJSON;
             });
+            
+
+            console.log(mappedData)
 
             await t.commit();
 
@@ -582,16 +579,6 @@ module.exports = {
                         as: "size"
                     }, {
                         model: models.promo
-                    }, {
-                        model: models.produkrating,
-                        as: "rating",
-                        required: false,
-                        attributes: {
-                            include: [
-                                [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
-                                [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
-                            ]
-                        },
                     }]
                 }]
             })

@@ -53,8 +53,6 @@ module.exports = {
 
             await t.commit();
 
-            // console.log(existingToko.toJSON());
-
             return res.status(200).json(existingToko.toJSON())
         } catch (error) {
             await t.rollback();

@@ -119,8 +119,7 @@ class ProdukStokViewModel extends _$ProdukStokViewModel {
   Future<void> calculateSafetyStockReorderPoint() async {
     try {
       final produkStokRepository = ref.read(produkStokRepositoryProvider);
-      state = const AsyncLoading();
-
+  
       final task = await produkStokRepository
           .calculateSafetyStockAndReorderPoint(ref: ref)
           .run();
@@ -131,7 +130,6 @@ class ProdukStokViewModel extends _$ProdukStokViewModel {
         if (!r) {
           return;
         }
-        state = const AsyncValue.data(null);
       });
     } catch (error) {
       print(error.toString());

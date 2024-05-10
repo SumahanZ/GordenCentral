@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:tugas_akhir_project/core/internal/notifications/repositories/implementations/internal_notification_repository_impl.dart';
+import 'package:tugas_akhir_project/core/internal/settings/repositories/implementations/internal_settings_repository_impl.dart';
 import 'package:tugas_akhir_project/models/toko_notification.dart';
 import 'package:tugas_akhir_project/utils/extensions/date_extension.dart';
+import 'package:tugas_akhir_project/utils/extensions/either_extension.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
 
@@ -35,78 +37,98 @@ class _InternalNotificationPageState
   @override
   Widget build(BuildContext context) {
     final tokoNotifications = ref.watch(fetchAllTokoNotifications);
+    final internalInformation = ref.watch(fetchInternalInformation);
 
     return Scaffold(
         appBar: AppBar(
-          bottom: TabBar(
-            splashFactory: NoSplash.splashFactory,
-            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-              // Use the default focused overlay color
-              return states.contains(MaterialState.focused)
-                  ? null
-                  : Colors.transparent;
-            }),
-            // dividerColor: Colors.transparent,
-            padding: const EdgeInsets.all(0),
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorColor: Colors.transparent,
-            controller: _tabController,
-            labelColor: Colors.purple,
-            labelStyle:
-                appStyle(size: 16, color: mainBlack, fw: FontWeight.bold),
-            unselectedLabelColor: Colors.black.withOpacity(0.2),
-            tabs: const [
-              Tab(text: "Stok"),
-              Tab(text: "Pesanan"),
-              Tab(text: "Internal")
-            ],
-          ),
+          bottom: internalInformation.asData?.value.unwrapRight()?.status !=
+                  "joined"
+              ? null
+              : TabBar(
+                  splashFactory: NoSplash.splashFactory,
+                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      (Set<MaterialState> states) {
+                    // Use the default focused overlay color
+                    return states.contains(MaterialState.focused)
+                        ? null
+                        : Colors.transparent;
+                  }),
+                  // dividerColor: Colors.transparent,
+                  padding: const EdgeInsets.all(0),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicatorColor: Colors.transparent,
+                  controller: _tabController,
+                  labelColor: Colors.purple,
+                  labelStyle:
+                      appStyle(size: 16, color: mainBlack, fw: FontWeight.bold),
+                  unselectedLabelColor: Colors.black.withOpacity(0.2),
+                  tabs: const [
+                    Tab(text: "Stok"),
+                    Tab(text: "Pesanan"),
+                    Tab(text: "Internal")
+                  ],
+                ),
           title: Text(
             "Notifikasi",
             style: appStyle(size: 18, color: mainBlack, fw: FontWeight.w500),
           ),
           centerTitle: true,
         ),
-        body: tokoNotifications.maybeWhen(
+        body: internalInformation.when(
             data: (data) {
-              return data.match(
-                  (l) => Center(
-                      child: Text(l.message,
+              return data.unwrapRight()?.status != "joined"
+                  ? Center(
+                      child: Text("Anda belum bergabung toko",
                           style: appStyle(
-                              size: 16,
-                              color: mainBlack,
-                              fw: FontWeight.w600))), (r) {
-                return TabBarView(controller: _tabController, children: [
-                  InternalNotificationSectionStok(
-                    stokNotifications: r.isNotEmpty
-                        ? r
-                            .filter(
-                                (t) => t.tokonotificationtype?.name == "Stock")
-                            .toList()
-                        : [],
-                  ),
-                  InternalNotificationSectionOrder(
-                    orderNotifications: r.isNotEmpty
-                        ? r
-                            .filter(
-                                (t) => t.tokonotificationtype?.name == "Order")
-                            .toList()
-                        : [],
-                  ),
-                  InternalNotificationSectionInternalToko(
-                    internalTokoNotifications: r.isNotEmpty
-                        ? r
-                            .filter((t) =>
-                                t.tokonotificationtype?.name == "Internal Toko")
-                            .toList()
-                        : [],
-                  )
-                ]);
-              });
+                              size: 16, color: mainBlack, fw: FontWeight.w600)))
+                  : tokoNotifications.maybeWhen(
+                      data: (data) {
+                        return data.match(
+                            (l) => Center(
+                                child: Text(l.message,
+                                    style: appStyle(
+                                        size: 16,
+                                        color: mainBlack,
+                                        fw: FontWeight.w600))), (r) {
+                          return TabBarView(
+                              controller: _tabController,
+                              children: [
+                                InternalNotificationSectionStok(
+                                  stokNotifications: r.isNotEmpty
+                                      ? r
+                                          .filter((t) =>
+                                              t.tokonotificationtype?.name ==
+                                              "Stock")
+                                          .toList()
+                                      : [],
+                                ),
+                                InternalNotificationSectionOrder(
+                                  orderNotifications: r.isNotEmpty
+                                      ? r
+                                          .filter((t) =>
+                                              t.tokonotificationtype?.name ==
+                                              "Order")
+                                          .toList()
+                                      : [],
+                                ),
+                                InternalNotificationSectionInternalToko(
+                                  internalTokoNotifications: r.isNotEmpty
+                                      ? r
+                                          .filter((t) =>
+                                              t.tokonotificationtype?.name ==
+                                              "Internal Toko")
+                                          .toList()
+                                      : [],
+                                )
+                              ]);
+                        });
+                      },
+                      loading: () =>
+                          const Center(child: CircularProgressIndicator()),
+                      orElse: () => const SizedBox.shrink());
             },
-            loading: () => const Center(child: CircularProgressIndicator()),
-            orElse: () => const SizedBox.shrink()));
+            error: (error, stackTrace) => Center(child: Text(error.toString())),
+            loading: () => const Center(child: CircularProgressIndicator())));
   }
 }
 

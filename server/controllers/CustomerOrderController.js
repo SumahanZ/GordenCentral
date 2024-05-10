@@ -143,7 +143,8 @@ module.exports = {
 
             const internals = await models.internal.findAll({
                 where: {
-                    tokoId: foundOrder.tokoId
+                    tokoId: foundOrder.tokoId,
+                    status: "joined"
                 },
                 include: {
                     model: models.user,

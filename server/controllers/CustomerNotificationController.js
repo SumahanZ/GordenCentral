@@ -15,8 +15,6 @@ module.exports = {
                 },]
             })
 
-            console.log(customerFound)
-
             if (!customerFound) {
                 await t.rollback();
                 return res.status(400).json({ error: "pelanggan tidak ditemukan dengan id pengguna tertentu!" })

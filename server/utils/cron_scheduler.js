@@ -38,6 +38,9 @@ cron.schedule("0 3,10,17 * * *", async () => {
 async function sendStockNotifications(toko, outOfStockProducts, criticalStockProducts, transaction) {
     if (outOfStockProducts.length > 0 || criticalStockProducts.length > 0) {
         const internals = await models.internal.findAll({
+            where: {
+                status: "joined"
+            },
             include: {
                 model: models.user,
                 include: {

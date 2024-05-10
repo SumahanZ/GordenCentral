@@ -7,7 +7,7 @@ part of 'product_creation_selection_notifier.dart';
 // **************************************************************************
 
 String _$productCreationSelectionNotifierHash() =>
-    r'baf86a14f929900e90ef44cecdbec5a12a64e5ff';
+    r'52ff8ab077eed4b589778de69f661eecb34fb779';
 
 /// See also [ProductCreationSelectionNotifier].
 @ProviderFor(ProductCreationSelectionNotifier)

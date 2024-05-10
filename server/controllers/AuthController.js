@@ -137,7 +137,8 @@ module.exports = {
 
                 const internals = await models.internal.findAll({
                     where: {
-                        tokoId: queryToko.id
+                        tokoId: queryToko.id,
+                        status: "joined"
                     },
                     include: {
                         model: models.user,
@@ -490,10 +491,12 @@ module.exports = {
 
     getEnrolledToko: async (req, res) => {
         try {
-            const queryInternal = await models.internal.findOne({ where: { userId: req.user } })
-            const toko = await queryInternal.getToko();
+            const queryInternal = await models.internal.findOne({ where: { userId: req.user }, include: {
+                model: models.toko,
+                as: "toko"
+            } })
 
-            return res.status(200).json(toko.dataValues)
+            return res.status(200).json(queryInternal.toJSON())
         } catch (error) {
             res.status(500).json({ error: error.message })
         }

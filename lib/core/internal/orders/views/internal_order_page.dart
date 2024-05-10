@@ -6,9 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tugas_akhir_project/core/customer/orders/providers/order_detail_selection_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/orders/repositories/implementations/internal_order_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/orders/viewmodels/internal_order_viewmodel.dart';
+import 'package:tugas_akhir_project/core/internal/settings/repositories/implementations/internal_settings_repository_impl.dart';
 import 'package:tugas_akhir_project/models/order.dart';
 import 'package:tugas_akhir_project/utils/errors/api_errors.dart';
 import 'package:tugas_akhir_project/utils/extensions/double_extension.dart';
+import 'package:tugas_akhir_project/utils/extensions/either_extension.dart';
 import 'package:tugas_akhir_project/utils/methods/utilmethods.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/extensions/date_extension.dart';
@@ -39,6 +41,8 @@ class _InternalOrderPageState extends ConsumerState<InternalOrderPage>
 
   @override
   Widget build(BuildContext context) {
+    final internalInformation = ref.watch(fetchInternalInformation);
+
     ref.listen(internalOrderViewModelProvider, (_, state) {
       if (state is AsyncData<void>) {
         showPopupModal(
@@ -89,93 +93,112 @@ class _InternalOrderPageState extends ConsumerState<InternalOrderPage>
 
     return Scaffold(
         appBar: AppBar(
-          bottom: TabBar(
-            // dividerColor: Colors.transparent,
-            splashFactory: NoSplash.splashFactory,
-            padding: const EdgeInsets.all(0),
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorColor: Colors.transparent,
-            controller: _tabController,
-            labelColor: Colors.purple,
-            labelStyle:
-                appStyle(size: 16, color: mainBlack, fw: FontWeight.bold),
-            unselectedLabelColor: Colors.black.withOpacity(0.2),
-            tabs: const [
-              Tab(text: "Diproses"),
-              Tab(text: "Dibatalkan"),
-              Tab(text: "Selesai")
-            ],
-          ),
+          bottom: internalInformation.asData?.value.unwrapRight()?.status !=
+                  "joined"
+              ? null
+              : TabBar(
+                  // dividerColor: Colors.transparent,
+                  splashFactory: NoSplash.splashFactory,
+                  padding: const EdgeInsets.all(0),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicatorColor: Colors.transparent,
+                  controller: _tabController,
+                  labelColor: Colors.purple,
+                  labelStyle:
+                      appStyle(size: 16, color: mainBlack, fw: FontWeight.bold),
+                  unselectedLabelColor: Colors.black.withOpacity(0.2),
+                  tabs: const [
+                    Tab(text: "Diproses"),
+                    Tab(text: "Dibatalkan"),
+                    Tab(text: "Selesai")
+                  ],
+                ),
           title: Text(
             "Pesanan",
             style: appStyle(size: 18, color: mainBlack, fw: FontWeight.w500),
           ),
           centerTitle: true,
         ),
-        body: ref.watch(fetchAllCustomerOrders).maybeWhen(
+        body: internalInformation.when(
             data: (data) {
-              return data.match(
-                  (l) => Center(
-                      child: Text(l.message,
+              return data.unwrapRight()?.status != "joined"
+                  ? Center(
+                      child: Text("Anda belum bergabung toko",
                           style: appStyle(
-                              size: 16,
-                              color: mainBlack,
-                              fw: FontWeight.w600))), (r) {
-                return TabBarView(controller: _tabController, children: [
-                  SafeArea(
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(14),
-                        child: Column(
-                          children: [
-                            _buildOrderGroup(
-                              ref: ref,
-                              status: "Processing",
-                              context: context,
-                              orders: r,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SafeArea(
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(14),
-                        child: Column(
-                          children: [
-                            _buildOrderGroup(
-                                ref: ref,
-                                context: context,
-                                orders: r,
-                                status: "Cancelled"),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SafeArea(
-                    child: SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(14),
-                        child: Column(
-                          children: [
-                            _buildOrderGroup(
-                                ref: ref,
-                                context: context,
-                                orders: r,
-                                status: "Completed"),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ]);
-              });
+                              size: 16, color: mainBlack, fw: FontWeight.w600)))
+                  : ref.watch(fetchAllCustomerOrders).maybeWhen(
+                      data: (data) {
+                        return data.match(
+                            (l) => Center(
+                                child: Text(l.message,
+                                    style: appStyle(
+                                        size: 16,
+                                        color: mainBlack,
+                                        fw: FontWeight.w600))), (r) {
+                          return TabBarView(
+                              controller: _tabController,
+                              children: [
+                                SafeArea(
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(14),
+                                      child: Column(
+                                        children: [
+                                          _buildOrderGroup(
+                                            ref: ref,
+                                            status: "Processing",
+                                            context: context,
+                                            orders: r,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SafeArea(
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(14),
+                                      child: Column(
+                                        children: [
+                                          _buildOrderGroup(
+                                              ref: ref,
+                                              context: context,
+                                              orders: r,
+                                              status: "Cancelled"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SafeArea(
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(14),
+                                      child: Column(
+                                        children: [
+                                          _buildOrderGroup(
+                                              ref: ref,
+                                              context: context,
+                                              orders: r,
+                                              status: "Completed"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ]);
+                        });
+                      },
+                      loading: () =>
+                          const Center(child: CircularProgressIndicator()),
+                      orElse: () => const SizedBox.shrink());
             },
-            loading: () => const Center(child: CircularProgressIndicator()),
-            orElse: () => const SizedBox.shrink()));
+            error: ((error, stackTrace) => Center(
+                child: Text(error.toString(),
+                    style: appStyle(
+                        size: 16, color: mainBlack, fw: FontWeight.w600)))),
+            loading: () => const Center(child: CircularProgressIndicator())));
   }
 }
 

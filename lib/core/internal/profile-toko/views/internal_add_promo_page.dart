@@ -140,7 +140,6 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                         children: [
                                           ListTile(
                                             onTap: () {
-                                              print("test");
                                             },
                                             shape:
                                                 const RoundedRectangleBorder(),

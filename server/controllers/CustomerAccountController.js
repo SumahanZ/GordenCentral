@@ -30,7 +30,6 @@ module.exports = {
 
             if (password != null) {
                 hashedPassword = bcrypt.hashSync(password, 8);
-                console.log(hashedPassword);
             }
 
             const updatedUser = await userFound.update({

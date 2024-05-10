@@ -250,6 +250,7 @@ class CustomerCartItem extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(20),
                           child: const CircleAvatar(
                             radius: 17,
+                            foregroundColor: Colors.white,
                             backgroundColor: Colors.purple,
                             child: Icon(Icons.add_outlined),
                           ),

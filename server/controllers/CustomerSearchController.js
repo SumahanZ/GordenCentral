@@ -177,7 +177,6 @@ module.exports = {
             await t.commit();
 
             const mappedFoundProducts = products.map(e => e.toJSON())
-            console.log(mappedFoundProducts)
 
             return res.status(200).json(mappedFoundProducts);
         } catch (error) {

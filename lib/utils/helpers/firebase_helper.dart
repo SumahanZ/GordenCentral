@@ -37,7 +37,6 @@ class FirebaseHelper {
 
   static Future<void> _firebaseMessagingForegroundHandler(
       RemoteMessage message) async {
-    print("test foreground");
     show(
         title: message.notification?.title ?? "No Title",
         body: message.notification?.body ?? "No Body",

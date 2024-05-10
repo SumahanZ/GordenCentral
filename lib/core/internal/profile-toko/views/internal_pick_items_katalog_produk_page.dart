@@ -126,7 +126,6 @@ class _PickItemsKatalogProdukPageState
                                     : null,
                                 title: ListTile(
                                   onTap: () {
-                                    print("test");
                                   },
                                   shape: const RoundedRectangleBorder(),
                                   contentPadding: const EdgeInsets.symmetric(
@@ -269,7 +268,6 @@ class _PickItemsKatalogProdukPageState
         selectedFlag.removeWhere((element) => element == data[index]);
       } else {
         selectedFlag.add(data[index]);
-        print(selectedFlag);
       }
       isSelectionMode = selectedFlag.isNotEmpty ? true : false;
     });

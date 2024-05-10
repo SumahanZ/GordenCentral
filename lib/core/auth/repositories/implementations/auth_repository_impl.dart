@@ -8,6 +8,7 @@ import 'package:tugas_akhir_project/core/auth/providers/auth_personalization_pro
 import 'package:tugas_akhir_project/core/auth/repositories/implementations/shared_preference_repository_impl.dart';
 import 'package:tugas_akhir_project/core/auth/repositories/sources/auth_repository.dart';
 import 'package:tugas_akhir_project/models/city.dart';
+import 'package:tugas_akhir_project/models/internal.dart';
 import 'package:tugas_akhir_project/models/province.dart';
 import 'package:tugas_akhir_project/models/toko.dart';
 import 'package:tugas_akhir_project/models/toko_information_request.dart';
@@ -387,7 +388,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  TaskEither<ApiError, Toko?> getEnrolledToko({required Ref<Object?> ref}) {
+  TaskEither<ApiError, Internal?> getEnrolledToko({required Ref<Object?> ref}) {
     return TaskEither<ApiError, Response>.tryCatch(() async {
       final token = await ref
           .read(sharedPreferenceRepositoryProvider)
@@ -410,8 +411,8 @@ class AuthRepositoryImpl implements AuthRepository {
         case >= 200 && <= 299:
           try {
             var response = jsonDecode(value.body.toString());
-            var toko = Toko.fromJson(response);
-            return TaskEither.right(toko);
+            var internal = Internal.fromJson(response);
+            return TaskEither.right(internal);
           } catch (error) {
             return TaskEither.left(
               ResponseAPIError(

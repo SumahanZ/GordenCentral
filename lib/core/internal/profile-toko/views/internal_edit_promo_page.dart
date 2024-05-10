@@ -153,13 +153,11 @@ class _InternalEditPromoPageState extends ConsumerState<InternalEditPromoPage> {
                                 ),
                                 children: [
                                   Builder(builder: (context) {
-                                    print(selectedPromoItem);
                                     if (selectedPromoItem != null) {
                                       return Column(
                                         children: [
                                           ListTile(
                                             onTap: () {
-                                              print("test");
                                             },
                                             shape:
                                                 const RoundedRectangleBorder(),

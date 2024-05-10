@@ -212,7 +212,6 @@ class _InternalProdukSelectCategoryPageState
       } else {
         selectedFlag.add(data[index]);
       }
-      print(selectedFlag);
       isSelectionMode = selectedFlag.isNotEmpty ? true : false;
     });
   }

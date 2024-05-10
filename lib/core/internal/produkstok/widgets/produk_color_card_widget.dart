@@ -55,7 +55,6 @@ class ProdukColorWidget extends ConsumerWidget {
                 const Divider(),
                 ListTile(
                   onTap: () {
-                    print("test");
                   },
                   shape: const RoundedRectangleBorder(),
                   contentPadding:
@@ -104,7 +103,6 @@ class ProdukColorWidget extends ConsumerWidget {
                         const Spacer(),
                         GestureDetector(
                             onTap: () {
-                              print("test");
                               ref
                                   .read(productCreationSelectionNotifierProvider
                                       .notifier)

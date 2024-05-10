@@ -70,8 +70,6 @@ class _InternalEditProdukTokoPageState
     final productSelections =
         ref.watch(productCreationSelectionNotifierProvider);
 
-        print(productSelections);
-
     ref.listen(fetchProdukDetailInternalProvider(widget.produkId),
         (previous, next) {
       if (previous?.value?.unwrapRight() != next.value?.unwrapRight()) {

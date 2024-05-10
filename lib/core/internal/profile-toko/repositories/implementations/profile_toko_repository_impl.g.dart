@@ -164,165 +164,30 @@ class _FetchProdukDetailInternalProviderElement
 }
 
 String _$fetchProfileInformationHash() =>
-    r'57e15eb2e152c9bc6810f3bd094a433c74d8cdb5';
+    r'91e7e471a3a683356c87657e9e64e571e9554be7';
 
 /// See also [fetchProfileInformation].
 @ProviderFor(fetchProfileInformation)
-const fetchProfileInformationProvider = FetchProfileInformationFamily();
-
-/// See also [fetchProfileInformation].
-class FetchProfileInformationFamily extends Family<
-    AsyncValue<
-        (
-          Either<ApiError, List<BerandaToko>>,
-          Either<ApiError, Toko?>,
-          Either<ApiError, List<KatalogProduk>>
-        )>> {
-  /// See also [fetchProfileInformation].
-  const FetchProfileInformationFamily();
-
-  /// See also [fetchProfileInformation].
-  FetchProfileInformationProvider call(
-    int tokoId,
-  ) {
-    return FetchProfileInformationProvider(
-      tokoId,
-    );
-  }
-
-  @override
-  FetchProfileInformationProvider getProviderOverride(
-    covariant FetchProfileInformationProvider provider,
-  ) {
-    return call(
-      provider.tokoId,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'fetchProfileInformationProvider';
-}
-
-/// See also [fetchProfileInformation].
-class FetchProfileInformationProvider extends AutoDisposeFutureProvider<
+final fetchProfileInformationProvider = AutoDisposeFutureProvider<
     (
       Either<ApiError, List<BerandaToko>>,
       Either<ApiError, Toko?>,
       Either<ApiError, List<KatalogProduk>>
-    )> {
-  /// See also [fetchProfileInformation].
-  FetchProfileInformationProvider(
-    int tokoId,
-  ) : this._internal(
-          (ref) => fetchProfileInformation(
-            ref as FetchProfileInformationRef,
-            tokoId,
-          ),
-          from: fetchProfileInformationProvider,
-          name: r'fetchProfileInformationProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$fetchProfileInformationHash,
-          dependencies: FetchProfileInformationFamily._dependencies,
-          allTransitiveDependencies:
-              FetchProfileInformationFamily._allTransitiveDependencies,
-          tokoId: tokoId,
-        );
+    )>.internal(
+  fetchProfileInformation,
+  name: r'fetchProfileInformationProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$fetchProfileInformationHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  FetchProfileInformationProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.tokoId,
-  }) : super.internal();
-
-  final int tokoId;
-
-  @override
-  Override overrideWith(
-    FutureOr<
-                (
-                  Either<ApiError, List<BerandaToko>>,
-                  Either<ApiError, Toko?>,
-                  Either<ApiError, List<KatalogProduk>>
-                )>
-            Function(FetchProfileInformationRef provider)
-        create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: FetchProfileInformationProvider._internal(
-        (ref) => create(ref as FetchProfileInformationRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        tokoId: tokoId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<
-      (
-        Either<ApiError, List<BerandaToko>>,
-        Either<ApiError, Toko?>,
-        Either<ApiError, List<KatalogProduk>>
-      )> createElement() {
-    return _FetchProfileInformationProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is FetchProfileInformationProvider && other.tokoId == tokoId;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, tokoId.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
-}
-
-mixin FetchProfileInformationRef on AutoDisposeFutureProviderRef<
+typedef FetchProfileInformationRef = AutoDisposeFutureProviderRef<
     (
       Either<ApiError, List<BerandaToko>>,
       Either<ApiError, Toko?>,
       Either<ApiError, List<KatalogProduk>>
-    )> {
-  /// The parameter `tokoId` of this provider.
-  int get tokoId;
-}
-
-class _FetchProfileInformationProviderElement
-    extends AutoDisposeFutureProviderElement<
-        (
-          Either<ApiError, List<BerandaToko>>,
-          Either<ApiError, Toko?>,
-          Either<ApiError, List<KatalogProduk>>
-        )> with FetchProfileInformationRef {
-  _FetchProfileInformationProviderElement(super.provider);
-
-  @override
-  int get tokoId => (origin as FetchProfileInformationProvider).tokoId;
-}
+    )>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

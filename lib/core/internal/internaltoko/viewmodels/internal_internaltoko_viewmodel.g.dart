@@ -7,7 +7,7 @@ part of 'internal_internaltoko_viewmodel.dart';
 // **************************************************************************
 
 String _$internalTokoViewModelHash() =>
-    r'317f60431f863d221b475e81fe3277b87ab51088';
+    r'27c780b32e806f2058df9d075956922130be6d09';
 
 /// See also [InternalTokoViewModel].
 @ProviderFor(InternalTokoViewModel)

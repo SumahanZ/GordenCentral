@@ -116,15 +116,11 @@ class _InternalBerandaTokoPageState
                             const Spacer(),
                             ElevatedButton(
                               onPressed: () {
-                                final toko =
-                                    ref.read(enrolledTokoStateProvider);
-                                print(toko);
                                 if (selectedImages.isNotEmpty) {
                                   ref
                                       .read(tokoInformationViewModelProvider
                                           .notifier)
                                       .configureBerandaToko(
-                                          tokoId: toko!.id!,
                                           imageUrls: selectedImages
                                               .map((e) => e.path)
                                               .toList())

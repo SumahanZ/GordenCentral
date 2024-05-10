@@ -25,10 +25,9 @@ class _InternalPreviewProfileTokoPageState
   @override
   Widget build(BuildContext context) {
     //watch here
-    final enrolledToko = ref.watch(enrolledTokoStateProvider);
 
     final previewProfileTokoInformation =
-        ref.watch(fetchProfileInformationProvider(enrolledToko?.id ?? 1));
+        ref.watch(fetchProfileInformationProvider);
 
     return Scaffold(
       appBar: AppBar(

@@ -96,8 +96,6 @@ module.exports = {
                 return res.status(400).json({ error: "Tidak ada produk yang ditemukan dengan promosi yang valid" });
             }
 
-            console.log(products)
-
             const productsWithValid = products.filter(product => product.id !== null);
 
 

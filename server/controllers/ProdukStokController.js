@@ -270,7 +270,6 @@ module.exports = {
                 }
 
                 const foundLeadTimeValue = laporanBarangMasuk.length > 0 && laporanBarangMasuk != undefined ? ((laporanBarangMasuk.map((e) => {
-                    console.log(e.deliveryTime)
                     return e.deliveryTime;
                 })).reduce((accumulator, value) => accumulator + value, 0) / laporanBarangMasuk.length) : 0;
                 averageLeadTimeList.push(foundLeadTimeValue);
@@ -674,26 +673,38 @@ function calculateStandardDeviation(values) {
 }
 
 async function sendStockNotifications(toko, outOfStockProducts, criticalStockProducts, transaction) {
-    if (outOfStockProducts.length > 0 || criticalStockProducts.length > 0) {
-        const internals = await models.internal.findAll({
+    const internals = await models.internal.findAll({
+        where: {
+            tokoId: toko.id,
+            status: "joined"
+        },
+        include: {
+            model: models.user,
             include: {
-                model: models.user,
-                include: {
-                    model: models.device
-                }
-            },
-            transaction: transaction
-        });
+                model: models.device
+            }
+        },
+        transaction: transaction
+    });
 
-        const internalUsers = internals.map(e => e.user).filter(e => e.device != null && e.device.deviceToken != null) ?? [];
-        const internalDevicesTokens = internalUsers.length > 0 ? internalUsers.map(e => e.device.deviceToken) : [];
+    const internalUsers = internals.map(e => e.user).filter(e => e.device != null && e.device.deviceToken != null) ?? [];
+    const internalDevicesTokens = internalUsers.length > 0 ? internalUsers.map(e => e.device.deviceToken) : [];
 
+    if (outOfStockProducts.length > 0 || criticalStockProducts.length > 0) {
         if (outOfStockProducts.length > 0) {
             await sendNotification(toko, outOfStockProducts, 3, "stok habis, harap isi kembali stoknya.", internalDevicesTokens, transaction);
         }
 
         if (criticalStockProducts.length > 0) {
             await sendNotification(toko, criticalStockProducts, 3, "mendekati titik pemesanan ulang dan stok segera harus dipulihkan.", internalDevicesTokens, transaction);
+        }
+
+    } else if (outOfStockProducts.length == 0 && criticalStockProducts.length == 0) {
+        if (internalDevicesTokens.length > 0) {
+            sendMulticastNotification(internalDevicesTokens, {
+                title: "Notifikasi Stok",
+                body: "Pengecekan level stok. Tidak ada stok habis atau mendekati titik pemesanan ulang."
+            });
         }
     }
 }

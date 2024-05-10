@@ -32,7 +32,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
   final _deliveryTimeController = TextEditingController();
   final _totalAmountController = TextEditingController();
   String testValue = "0";
-  
+
   @override
   void dispose() {
     _issuedFromController.dispose();
@@ -59,28 +59,14 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
     });
 
     ref.listen(produkStokViewModelProvider, (_, state) {
-      if (state is AsyncData<void>) {
-        showPopupModal(
-          context: context,
-          title: "Sukses",
-          info: DialogType.success,
-          animType: AnimType.scale,
-          desc: "Berhasil menambahkan stok ke produk!",
-          onOkPress: () {
-            ref.invalidate(fetchProductsTable);
-            Routemaster.of(context).replace('/internal-dashboard/produkstok');
-          },
-        );
-      } else if (state is AsyncError && state.error is ResponseAPIError) {
+      if (state is AsyncError && state.error is ResponseAPIError) {
         showPopupModal(
           context: context,
           title: "Peringatan",
           info: DialogType.error,
           animType: AnimType.scale,
           desc: "Terjadi kesalahan respons!",
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       } else if (state is AsyncError && state.error is RequestError) {
         showPopupModal(
@@ -89,9 +75,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
           info: DialogType.error,
           animType: AnimType.scale,
           desc: "Permintaan jaringan telah terjadi!",
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       } else if (state is AsyncError) {
         showPopupModal(
@@ -100,9 +84,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
           info: DialogType.error,
           animType: AnimType.scale,
           desc: (state.error as ApiError).message,
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       }
     });
@@ -271,7 +253,21 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
                                             _deliveryTimeController.text),
                                         totalAmount: int.parse(
                                             _totalAmountController.text))
-                                    .then((_) {});
+                                    .then((_) {
+                                  showPopupModal(
+                                    context: context,
+                                    title: "Sukses",
+                                    info: DialogType.success,
+                                    animType: AnimType.scale,
+                                    desc:
+                                        "Berhasil menambahkan stok ke produk!",
+                                    onOkPress: () {
+                                      ref.invalidate(fetchProductsTable);
+                                      Routemaster.of(context).replace(
+                                          '/internal-dashboard/produkstok');
+                                    },
+                                  );
+                                });
                               }
                             },
                             style: ElevatedButton.styleFrom(
