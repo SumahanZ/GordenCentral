@@ -233,9 +233,9 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                         fw: FontWeight.bold),
                                                   ),
                                              
-                                                  if (r[index]
-                                                      .rating
-                                                      .isNotEmpty)
+                                                  // if (r[index]
+                                                  //     .rating
+                                                  //     .isNotEmpty)
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -245,12 +245,9 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                           ignoreGestures: true,
                                                           itemSize: 16,
                                                           initialRating: r[
-                                                                      index]
-                                                                  .rating
-                                                                  .first
-                                                                  .averageRating ??
-                                                              1,
-                                                          minRating: 1,
+                                                                      index].averageRating ??
+                                                              0,
+                                                          minRating: 0,
                                                           direction:
                                                               Axis.horizontal,
                                                           allowHalfRating: true,
@@ -272,7 +269,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                         const SizedBox(
                                                             width: 5),
                                                         Text(
-                                                            "(${r[index].rating.first.averageRating?.toStringAsPrecision(2)})",
+                                                            "(${r[index].averageRating?.toStringAsPrecision(2) ?? 0})",
                                                             style: appStyle(
                                                                 size: 13,
                                                                 color:

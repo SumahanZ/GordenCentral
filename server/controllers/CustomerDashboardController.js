@@ -17,12 +17,12 @@ module.exports = {
                     model: models.produkrating,
                     required: true,
                     as: "rating",
-                    attributes: {
-                        include: [
-                            [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                            [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                        ]
-                    },
+                    // attributes: {
+                    //     include: [
+                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
+                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
+                    //     ]
+                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",
@@ -39,11 +39,18 @@ module.exports = {
                 return res.status(400).json({ error: "Produk tidak ditemukan" })
             }
 
+            await t.commit();
+
             const productsWithValid = products.filter(product => product.id !== null);
 
             const mappedData = productsWithValid.map((e) => e.toJSON())
 
-            await t.commit();
+            for (const [index, product] of mappedData.entries()) {
+                const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                const totalBuyer = product.rating.length;
+                mappedData[index].averageRating = averageRating;
+                mappedData[index].totalRating = totalBuyer;
+            }
 
             return res.status(200).json(mappedData);
         } catch (error) {
@@ -74,12 +81,12 @@ module.exports = {
                     model: models.produkrating,
                     required: false,
                     as: "rating",
-                    attributes: {
-                        include: [
-                            [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                            [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                        ]
-                    },
+                    // attributes: {
+                    //     include: [
+                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
+                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
+                    //     ]
+                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",
@@ -97,9 +104,15 @@ module.exports = {
             }
 
             const productsWithValid = products.filter(product => product.id !== null);
-
-
             const mappedData = productsWithValid.map((e) => e.toJSON())
+
+            for (const [index, product] of mappedData.entries()) {
+                console.log(product)
+                const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                const totalBuyer = product.rating.length;
+                mappedData[index].averageRating = averageRating;
+                mappedData[index].totalRating = totalBuyer;
+            }
 
             await t.commit();
             return res.status(200).json(mappedData);
@@ -130,12 +143,12 @@ module.exports = {
                     model: models.produkrating,
                     as: "rating",
                     required: false,
-                    attributes: {
-                        include: [
-                            [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                            [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                        ]
-                    },
+                    // attributes: {
+                    //     include: [
+                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
+                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
+                    //     ]
+                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",
@@ -154,6 +167,13 @@ module.exports = {
             const productsWithValidPromo = products.filter(product => product.promo !== null);
 
             const mappedData = productsWithValidPromo.map((e) => e.toJSON())
+
+            for (const [index, product] of mappedData.entries()) {
+                const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                const totalBuyer = product.rating.length;
+                mappedData[index].averageRating = averageRating;
+                mappedData[index].totalRating = totalBuyer;
+            }
 
             await t.commit();
 

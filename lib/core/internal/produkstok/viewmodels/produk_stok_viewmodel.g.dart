@@ -7,7 +7,7 @@ part of 'produk_stok_viewmodel.dart';
 // **************************************************************************
 
 String _$produkStokViewModelHash() =>
-    r'fe8222ac9bd0337057571a1ef19c2d7bcf3415d7';
+    r'2a5241387772d2ae948abad1af1c682f058f5632';
 
 /// See also [ProdukStokViewModel].
 @ProviderFor(ProdukStokViewModel)

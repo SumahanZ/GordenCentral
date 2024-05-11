@@ -383,20 +383,12 @@ module.exports = {
                 }
             })
 
-            if (foundCatalogs[0].id === null) {
-                await t.rollback();
-                return res.status(404).json({ error: "Katalog produk toko kosong" });
-            }
-
             const mappedData = foundCatalogs.map(catalog => {
                 const catalogJSON = catalog.dataValues;
                 catalogJSON.products = catalogJSON.products.map(product => product.dataValues);
                 console.log(catalogJSON.products)
                 return catalogJSON;
             });
-            
-
-            console.log(mappedData)
 
             await t.commit();
 
@@ -439,32 +431,28 @@ module.exports = {
                     }, {
                         model: models.produkrating,
                         as: "rating",
-                        attributes: {
-                            include: [
-                                [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
-                                [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
-                            ]
-                        },
+                        // attributes: {
+                        //     include: [
+                        //         [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
+                        //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
+                        //     ]
+                        // },
                     }]
                 }]
             })
 
-            console.log(foundCatalogs)
-
-            if (foundCatalogs[0].id === null) {
-                await t.commit();
-                return res.status(200).json([]);
-            }
-
-
             await t.commit();
 
-            const mappedData = foundCatalogs.map(catalog => {
-                const catalogJSON = catalog.dataValues;
-                catalogJSON.products = catalogJSON.products.map(product => product.dataValues);
-                // catalogJSON.products.image = catalogJSON.products.image(image => image.dataValues);
-                return catalogJSON;
-            });
+            const mappedData = foundCatalogs.map(catalog => catalog.toJSON());
+
+            for (const [catalogIndex, catalog] of mappedData.entries()) {
+                for (const [index, product] of catalog.products.entries()) {
+                    const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                    const totalBuyer = product.rating.length;
+                    mappedData[catalogIndex].products[index].averageRating = averageRating;
+                    mappedData[catalogIndex].products[index].totalRating = totalBuyer;
+                }
+            }
 
             return res.status(200).json(mappedData);
         } catch (error) {
@@ -634,10 +622,10 @@ module.exports = {
                         model: models.produkrating,
                         required: false,
                         as: "rating",
-                        attributes: [
-                            [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                            [sequelize.fn('COUNT', sequelize.col('rating.id')), 'totalRating']
-                        ],
+                        // attributes: [
+                        //     [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
+                        //     [sequelize.fn('COUNT', sequelize.col('rating.id')), 'totalRating']
+                        // ],
                     },
                     {
                         model: models.produkglobalimage,
@@ -691,6 +679,10 @@ module.exports = {
 
             var mappedFoundProduk = foundProduk.toJSON()
 
+            const averageRating = (mappedFoundProduk.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / mappedFoundProduk.rating.length)
+            const totalBuyer = mappedFoundProduk.rating.length;
+            mappedFoundProduk.averageRating = averageRating;
+            mappedFoundProduk.totalRating = totalBuyer;
             mappedFoundProduk.categories = mappedFoundCategories;
 
             await t.commit();

@@ -151,24 +151,18 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                       Text(
                                                         textAlign:
                                                             TextAlign.center,
-                                                        (filteredPromosOngoing[
+                                                        ((filteredPromosOngoing[
                                                                             index]
-                                                                        .produk
-                                                                        ?.promo !=
-                                                                    null &&
-                                                                (filteredPromosOngoing[index]
-                                                                            .produk
-                                                                            ?.promo
-                                                                            ?.expiredAt ??
-                                                                        DateTime
-                                                                            .now())
-                                                                    .isAfter(
-                                                                        DateTime
-                                                                            .now()))
+                                                                        .expiredAt ??
+                                                                    DateTime
+                                                                        .now())
+                                                                .isAfter(
+                                                                    DateTime
+                                                                        .now()))
                                                             ? "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), filteredPromosOngoing[index].expiredAt!)}"
                                                             : "Expired At: ${filteredPromosOngoing[index].expiredAt?.formatDatePDF()}",
                                                         style: appStyle(
-                                                          size: 12,
+                                                          size: 11,
                                                           color: mainBlack,
                                                           fw: FontWeight.w600,
                                                         ),

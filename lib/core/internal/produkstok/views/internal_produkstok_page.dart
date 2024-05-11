@@ -81,32 +81,30 @@ class _InternalProdukStokPageState
   @override
   Widget build(BuildContext context) {
     ref.listen(produkStokViewModelProvider, (previousState, state) {
-      if (previousState != state) {
-        if (state is AsyncError && state.error is ResponseAPIError) {
-          showPopupModal(
-              context: context,
-              title: "Peringatan",
-              info: DialogType.error,
-              animType: AnimType.scale,
-              desc: "Kesalahan respon telah terjadi!",
-              onOkPress: () {});
-        } else if (state is AsyncError && state.error is RequestError) {
-          showPopupModal(
-              context: context,
-              title: "Peringatan",
-              info: DialogType.error,
-              animType: AnimType.scale,
-              desc: "Permintaan jaringan telah terjadi!",
-              onOkPress: () {});
-        } else if (state is AsyncError) {
-          showPopupModal(
-              context: context,
-              title: "Peringatan",
-              info: DialogType.error,
-              animType: AnimType.scale,
-              desc: (state.error as ApiError).message,
-              onOkPress: () {});
-        }
+      if (state is AsyncError && state.error is ResponseAPIError) {
+        showPopupModal(
+            context: context,
+            title: "Peringatan",
+            info: DialogType.error,
+            animType: AnimType.scale,
+            desc: "Kesalahan respon telah terjadi!",
+            onOkPress: () {});
+      } else if (state is AsyncError && state.error is RequestError) {
+        showPopupModal(
+            context: context,
+            title: "Peringatan",
+            info: DialogType.error,
+            animType: AnimType.scale,
+            desc: "Permintaan jaringan telah terjadi!",
+            onOkPress: () {});
+      } else if (state is AsyncError) {
+        showPopupModal(
+            context: context,
+            title: "Peringatan",
+            info: DialogType.error,
+            animType: AnimType.scale,
+            desc: (state.error as ApiError).message,
+            onOkPress: () {});
       }
     });
     return Scaffold(
@@ -228,26 +226,10 @@ class _InternalProdukStokPageState
                                                             ref
                                                                 .read(produkStokViewModelProvider
                                                                     .notifier)
-                                                                .calculateSafetyStockReorderPoint()
-                                                                .then((value) {
-                                                              showPopupModal(
-                                                                  context:
-                                                                      context,
-                                                                  title:
-                                                                      "Berhasil",
-                                                                  info: DialogType
-                                                                      .success,
-                                                                  animType:
-                                                                      AnimType
-                                                                          .scale,
-                                                                  desc:
-                                                                      "Berhasil menghitung stok keamanan & titik pemesanan ulang produk!",
-                                                                  onOkPress:
-                                                                      () {
-                                                                    ref.invalidate(
-                                                                        fetchProductsTable);
-                                                                  });
-                                                            });
+                                                                .calculateSafetyStockReorderPoint(
+                                                                    context)
+                                                                .then(
+                                                                    (value) {});
                                                           },
                                                           onCancelPress: () {});
                                                     },
@@ -338,18 +320,19 @@ class _InternalProdukStokPageState
                                                         .read(
                                                             produkStokViewModelProvider
                                                                 .notifier)
-                                                        .checkSafetyStockReorderPoint()
+                                                        .checkSafetyStockReorderPoint(
+                                                            context)
                                                         .then((value) {
-                                                      showPopupModal(
-                                                          context: context,
-                                                          title: "Berhasil",
-                                                          info: DialogType
-                                                              .success,
-                                                          animType:
-                                                              AnimType.scale,
-                                                          desc:
-                                                              "Berhasil mengecek stok level produk!",
-                                                          onOkPress: () {});
+                                                      // showPopupModal(
+                                                      //     context: context,
+                                                      //     title: "Berhasil",
+                                                      //     info: DialogType
+                                                      //         .success,
+                                                      //     animType:
+                                                      //         AnimType.scale,
+                                                      //     desc:
+                                                      //         "Berhasil mengecek stok level produk!",
+                                                      //     onOkPress: () {});
                                                     }),
                                                     child: SizedBox(
                                                       width:

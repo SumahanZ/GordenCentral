@@ -695,7 +695,7 @@ class _InternalLaporanBarangPageState
                                                 fw: FontWeight.w600),
                                             horizontalMargin: 5,
                                             columnSpacing: 0,
-                                            minWidth: 600,
+                                            minWidth: 700,
                                             columns: [
                                               const DataColumn2(
                                                 fixedWidth: 50,
@@ -716,8 +716,7 @@ class _InternalLaporanBarangPageState
                                                             ascending),
                                               ),
                                               DataColumn2(
-                                                label:
-                                                    const Text('Product Code'),
+                                                label: const Text('Code'),
                                                 size: ColumnSize.L,
                                                 onSort:
                                                     (columnIndex, ascending) =>

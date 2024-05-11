@@ -35,14 +35,12 @@ class _InternalEditProfilePageState
   final _passwordController = TextEditingController();
   final _phoneNumberController = TextEditingController();
 
-
   @override
   void dispose() {
-    // TODO: implement dispose
-  _nameController.dispose();
-  _emailController.dispose();
-  _passwordController.dispose();
-  _phoneNumberController.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -87,9 +85,7 @@ class _InternalEditProfilePageState
           info: DialogType.error,
           animType: AnimType.scale,
           desc: "Telah terjadi kesalahan respons!",
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       } else if (state is AsyncError && state.error is RequestError) {
         showPopupModal(
@@ -98,9 +94,7 @@ class _InternalEditProfilePageState
           info: DialogType.error,
           animType: AnimType.scale,
           desc: "Error jaringan telah terjadi!",
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       } else if (state is AsyncError) {
         showPopupModal(
@@ -109,9 +103,7 @@ class _InternalEditProfilePageState
           info: DialogType.error,
           animType: AnimType.scale,
           desc: (state.error as ApiError).message,
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       }
     });

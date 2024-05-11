@@ -7,9 +7,13 @@ module.exports = {
 
         try {
             const tokos = await models.toko.findAll({
-                limit: 10, include: {
+                include: [{
                     model: models.address,
-                }, transaction: t
+                }, {
+                    required: true,
+                    model: models.katalogproduk,
+                    as: "catalogs"
+                }], transaction: t
             })
 
             const mappedData = tokos.map((e) => e.dataValues)
@@ -36,7 +40,7 @@ module.exports = {
                     model: models.address,
                 }, {
                     model: models.promotional,
-                    seperate: true,
+                    required: true,
                     order: [['createdAt', 'ASC']],
                     where: {
                         tokoId: tokoId
@@ -88,12 +92,12 @@ module.exports = {
                     }, {
                         model: models.produkrating,
                         as: "rating",
-                        attributes: {
-                            include: [
-                                [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
-                                [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
-                            ]
-                        },
+                        // attributes: {
+                        //     include: [
+                        //         [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
+                        //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
+                        //     ]
+                        // },
                     }]
                 }]
             })
@@ -101,6 +105,15 @@ module.exports = {
             await t.commit();
 
             const mappedData = foundCatalogs.map(catalog => catalog.toJSON());
+
+            for (const [catalogIndex, catalog] of mappedData.entries()) {
+                for (const [index, product] of catalog.products.entries()) {
+                    const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                    const totalBuyer = product.rating.length;
+                    mappedData[catalogIndex].products[index].averageRating = averageRating;
+                    mappedData[catalogIndex].products[index].totalRating = totalBuyer;
+                }
+            }
 
             return res.status(200).json(mappedData);
         } catch (error) {
@@ -129,10 +142,10 @@ module.exports = {
                         model: models.produkrating,
                         required: false,
                         as: "rating",
-                        attributes: [
-                            [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                            [sequelize.fn('COUNT', sequelize.col('rating.id')), 'totalRating']
-                        ],
+                        // attributes: [
+                        //     [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
+                        //     [sequelize.fn('COUNT', sequelize.col('rating.id')), 'totalRating']
+                        // ],
                     },
                     {
                         model: models.produkcolor,
@@ -173,6 +186,10 @@ module.exports = {
 
             var mappedFoundProduk = foundProduk.toJSON()
 
+            const averageRating = (mappedFoundProduk.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / mappedFoundProduk.rating.length)
+            const totalBuyer = mappedFoundProduk.rating.length;
+            mappedFoundProduk.averageRating = averageRating;
+            mappedFoundProduk.totalRating = totalBuyer;
             mappedFoundProduk.categories = mappedFoundCategories;
 
             await t.commit();
@@ -223,6 +240,7 @@ module.exports = {
                 },
                 transaction: t
             });
+
 
             await wishlist[0].addProducts(foundProduk, { transaction: t });
 

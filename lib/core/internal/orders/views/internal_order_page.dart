@@ -251,7 +251,7 @@ Widget _buildOrderGroup({
             SizedBox(height: MediaQuery.of(context).size.height * 0.3),
             Text("Tidak ada pesanan dengan status ${status.toLowerCase()}.",
                 style:
-                    appStyle(size: 16, color: mainBlack, fw: FontWeight.w600)),
+                    appStyle(size: 16, color: mainBlack, fw: FontWeight.w600), textAlign: TextAlign.center,),
           ],
         ))
       : Column(

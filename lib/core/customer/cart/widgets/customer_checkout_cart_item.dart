@@ -40,7 +40,7 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
                   textAlign: TextAlign.center,
                   "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), cartItem?.produkCombination?.product?.promo?.expiredAt ?? DateTime.now())}",
                   style: appStyle(
-                    size: 12,
+                    size: 11,
                     color: mainBlack,
                     fw: FontWeight.w600,
                   ),

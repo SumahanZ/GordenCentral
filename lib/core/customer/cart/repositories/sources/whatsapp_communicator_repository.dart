@@ -65,7 +65,6 @@ class WhatsAppCommunicatorRepository {
   TaskEither<ApiError, bool> checkWhatsAppInstalled() {
     return TaskEither<ApiError, bool>.tryCatch(() async {
       final val = await WhatsappShare.isInstalled(package: Package.whatsapp);
-      print(val);
       return val ?? false;
     }, (error, stackTrace) => RequestError(errorMessage: error.toString()));
   }

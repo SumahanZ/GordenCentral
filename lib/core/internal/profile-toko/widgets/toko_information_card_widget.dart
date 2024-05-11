@@ -52,7 +52,7 @@ class TokoInformationCard extends ConsumerWidget {
                           size: 13, color: mainBlack, fw: FontWeight.w500),
                     ),
                     Text(
-                      "Nomor HP: ${toko?.phoneNumber}",
+                      "Nomor HP: ${toko?.whatsAppURL}",
                       style: appStyle(
                           size: 13, color: mainBlack, fw: FontWeight.w500),
                     ),

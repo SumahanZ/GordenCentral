@@ -147,6 +147,7 @@ class _CustomerEditProfilePageState
                                   ),
                                   const SizedBox(height: 10),
                                   CustomerEditProfileImage(
+                                    customer: r,
                                     pickTheImage: pickTheImage,
                                     imageFromfile: imageFromfile,
                                     selectedImage: selectedImage,

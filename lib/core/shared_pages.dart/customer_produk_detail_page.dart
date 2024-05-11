@@ -107,9 +107,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
           info: DialogType.error,
           animType: AnimType.scale,
           desc: "Telah terjadi kesalahan respons!",
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       } else if (state is AsyncError && state.error is RequestError) {
         showPopupModal(
@@ -118,9 +116,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
           info: DialogType.error,
           animType: AnimType.scale,
           desc: "Error jaringan telah terjadi!",
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       } else if (state is AsyncError) {
         showPopupModal(
@@ -129,9 +125,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
           info: DialogType.error,
           animType: AnimType.scale,
           desc: (state.error as ApiError).message,
-          onOkPress: () {
-            
-          },
+          onOkPress: () {},
         );
       }
     });
@@ -547,6 +541,8 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                             children: [
                               GestureDetector(
                                 onTap: () {
+                                  print(widget.produkId);
+
                                   if ((fetchCustomerWishlist.asData?.value
                                               .unwrapRight()
                                               ?.produkList ??
@@ -622,12 +618,12 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                 }),
                               ),
                               const SizedBox(width: 5),
-                              if (r?.rating.isNotEmpty ?? true) ...[
+                              if (r?.averageRating != 0) ...[
                                 const Spacer(),
                                 const Icon(AntIcons.starFilled,
                                     color: Colors.yellow),
                                 Text(
-                                  "${r?.rating.first.averageRating?.toStringAsPrecision(2) ?? ""} (${r?.rating.first.totalRating ?? 0} Pembeli)",
+                                  "${r?.averageRating?.toStringAsPrecision(2) ?? ""} (${r?.totalRating ?? 0} Pembeli)",
                                   style: appStyle(
                                       size: 14,
                                       color: mainBlack,
@@ -683,7 +679,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                               (r?.promo?.expiredAt ?? DateTime.now())
                                   .isAfter(DateTime.now()))
                             Text(
-                              "Promo Expires in: ${DateTimeHourMin.durationBetween(DateTime.now(), r?.promo?.expiredAt ?? DateTime.now())}",
+                              "Expires in: ${DateTimeHourMin.durationBetween(DateTime.now(), r?.promo?.expiredAt ?? DateTime.now())}",
                               style: appStyle(
                                 size: 14,
                                 color: Colors.purple,

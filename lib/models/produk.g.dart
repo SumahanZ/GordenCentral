@@ -10,6 +10,8 @@ _$ProdukImpl _$$ProdukImplFromJson(Map<String, dynamic> json) => _$ProdukImpl(
       id: json['id'] as int?,
       name: json['name'] as String?,
       code: json['code'] as String?,
+      averageRating: (json['averageRating'] as num?)?.toDouble(),
+      totalRating: json['totalRating'] as int?,
       description: json['description'] as String?,
       createdAt: json['createdAt'] == null
           ? null
@@ -18,9 +20,6 @@ _$ProdukImpl _$$ProdukImplFromJson(Map<String, dynamic> json) => _$ProdukImpl(
       tokoId: json['tokoId'] as int?,
       toko: Produk._tokoFromJson(json['toko'] as Map<String, dynamic>?),
       stok: Produk._stokFromJson(json['stok'] as Map<String, dynamic>?),
-      rating: json['rating'] == null
-          ? const []
-          : Produk._listRatingFromJson(json['rating'] as List?),
       promo: Produk._promoFromJson(json['promo'] as Map<String, dynamic>?),
       produkGlobalImages: json['image'] == null
           ? const []
@@ -44,13 +43,14 @@ Map<String, dynamic> _$$ProdukImplToJson(_$ProdukImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'code': instance.code,
+      'averageRating': instance.averageRating,
+      'totalRating': instance.totalRating,
       'description': instance.description,
       'createdAt': instance.createdAt?.toIso8601String(),
       'price': instance.price,
       'tokoId': instance.tokoId,
       'toko': Produk._tokoToJson(instance.toko),
       'stok': Produk._stokToJson(instance.stok),
-      'rating': Produk._listRatingToJson(instance.rating),
       'promo': Produk._promoToJson(instance.promo),
       'image': Produk._listImagesToJson(instance.produkGlobalImages),
       'color': Produk._listColorsToJson(instance.produkColors),

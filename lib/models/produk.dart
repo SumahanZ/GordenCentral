@@ -22,6 +22,8 @@ class Produk with _$Produk {
     int? id,
     String? name,
     String? code,
+    double? averageRating,
+    int? totalRating,
     String? description,
     DateTime? createdAt,
     double? price,
@@ -33,12 +35,11 @@ class Produk with _$Produk {
         toJson: Produk._stokToJson,
         name: "stok")
     Stok? stok,
-    @JsonKey(
-      fromJson: Produk._listRatingFromJson,
-      toJson: Produk._listRatingToJson,
-    )
-    @Default([])
-    List<ProdukRating> rating,
+    // @JsonKey(
+    //   fromJson: Produk._ratingFromJson,
+    //   toJson: Produk._ratingToJson,
+    // )
+    // ProdukRating? rating,
     @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
     Promo? promo,
     @JsonKey(
@@ -111,21 +112,17 @@ class Produk with _$Produk {
     return stok.toJson();
   }
 
-  static List<ProdukRating> _listRatingFromJson(List<dynamic>? json) {
-    if (json == null || json.isEmpty) return [];
+  // static ProdukRating? _ratingFromJson(Map<String, dynamic>? json) {
+  //   if (json == null) return null;
 
-    return json.map((e) => ProdukRating.fromJson(e)).toList();
-  }
+  //   return ProdukRating.fromJson(json);
+  // }
 
-  static Map<String, dynamic>? _listRatingToJson(
-      List<ProdukRating> berandaProdukList) {
-    if (berandaProdukList.isEmpty) return null;
+  // static Map<String, dynamic>? _ratingToJson(ProdukRating? rating) {
+  //   if (rating == null) return null;
 
-    return {
-      for (var i = 0; i < berandaProdukList.length; i++)
-        '$i': berandaProdukList[i].toJson(),
-    };
-  }
+  //   return rating.toJson();
+  // }
 
   static List<ProdukColor> _listColorsFromJson(List<dynamic>? json) {
     if (json == null || json.isEmpty) return [];

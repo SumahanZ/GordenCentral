@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:searchable_listview/searchable_listview.dart';
 import 'package:tugas_akhir_project/core/customer/browse-toko/repositories/implementations/browse_toko_repository_impl.dart';
+import 'package:tugas_akhir_project/models/toko.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
 
@@ -31,6 +32,8 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
             (r) {
               final mappedTokoListNames = r.map((e) => e.name).toList();
 
+              print(mappedTokoListNames);
+
               return r.isEmpty
                   ? Center(
                       child: Text("Tidak ada toko ditemukan",
@@ -42,22 +45,21 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                         child: Column(
                           children: [
                             Expanded(
-                              child: SearchableList(
+                              child: SearchableList<Toko>(
                                 style: appStyle(
                                     size: 16,
                                     color: mainBlack,
                                     fw: FontWeight.w500),
-                                initialList: mappedTokoListNames,
-                                filter: (searchQuery) => mappedTokoListNames
-                                    .where((tokoName) => RegExp(searchQuery,
-                                            caseSensitive: false)
-                                        .hasMatch(tokoName!))
-                                    .toList(),
+                                initialList: r,
+                                filter: (searchQuery) =>
+                                    r.where((toko) {
+                                  return toko.name!.toLowerCase().contains(searchQuery.toLowerCase());
+                                }).toList(),
                                 emptyWidget: const SizedBox.shrink(),
                                 builder: (list, index, item) {
                                   return GestureDetector(
                                     onTap: () => Routemaster.of(context).push(
-                                        '/customer-browse-toko/toko/${r[index].id}'),
+                                        '/customer-browse-toko/toko/${item.id}'),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 8.0),
@@ -71,7 +73,7 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                           title: Column(children: [
                                             IntrinsicHeight(
                                               child: Row(children: [
-                                                r[index].profilePhotoURL == null
+                                                item.profilePhotoURL == null
                                                     ? const CircleAvatar(
                                                         radius: 32,
                                                       )
@@ -81,7 +83,7 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                                                 .circular(50),
                                                         child:
                                                             CachedNetworkImage(
-                                                          imageUrl: r[index]
+                                                          imageUrl: item
                                                                   .profilePhotoURL ??
                                                               "",
                                                           width: 64,
@@ -115,15 +117,15 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                                             .start,
                                                     children: [
                                                       Text(
-                                                          r[index].name ??
+                                                          item.name ??
                                                               "No name",
                                                           style: appStyle(
-                                                              size: 16,
+                                                              size: 15,
                                                               color: mainBlack,
                                                               fw: FontWeight
                                                                   .w600)),
                                                       Text(
-                                                        "No HP: ${r[index].phoneNumber}",
+                                                        "No HP: ${item.whatsAppURL}",
                                                         style: appStyle(
                                                             size: 13,
                                                             color: mainBlack,
@@ -131,7 +133,7 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                                                 .w500),
                                                       ),
                                                       Text(
-                                                        "Lokasi: ${r[index].address?.streetAddress}",
+                                                        "Lokasi: ${item.address?.streetAddress}",
                                                         style: appStyle(
                                                           size: 12,
                                                           color: mainBlack,

@@ -198,8 +198,7 @@ class _PemilikPersonalizationPageState
                       labelText: "Nomor WhatsApp Toko",
                       obscureText: false,
                       validator: (value) {
-                        if (!(value!.isValidPhoneNumber() &&
-                            validWhatsAppNumber)) {
+                        if (!(value!.isValidPhoneNumber())) {
                           return "Nomor WhatsApp tidak valid. Harap masukkan nomor yang valid.";
                         } else {
                           return null;
@@ -347,19 +346,21 @@ class _PemilikPersonalizationPageState
                                                               height: 10),
                                                           ElevatedButton(
                                                             onPressed: () {
-                                                              // checkValidityNumber(
-                                                              //         _tokoWhatsAppController
-                                                              //             .text
-                                                              //             .replaceAll(
-                                                              //                 "+",
-                                                              //                 ""))
-                                                              //     .then(
-                                                              //         (value) {
-                                                              //   setState(() {
-                                                              //     validWhatsAppNumber =
-                                                              //         value;
-                                                              //   });
-                                                              // });
+                                                              checkValidityNumber(
+                                                                      _tokoWhatsAppController
+                                                                          .text
+                                                                          .replaceAll(
+                                                                              "+",
+                                                                              ""))
+                                                                  .then(
+                                                                      (value) {
+                                                                setState(() {
+                                                                  validWhatsAppNumber =
+                                                                      value;
+                                                                });
+                                                              });
+
+                                                              print("test");
 
                                                               if (_formKey
                                                                       .currentState!

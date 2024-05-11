@@ -23,6 +23,8 @@ mixin _$Produk {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get code => throw _privateConstructorUsedError;
+  double? get averageRating => throw _privateConstructorUsedError;
+  int? get totalRating => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
@@ -31,10 +33,11 @@ mixin _$Produk {
   Toko? get toko => throw _privateConstructorUsedError;
   @JsonKey(
       fromJson: Produk._stokFromJson, toJson: Produk._stokToJson, name: "stok")
-  Stok? get stok => throw _privateConstructorUsedError;
-  @JsonKey(
-      fromJson: Produk._listRatingFromJson, toJson: Produk._listRatingToJson)
-  List<ProdukRating> get rating => throw _privateConstructorUsedError;
+  Stok? get stok => throw _privateConstructorUsedError; // @JsonKey(
+//   fromJson: Produk._ratingFromJson,
+//   toJson: Produk._ratingToJson,
+// )
+// ProdukRating? rating,
   @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
   Promo? get promo => throw _privateConstructorUsedError;
   @JsonKey(
@@ -79,6 +82,8 @@ abstract class $ProdukCopyWith<$Res> {
       {int? id,
       String? name,
       String? code,
+      double? averageRating,
+      int? totalRating,
       String? description,
       DateTime? createdAt,
       double? price,
@@ -90,10 +95,6 @@ abstract class $ProdukCopyWith<$Res> {
           toJson: Produk._stokToJson,
           name: "stok")
       Stok? stok,
-      @JsonKey(
-          fromJson: Produk._listRatingFromJson,
-          toJson: Produk._listRatingToJson)
-      List<ProdukRating> rating,
       @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
       Promo? promo,
       @JsonKey(
@@ -143,13 +144,14 @@ class _$ProdukCopyWithImpl<$Res, $Val extends Produk>
     Object? id = freezed,
     Object? name = freezed,
     Object? code = freezed,
+    Object? averageRating = freezed,
+    Object? totalRating = freezed,
     Object? description = freezed,
     Object? createdAt = freezed,
     Object? price = freezed,
     Object? tokoId = freezed,
     Object? toko = freezed,
     Object? stok = freezed,
-    Object? rating = null,
     Object? promo = freezed,
     Object? produkGlobalImages = null,
     Object? produkColors = null,
@@ -170,6 +172,14 @@ class _$ProdukCopyWithImpl<$Res, $Val extends Produk>
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
+      averageRating: freezed == averageRating
+          ? _value.averageRating
+          : averageRating // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalRating: freezed == totalRating
+          ? _value.totalRating
+          : totalRating // ignore: cast_nullable_to_non_nullable
+              as int?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -194,10 +204,6 @@ class _$ProdukCopyWithImpl<$Res, $Val extends Produk>
           ? _value.stok
           : stok // ignore: cast_nullable_to_non_nullable
               as Stok?,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as List<ProdukRating>,
       promo: freezed == promo
           ? _value.promo
           : promo // ignore: cast_nullable_to_non_nullable
@@ -273,6 +279,8 @@ abstract class _$$ProdukImplCopyWith<$Res> implements $ProdukCopyWith<$Res> {
       {int? id,
       String? name,
       String? code,
+      double? averageRating,
+      int? totalRating,
       String? description,
       DateTime? createdAt,
       double? price,
@@ -284,10 +292,6 @@ abstract class _$$ProdukImplCopyWith<$Res> implements $ProdukCopyWith<$Res> {
           toJson: Produk._stokToJson,
           name: "stok")
       Stok? stok,
-      @JsonKey(
-          fromJson: Produk._listRatingFromJson,
-          toJson: Produk._listRatingToJson)
-      List<ProdukRating> rating,
       @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
       Promo? promo,
       @JsonKey(
@@ -338,13 +342,14 @@ class __$$ProdukImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? code = freezed,
+    Object? averageRating = freezed,
+    Object? totalRating = freezed,
     Object? description = freezed,
     Object? createdAt = freezed,
     Object? price = freezed,
     Object? tokoId = freezed,
     Object? toko = freezed,
     Object? stok = freezed,
-    Object? rating = null,
     Object? promo = freezed,
     Object? produkGlobalImages = null,
     Object? produkColors = null,
@@ -365,6 +370,14 @@ class __$$ProdukImplCopyWithImpl<$Res>
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
+      averageRating: freezed == averageRating
+          ? _value.averageRating
+          : averageRating // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalRating: freezed == totalRating
+          ? _value.totalRating
+          : totalRating // ignore: cast_nullable_to_non_nullable
+              as int?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -389,10 +402,6 @@ class __$$ProdukImplCopyWithImpl<$Res>
           ? _value.stok
           : stok // ignore: cast_nullable_to_non_nullable
               as Stok?,
-      rating: null == rating
-          ? _value._rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as List<ProdukRating>,
       promo: freezed == promo
           ? _value.promo
           : promo // ignore: cast_nullable_to_non_nullable
@@ -429,6 +438,8 @@ class _$ProdukImpl implements _Produk {
       {this.id,
       this.name,
       this.code,
+      this.averageRating,
+      this.totalRating,
       this.description,
       this.createdAt,
       this.price,
@@ -440,10 +451,6 @@ class _$ProdukImpl implements _Produk {
           toJson: Produk._stokToJson,
           name: "stok")
       this.stok,
-      @JsonKey(
-          fromJson: Produk._listRatingFromJson,
-          toJson: Produk._listRatingToJson)
-      final List<ProdukRating> rating = const [],
       @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
       this.promo,
       @JsonKey(
@@ -471,8 +478,7 @@ class _$ProdukImpl implements _Produk {
           toJson: Produk._listCombinationsToJson,
           name: "combination")
       final List<ProdukCombination> produkCombination = const []})
-      : _rating = rating,
-        _produkGlobalImages = produkGlobalImages,
+      : _produkGlobalImages = produkGlobalImages,
         _produkColors = produkColors,
         _produkSizes = produkSizes,
         _produkCategories = produkCategories,
@@ -488,6 +494,10 @@ class _$ProdukImpl implements _Produk {
   @override
   final String? code;
   @override
+  final double? averageRating;
+  @override
+  final int? totalRating;
+  @override
   final String? description;
   @override
   final DateTime? createdAt;
@@ -502,16 +512,11 @@ class _$ProdukImpl implements _Produk {
   @JsonKey(
       fromJson: Produk._stokFromJson, toJson: Produk._stokToJson, name: "stok")
   final Stok? stok;
-  final List<ProdukRating> _rating;
-  @override
-  @JsonKey(
-      fromJson: Produk._listRatingFromJson, toJson: Produk._listRatingToJson)
-  List<ProdukRating> get rating {
-    if (_rating is EqualUnmodifiableListView) return _rating;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_rating);
-  }
-
+// @JsonKey(
+//   fromJson: Produk._ratingFromJson,
+//   toJson: Produk._ratingToJson,
+// )
+// ProdukRating? rating,
   @override
   @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
   final Promo? promo;
@@ -580,7 +585,7 @@ class _$ProdukImpl implements _Produk {
 
   @override
   String toString() {
-    return 'Produk(id: $id, name: $name, code: $code, description: $description, createdAt: $createdAt, price: $price, tokoId: $tokoId, toko: $toko, stok: $stok, rating: $rating, promo: $promo, produkGlobalImages: $produkGlobalImages, produkColors: $produkColors, produkSizes: $produkSizes, produkCategories: $produkCategories, produkCombination: $produkCombination)';
+    return 'Produk(id: $id, name: $name, code: $code, averageRating: $averageRating, totalRating: $totalRating, description: $description, createdAt: $createdAt, price: $price, tokoId: $tokoId, toko: $toko, stok: $stok, promo: $promo, produkGlobalImages: $produkGlobalImages, produkColors: $produkColors, produkSizes: $produkSizes, produkCategories: $produkCategories, produkCombination: $produkCombination)';
   }
 
   @override
@@ -591,6 +596,10 @@ class _$ProdukImpl implements _Produk {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.averageRating, averageRating) ||
+                other.averageRating == averageRating) &&
+            (identical(other.totalRating, totalRating) ||
+                other.totalRating == totalRating) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.createdAt, createdAt) ||
@@ -599,7 +608,6 @@ class _$ProdukImpl implements _Produk {
             (identical(other.tokoId, tokoId) || other.tokoId == tokoId) &&
             (identical(other.toko, toko) || other.toko == toko) &&
             (identical(other.stok, stok) || other.stok == stok) &&
-            const DeepCollectionEquality().equals(other._rating, _rating) &&
             (identical(other.promo, promo) || other.promo == promo) &&
             const DeepCollectionEquality()
                 .equals(other._produkGlobalImages, _produkGlobalImages) &&
@@ -620,13 +628,14 @@ class _$ProdukImpl implements _Produk {
       id,
       name,
       code,
+      averageRating,
+      totalRating,
       description,
       createdAt,
       price,
       tokoId,
       toko,
       stok,
-      const DeepCollectionEquality().hash(_rating),
       promo,
       const DeepCollectionEquality().hash(_produkGlobalImages),
       const DeepCollectionEquality().hash(_produkColors),
@@ -653,6 +662,8 @@ abstract class _Produk implements Produk {
       {final int? id,
       final String? name,
       final String? code,
+      final double? averageRating,
+      final int? totalRating,
       final String? description,
       final DateTime? createdAt,
       final double? price,
@@ -664,10 +675,6 @@ abstract class _Produk implements Produk {
           toJson: Produk._stokToJson,
           name: "stok")
       final Stok? stok,
-      @JsonKey(
-          fromJson: Produk._listRatingFromJson,
-          toJson: Produk._listRatingToJson)
-      final List<ProdukRating> rating,
       @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
       final Promo? promo,
       @JsonKey(
@@ -705,6 +712,10 @@ abstract class _Produk implements Produk {
   @override
   String? get code;
   @override
+  double? get averageRating;
+  @override
+  int? get totalRating;
+  @override
   String? get description;
   @override
   DateTime? get createdAt;
@@ -719,11 +730,11 @@ abstract class _Produk implements Produk {
   @JsonKey(
       fromJson: Produk._stokFromJson, toJson: Produk._stokToJson, name: "stok")
   Stok? get stok;
-  @override
-  @JsonKey(
-      fromJson: Produk._listRatingFromJson, toJson: Produk._listRatingToJson)
-  List<ProdukRating> get rating;
-  @override
+  @override // @JsonKey(
+//   fromJson: Produk._ratingFromJson,
+//   toJson: Produk._ratingToJson,
+// )
+// ProdukRating? rating,
   @JsonKey(fromJson: Produk._promoFromJson, toJson: Produk._promoToJson)
   Promo? get promo;
   @override

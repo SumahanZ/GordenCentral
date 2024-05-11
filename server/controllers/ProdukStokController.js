@@ -230,7 +230,9 @@ module.exports = {
                 transaction: t
             })
 
-            if (products.length === 0) {
+            console.log(products);
+
+            if (products.length == 0) {
                 await t.rollback();
                 return res.status(400).json({ error: "Produk yang terkait dengan toko tidak ada. Mohon pertimbangkan untuk menambahkan produk." })
             }
@@ -438,6 +440,11 @@ module.exports = {
                     model: models.stok,
                 }
             })
+
+            if (foundProducts.length == 0) {
+                await t.rollback();
+                return res.status(400).json({ error: "Produk yang terkait dengan toko tidak ada. Mohon pertimbangkan untuk menambahkan produk." })
+            }
 
             const outOfStockProductCountList = foundProducts.filter((e) => e.stok.totalAmount === 0) ?? [];
             const criticalStockProductCountList = foundProducts.filter((e) => (e.stok.totalAmount - e.stok.safetyStock) <= e.stok.reorderPoint) ?? [];

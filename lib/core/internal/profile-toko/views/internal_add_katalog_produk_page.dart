@@ -207,7 +207,7 @@ class _InternalAddKatalogProdukPageState
                                                                 .center,
                                                             "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), selectedProduks[index].promo!.expiredAt!)}",
                                                             style: appStyle(
-                                                              size: 12,
+                                                              size: 11,
                                                               color: mainBlack,
                                                               fw: FontWeight
                                                                   .w600,

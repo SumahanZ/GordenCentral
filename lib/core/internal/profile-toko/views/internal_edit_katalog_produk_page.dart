@@ -255,7 +255,7 @@ class _InternalEditKatalogProdukPageState
                                                                         .center,
                                                                 "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), (selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now())}",
                                                                 style: appStyle(
-                                                                  size: 12,
+                                                                  size: 11,
                                                                   color:
                                                                       mainBlack,
                                                                   fw: FontWeight

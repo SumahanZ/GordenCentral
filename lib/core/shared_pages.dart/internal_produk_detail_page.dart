@@ -363,7 +363,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                             ],
                           ),
                           const SizedBox(height: 15),
-                          if (r?.rating.isNotEmpty ?? true)
+                          if (r?.averageRating != 0)
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -371,7 +371,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                     color: Colors.yellow),
                                 const SizedBox(width: 5),
                                 Text(
-                                  "${r?.rating.first.averageRating?.toStringAsPrecision(2) ?? ""} (${r?.rating.first.totalRating ?? 0} Pembeli)",
+                                  "${r?.averageRating?.toStringAsPrecision(2) ?? ""} (${r?.totalRating ?? 0} Pembeli)",
                                   style: appStyle(
                                       size: 14,
                                       color: mainBlack,
@@ -426,7 +426,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                               (r?.promo?.expiredAt ?? DateTime.now())
                                   .isAfter(DateTime.now()))
                             Text(
-                              "Promo Expires in: ${DateTimeHourMin.durationBetween(DateTime.now(), r?.promo?.expiredAt ?? DateTime.now())}",
+                              "Expires in: ${DateTimeHourMin.durationBetween(DateTime.now(), r?.promo?.expiredAt ?? DateTime.now())}",
                               style: appStyle(
                                 size: 14,
                                 color: Colors.purple,

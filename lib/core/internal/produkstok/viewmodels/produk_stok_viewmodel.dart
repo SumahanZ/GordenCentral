@@ -1,9 +1,13 @@
-// ignore_for_file: avoid_manual_providers_as_generated_provider_dependency
+// ignore_for_file: avoid_manual_providers_as_generated_provider_dependency, use_build_context_synchronously
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tugas_akhir_project/core/auth/repositories/implementations/image_storage_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_saved.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_stok_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/repositories/implementations/produk_stok_repository_impl.dart';
+import 'package:tugas_akhir_project/utils/errors/api_errors.dart';
+import 'package:tugas_akhir_project/utils/methods/utilmethods.dart';
 part 'produk_stok_viewmodel.g.dart';
 
 @riverpod
@@ -116,27 +120,45 @@ class ProdukStokViewModel extends _$ProdukStokViewModel {
     }
   }
 
-  Future<void> calculateSafetyStockReorderPoint() async {
+  Future<void> calculateSafetyStockReorderPoint(BuildContext context) async {
     try {
       final produkStokRepository = ref.read(produkStokRepositoryProvider);
-  
+
       final task = await produkStokRepository
           .calculateSafetyStockAndReorderPoint(ref: ref)
           .run();
 
       task.match((l) {
-        state = AsyncError(l, StackTrace.current);
+        showPopupModal(
+            context: context,
+            title: "Peringatan",
+            info: DialogType.error,
+            animType: AnimType.scale,
+            desc: l.message,
+            onOkPress: () {});
       }, (r) async {
         if (!r) {
           return;
+        } else {
+          showPopupModal(
+              context: context,
+              title: "Berhasil",
+              info: DialogType.success,
+              animType: AnimType.scale,
+              desc:
+                  "Berhasil menghitung stok keamanan & titik pemesanan ulang produk!",
+              onOkPress: () {
+                ref.invalidate(fetchProductsTable);
+              });
         }
+        state = const AsyncValue.data(null);
       });
     } catch (error) {
       print(error.toString());
     }
   }
 
-  Future<void> checkSafetyStockReorderPoint() async {
+  Future<void> checkSafetyStockReorderPoint(BuildContext context) async {
     try {
       final produkStokRepository = ref.read(produkStokRepositoryProvider);
       final task = await produkStokRepository
@@ -144,10 +166,24 @@ class ProdukStokViewModel extends _$ProdukStokViewModel {
           .run();
 
       task.match((l) {
-        state = AsyncError(l, StackTrace.current);
+        showPopupModal(
+            context: context,
+            title: "Peringatan",
+            info: DialogType.error,
+            animType: AnimType.scale,
+            desc: l.message,
+            onOkPress: () {});
       }, (r) async {
         if (!r) {
           return;
+        } else {
+          showPopupModal(
+              context: context,
+              title: "Berhasil",
+              info: DialogType.success,
+              animType: AnimType.scale,
+              desc: "Berhasil mengecek stok level produk!",
+              onOkPress: () {});
         }
       });
     } catch (error) {

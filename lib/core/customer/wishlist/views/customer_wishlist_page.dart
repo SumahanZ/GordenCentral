@@ -229,8 +229,8 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                           fw: FontWeight.bold),
                                                     ),
                                                     const SizedBox(height: 5),
-                                                    if (r.produkList[index].rating
-                                                        .isNotEmpty)
+                                                    // if (r.produkList[index].rating
+                                                    //     != null)
                                                       Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -239,8 +239,8 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                           RatingBar.builder(
                                                             ignoreGestures: true,
                                                             itemSize: 16,
-                                                            initialRating: 3,
-                                                            minRating: 1,
+                                                            initialRating: r.produkList[index].averageRating ?? 0,
+                                                            minRating: 0,
                                                             direction:
                                                                 Axis.horizontal,
                                                             allowHalfRating: true,
@@ -262,7 +262,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                           const SizedBox(
                                                               width: 5),
                                                           Text(
-                                                              "(${r.produkList[index].rating.first.averageRating?.toStringAsPrecision(2)})",
+                                                              "(${r.produkList[index].averageRating?.toStringAsPrecision(2) ?? 0})",
                                                               style: appStyle(
                                                                   size: 13,
                                                                   color:

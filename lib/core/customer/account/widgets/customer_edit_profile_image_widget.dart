@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tugas_akhir_project/models/customer.dart';
 
@@ -17,6 +16,7 @@ class CustomerEditProfileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(customer);
     return customer?.profilePhotoURL != null && imageFromfile == false
         ? Center(
             child: Stack(alignment: Alignment.bottomRight, children: [
@@ -27,21 +27,8 @@ class CustomerEditProfileImage extends StatelessWidget {
                       border: Border.all(width: 2)),
                   width: 150,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(200),
-                    child: CachedNetworkImage(
-                      imageUrl: customer!.profilePhotoURL ?? "",
-                      imageBuilder: (context, imageProvider) => Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: imageProvider, fit: BoxFit.cover),
-                        ),
-                      ),
-                      // placeholder: (context, url) =>
-                      //     const Center(child: CircularProgressIndicator()),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                    ),
-                  )),
+                      borderRadius: BorderRadius.circular(200),
+                      child: Image.network(customer?.profilePhotoURL ?? ""))),
               GestureDetector(
                 onTap: () {
                   pickTheImage();

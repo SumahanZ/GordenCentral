@@ -5,16 +5,25 @@ import 'package:routemaster/routemaster.dart';
 import 'package:searchable_listview/searchable_listview.dart';
 import 'package:tugas_akhir_project/core/internal/internaltoko/repositories/implementations/internal_internaltoko_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/internaltoko/viewmodels/internal_internaltoko_viewmodel.dart';
+import 'package:tugas_akhir_project/models/internal.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/extensions/string_extension.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
 import 'package:tugas_akhir_project/widgets/global_providers/user_state.dart';
 
-class InternalInternalTokoPage extends ConsumerWidget {
+class InternalInternalTokoPage extends ConsumerStatefulWidget {
   const InternalInternalTokoPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<InternalInternalTokoPage> createState() =>
+      _InternalInternalTokoPageState();
+}
+
+class _InternalInternalTokoPageState
+    extends ConsumerState<InternalInternalTokoPage> {
+  TextEditingController searchController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
     final userState = ref.read(userStateProvider);
     return Scaffold(
         appBar: AppBar(
@@ -50,9 +59,8 @@ class InternalInternalTokoPage extends ConsumerWidget {
                           style: appStyle(
                               size: 16,
                               color: mainBlack,
-                              fw: FontWeight.w600))), (r) {
-                final mappedInternalListNames =
-                    r.map((e) => e.user?.name).toList();
+                              fw: FontWeight.w600))), (internalData) {
+                print(internalData);
                 return SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -62,18 +70,31 @@ class InternalInternalTokoPage extends ConsumerWidget {
                       child: Column(
                         children: [
                           Expanded(
-                            child: SearchableList(
+                            child: SearchableList<Internal>(
                               style: appStyle(
                                   size: 16,
                                   color: mainBlack,
                                   fw: FontWeight.w500),
-                              initialList: mappedInternalListNames,
-                              filter: (searchQuery) => mappedInternalListNames
-                                  .where((internalName) =>
-                                      RegExp(searchQuery, caseSensitive: false)
-                                          .hasMatch(internalName!))
-                                  .toList(),
-                              emptyWidget: const SizedBox.shrink(),
+                              initialList: internalData,
+                              searchTextController: searchController,
+                              filter: (searchQuery) {
+                                return internalData
+                                    .where((element) =>
+                                        element.user!.name
+                                            .toLowerCase()
+                                            .contains(searchQuery
+                                                .toLowerCase()
+                                                .toString()) ||
+                                        element.userCode!
+                                            .toLowerCase()
+                                            .contains(searchQuery
+                                                .toLowerCase()
+                                                .toString()))
+                                    .toList();
+                              },
+                              emptyWidget: const Center(
+                                  child: Text(
+                                      "Internal yang dicari tidak ditemukan")),
                               builder: (list, index, item) {
                                 return Padding(
                                   padding:
@@ -88,15 +109,14 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                       title: Column(children: [
                                         IntrinsicHeight(
                                           child: Row(children: [
-                                            r[index].profilePhotoURL == null
+                                            item.profilePhotoURL == null
                                                 ? const CircleAvatar(radius: 30)
                                                 : ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             50),
                                                     child: Image.network(
-                                                        r[index]
-                                                            .profilePhotoURL!,
+                                                        item.profilePhotoURL!,
                                                         width: 60)),
                                             const SizedBox(width: 15),
                                             Expanded(
@@ -107,7 +127,7 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                      "${r[index].user?.name} #${r[index].userCode}",
+                                                      "${item.user?.name} #${item.userCode}",
                                                       style: appStyle(
                                                           size: 14,
                                                           color: mainBlack,
@@ -115,7 +135,7 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                                   Row(
                                                     children: [
                                                       Text(
-                                                        "Role: ${r[index].role?.toCapitalized()}",
+                                                        "Role: ${item.role?.toCapitalized()}",
                                                         style: appStyle(
                                                           size: 12,
                                                           color: mainBlack,
@@ -127,7 +147,7 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                                   Row(
                                                     children: [
                                                       Text(
-                                                        "Status: ${r[index].status?.toCapitalized()}",
+                                                        "Status: ${item.status?.toCapitalized()}",
                                                         style: appStyle(
                                                           size: 12,
                                                           color: mainBlack,
@@ -145,9 +165,8 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                               if (userState?.type ==
                                                       "pemilik" &&
                                                   userState?.id !=
-                                                      r[index].user?.id &&
-                                                  r[index].status ==
-                                                      "pending") {
+                                                      item.user?.id &&
+                                                  item.status == "pending") {
                                                 return Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
@@ -161,7 +180,8 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                                                     .notifier)
                                                             .acceptJoinRequest(
                                                                 targetInternalId:
-                                                                    r[index]
+                                                                    internalData[
+                                                                            index]
                                                                         .id!)
                                                             .then((value) =>
                                                                 ref.invalidate(
@@ -212,7 +232,8 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                                                     .notifier)
                                                             .declineJoinRequest(
                                                                 targetInternalId:
-                                                                    r[index]
+                                                                    internalData[
+                                                                            index]
                                                                         .id!)
                                                             .then((value) =>
                                                                 ref.invalidate(
@@ -259,14 +280,14 @@ class InternalInternalTokoPage extends ConsumerWidget {
                                                     ),
                                                   ],
                                                 );
-                                              } else if (r[index].user?.type ==
+                                              } else if (item.user?.type ==
                                                       "pemilik" &&
                                                   userState?.id !=
-                                                      r[index].user?.id) {
+                                                      item.user?.id) {
                                                 return const Icon(
                                                     AntIcons.crownFilled);
                                               } else if (userState?.id ==
-                                                  r[index].user?.id) {
+                                                  item.user?.id) {
                                                 return Text("You",
                                                     style: appStyle(
                                                       size: 14,

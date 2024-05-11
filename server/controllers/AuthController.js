@@ -167,6 +167,15 @@ module.exports = {
                 }
             }
 
+            await models.device.update({
+                deviceToken: null,
+            }, {
+                where: {
+                    deviceToken: deviceToken
+                },
+                transaction: t
+            })
+
             const [currentDevice, created] = await models.device.findOrCreate({
                 where: {
                     userId: createdUser.id
@@ -203,20 +212,23 @@ module.exports = {
     },
 
     completePemilikPersonalization: async (req, res) => {
+        const t = await sequelize.transaction();
         const { name, password, email, role, tokoName, tokoPhoneNumber, tokoStreetAddress, cityId, tokoCountry, tokoPostalCode, tokoBio, tokoWhatsAppUrl, tokoInviteCode, tokoProfilePhotoUrl, deviceToken } = req.body;
 
         try {
-            const existingUser = await models.user.findOne({ where: { email: email } })
+            const existingUser = await models.user.findOne({ where: { email: email }, transaction: t })
             if (existingUser) {
+                await t.rollback();
                 return res.status(400).json({ error: "Gagal mendaftar sebagai pelanggan karena email sudah ada!" })
             }
+
             const hashedPassword = bcrypt.hashSync(password, 8);
             const createdUser = await models.user.create({
                 name,
                 email,
                 password: hashedPassword,
                 type: "pemilik"
-            },)
+            }, { transaction: t })
 
             const createdUserJSON = createdUser.toJSON();
 
@@ -228,6 +240,7 @@ module.exports = {
                 where: {
                     userCode: code
                 },
+                transaction: t
             })
 
             if (checkInternal) {
@@ -237,6 +250,7 @@ module.exports = {
                         where: {
                             userCode: code
                         },
+                        transaction: t
                     })
                 } while (code == checkInternal.userCode)
             }
@@ -244,11 +258,11 @@ module.exports = {
             const createdInternal = await createdUser.createInternal({
                 role: role,
                 userCode: code,
-            });
+            }, { transaction: t });
 
             await models.user.update({
                 personalizationFinished: true,
-            }, { where: { id: createdUser.id } });
+            }, { where: { id: createdUser.id }, transaction: t });
 
             var tokoResults;
 
@@ -266,6 +280,7 @@ module.exports = {
                         cityId: cityId,
                     }
                 }, {
+                    transaction: t,
                     include: [{
                         model: models.address,
                     }],
@@ -286,16 +301,27 @@ module.exports = {
                         cityId: cityId,
                     }
                 }, {
+                    transaction: t,
                     include: [{
                         model: models.address,
                     }],
                 })
             }
 
+            await models.device.update({
+                deviceToken: null,
+            }, {
+                where: {
+                    deviceToken: deviceToken
+                },
+                transaction: t
+            })
+
             const [currentDevice, created] = await models.device.findOrCreate({
                 where: {
                     userId: createdUser.id
                 },
+                transaction: t,
                 defaults: {
                     userId: createdUser.id,
                     deviceToken: deviceToken,
@@ -305,16 +331,20 @@ module.exports = {
             if (!created && currentDevice && currentDevice.deviceToken !== deviceToken) {
                 await currentDevice.update({
                     deviceToken: deviceToken
-                })
+                }, { transaction: t })
             }
 
-            await createdInternal.update({ joinedAt: Date.now(), tokoId: tokoResults.id, status: "joined" })
+            await createdInternal.update({ joinedAt: Date.now(), tokoId: tokoResults.id, status: "joined" }, { transaction: t })
+
+            await t.commit();
+
             return res.status(200).json({
                 token,
                 ...createdUserJSON,
             });
 
         } catch (error) {
+            await t.rollback();
             return res.status(500).json({
                 error: error.message
             });
@@ -324,12 +354,14 @@ module.exports = {
 
 
     completeCustomerPersonalization: async (req, res) => {
+        const t = await sequelize.transaction();
         const { streetAddress, cityId, country, postalCode, name, password, role, email, deviceToken } = req.body;
 
         try {
-            const existingUser = await models.user.findOne({ where: { email: email } })
+            const existingUser = await models.user.findOne({ where: { email: email }, transaction: t })
 
             if (existingUser) {
+                await t.rollback();
                 return res.status(400).json({ error: "Gagal mendaftar sebagai pelanggan karena email sudah ada!" })
             }
             const hashedPassword = bcrypt.hashSync(password, 8);
@@ -338,7 +370,7 @@ module.exports = {
                 email,
                 password: hashedPassword,
                 type: "customer"
-            },)
+            }, { transaction: t })
 
             const createdUserJSON = createdUser.toJSON();
 
@@ -350,6 +382,7 @@ module.exports = {
                 where: {
                     customerCode: code
                 },
+                transaction: t,
             })
 
             if (checkCustomer) {
@@ -359,6 +392,7 @@ module.exports = {
                         where: {
                             customerCode: code
                         },
+                        transaction: t,
                     })
                 } while (code == checkCustomer.customerCode)
             }
@@ -373,15 +407,26 @@ module.exports = {
                     postalCode: postalCode,
                 },
             }, {
+                transaction: t,
                 include: [{
                     model: models.address,
                 }]
             });
 
+            await models.device.update({
+                deviceToken: null,
+            }, {
+                where: {
+                    deviceToken: deviceToken
+                },
+                transaction: t
+            })
+
             const [currentDevice, created] = await models.device.findOrCreate({
                 where: {
                     userId: createdUser.id
                 },
+                transaction: t,
                 defaults: {
                     userId: createdUser.id,
                     deviceToken: deviceToken,
@@ -391,12 +436,14 @@ module.exports = {
             if (!created && currentDevice && currentDevice.deviceToken !== deviceToken) {
                 await currentDevice.update({
                     deviceToken: deviceToken
-                })
+                }, { transaction: t })
             }
 
             await models.user.update({
                 personalizationFinished: true,
-            }, { where: { id: createdUser.id, } })
+            }, { where: { id: createdUser.id, }, transaction: t })
+
+            await t.commit();
 
             return res.status(200).json({
                 token,
@@ -404,6 +451,7 @@ module.exports = {
             });
 
         } catch (error) {
+            await t.rollback();
             return res.status(500).json({
                 error: error.message
             });
@@ -412,27 +460,39 @@ module.exports = {
     },
 
     login: async (req, res) => {
+        const t = await sequelize.transaction();
         try {
             const { password, email, deviceToken } = req.body;
-            let user = await models.user.findOne({ where: { email: email } });
+            let user = await models.user.findOne({ where: { email: email }, transaction: t });
 
             if (!user) {
+                await t.rollback();
                 return res.status(400).json({ error: "Pengguna dengan email ini tidak ditemukan" })
             }
 
             const isMatch = await bcrypt.compare(password, user.password);
 
             if (!isMatch) {
+                await t.rollback();
                 return res.status(500).json({ error: "Password yang dimasukkan tidak valid" });
             }
 
             const createdUserJSON = user.toJSON();
 
+            await models.device.update({
+                deviceToken: null,
+            }, {
+                where: {
+                    deviceToken: deviceToken
+                },
+                transaction: t
+            })
 
             const [currentDevice, created] = await models.device.findOrCreate({
                 where: {
                     userId: user.id
                 },
+                transaction: t,
                 defaults: {
                     userId: user.id,
                     deviceToken: deviceToken,
@@ -442,8 +502,10 @@ module.exports = {
             if (!created && currentDevice && currentDevice.deviceToken !== deviceToken) {
                 await currentDevice.update({
                     deviceToken: deviceToken
-                })
+                }, { transaction: t })
             }
+
+            await t.commit();
 
             const token = jwt.sign({ id: user.id, type: user.type }, "passwordKey", { expiresIn: '1d' });
 
@@ -491,10 +553,12 @@ module.exports = {
 
     getEnrolledToko: async (req, res) => {
         try {
-            const queryInternal = await models.internal.findOne({ where: { userId: req.user }, include: {
-                model: models.toko,
-                as: "toko"
-            } })
+            const queryInternal = await models.internal.findOne({
+                where: { userId: req.user }, include: {
+                    model: models.toko,
+                    as: "toko"
+                }
+            })
 
             return res.status(200).json(queryInternal.toJSON())
         } catch (error) {

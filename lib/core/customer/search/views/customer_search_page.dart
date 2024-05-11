@@ -261,49 +261,45 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                       fw: FontWeight.bold),
                                                 ),
                                                 const SizedBox(height: 5),
-                                                if (r[index].rating.isNotEmpty)
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      RatingBar.builder(
-                                                        ignoreGestures: true,
-                                                        itemSize: 16,
-                                                        initialRating: r[index]
-                                                                .rating
-                                                                .first
-                                                                .averageRating ??
-                                                            1,
-                                                        minRating: 1,
-                                                        direction:
-                                                            Axis.horizontal,
-                                                        allowHalfRating: true,
-                                                        itemCount: 5,
-                                                        itemPadding:
-                                                            const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal:
-                                                                    2.0),
-                                                        itemBuilder:
-                                                            (context, _) =>
-                                                                const Icon(
-                                                          Icons.star,
-                                                          color: Colors.amber,
-                                                        ),
-                                                        onRatingUpdate:
-                                                            (rating) {},
+                                                // if (r[index].rating.isNotEmpty)
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    RatingBar.builder(
+                                                      ignoreGestures: true,
+                                                      itemSize: 16,
+                                                      initialRating: r[index]
+                                                              .averageRating ??
+                                                          0,
+                                                      minRating: 0,
+                                                      direction:
+                                                          Axis.horizontal,
+                                                      allowHalfRating: true,
+                                                      itemCount: 5,
+                                                      itemPadding:
+                                                          const EdgeInsets
+                                                              .symmetric(
+                                                              horizontal: 2.0),
+                                                      itemBuilder:
+                                                          (context, _) =>
+                                                              const Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
                                                       ),
-                                                      const SizedBox(width: 5),
-                                                      Text(
-                                                          "(${r[index].rating.first.averageRating?.toStringAsPrecision(2)})",
-                                                          style: appStyle(
-                                                              size: 13,
-                                                              color: mainBlack,
-                                                              fw: FontWeight
-                                                                  .w600)),
-                                                    ],
-                                                  ),
+                                                      onRatingUpdate:
+                                                          (rating) {},
+                                                    ),
+                                                    const SizedBox(width: 5),
+                                                    Text(
+                                                        "(${r[index].averageRating?.toStringAsPrecision(2) ?? 0})",
+                                                        style: appStyle(
+                                                            size: 13,
+                                                            color: mainBlack,
+                                                            fw: FontWeight
+                                                                .w600)),
+                                                  ],
+                                                ),
                                                 const SizedBox(height: 5),
                                               ],
                                             ),

@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
@@ -31,22 +30,9 @@ class SectionTopCustomer extends ConsumerWidget {
                       )
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(50),
-                        child: CachedNetworkImage(
-                          imageUrl: customer.profilePhotoURL ?? "",
-                          width: 44,
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-                          // placeholder: (context, url) =>
-                          //     const Center(child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        )),
+                        child:
+                            Image.network(customer.profilePhotoURL!, width: 44),
+                      ),
                 const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

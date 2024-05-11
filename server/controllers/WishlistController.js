@@ -71,17 +71,16 @@ module.exports = {
                         model: models.produkglobalimage,
                         as: "image",
                     }, {
-                        model: models.promo
+                        model: models.promo,
                     }, {
                         model: models.produkrating,
-                        required: false,
                         as: "rating",
-                        attributes: {
-                            include: [
-                                [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
-                                [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
-                            ]
-                        },
+                        // attributes: {
+                        //     include: [
+                        //         [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
+                        //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
+                        //     ]
+                        // },
                     }, {
                         model: models.toko
                     }],
@@ -95,7 +94,17 @@ module.exports = {
 
             await t.commit();
 
-            return res.status(200).json(wishlist.toJSON())
+            const mappedWishlist = wishlist.toJSON();
+
+            for (const [index, product] of mappedWishlist.products.entries()) {
+                const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                const totalBuyer = product.rating.length;
+                mappedWishlist.products[index].averageRating = averageRating;
+                mappedWishlist.products[index].totalRating = totalBuyer;
+            }
+
+
+            return res.status(200).json(mappedWishlist)
         } catch (error) {
             return res.status(500).json({
                 error: error.message

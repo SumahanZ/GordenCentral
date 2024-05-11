@@ -18,12 +18,12 @@ module.exports = {
                     required: false,
                     // separate: true,
                     as: "rating",
-                    attributes: {
-                        include: [
-                            [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                            [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                        ]
-                    },
+                    // attributes: {
+                    //     include: [
+                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
+                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
+                    //     ]
+                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",
@@ -42,6 +42,13 @@ module.exports = {
             await t.commit();
 
             const mappedFoundProducts = products.map(e => e.toJSON())
+
+            for (const [index, product] of mappedFoundProducts.entries()) {
+                const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                const totalBuyer = product.rating.length;
+                mappedFoundProducts[index].averageRating = averageRating;
+                mappedFoundProducts[index].totalRating = totalBuyer;
+            }
 
             return res.status(200).json(mappedFoundProducts);
         } catch (error) {
@@ -129,22 +136,22 @@ module.exports = {
                     model: models.promo,
                 }, {
                     model: models.produkrating,
-                    where: {
-                        rating: {
-                            [Op.and]: {
-                                [Op.gte]: ratingRange.min,
-                                [Op.lte]: ratingRange.max,
-                            }
-                        }
-                    },
+                    // where: {
+                    //     rating: {
+                    //         [Op.and]: {
+                    //             [Op.gte]: ratingRange.min,
+                    //             [Op.lte]: ratingRange.max,
+                    //         }
+                    //     }
+                    // },
                     as: "rating",
                     required: ratingRange.min == 0.0 ? false : true,
-                    attributes: {
-                        include: [
-                            [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                            [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                        ]
-                    },
+                    // attributes: ratingRange.min != 0.0 ? {
+                    //     include: [
+                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
+                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
+                    //     ]
+                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",
@@ -169,16 +176,44 @@ module.exports = {
                 order: [['name', 'DESC']],
             })
 
-            if (products[0].id == null) {
-                await t.commit();
-                return res.status(200).json([]);
+            if (products.length === 0) {
+                await t.rollback();
+                return res.status(400).json({ error: "Tidak ada produk yang ditemukan" });
             }
 
             await t.commit();
 
-            const mappedFoundProducts = products.map(e => e.toJSON())
+            var mappedFoundProducts = products.map(e => e.toJSON())
 
-            return res.status(200).json(mappedFoundProducts);
+            const productsList = [];
+
+            for (const [index, product] of mappedFoundProducts.entries()) {
+                const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
+                const totalBuyer = product.rating.length;
+                mappedFoundProducts[index].averageRating = averageRating;
+                mappedFoundProducts[index].totalRating = totalBuyer;
+            }
+
+
+            for (var product of mappedFoundProducts) {
+                if (ratingRange.min == 0) {
+                    if (product.rating.length <= 0) {
+                        productsList.push(product)
+                    } else {
+                        const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length);
+                        if (averageRating <= ratingRange.max) {
+                            productsList.push(product)
+                        }
+                    }
+                } else {
+                    const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length);
+                    if (averageRating <= ratingRange.max) {
+                        productsList.push(product)
+                    }
+                }
+            }
+
+            return res.status(200).json(productsList);
         } catch (error) {
             await t.rollback();
             return res.status(500).json({

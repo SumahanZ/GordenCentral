@@ -187,6 +187,7 @@ class CustomerTokoRepositoryImpl extends CustomerTokoRepository {
   @override
   TaskEither<ApiError, bool> addProdukToWishlist(
       {required Ref ref, required int produkId}) {
+        print(produkId);
     return TaskEither<ApiError, http.Response>.tryCatch(() async {
       final token = await ref
           .read(sharedPreferenceRepositoryProvider)

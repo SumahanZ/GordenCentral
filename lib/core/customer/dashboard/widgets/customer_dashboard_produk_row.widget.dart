@@ -138,7 +138,6 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                                         imageUrl: produkList[index]
                                             .produkGlobalImages[0]
                                             .globalImageUrl,
-
                                         height: 120,
                                         imageBuilder:
                                             (context, imageProvider) =>
@@ -146,7 +145,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
                                               image: imageProvider,
-                                              fit: BoxFit.fitWidth,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
@@ -199,43 +198,41 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                                             fw: FontWeight.bold),
                                       ),
                                       const SizedBox(height: 5),
-                                      if (produkList[index].rating.isNotEmpty)
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            RatingBar.builder(
-                                              ignoreGestures: true,
-                                              itemSize: 16,
-                                              initialRating: produkList[index]
-                                                      .rating
-                                                      .first
-                                                      .averageRating ??
-                                                  1,
-                                              minRating: 1,
-                                              direction: Axis.horizontal,
-                                              allowHalfRating: true,
-                                              itemCount: 5,
-                                              itemPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 2.0),
-                                              itemBuilder: (context, _) =>
-                                                  const Icon(
-                                                Icons.star,
-                                                color: Colors.amber,
-                                              ),
-                                              onRatingUpdate: (rating) {},
+                                      // if (produkList[index].rating.isNotEmpty)
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          RatingBar.builder(
+                                            ignoreGestures: true,
+                                            itemSize: 16,
+                                            initialRating: produkList[index]
+                                                    .averageRating ??
+                                                0,
+                                            minRating: 0,
+                                            direction: Axis.horizontal,
+                                            allowHalfRating: true,
+                                            itemCount: 5,
+                                            itemPadding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 2.0),
+                                            itemBuilder: (context, _) =>
+                                                const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
                                             ),
-                                            const SizedBox(width: 5),
-                                            Text(
-                                              "(${produkList[index].rating.first.averageRating?.toStringAsPrecision(2)})",
-                                              style: appStyle(
-                                                  size: 11,
-                                                  color: mainBlack,
-                                                  fw: FontWeight.w600),
-                                            ),
-                                          ],
-                                        ),
+                                            onRatingUpdate: (rating) {},
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            "(${produkList[index].averageRating?.toStringAsPrecision(2) ?? 0})",
+                                            style: appStyle(
+                                                size: 11,
+                                                color: mainBlack,
+                                                fw: FontWeight.w600),
+                                          ),
+                                        ],
+                                      ),
                                       const SizedBox(height: 5),
                                     ],
                                   ),

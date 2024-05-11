@@ -210,7 +210,7 @@ class KatalogProdukRow extends ConsumerWidget {
                                             fw: FontWeight.bold),
                                       ),
                                       const SizedBox(height: 5),
-                                      if(katalogProduk.produkList[index].rating.isNotEmpty)
+                                      // if(katalogProduk.produkList[index].rating.isNotEmpty)
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -219,12 +219,9 @@ class KatalogProdukRow extends ConsumerWidget {
                                             ignoreGestures: true,
                                             itemSize: 16,
                                             initialRating: katalogProduk
-                                                    .produkList[index]
-                                                    .rating
-                                                    .first
-                                                    .averageRating ??
-                                                1,
-                                            minRating: 1,
+                                                    .produkList[index].averageRating ??
+                                                0,
+                                            minRating: 0,
                                             direction: Axis.horizontal,
                                             allowHalfRating: true,
                                             itemCount: 5,
@@ -240,7 +237,7 @@ class KatalogProdukRow extends ConsumerWidget {
                                           ),
                                           const SizedBox(width: 5),
                                           Text(
-                                            "(${katalogProduk.produkList[index].rating.first.averageRating?.toStringAsPrecision(2)})",
+                                            "(${katalogProduk.produkList[index].averageRating?.toStringAsPrecision(2) ?? 0})",
                                             style: appStyle(
                                                 size: 11,
                                                 color: mainBlack,
