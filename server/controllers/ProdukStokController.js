@@ -230,8 +230,6 @@ module.exports = {
                 transaction: t
             })
 
-            console.log(products);
-
             if (products.length == 0) {
                 await t.rollback();
                 return res.status(400).json({ error: "Produk yang terkait dengan toko tidak ada. Mohon pertimbangkan untuk menambahkan produk." })
@@ -242,27 +240,24 @@ module.exports = {
                 const averageSalesList = [];
                 const laporanBarangKeluar = await product.getStockout({ transaction: t }) ?? []
                 const laporanBarangMasuk = await product.getStockin({ transaction: t }) ?? []
-                const earliestDeliveredAtDate = await models.laporanbarangmasuk.min('deliveredAt', {
-                    transaction: t,
-                    include: [{
-                        model: models.produk,
-                        where: {
-                            id: product.id
-                        }
-                    }],
-                    group: ['produk.id'] // Include the relevant column(s) from 'produk' table in the GROUP BY clause
-                });
 
-                const latestDeliveredAtDate = await models.laporanbarangmasuk.max('deliveredAt', {
-                    transaction: t,
-                    include: [{
+                const earliestDeliveredAtDate = laporanBarangMasuk || laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.min('deliveredAt', {
+                    transaction: t, include: [{
                         model: models.produk,
                         where: {
                             id: product.id
                         }
-                    }],
-                    group: ['produk.id'] // Include the relevant column(s) from 'produk' table in the GROUP BY clause
-                });
+                    }]
+                }) : null;
+                const latestDeliveredAtDate = laporanBarangMasuk || laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
+                    transaction: t, include: [{
+                        model: models.produk,
+                        where: {
+                            id: product.id
+                        }
+                    }]
+                }) : null;
+
 
                 if (earliestDeliveredAtDate && latestDeliveredAtDate) {
                     const startDate = new Date(earliestDeliveredAtDate);
