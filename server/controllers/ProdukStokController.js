@@ -241,7 +241,7 @@ module.exports = {
                 const laporanBarangKeluar = await product.getStockout({ transaction: t }) ?? []
                 const laporanBarangMasuk = await product.getStockin({ transaction: t }) ?? []
 
-                const earliestDeliveredAtDate = laporanBarangMasuk || laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.min('deliveredAt', {
+                const earliestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.min('deliveredAt', {
                     transaction: t, include: [{
                         model: models.produk,
                         where: {
@@ -249,7 +249,7 @@ module.exports = {
                         }
                     }]
                 }) : null;
-                const latestDeliveredAtDate = laporanBarangMasuk || laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
+                const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
                     transaction: t, include: [{
                         model: models.produk,
                         where: {
