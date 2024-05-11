@@ -11,7 +11,6 @@ const sequelize = new Sequelize(
         host: process.env.DB_HOST,
         PORT: process.env.DB_PORT,
         dialect: process.env.DB_DIALECT,
-        logging: process.env.NODE_ENV === "development" ? (...msg) => console.log(...msg) : false,
     }
 );
 
