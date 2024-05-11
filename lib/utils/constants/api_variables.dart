@@ -1,5 +1,5 @@
 class ApiVariables {
-  static const baseURL = "10.0.2.2:3005";
+  static const baseURL = "tugasakhirproject-production.up.railway.app";
   static const signUpCustomerURL = "/signup-customer";
   static const signUpInternalURL = "/signup-internal";
   static const loginURL = "/login";
