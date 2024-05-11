@@ -243,20 +243,25 @@ module.exports = {
                 const laporanBarangKeluar = await product.getStockout({ transaction: t }) ?? []
                 const laporanBarangMasuk = await product.getStockin({ transaction: t }) ?? []
                 const earliestDeliveredAtDate = await models.laporanbarangmasuk.min('deliveredAt', {
-                    transaction: t, include: [{
+                    transaction: t,
+                    include: [{
                         model: models.produk,
                         where: {
                             id: product.id
                         }
-                    }]
+                    }],
+                    group: ['produk.id'] // Include the relevant column(s) from 'produk' table in the GROUP BY clause
                 });
+
                 const latestDeliveredAtDate = await models.laporanbarangmasuk.max('deliveredAt', {
-                    transaction: t, include: [{
+                    transaction: t,
+                    include: [{
                         model: models.produk,
                         where: {
                             id: product.id
                         }
-                    }]
+                    }],
+                    group: ['produk.id'] // Include the relevant column(s) from 'produk' table in the GROUP BY clause
                 });
 
                 if (earliestDeliveredAtDate && latestDeliveredAtDate) {
