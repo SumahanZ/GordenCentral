@@ -36,7 +36,7 @@ class CustomerCartRepositoryImpl extends CustomerCartRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchCartCustomerURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchCartCustomerURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -75,7 +75,7 @@ class CustomerCartRepositoryImpl extends CustomerCartRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.decreaseCartItemQuantityURL);
 
       final response = await _client.post(
@@ -118,7 +118,7 @@ class CustomerCartRepositoryImpl extends CustomerCartRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.increaseCartItemQuantityURL);
 
       final response = await _client.post(
@@ -161,7 +161,7 @@ class CustomerCartRepositoryImpl extends CustomerCartRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.createOrderURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.createOrderURL);
 
       final response = await _client.post(
         url,

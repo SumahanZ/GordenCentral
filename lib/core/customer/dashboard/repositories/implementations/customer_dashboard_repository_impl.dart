@@ -79,7 +79,7 @@ class CustomerDashboardRepositoryImpl extends CustomerDashboardRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchMostPopularProductsURL);
       final response = await _client.get(
         url,
@@ -123,7 +123,7 @@ class CustomerDashboardRepositoryImpl extends CustomerDashboardRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchNewArrivalProductsURL);
       final response = await _client.get(
         url,
@@ -167,7 +167,7 @@ class CustomerDashboardRepositoryImpl extends CustomerDashboardRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchOrderCompletedOngoingCountURL);
       final response = await _client.get(
         url,

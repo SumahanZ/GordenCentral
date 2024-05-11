@@ -75,7 +75,7 @@ class InternalLaporanBarangRepositoryImpl
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchLaporanBarangKeluarInternalURL);
       final response = await _client.get(
         url,
@@ -120,7 +120,7 @@ class InternalLaporanBarangRepositoryImpl
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchLaporanBarangMasukInternalURL);
       final response = await _client.get(
         url,
@@ -165,7 +165,7 @@ class InternalLaporanBarangRepositoryImpl
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchLaporanGeneralInformationURL);
       final response = await _client.get(
         url,

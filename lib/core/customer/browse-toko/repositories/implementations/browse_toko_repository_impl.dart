@@ -36,7 +36,7 @@ class BrowseTokoRepositoryImpl extends BrowseTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.fetchTokosURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.fetchTokosURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,

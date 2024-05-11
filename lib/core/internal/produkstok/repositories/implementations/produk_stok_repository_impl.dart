@@ -71,7 +71,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.inputStokProductURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.inputStokProductURL);
 
       final response = await _client.post(
         url,
@@ -122,7 +122,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.addProdukCategoryURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.addProdukCategoryURL);
 
       final response = await _client.post(
         url,
@@ -168,7 +168,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.fetchCategoriesURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.fetchCategoriesURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -211,7 +211,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchProduksAddStokURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchProduksAddStokURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -255,7 +255,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchProduksAddStokURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchProduksAddStokURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -304,7 +304,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.addStokProductURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.addStokProductURL);
 
       final response = await _client.post(
         url,
@@ -354,7 +354,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.calculateSafetyStockReorderPointURL);
 
       final response = await _client.post(
@@ -394,7 +394,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchOutOfStockAndCriticalProductCountURL);
       final response = await _client.get(
         url,
@@ -434,7 +434,7 @@ class ProdukStokRepositoryImpl extends ProdukStokRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.checkSafetyStockReorderPointURL);
 
       final response = await _client.post(

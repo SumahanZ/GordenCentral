@@ -59,7 +59,7 @@ class CustomerAccountRepositoryImpl extends CustomerAccountRepository {
         "token": token!
       };
 
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.editCustomerInformationURL);
       final response = await _client.post(
         url,
@@ -113,7 +113,7 @@ class CustomerAccountRepositoryImpl extends CustomerAccountRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.configureCustomerDeliveryInformationURL);
       final response = await _client.post(
         url,
@@ -158,7 +158,7 @@ class CustomerAccountRepositoryImpl extends CustomerAccountRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchDeliveryInformationCustomerURL);
       final response = await _client.get(
         url,
@@ -197,7 +197,7 @@ class CustomerAccountRepositoryImpl extends CustomerAccountRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, "${ApiVariables.getCitiesURL}/$provinceId");
       final response = await _client.get(
         url,
@@ -237,7 +237,7 @@ class CustomerAccountRepositoryImpl extends CustomerAccountRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.getProvincesURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.getProvincesURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,

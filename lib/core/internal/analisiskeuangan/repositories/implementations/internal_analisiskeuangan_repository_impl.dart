@@ -72,7 +72,7 @@ class InternalAnalisisKeuanganRepositoryImpl
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchAnalisisKeuanganGeneralInformationURL);
       final response = await _client.get(
         url,
@@ -112,7 +112,7 @@ class InternalAnalisisKeuanganRepositoryImpl
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchAnalisisKeuanganRecentTransactionsURL);
       final response = await _client.get(
         url,
@@ -156,7 +156,7 @@ class InternalAnalisisKeuanganRepositoryImpl
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchAnalisisKeuanganSalesReportURL);
       final response = await _client.get(
         url,

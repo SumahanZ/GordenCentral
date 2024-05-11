@@ -39,7 +39,7 @@ class CustomerWishlistRepositoryImpl extends CustomerWishlistRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchWishlistCustomerURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchWishlistCustomerURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -77,7 +77,7 @@ class CustomerWishlistRepositoryImpl extends CustomerWishlistRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           "${ApiVariables.removeProdukWishlistCustomerURL}/$produkId");
 
       final response = await _client.delete(

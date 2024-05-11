@@ -146,7 +146,7 @@ class AuthRepositoryImpl implements AuthRepository {
       Map<String, String> requestHeaders = {
         "Content-Type": "application/json; charset=UTF-8",
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.completePemilikPersonalizationURL);
       final response = await _client.post(
         url,
@@ -209,7 +209,7 @@ class AuthRepositoryImpl implements AuthRepository {
       Map<String, String> requestHeaders = {
         "Content-Type": "application/json; charset=UTF-8",
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.completeKaryawanPersonalizationURL);
       final response = await _client.post(
         url,
@@ -263,7 +263,7 @@ class AuthRepositoryImpl implements AuthRepository {
       Map<String, String> requestHeaders = {
         "Content-Type": "application/json; charset=UTF-8",
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.completeCustomerPersonalizationURL);
       final response = await _client.post(
         url,
@@ -317,7 +317,7 @@ class AuthRepositoryImpl implements AuthRepository {
         "Content-Type": "application/json; charset=UTF-8",
       };
 
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.loginURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.loginURL);
       final response = await _client.post(
         url,
         headers: requestHeaders,
@@ -360,7 +360,7 @@ class AuthRepositoryImpl implements AuthRepository {
         "token": token!,
       };
 
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.getUserInfoURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.getUserInfoURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -399,7 +399,7 @@ class AuthRepositoryImpl implements AuthRepository {
         "token": token!,
       };
 
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.getEnrolledTokoURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.getEnrolledTokoURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -434,7 +434,7 @@ class AuthRepositoryImpl implements AuthRepository {
   TaskEither<ApiError, List<City>> getCities(
       {required Ref<Object?> ref, required int provinceId}) {
     return TaskEither<ApiError, http.Response>.tryCatch(() async {
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, "${ApiVariables.getCitiesURL}/$provinceId");
       final response = await _client.get(
         url,
@@ -467,7 +467,7 @@ class AuthRepositoryImpl implements AuthRepository {
   TaskEither<ApiError, List<Province>> getProvinces(
       {required Ref<Object?> ref}) {
     return TaskEither<ApiError, http.Response>.tryCatch(() async {
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.getProvincesURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.getProvincesURL);
       final response = await _client.get(
         url,
       );
@@ -506,7 +506,7 @@ class AuthRepositoryImpl implements AuthRepository {
         "token": token!
       };
 
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.logoutURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.logoutURL);
       final response = await _client.post(
         url,
         headers: requestHeaders,

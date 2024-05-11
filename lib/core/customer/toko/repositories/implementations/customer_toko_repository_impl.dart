@@ -70,7 +70,7 @@ class CustomerTokoRepositoryImpl extends CustomerTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, "${ApiVariables.fetchCustomerTokoURL}/$tokoId");
       final response = await _client.get(
         url,
@@ -109,7 +109,7 @@ class CustomerTokoRepositoryImpl extends CustomerTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           "${ApiVariables.fetchCustomerKatalogProdukTokoURL}/$tokoId");
       final response = await _client.get(
         url,
@@ -153,7 +153,7 @@ class CustomerTokoRepositoryImpl extends CustomerTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           "${ApiVariables.fetchCustomerProdukDetail}/$tokoId/$produkId");
       final response = await _client.get(
         url,
@@ -196,7 +196,7 @@ class CustomerTokoRepositoryImpl extends CustomerTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.addProdukWishlistCustomerURL);
 
       final response = await _client.post(
@@ -295,7 +295,7 @@ class CustomerTokoRepositoryImpl extends CustomerTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.addProdukCartCustomerFromModalURL);
 
       final response = await _client.post(

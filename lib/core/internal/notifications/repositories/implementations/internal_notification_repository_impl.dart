@@ -38,7 +38,7 @@ class InternalNotificationRepositoryImpl
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchTokoNotificationsURL);
       final response = await _client.get(
         url,

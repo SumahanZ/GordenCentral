@@ -50,7 +50,7 @@ class CustomerOrderRepositoryImpl extends CustomerOrderRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.cancelOrderCustomerURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.cancelOrderCustomerURL);
 
       final response = await _client.post(
         url,
@@ -95,7 +95,7 @@ class CustomerOrderRepositoryImpl extends CustomerOrderRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.completeOrderCustomerURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.completeOrderCustomerURL);
 
       final response = await _client.post(
         url,
@@ -138,7 +138,7 @@ class CustomerOrderRepositoryImpl extends CustomerOrderRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchOrdersCustomerURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchOrdersCustomerURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,

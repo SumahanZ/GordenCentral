@@ -491,7 +491,8 @@ class _InternalEditKatalogProdukPageState
                                 ElevatedButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate() &&
-                                        r!.produkList.isNotEmpty) {
+                                        (r!.produkList.isNotEmpty || selectedProduks.isNotEmpty)) {
+                                          
                                       ref
                                           .read(katalogProdukViewModelProvider
                                               .notifier)

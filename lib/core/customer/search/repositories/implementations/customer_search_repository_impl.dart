@@ -58,7 +58,7 @@ class CustomerSearchRepositoryImpl extends CustomerSearchRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchAllProdukSearchURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchAllProdukSearchURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -102,7 +102,7 @@ class CustomerSearchRepositoryImpl extends CustomerSearchRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchSearchOptionURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchSearchOptionURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -142,7 +142,7 @@ class CustomerSearchRepositoryImpl extends CustomerSearchRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchFilteredProductsURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchFilteredProductsURL);
       final response = await _client.post(url,
           headers: requestHeaders,
           body: jsonEncode(

@@ -40,7 +40,7 @@ class InternalSettingsRepositoryImpl extends InternalSettingsRepository {
         "token": token!
       };
 
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchInternalInformationURL);
       final response = await _client.get(url, headers: requestHeaders);
       return response;

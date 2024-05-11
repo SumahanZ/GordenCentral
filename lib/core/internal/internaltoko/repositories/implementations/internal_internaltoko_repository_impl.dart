@@ -37,7 +37,7 @@ class InternalTokoRepositoryImpl extends InternalTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.fetchInternalsURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.fetchInternalsURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -79,7 +79,7 @@ class InternalTokoRepositoryImpl extends InternalTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.acceptJoinRequestURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.acceptJoinRequestURL);
 
       final response = await _client.post(url,
           headers: requestHeaders,
@@ -118,7 +118,7 @@ class InternalTokoRepositoryImpl extends InternalTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.declineJoinRequestURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.declineJoinRequestURL);
 
       final response = await _client.post(url,
           headers: requestHeaders,
@@ -157,7 +157,7 @@ class InternalTokoRepositoryImpl extends InternalTokoRepository {
         "token": token!
       };
 
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.addInternalThroughUserCodeURL);
 
       final response = await _client.post(url,
@@ -197,7 +197,7 @@ class InternalTokoRepositoryImpl extends InternalTokoRepository {
         "token": token!
       };
 
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.joinInternalThroughInviteCodeURL);
 
       final response = await _client.post(url,

@@ -33,7 +33,7 @@ class InternalAccountRepositoryImpl extends InternalAccountRepository {
         "token": token!
       };
 
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.editInternalInformationURL);
       final response = await _client.post(
         url,

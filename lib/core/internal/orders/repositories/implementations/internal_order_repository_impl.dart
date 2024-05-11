@@ -45,7 +45,7 @@ class InternalOrderRepositoryImpl extends InternalOrderRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.cancelOrderURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.cancelOrderURL);
 
       final response = await _client.post(
         url,
@@ -87,7 +87,7 @@ class InternalOrderRepositoryImpl extends InternalOrderRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchAllCustomerOrdersURL);
       final response = await _client.get(
         url,
@@ -134,7 +134,7 @@ class InternalOrderRepositoryImpl extends InternalOrderRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.configureOrderURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.configureOrderURL);
 
       final response = await _client.post(
         url,
@@ -177,7 +177,7 @@ class InternalOrderRepositoryImpl extends InternalOrderRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchOrderStasusesURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchOrderStasusesURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,

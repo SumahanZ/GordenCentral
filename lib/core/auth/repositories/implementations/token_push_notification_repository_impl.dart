@@ -50,7 +50,7 @@ class PushNotificationRepositoryImpl {
       };
 
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.updateUserDeviceTokenURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.updateUserDeviceTokenURL);
 
       final response = await _client.post(
         url,
@@ -95,7 +95,7 @@ class PushNotificationRepositoryImpl {
       };
 
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.updateUserDeviceTokenURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.updateUserDeviceTokenURL);
 
       final response = await _client.post(
         url,

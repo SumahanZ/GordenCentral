@@ -38,7 +38,7 @@ class InternalDashboardRepositoryImpl extends InternalDashboardRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           ApiVariables.fetchCompleteOngoingOrdersInternalURL);
       final response = await _client.get(
         url,

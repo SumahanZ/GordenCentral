@@ -154,7 +154,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
       };
 
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.createTokoInformationURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.createTokoInformationURL);
       final response = await _client.post(
         url,
         headers: requestHeaders,
@@ -208,7 +208,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchPreviewTokoInformationURL);
       final response = await _client.get(
         url,
@@ -248,7 +248,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchBerandaInformationURL);
       final response = await _client.get(
         url,
@@ -293,7 +293,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.configureBerandaTokoURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.configureBerandaTokoURL);
 
       final response = await _client.post(
         url,
@@ -339,7 +339,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "token": token!,
       };
 
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchCategoryItemsProdukListURL);
       final response = await _client.get(
         url,
@@ -386,7 +386,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.addKatalogProdukURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.addKatalogProdukURL);
 
       final response = await _client.post(
         url,
@@ -431,7 +431,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchKatalogProdukTokoURL);
       final response = await _client.get(
         url,
@@ -475,7 +475,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, ApiVariables.fetchKatalogProdukTokoPreviewURL);
       final response = await _client.get(
         url,
@@ -519,7 +519,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           "${ApiVariables.fetchSingleKatalogProdukURL}/$katalogId");
       final response = await _client.get(
         url,
@@ -564,7 +564,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.editKatalogProdukURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.editKatalogProdukURL);
 
       final response = await _client.post(
         url,
@@ -612,7 +612,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           "${ApiVariables.fetchInternalProdukDetailURL}/$produkId");
       final response = await _client.get(
         url,
@@ -656,7 +656,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, "${ApiVariables.internalEditProdukURL}/$produkId");
 
       final response = await _client.post(
@@ -701,7 +701,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(
+      var url = Uri.https(
           ApiVariables.baseURL, "${ApiVariables.getCitiesURL}/$provinceId");
       final response = await _client.get(
         url,
@@ -742,7 +742,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.getProvincesURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.getProvincesURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -785,7 +785,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.addPromoURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.addPromoURL);
 
       final response = await _client.post(
         url,
@@ -836,7 +836,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, "${ApiVariables.editPromoURL}/$promoId");
+          Uri.https(ApiVariables.baseURL, "${ApiVariables.editPromoURL}/$promoId");
 
       final response = await _client.post(
         url,
@@ -883,7 +883,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchAvailablePromoItemsURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchAvailablePromoItemsURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,
@@ -927,7 +927,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
           "Content-Type": "application/json; charset=UTF-8",
           "token": token!
         };
-        var url = Uri.http(
+        var url = Uri.https(
             ApiVariables.baseURL, "${ApiVariables.removePromoURL}/$promoId");
 
         final response = await _client.delete(
@@ -969,7 +969,7 @@ class ProfileTokoRepositoryImpl extends ProfileTokoRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL, ApiVariables.fetchPromosURL);
+      var url = Uri.https(ApiVariables.baseURL, ApiVariables.fetchPromosURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,

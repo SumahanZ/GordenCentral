@@ -240,8 +240,8 @@ module.exports = {
             for (var product of products) {
                 const averageLeadTimeList = [];
                 const averageSalesList = [];
-                const laporanBarangKeluar = await product.getStockout({ transaction: t })
-                const laporanBarangMasuk = await product.getStockin({ transaction: t })
+                const laporanBarangKeluar = await product.getStockout({ transaction: t }) ?? []
+                const laporanBarangMasuk = await product.getStockin({ transaction: t }) ?? []
                 const earliestDeliveredAtDate = await models.laporanbarangmasuk.min('deliveredAt', {
                     transaction: t, include: [{
                         model: models.produk,
