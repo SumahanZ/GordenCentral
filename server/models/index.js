@@ -52,6 +52,6 @@ for (const modelDefiner of modelDefiners) {
 
 // We execute any extra setup after the models are defined, such as adding associations.
 applyAssociations(sequelize);
-sequelize.sync({ alter: true }).then(() => console.log("All models were synchronized successfully.")).catch((error) => console.log('Models fail', error));
+sequelize.sync().then(() => console.log("All models were synchronized successfully.")).catch((error) => console.log('Models fail', error));
 // We export the sequelize connection instance to be used around our app.
 module.exports = sequelize;
