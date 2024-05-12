@@ -331,8 +331,6 @@ module.exports = {
 
             const createdCatalog = await toko.createCatalog({ name: name }, { transaction: t })
 
-            console.log(produkIdList)
-
             for (const produkId of produkIdList) {
                 const foundProduk = await models.produk.findOne({ where: { id: produkId }, transaction: t })
                 await createdCatalog.addProduct(foundProduk, { transaction: t })
@@ -386,7 +384,6 @@ module.exports = {
             const mappedData = foundCatalogs.map(catalog => {
                 const catalogJSON = catalog.dataValues;
                 catalogJSON.products = catalogJSON.products.map(product => product.dataValues);
-                console.log(catalogJSON.products)
                 return catalogJSON;
             });
 

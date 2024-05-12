@@ -107,7 +107,6 @@ module.exports = {
             const mappedData = productsWithValid.map((e) => e.toJSON())
 
             for (const [index, product] of mappedData.entries()) {
-                console.log(product)
                 const averageRating = (product.rating.map((e) => e.rating).reduce((accumulator, currentValue) => accumulator + currentValue, 0) / product.rating.length)
                 const totalBuyer = product.rating.length;
                 mappedData[index].averageRating = averageRating;
