@@ -238,6 +238,7 @@ module.exports = {
             for (var product of products) {
                 const averageLeadTimeList = [];
                 const averageSalesList = [];
+
                 const laporanBarangKeluar = await product.getStockout({ transaction: t }) ?? []
                 const laporanBarangMasuk = await product.getStockin({ transaction: t }) ?? []
 
@@ -499,7 +500,7 @@ module.exports = {
                         id: produkId
                     }
                 }
-            })
+            }) ?? [];
             const laporanBarangMasuk = await models.laporanbarangmasuk.findAll({
                 transaction: t, include: {
                     model: models.produk,
@@ -507,25 +508,25 @@ module.exports = {
                         id: produkId
                     }
                 }
-            })
+            }) ?? [];
 
-            const earliestDeliveredAtDate = await models.laporanbarangmasuk.min('deliveredAt', {
+            const earliestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.min('deliveredAt', {
                 transaction: t, include: [{
                     model: models.produk,
                     where: {
                         id: produkId
                     }
                 }]
-            });
+            }) : null;
 
-            const latestDeliveredAtDate = await models.laporanbarangmasuk.max('deliveredAt', {
+            const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
                 transaction: t, include: [{
                     model: models.produk,
                     where: {
                         id: produkId
                     }
                 }]
-            });
+            }) : null;
 
             if (earliestDeliveredAtDate && latestDeliveredAtDate) {
                 const startDate = new Date(earliestDeliveredAtDate);

@@ -72,8 +72,8 @@ class _CustomerEditProfilePageState
             animType: AnimType.scale,
             desc: "Berhasil mengedit profil pelanggan!",
             onOkPress: () {
-              Routemaster.of(context).replace('/customer-account');
               ref.invalidate(fetchCustomerInformation);
+              Routemaster.of(context).replace('/customer-account');
             });
       } else if (state is AsyncError && state.error is ResponseAPIError) {
         showPopupModal(

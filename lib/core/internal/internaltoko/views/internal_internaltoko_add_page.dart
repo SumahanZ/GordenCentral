@@ -35,8 +35,8 @@ class _InternalInternalTokoAddPageState
                 animType: AnimType.scale,
                 desc: "Berhasil menambahkan internal ke toko!",
                 onOkPress: () {
-                  Routemaster.of(context).pop();
                   ref.invalidate(fetchInternals);
+                  Routemaster.of(context).pop();
                 });
           },
           error: (error, stackTrace) {

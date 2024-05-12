@@ -74,8 +74,8 @@ class _InternalEditProfilePageState
           animType: AnimType.scale,
           desc: "Berhasil mengonfigurasi informasi profil!",
           onOkPress: () {
-            Routemaster.of(context).replace('/internal-account');
             ref.invalidate(fetchInternalInformation);
+            Routemaster.of(context).replace('/internal-account');
           },
         );
       } else if (state is AsyncError && state.error is ResponseAPIError) {

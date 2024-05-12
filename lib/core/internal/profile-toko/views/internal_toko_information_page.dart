@@ -106,8 +106,8 @@ class _InternalTokoInformationPageState
             animType: AnimType.scale,
             desc: "Berhasil mengonfigurasi informasi toko!",
             onOkPress: () {
-              Routemaster.of(context).replace('/internal-account');
               ref.invalidate(fetchInternalInformation);
+              Routemaster.of(context).replace('/internal-account');
             });
       } else if (state is AsyncError && state.error is ResponseAPIError) {
         showPopupModal(
@@ -187,8 +187,7 @@ class _InternalTokoInformationPageState
                               labelText: "WhatsApp Toko",
                               obscureText: false,
                               validator: (value) {
-                                if (!(value!.isValidPhoneNumber() &&
-                                    validWhatsAppNumber)) {
+                                if (!(value!.isValidPhoneNumber())) {
                                   return "Format nomor telepon toko tidak valid. Harap masukkan nomor telepon yang valid.";
                                 } else {
                                   return null;

@@ -42,8 +42,8 @@ class _InternalInternalTokoJoinPageState
                 animType: AnimType.scale,
                 desc: "Berhasil mengirim permintaan bergabung ke toko!",
                 onOkPress: () {
-                  Routemaster.of(context).pop();
                   ref.invalidate(fetchInternals);
+                  Routemaster.of(context).pop();
                 });
           },
           error: (error, stackTrace) {

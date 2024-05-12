@@ -368,6 +368,7 @@ module.exports = {
                     }, { transaction: t })
                     const averageLeadTimeList = [];
                     const averageSalesList = [];
+
                     const laporanBarangKeluar = await models.laporanbarangkeluar.findAll({
                         transaction: t, include: {
                             model: models.produk,
@@ -375,7 +376,8 @@ module.exports = {
                                 id: produkFound.id
                             }
                         }
-                    })
+                    }) ?? [];
+
                     const laporanBarangMasuk = await models.laporanbarangmasuk.findAll({
                         transaction: t, include: {
                             model: models.produk,
@@ -383,25 +385,25 @@ module.exports = {
                                 id: produkFound.id
                             }
                         }
-                    })
+                    }) ?? [];
 
-                    const earliestDeliveredAtDate = await models.laporanbarangmasuk.min('deliveredAt', {
+                    const earliestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.min('deliveredAt', {
                         transaction: t, include: [{
                             model: models.produk,
                             where: {
                                 id: produkFound.id
                             }
                         }]
-                    });
+                    }) : null;
 
-                    const latestDeliveredAtDate = await models.laporanbarangmasuk.max('deliveredAt', {
+                    const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
                         transaction: t, include: [{
                             model: models.produk,
                             where: {
                                 id: produkFound.id
                             }
                         }]
-                    });
+                    }) : null;
 
                     if (earliestDeliveredAtDate && latestDeliveredAtDate) {
                         const startDate = new Date(earliestDeliveredAtDate);

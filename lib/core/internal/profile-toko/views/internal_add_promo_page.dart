@@ -55,8 +55,8 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
             desc: "Promo berhasil ditambahkan!",
             onOkPress: () {
               if (context.mounted) {
-                Routemaster.of(context).pop();
                 ref.invalidate(fetchPromoProvider);
+                Routemaster.of(context).pop();
               }
             });
       } else if (state is AsyncError && state.error is ResponseAPIError) {

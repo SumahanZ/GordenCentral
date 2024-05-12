@@ -51,8 +51,8 @@ class _InternalAddKatalogProdukPageState
             desc: "Berhasil membuat dan menambahkan produk ke katalog!",
             onOkPress: () {
               if (context.mounted) {
-                Routemaster.of(context).pop();
                 ref.invalidate(fetchKatalogProdukToko);
+                Routemaster.of(context).pop();
               }
             });
       } else if (state is AsyncError && state.error is ResponseAPIError) {

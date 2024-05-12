@@ -65,8 +65,8 @@ class _InternalEditPromoPageState extends ConsumerState<InternalEditPromoPage> {
             desc: "Promo berhasil diedit!",
             onOkPress: () {
               if (context.mounted) {
-                Routemaster.of(context).pop();
                 ref.invalidate(fetchPromoProvider);
+                Routemaster.of(context).pop();
               }
             });
       } else if (state is AsyncError && state.error is ResponseAPIError) {
