@@ -393,7 +393,7 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             },
-                            attributes: [] 
+                            attributes: ["id"] 
                         }],
                         group: ['produk.id'] 
                     }) : null;
@@ -404,7 +404,7 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             },
-                            attributes: [] 
+                            attributes: ["id"] 
                         }],
                         group: ['produk.id'] 
                     }) : null;

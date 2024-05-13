@@ -248,7 +248,7 @@ module.exports = {
                         where: {
                             id: product.id
                         },
-                        attributes: [] 
+                        attributes: ["id"] 
                     }],
                     group: ['produk.id'] 
                 }) : null;
@@ -258,7 +258,7 @@ module.exports = {
                         where: {
                             id: product.id
                         },
-                        attributes: [] 
+                        attributes: ["id"] 
                     }],
                     group: ['produk.id'] 
                 }) : null;
@@ -521,7 +521,7 @@ module.exports = {
                     where: {
                         id: produkId
                     },
-                    attributes: [] 
+                    attributes: ["id"] 
                 }],
                 group: ['produk.id'] 
             }) : null;
@@ -533,7 +533,7 @@ module.exports = {
                     where: {
                         id: produkId
                     },
-                    attributes: [] 
+                    attributes: ["id"] 
                 }],
                 group: ['produk.id'] 
             }) : null;
