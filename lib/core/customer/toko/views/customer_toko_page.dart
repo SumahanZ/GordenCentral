@@ -27,68 +27,70 @@ class CustomerTokoPage extends ConsumerWidget {
         ),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: tokoInformation.maybeWhen(data: (data) {
-            return data.$1.match(
-                (l) => Center(
+      body: tokoInformation.maybeWhen(data: (data) {
+        return data.$1.match(
+            (l) => Center(
+                child: Text(l.message,
+                    style: appStyle(
+                        size: 16,
+                        color: mainBlack,
+                        fw: FontWeight.w600))), (tokoInfo) {
+          return data.$2.match(
+              (l) => Center(
                     child: Text(l.message,
                         style: appStyle(
-                            size: 16,
-                            color: mainBlack,
-                            fw: FontWeight.w600))), (tokoInfo) {
-              return data.$2.match(
-                  (l) => Center(
-                        child: Text(l.message,
-                            style: appStyle(
-                                size: 16,
-                                color: mainBlack,
-                                fw: FontWeight.w600)),
-                      ), (katalogProdukList) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TokoInformationCard(tokoInfo),
-                        Builder(builder: (context) {
-                          if (tokoInfo!.berandaToko.isNotEmpty) {
-                            return Column(
-                              children: [
-                                const SizedBox(height: 20),
-                                ProfileTokoBerandaList(
-                                  controller: _controller,
-                                  berandaTokoList: tokoInfo.berandaToko,
-                                )
-                              ],
-                            );
-                          } else {
-                            return const SizedBox.shrink();
-                          }
-                        }),
-                        ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: katalogProdukList.length,
-                            itemBuilder: (context, index) {
-                              return KatalogProdukRow(
-                                  katalogProduk: katalogProdukList[index],
-                                  onTapNavigation: (int produkId) =>
-                                      Routemaster.of(context).push(
-                                          '/customer-browse-toko/toko/$tokoId/$produkId'));
-                            })
-                      ]),
-                );
-              });
-            });
-          }, loading: () {
-            return const Center(child: CircularProgressIndicator());
-          }, orElse: () {
-            return const SizedBox.shrink();
-          }),
-        ),
-      ),
+                            size: 16, color: mainBlack, fw: FontWeight.w600)),
+                  ), (katalogProdukList) {
+            return SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TokoInformationCard(tokoInfo),
+                            Builder(builder: (context) {
+                              if (tokoInfo!.berandaToko.isNotEmpty) {
+                                return Column(
+                                  children: [
+                                    const SizedBox(height: 20),
+                                    ProfileTokoBerandaList(
+                                      controller: _controller,
+                                      berandaTokoList: tokoInfo.berandaToko,
+                                    )
+                                  ],
+                                );
+                              } else {
+                                return const SizedBox.shrink();
+                              }
+                            }),
+                            ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: katalogProdukList.length,
+                                itemBuilder: (context, index) {
+                                  return KatalogProdukRow(
+                                      katalogProduk: katalogProdukList[index],
+                                      onTapNavigation: (int produkId) =>
+                                          Routemaster.of(context).push(
+                                              '/customer-browse-toko/toko/$tokoId/$produkId'));
+                                })
+                          ]),
+                    )
+                  ],
+                ),
+              ),
+            );
+          });
+        });
+      }, loading: () {
+        return const Center(child: CircularProgressIndicator());
+      }, orElse: () {
+        return const SizedBox.shrink();
+      }),
     );
   }
 }

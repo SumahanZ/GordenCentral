@@ -34,10 +34,10 @@ module.exports = {
             })
 
 
-            if (!products) {
-                await t.rollback();
-                return res.status(400).json({ error: "Produk tidak ditemukan" })
-            }
+            // if (!products) {
+            //     await t.rollback();
+            //     return res.status(400).json({ error: "Produk tidak ditemukan" })
+            // }
 
             await t.commit();
 
@@ -98,10 +98,10 @@ module.exports = {
                 order: [['createdAt', 'DESC']],
             })
 
-            if (products.length === 0) {
-                await t.rollback();
-                return res.status(400).json({ error: "Tidak ada produk yang ditemukan dengan promosi yang valid" });
-            }
+            // if (products.length === 0) {
+            //     await t.rollback();
+            //     return res.status(400).json({ error: "Tidak ada produk yang ditemukan dengan promosi yang valid" });
+            // }
 
             const productsWithValid = products.filter(product => product.id !== null);
             const mappedData = productsWithValid.map((e) => e.toJSON())
@@ -158,10 +158,10 @@ module.exports = {
                 order: [['createdAt', 'DESC']],
             })
 
-            if (products.length === 0) {
-                await t.rollback();
-                return res.status(400).json({ error: "Tidak ada produk yang ditemukan dengan promosi yang valid" });
-            }
+            // if (products.length === 0) {
+            //     await t.rollback();
+            //     return res.status(400).json({ error: "Tidak ada produk yang ditemukan dengan promosi yang valid" });
+            // }
 
             const productsWithValidPromo = products.filter(product => product.promo !== null);
 

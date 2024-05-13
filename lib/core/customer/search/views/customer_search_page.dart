@@ -314,7 +314,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
             });
           },
           orElse: () => const SizedBox.shrink(),
-          loading: () => const CircularProgressIndicator()),
+          loading: () => Center(child: const CircularProgressIndicator())),
     );
   }
 }
