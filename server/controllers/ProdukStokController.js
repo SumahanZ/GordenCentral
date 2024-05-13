@@ -245,22 +245,20 @@ module.exports = {
                 const earliestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.min('deliveredAt', {
                     transaction: t, include: [{
                         model: models.produk,
+                        through: { attributes: [] },
                         where: {
                             id: product.id
                         },
-                        attributes: ["id"] 
                     }],
-                    group: ['produk.id'] 
                 }) : null;
                 const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
                     transaction: t, include: [{
                         model: models.produk,
+                        through: { attributes: [] },
                         where: {
                             id: product.id
                         },
-                        attributes: ["id"] 
                     }],
-                    group: ['produk.id'] 
                 }) : null;
 
 
@@ -518,24 +516,22 @@ module.exports = {
                 transaction: t, 
                 include: [{
                     model: models.produk,
+                    through: { attributes: [] },
                     where: {
                         id: produkId
                     },
-                    attributes: ["id"] 
                 }],
-                group: ['produk.id'] 
             }) : null;
 
             const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
                 transaction: t, 
                 include: [{
                     model: models.produk,
+                    through: { attributes: [] },
                     where: {
                         id: produkId
                     },
-                    attributes: ["id"] 
                 }],
-                group: ['produk.id'] 
             }) : null;
 
             if (earliestDeliveredAtDate && latestDeliveredAtDate) {
