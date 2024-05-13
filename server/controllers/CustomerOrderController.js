@@ -392,9 +392,14 @@ module.exports = {
                             model: models.produk,
                             where: {
                                 id: produkFound.id
-                            }
+                            },
+                            include: [{
+                                model: models.laporanbarangmasuk,
+                                as: "stockin",
+                                attributes: [],
+                                required: true
+                            }]
                         }],
-                        group: ['produks.id', 'Produk_Stockin.createdAt']
                     }) : null;
 
                     const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
@@ -402,9 +407,14 @@ module.exports = {
                             model: models.produk,
                             where: {
                                 id: produkFound.id
-                            }
+                            },
+                            include: [{
+                                model: models.laporanbarangmasuk,
+                                as: "stockin",
+                                attributes: [],
+                                required: true
+                            }]
                         }],
-                        group: ['produks.id', 'Produk_Stockin.createdAt']
                     }) : null;
 
                     if (earliestDeliveredAtDate && latestDeliveredAtDate) {
