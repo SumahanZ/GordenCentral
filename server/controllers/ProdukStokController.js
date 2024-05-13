@@ -248,6 +248,7 @@ module.exports = {
                         where: {
                             id: product.id
                         },
+                        attributes: [] 
                     }],
                 }) : null;
                 const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
@@ -256,6 +257,7 @@ module.exports = {
                         where: {
                             id: product.id
                         },
+                        attributes: [] 
                     }],
                 }) : null;
 
@@ -517,6 +519,7 @@ module.exports = {
                     where: {
                         id: produkId
                     },
+                    attributes: [] 
                 }],
             }) : null;
 
@@ -527,6 +530,7 @@ module.exports = {
                     where: {
                         id: produkId
                     },
+                    attributes: [] 
                 }],
             }) : null;
 

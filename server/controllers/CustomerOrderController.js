@@ -383,7 +383,7 @@ module.exports = {
                             model: models.produk,
                             where: {
                                 id: produkFound.id
-                            }
+                            },
                         }
                     }) ?? [];
 
@@ -393,6 +393,7 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             },
+                            attributes: [] 
                         }],
                     }) : null;
 
@@ -402,6 +403,7 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             },
+                            attributes: [] 
                         }],
                     }) : null;
 
