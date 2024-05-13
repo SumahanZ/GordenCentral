@@ -243,7 +243,7 @@ class CustomerTokoRepositoryImpl extends CustomerTokoRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.addProdukCartCustomerURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.addProdukCartCustomerURL);
 
       final response = await _client.post(
         url,

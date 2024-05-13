@@ -207,7 +207,7 @@ class CustomerDashboardRepositoryImpl extends CustomerDashboardRepository {
         "token": token!
       };
       var url =
-          Uri.http(ApiVariables.baseURL, ApiVariables.fetchPromoProductsURL);
+          Uri.https(ApiVariables.baseURL, ApiVariables.fetchPromoProductsURL);
       final response = await _client.get(
         url,
         headers: requestHeaders,

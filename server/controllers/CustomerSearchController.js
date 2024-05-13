@@ -85,7 +85,7 @@ module.exports = {
                     as: "catalogs",
                     required: true
                 },
-                group: ['produk.id', 'catalogs.id'], // Adjust the GROUP BY clause based on your requirements
+                group: ['produk.id', 'catalogs.id'],
                 transaction: t
             })
 
@@ -137,22 +137,8 @@ module.exports = {
                     model: models.promo,
                 }, {
                     model: models.produkrating,
-                    // where: {
-                    //     rating: {
-                    //         [Op.and]: {
-                    //             [Op.gte]: ratingRange.min,
-                    //             [Op.lte]: ratingRange.max,
-                    //         }
-                    //     }
-                    // },
                     as: "rating",
                     required: ratingRange.min == 0.0 ? false : true,
-                    // attributes: ratingRange.min != 0.0 ? {
-                    //     include: [
-                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                    //     ]
-                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",

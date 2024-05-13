@@ -393,7 +393,8 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             }
-                        }]
+                        }],
+                        group: ['produks.id', 'Produk_Stockin.createdAt']
                     }) : null;
 
                     const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
@@ -402,7 +403,8 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             }
-                        }]
+                        }],
+                        group: ['produks.id', 'Produk_Stockin.createdAt']
                     }) : null;
 
                     if (earliestDeliveredAtDate && latestDeliveredAtDate) {

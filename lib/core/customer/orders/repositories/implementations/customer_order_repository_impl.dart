@@ -180,7 +180,7 @@ class CustomerOrderRepositoryImpl extends CustomerOrderRepository {
         "Content-Type": "application/json; charset=UTF-8",
         "token": token!
       };
-      var url = Uri.http(ApiVariables.baseURL,
+      var url = Uri.https(ApiVariables.baseURL,
           "${ApiVariables.fetchOrdersProdukURL}/$orderId");
       final response = await _client.get(
         url,
