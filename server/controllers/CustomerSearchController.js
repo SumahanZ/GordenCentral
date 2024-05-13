@@ -85,6 +85,7 @@ module.exports = {
                     as: "catalogs",
                     required: true
                 },
+                group: ['produk.id', 'catalogs.id'], // Adjust the GROUP BY clause based on your requirements
                 transaction: t
             })
 

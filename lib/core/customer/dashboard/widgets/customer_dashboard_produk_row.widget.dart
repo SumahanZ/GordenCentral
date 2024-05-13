@@ -24,7 +24,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
       height: 350,
       child: produkList.isEmpty
           ? Center(
-              child: Text("Produk kosong",
+              child: Text("Tidak ada produk",
                   style: appStyle(
                       size: 16, color: mainBlack, fw: FontWeight.w600)))
           : ListView.builder(
