@@ -248,12 +248,6 @@ module.exports = {
                         where: {
                             id: product.id
                         },
-                        include: [{
-                            model: models.laporanbarangmasuk,
-                            as: "stockin",
-                            attributes: [],
-                            required: true
-                        }]
                     }],
                 }) : null;
                 const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
@@ -262,12 +256,6 @@ module.exports = {
                         where: {
                             id: product.id
                         },
-                        include: [{
-                            model: models.laporanbarangmasuk,
-                            as: "stockin",
-                            attributes: [],
-                            required: true
-                        }]
                     }],
                 }) : null;
 
@@ -529,12 +517,6 @@ module.exports = {
                     where: {
                         id: produkId
                     },
-                    include: [{
-                        model: models.laporanbarangmasuk,
-                        as: "stockin",
-                        attributes: [],
-                        required: true
-                    }]
                 }],
             }) : null;
 
@@ -545,12 +527,6 @@ module.exports = {
                     where: {
                         id: produkId
                     },
-                    include: [{
-                        model: models.laporanbarangmasuk,
-                        as: "stockin",
-                        attributes: [],
-                        required: true
-                    }]
                 }],
             }) : null;
 

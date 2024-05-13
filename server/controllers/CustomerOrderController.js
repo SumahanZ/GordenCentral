@@ -393,12 +393,6 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             },
-                            include: [{
-                                model: models.laporanbarangmasuk,
-                                as: "stockin",
-                                attributes: [],
-                                required: true
-                            }]
                         }],
                     }) : null;
 
@@ -408,12 +402,6 @@ module.exports = {
                             where: {
                                 id: produkFound.id
                             },
-                            include: [{
-                                model: models.laporanbarangmasuk,
-                                as: "stockin",
-                                attributes: [],
-                                required: true
-                            }]
                         }],
                     }) : null;
 
