@@ -250,6 +250,7 @@ module.exports = {
                         },
                         attributes: [] 
                     }],
+                    group: ['produk.id'] 
                 }) : null;
                 const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
                     transaction: t, include: [{
@@ -259,6 +260,7 @@ module.exports = {
                         },
                         attributes: [] 
                     }],
+                    group: ['produk.id'] 
                 }) : null;
 
 
@@ -521,6 +523,7 @@ module.exports = {
                     },
                     attributes: [] 
                 }],
+                group: ['produk.id'] 
             }) : null;
 
             const latestDeliveredAtDate = laporanBarangMasuk.length > 0 ? await models.laporanbarangmasuk.max('deliveredAt', {
@@ -532,6 +535,7 @@ module.exports = {
                     },
                     attributes: [] 
                 }],
+                group: ['produk.id'] 
             }) : null;
 
             if (earliestDeliveredAtDate && latestDeliveredAtDate) {
