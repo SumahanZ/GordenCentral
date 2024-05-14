@@ -39,7 +39,10 @@ module.exports = {
                 include: {
                     model: models.tokonotificationtype,
                 },
-                transaction: t
+                transaction: t,
+                order: [
+                    ["createdAt", "DESC"]
+                ]
             })
 
             await t.commit();

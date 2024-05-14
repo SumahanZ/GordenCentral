@@ -55,7 +55,7 @@ class FirebaseHelper {
     final AndroidNotificationDetails notificationAndroidSpecifics =
         AndroidNotificationDetails(
       channel.id,
-      icon: "@mipmap/ic_launcher",
+      icon: "@mipmap/launcher_icon",
       channel.name,
       channelDescription: channel.description,
       importance: Importance.max,

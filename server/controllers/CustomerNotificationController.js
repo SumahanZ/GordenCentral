@@ -27,7 +27,10 @@ module.exports = {
                 include: {
                     model: models.customernotificationtype
                 },
-                transaction: t
+                transaction: t,
+                order: [
+                    ["createdAt", "DESC"]
+                ]
             })
 
             await t.commit();
