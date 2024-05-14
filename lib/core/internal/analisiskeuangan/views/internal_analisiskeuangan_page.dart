@@ -357,7 +357,7 @@ class _InternalAnalisaKeuanganPageState
                                     children: [
                                       Text("Total Penjualan:",
                                           style: appStyle(
-                                              size: 20,
+                                              size: 16,
                                               color: mainBlack,
                                               fw: FontWeight.w600)),
                                       Text(
@@ -366,7 +366,7 @@ class _InternalAnalisaKeuanganPageState
                                                       "totalSalesPrice"]
                                                   .toDouble()),
                                           style: appStyle(
-                                              size: 22,
+                                              size: 18,
                                               color: mainBlack,
                                               fw: FontWeight.bold))
                                     ]),
@@ -378,11 +378,11 @@ class _InternalAnalisaKeuanganPageState
                                 Text(
                                   "Laporan Penjualan (Rp)",
                                   style: appStyle(
-                                      size: 16,
+                                      size: 14,
                                       color: mainBlack,
                                       fw: FontWeight.w500),
                                 ),
-                                const SizedBox(width: 40),
+                                const SizedBox(width: 20),
                                 Expanded(
                                   child: CustomDropdownChart(
                                       values: const [

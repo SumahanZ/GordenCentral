@@ -439,7 +439,7 @@ class _InternalLaporanBarangPageState
                                               MainAxisAlignment.end,
                                           children: [
                                             Container(
-                                              width: 150,
+                                              width: 160,
                                               child: CustomDropdownChart(
                                                   values: const [
                                                     "Semua",
@@ -624,7 +624,7 @@ class _InternalLaporanBarangPageState
                                               MainAxisAlignment.end,
                                           children: [
                                             Container(
-                                              width: 150,
+                                              width: 160,
                                               child: CustomDropdownChart(
                                                   values: const [
                                                     "Semua",
