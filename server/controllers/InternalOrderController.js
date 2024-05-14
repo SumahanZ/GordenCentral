@@ -242,7 +242,7 @@ module.exports = {
                 await models.customernotification.create({
                     description: `Pesanan #${foundOrder.code} telah dibatalkan pada ${format(Date.now(), "EEEE, MMMM d, yyyy h:mm a")}`,
                     customerId: foundOrder.customerId,
-                    typeId: 1,
+                    typeId: 2,
                 }, { transaction: t })
 
                 if (foundDevice.deviceToken != null && foundDevice.deviceToken != "") {
@@ -325,7 +325,7 @@ module.exports = {
                 await models.customernotification.create({
                     description: `Pesanan #${foundOrder.code} telah dikonfigurasikan pada ${format(Date.now(), "EEEE, MMMM d, yyyy h:mm a")} dengan status ${foundStatus.name.toLowerCase()}.`,
                     customerId: foundOrder.customerId,
-                    typeId: 1,
+                    typeId: 2,
                 }, { transaction: t })
 
                 if (foundDevice.deviceToken != null && foundDevice.deviceToken != "") {

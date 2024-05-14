@@ -197,12 +197,6 @@ class _InternalLaporanBarangPageState
             "Laporan Barang",
             style: appStyle(size: 18, color: mainBlack, fw: FontWeight.w500),
           ),
-          actions: const [
-            Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: Icon(Icons.refresh_outlined),
-            )
-          ],
           centerTitle: true,
         ),
         body: ref.watch(fetchLaporanBarangInformationProvider).maybeWhen(
