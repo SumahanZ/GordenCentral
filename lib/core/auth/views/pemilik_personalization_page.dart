@@ -141,349 +141,344 @@ class _PemilikPersonalizationPageState
           ),
         ),
       ),
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const TopSectionAuth(
-                    isAvatarNeeded: false,
-                    name: 'Buat Toko',
-                    description:
-                        "Buat toko dengan konfigurasi yang kamu miliki",
-                  ),
-                  const SizedBox(height: 20),
-                  TokoConfigureImage(
-                    pickTheImage: pickTheImage,
-                    selectedImage: selectedImage,
-                  ),
-                  const SizedBox(height: 20),
-                  CustomTextField(
-                      hintText: "Masukkan nama toko",
-                      controller: _tokoNameController,
-                      labelText: "Nama Toko",
-                      obscureText: false,
-                      validator: (value) {
-                        if (!(value!.isNotEmpty && value.length > 6)) {
-                          return "Format nama toko tidak valid. Harap masukkan nama yang valid.";
-                        } else {
-                          return null;
-                        }
-                      }),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextArea(
-                      hintText: "Masukkan bio toko",
-                      controller: _tokoBioController,
-                      labelText: "Bio Toko",
-                      obscureText: false,
-                      validator: (value) {
-                        if (!(value!.isNotEmpty && value.length > 6)) {
-                          return "Format bio toko tidak valid. Harap masukkan bio yang valid.";
-                        } else {
-                          return null;
-                        }
-                      }),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  //logic for whatsapp later
-                  CustomTextField(
-                      hintText: "Masukkan nomor WhatsApp toko",
-                      controller: _tokoWhatsAppController,
-                      labelText: "Nomor WhatsApp Toko",
-                      obscureText: false,
-                      validator: (value) {
-                        if (!(value!.isValidPhoneNumber())) {
-                          return "Nomor WhatsApp tidak valid. Harap masukkan nomor yang valid.";
-                        } else {
-                          return null;
-                        }
-                      }),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  CustomTextField(
-                      hintText: "Masukkan kode undangan toko",
-                      controller: _tokoInviteCodeController,
-                      labelText: "Kode Undangan Toko",
-                      obscureText: false,
-                      validator: (value) {
-                        if (!(value!.isNotEmpty && value.length > 6)) {
-                          return "Kode undangan tidak valid. Harap masukkan kode undangan yang valid.";
-                        } else {
-                          return null;
-                        }
-                      }),
+      body: ref.watch(authViewModelProvider).when(
+            data: (_) {
+              return SafeArea(
+                child: Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const TopSectionAuth(
+                            isAvatarNeeded: false,
+                            name: 'Buat Toko',
+                            description:
+                                "Buat toko dengan konfigurasi yang kamu miliki",
+                          ),
+                          const SizedBox(height: 20),
+                          TokoConfigureImage(
+                            pickTheImage: pickTheImage,
+                            selectedImage: selectedImage,
+                          ),
+                          const SizedBox(height: 20),
+                          CustomTextField(
+                              hintText: "Masukkan nama toko",
+                              controller: _tokoNameController,
+                              labelText: "Nama Toko",
+                              obscureText: false,
+                              validator: (value) {
+                                if (!(value!.isNotEmpty && value.length > 6)) {
+                                  return "Format nama toko tidak valid. Harap masukkan nama yang valid.";
+                                } else {
+                                  return null;
+                                }
+                              }),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextArea(
+                              hintText: "Masukkan bio toko",
+                              controller: _tokoBioController,
+                              labelText: "Bio Toko",
+                              obscureText: false,
+                              validator: (value) {
+                                if (!(value!.isNotEmpty && value.length > 6)) {
+                                  return "Format bio toko tidak valid. Harap masukkan bio yang valid.";
+                                } else {
+                                  return null;
+                                }
+                              }),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          //logic for whatsapp later
+                          CustomTextField(
+                              hintText: "Masukkan nomor WhatsApp toko",
+                              controller: _tokoWhatsAppController,
+                              labelText: "Nomor WhatsApp Toko",
+                              obscureText: false,
+                              validator: (value) {
+                                if (!(value!.isValidPhoneNumber())) {
+                                  return "Nomor WhatsApp tidak valid. Harap masukkan nomor yang valid.";
+                                } else {
+                                  return null;
+                                }
+                              }),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          CustomTextField(
+                              hintText: "Masukkan kode undangan toko",
+                              controller: _tokoInviteCodeController,
+                              labelText: "Kode Undangan Toko",
+                              obscureText: false,
+                              validator: (value) {
+                                if (!(value!.isNotEmpty && value.length > 6)) {
+                                  return "Kode undangan tidak valid. Harap masukkan kode undangan yang valid.";
+                                } else {
+                                  return null;
+                                }
+                              }),
 
-                  ref.watch(fetchProvinceslist).when(
-                      data: (data) {
-                        return data.match(
-                            (l) => Center(
-                                child: Text(l.message,
-                                    style: appStyle(
-                                        size: 16,
-                                        color: mainBlack,
-                                        fw: FontWeight.w600))), (r) {
-                          return Column(
-                            children: [
-                              CustomDropdown(
-                                values: r.map((e) => e.name).toList(),
-                                labelText: "Provinsi",
-                                hintText: "Masukkan Provinsi",
-                                validator: (value) {
-                                  if (value?.isEmpty ?? false) {
-                                    return "Anda harus memilih sebuah provinsi.";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedProvince = r.firstWhere(
-                                        (element) => element.name == value,
-                                        orElse: () => r[0]);
-                                    selectedCity = null;
-                                  });
-                                },
-                              ),
-                              if (selectedProvince != null)
-                                ref
-                                    .watch(
-                                        fetchCitieslist(selectedProvince!.id))
-                                    .when(
-                                        data: (data) {
-                                          return data.match(
-                                              (l) => Text(l.toString()), (r) {
-                                            return Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    const SizedBox(height: 5),
-                                                    CustomTextField(
-                                                      labelText: "Negara",
-                                                      hintText:
-                                                          "Masukkan Negara",
-                                                      controller:
-                                                          _countryController,
-                                                      obscureText: false,
-                                                      readOnly: true,
-                                                    ),
-                                                    CustomDropdown(
-                                                      values: r
-                                                          .map((e) => e.name)
-                                                          .toList(),
-                                                      labelText: "Kota",
-                                                      hintText: "Masukkan Kota",
-                                                      validator: (value) {
-                                                        if (value?.isEmpty ??
-                                                            false) {
-                                                          return "Anda harus memilih sebuah kota.";
-                                                        } else {
-                                                          return null;
-                                                        }
-                                                      },
-                                                      onChanged: (value) {
-                                                        setState(() {
-                                                          selectedCity =
-                                                              r.firstWhere(
-                                                                  (element) =>
-                                                                      element
-                                                                          .name ==
-                                                                      value,
-                                                                  orElse: () =>
-                                                                      r[0]);
-                                                        });
-                                                      },
-                                                    ),
-                                                    const SizedBox(height: 5),
-                                                    if (selectedCity != null)
-                                                      Column(
-                                                        children: [
-                                                          CustomTextField(
-                                                            hintText:
-                                                                "Masukkan alamat jalan",
-                                                            controller:
-                                                                _streetController,
-                                                            labelText:
-                                                                "Alamat Jalan",
-                                                            obscureText: false,
-                                                            validator: (value) {
-                                                              if (!(value!
-                                                                      .isNotEmpty &&
-                                                                  value.length >
-                                                                      6)) {
-                                                                return "Format alamat tidak valid. Harap masukkan alamat yang valid.";
-                                                              } else {
-                                                                return null;
-                                                              }
-                                                            },
-                                                          ),
-                                                          const SizedBox(
-                                                              height: 5),
-                                                          CustomTextField(
-                                                            hintText:
-                                                                "Masukkan kode pos",
-                                                            controller:
-                                                                _postalCodeController,
-                                                            labelText:
-                                                                "Kode Pos",
-                                                            obscureText: false,
-                                                            validator: (value) {
-                                                              if (!(value!
-                                                                  .isNotEmpty)) {
-                                                                return "Harap masukkan kode pos yang valid.";
-                                                              } else {
-                                                                return null;
-                                                              }
-                                                            },
-                                                          ),
-                                                          const SizedBox(
-                                                              height: 10),
-                                                          ElevatedButton(
-                                                            onPressed: () {
-                                                              checkValidityNumber(
-                                                                      _tokoWhatsAppController
-                                                                          .text
-                                                                          .replaceAll(
-                                                                              "+",
-                                                                              ""))
-                                                                  .then(
-                                                                      (value) {
-                                                                setState(() {
-                                                                  validWhatsAppNumber =
-                                                                      value;
-                                                                });
-                                                              });
-
-                                                              print("test");
-
-                                                              if (_formKey
-                                                                      .currentState!
-                                                                      .validate() &&
-                                                                  selectedProvince !=
-                                                                      null &&
-                                                                  selectedCity !=
-                                                                      null &&
-                                                                  authCustomer
-                                                                          .role !=
-                                                                      null) {
-                                                                ref
-                                                                    .read(
-                                                                        pushNotificationRepositoryProvider)
-                                                                    .getTokenDatabase(
-                                                                        ref)
-                                                                    .then(
-                                                                        (value) {
-                                                                  final tokoInformationRequest = TokoInformationRequest(
-                                                                      bio: _tokoBioController
-                                                                          .text,
-                                                                      phoneNumber:
-                                                                          _tokoPhoneNumberController
-                                                                              .text,
-                                                                      whatsAppURL:
-                                                                          _tokoWhatsAppController
-                                                                              .text,
-                                                                      profilePhotoURL:
-                                                                          selectedImage
-                                                                              ?.path,
-                                                                      name: _tokoNameController
-                                                                          .text,
-                                                                      inviteCode:
-                                                                          _tokoInviteCodeController
-                                                                              .text,
-                                                                      streetAddress:
-                                                                          _streetController
-                                                                              .text,
-                                                                      cityId:
-                                                                          selectedCity!
-                                                                              .id,
-                                                                      country:
-                                                                          _countryController
-                                                                              .text,
-                                                                      postalCode:
-                                                                          _postalCodeController
-                                                                              .text);
-
-                                                                  ref
-                                                                      .read(authViewModelProvider
-                                                                          .notifier)
-                                                                      .signUpPemilikPersonalization(
-                                                                          authPersonalization:
-                                                                              authCustomer,
-                                                                          toko:
-                                                                              tokoInformationRequest,
-                                                                          role: authCustomer
-                                                                              .role!,
-                                                                          deviceToken: value ??
-                                                                              "")
-                                                                      .then(
-                                                                          (value) {});
-                                                                });
-                                                              }
-                                                            },
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      horizontal:
-                                                                          15,
-                                                                      vertical:
-                                                                          20),
-                                                              minimumSize:
-                                                                  const Size
-                                                                      .fromHeight(
-                                                                      50),
-                                                              backgroundColor:
-                                                                  Theme.of(
-                                                                          context)
-                                                                      .colorScheme
-                                                                      .primary,
-                                                            ),
-                                                            child: Text(
-                                                              "Confirm",
-                                                              style: appStyle(
-                                                                  size: 16,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fw: FontWeight
-                                                                      .w500),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                  ],
-                                                ),
-                                              ],
-                                            );
+                          ref.watch(fetchProvinceslist).when(
+                              data: (data) {
+                                return data.match(
+                                    (l) => Center(
+                                        child: Text(l.message,
+                                            style: appStyle(
+                                                size: 16,
+                                                color: mainBlack,
+                                                fw: FontWeight.w600))), (r) {
+                                  return Column(
+                                    children: [
+                                      CustomDropdown(
+                                        values: r.map((e) => e.name).toList(),
+                                        labelText: "Provinsi",
+                                        hintText: "Masukkan Provinsi",
+                                        validator: (value) {
+                                          if (value?.isEmpty ?? false) {
+                                            return "Anda harus memilih sebuah provinsi.";
+                                          } else {
+                                            return null;
+                                          }
+                                        },
+                                        onChanged: (value) {
+                                          setState(() {
+                                            selectedProvince = r.firstWhere(
+                                                (element) =>
+                                                    element.name == value,
+                                                orElse: () => r[0]);
+                                            selectedCity = null;
                                           });
                                         },
-                                        error: (error, stackTrace) => Center(
-                                            child: Text(error.toString())),
-                                        loading: () => const Center(
-                                            child:
-                                                CircularProgressIndicator())),
-                            ],
-                          );
-                        });
-                      },
-                      error: ((error, stackTrace) =>
-                          Center(child: Text(error.toString()))),
-                      loading: () => const Center(
-                            child: CircularProgressIndicator(),
-                          )),
-                ],
+                                      ),
+                                      if (selectedProvince != null)
+                                        ref
+                                            .watch(fetchCitieslist(
+                                                selectedProvince!.id))
+                                            .when(
+                                                data: (data) {
+                                                  return data.match(
+                                                      (l) => Text(l.toString()),
+                                                      (r) {
+                                                    return Column(
+                                                      children: [
+                                                        Column(
+                                                          children: [
+                                                            const SizedBox(
+                                                                height: 5),
+                                                            CustomTextField(
+                                                              labelText:
+                                                                  "Negara",
+                                                              hintText:
+                                                                  "Masukkan Negara",
+                                                              controller:
+                                                                  _countryController,
+                                                              obscureText:
+                                                                  false,
+                                                              readOnly: true,
+                                                            ),
+                                                            CustomDropdown(
+                                                              values: r
+                                                                  .map((e) =>
+                                                                      e.name)
+                                                                  .toList(),
+                                                              labelText: "Kota",
+                                                              hintText:
+                                                                  "Masukkan Kota",
+                                                              validator:
+                                                                  (value) {
+                                                                if (value
+                                                                        ?.isEmpty ??
+                                                                    false) {
+                                                                  return "Anda harus memilih sebuah kota.";
+                                                                } else {
+                                                                  return null;
+                                                                }
+                                                              },
+                                                              onChanged:
+                                                                  (value) {
+                                                                setState(() {
+                                                                  selectedCity = r.firstWhere(
+                                                                      (element) =>
+                                                                          element
+                                                                              .name ==
+                                                                          value,
+                                                                      orElse: () =>
+                                                                          r[0]);
+                                                                });
+                                                              },
+                                                            ),
+                                                            const SizedBox(
+                                                                height: 5),
+                                                            if (selectedCity !=
+                                                                null)
+                                                              Column(
+                                                                children: [
+                                                                  CustomTextField(
+                                                                    hintText:
+                                                                        "Masukkan alamat jalan",
+                                                                    controller:
+                                                                        _streetController,
+                                                                    labelText:
+                                                                        "Alamat Jalan",
+                                                                    obscureText:
+                                                                        false,
+                                                                    validator:
+                                                                        (value) {
+                                                                      if (!(value!
+                                                                              .isNotEmpty &&
+                                                                          value.length >
+                                                                              6)) {
+                                                                        return "Format alamat tidak valid. Harap masukkan alamat yang valid.";
+                                                                      } else {
+                                                                        return null;
+                                                                      }
+                                                                    },
+                                                                  ),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          5),
+                                                                  CustomTextField(
+                                                                    hintText:
+                                                                        "Masukkan kode pos",
+                                                                    controller:
+                                                                        _postalCodeController,
+                                                                    labelText:
+                                                                        "Kode Pos",
+                                                                    obscureText:
+                                                                        false,
+                                                                    validator:
+                                                                        (value) {
+                                                                      if (!(value!
+                                                                          .isNotEmpty)) {
+                                                                        return "Harap masukkan kode pos yang valid.";
+                                                                      } else {
+                                                                        return null;
+                                                                      }
+                                                                    },
+                                                                  ),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  ElevatedButton(
+                                                                    onPressed:
+                                                                        () {
+                                                                      checkValidityNumber(_tokoWhatsAppController.text.replaceAll(
+                                                                              "+",
+                                                                              ""))
+                                                                          .then(
+                                                                              (value) {
+                                                                        setState(
+                                                                            () {
+                                                                          validWhatsAppNumber =
+                                                                              value;
+                                                                        });
+                                                                      });
+
+                                                                      print(
+                                                                          "test");
+
+                                                                      if (_formKey
+                                                                              .currentState!
+                                                                              .validate() &&
+                                                                          selectedProvince !=
+                                                                              null &&
+                                                                          selectedCity !=
+                                                                              null &&
+                                                                          authCustomer.role !=
+                                                                              null) {
+                                                                        ref
+                                                                            .read(pushNotificationRepositoryProvider)
+                                                                            .getTokenDatabase(ref)
+                                                                            .then((value) {
+                                                                          final tokoInformationRequest = TokoInformationRequest(
+                                                                              bio: _tokoBioController.text,
+                                                                              phoneNumber: _tokoPhoneNumberController.text,
+                                                                              whatsAppURL: _tokoWhatsAppController.text,
+                                                                              profilePhotoURL: selectedImage?.path,
+                                                                              name: _tokoNameController.text,
+                                                                              inviteCode: _tokoInviteCodeController.text,
+                                                                              streetAddress: _streetController.text,
+                                                                              cityId: selectedCity!.id,
+                                                                              country: _countryController.text,
+                                                                              postalCode: _postalCodeController.text);
+
+                                                                          ref
+                                                                              .read(authViewModelProvider.notifier)
+                                                                              .signUpPemilikPersonalization(authPersonalization: authCustomer, toko: tokoInformationRequest, role: authCustomer.role!, deviceToken: value ?? "")
+                                                                              .then((value) {});
+                                                                        });
+                                                                      }
+                                                                    },
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                          horizontal:
+                                                                              15,
+                                                                          vertical:
+                                                                              20),
+                                                                      minimumSize:
+                                                                          const Size
+                                                                              .fromHeight(
+                                                                              50),
+                                                                      backgroundColor: Theme.of(
+                                                                              context)
+                                                                          .colorScheme
+                                                                          .primary,
+                                                                    ),
+                                                                    child: Text(
+                                                                      "Confirm",
+                                                                      style: appStyle(
+                                                                          size:
+                                                                              16,
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fw: FontWeight
+                                                                              .w500),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    );
+                                                  });
+                                                },
+                                                error: (error, stackTrace) =>
+                                                    Center(
+                                                        child: Text(
+                                                            error.toString())),
+                                                loading: () => const Center(
+                                                    child:
+                                                        CircularProgressIndicator())),
+                                    ],
+                                  );
+                                });
+                              },
+                              error: ((error, stackTrace) =>
+                                  Center(child: Text(error.toString()))),
+                              loading: () => const Center(
+                                    child: CircularProgressIndicator(),
+                                  )),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+            loading: () => Center(child: CircularProgressIndicator()),
+            error: (error, stackTrace) => Center(
+              child: Text(
+                error.toString(),
               ),
             ),
           ),
-        ),
-      ),
     );
   }
 }

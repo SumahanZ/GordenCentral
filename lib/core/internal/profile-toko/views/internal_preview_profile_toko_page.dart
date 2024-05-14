@@ -6,7 +6,6 @@ import 'package:tugas_akhir_project/core/internal/profile-toko/repositories/impl
 import 'package:tugas_akhir_project/core/internal/profile-toko/widgets/katalog_produk_row_widget.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/widgets/toko_beranda_list.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/widgets/toko_information_card_widget.dart';
-import 'package:tugas_akhir_project/widgets/global_providers/enrolled_toko_state.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
 
@@ -37,32 +36,32 @@ class _InternalPreviewProfileTokoPageState
         ),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: previewProfileTokoInformation.maybeWhen(data: (data) {
-            return data.$1.match(
+      body: previewProfileTokoInformation.maybeWhen(data: (data) {
+        return data.$1.match(
+            (l) => Center(
+                child: Text(l.message,
+                    style: appStyle(
+                        size: 16,
+                        color: mainBlack,
+                        fw: FontWeight.w600))), (berandaTokoList) {
+          return data.$2.match(
+              (l) => Center(
+                  child: Text(l.message,  
+                      style: appStyle(
+                          size: 16,
+                          color: mainBlack,
+                          fw: FontWeight.w600))), (tokoInfo) {
+            return data.$3.match(
                 (l) => Center(
-                    child: Text(l.message,
-                        style: appStyle(
-                            size: 16,
-                            color: mainBlack,
-                            fw: FontWeight.w600))), (berandaTokoList) {
-              return data.$2.match(
-                  (l) => Center(
                       child: Text(l.message,
                           style: appStyle(
                               size: 16,
                               color: mainBlack,
-                              fw: FontWeight.w600))), (tokoInfo) {
-                return data.$3.match(
-                    (l) => Center(
-                          child: Text(l.message,
-                              style: appStyle(
-                                  size: 16,
-                                  color: mainBlack,
-                                  fw: FontWeight.w600)),
-                        ), (katalogProdukList) {
-                  return Padding(
+                              fw: FontWeight.w600)),
+                    ), (katalogProdukList) {
+              return SafeArea(
+                child: SingleChildScrollView(
+                  child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20.0, vertical: 10),
                     child: Column(
@@ -126,17 +125,17 @@ class _InternalPreviewProfileTokoPageState
                             }
                           })
                         ]),
-                  );
-                });
-              });
+                  ),
+                ),
+              );
             });
-          }, loading: () {
-            return const Center(child: CircularProgressIndicator());
-          }, orElse: () {
-            return const SizedBox.shrink();
-          }),
-        ),
-      ),
+          });
+        });
+      }, loading: () {
+        return const Center(child: CircularProgressIndicator());
+      }, orElse: () {
+        return const SizedBox.shrink();
+      }),
     );
   }
 }

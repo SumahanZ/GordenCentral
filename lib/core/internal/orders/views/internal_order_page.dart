@@ -214,18 +214,16 @@ Widget _buildOrderGroup({
 
   filteredOrdersComplete.sort((a, b) {
     int aDate = a.createdAt?.microsecondsSinceEpoch ?? 0;
-    int bDate = b.createdAt?.microsecondsSinceEpoch ?? 0;
-    return aDate.compareTo(bDate);
+    return aDate.compareTo(aDate);
   });
 
   final filteredOrdersCancelled = orders.where((element) {
     return element.status?.name == "Cancelled";
   }).toList();
 
-  filteredOrdersComplete.sort((a, b) {
+  filteredOrdersCancelled.sort((a, b) {
     int aDate = a.createdAt?.microsecondsSinceEpoch ?? 0;
-    int bDate = b.createdAt?.microsecondsSinceEpoch ?? 0;
-    return aDate.compareTo(bDate);
+    return aDate.compareTo(aDate);
   });
 
   final filteredOrdersProcessing = orders.where((element) {
@@ -233,10 +231,9 @@ Widget _buildOrderGroup({
         element.status?.name != "Cancelled";
   }).toList();
 
-  filteredOrdersComplete.sort((a, b) {
+  filteredOrdersProcessing.sort((a, b) {
     int aDate = a.createdAt?.microsecondsSinceEpoch ?? 0;
-    int bDate = b.createdAt?.microsecondsSinceEpoch ?? 0;
-    return aDate.compareTo(bDate);
+    return aDate.compareTo(aDate);
   });
 
   return (status == "Completed"

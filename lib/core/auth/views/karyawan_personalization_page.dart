@@ -27,7 +27,6 @@ class _KaryawanPersonalizationPageState
   final _userCodeController = TextEditingController();
   final _inviteCodeController = TextEditingController();
 
-
   @override
   void dispose() {
     _userCodeController.dispose();
@@ -103,78 +102,94 @@ class _KaryawanPersonalizationPageState
           ),
         ),
       ),
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const TopSectionAuth(
-                    isAvatarNeeded: false,
-                    name: 'Informasi Internal',
-                    description:
-                        "Lengkapi personalisasi informasi internal Anda",
-                  ),
-                  const SizedBox(height: 15),
-                  CustomTextField(
-                    hintText: "Masukkan kode undangan toko",
-                    controller: _inviteCodeController,
-                    labelText: "Kode Undangan Toko (Opsional)",
-                    obscureText: false,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return null;
-                      }
-                      if (!(value.isNotEmpty && value.length > 6)) {
-                        return "Format kode undangan toko tidak valid. Harap masukkan kode undangan yang valid.";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate() &&
-                          authCustomer.role != null) {
-                        ref
-                            .read(pushNotificationRepositoryProvider)
-                            .getTokenDatabase(ref)
-                            .then((value) {
-                          ref
-                              .read(authViewModelProvider.notifier)
-                              .signUpKaryawanPersonalization(
-                                  authPersonalization: authCustomer,
-                                  code: _userCodeController.text,
-                                  role: authCustomer.role!,
-                                  inviteCode: _inviteCodeController.text == ""
-                                      ? null
-                                      : _inviteCodeController.text,
-                                  deviceToken: value ?? "")
-                              .then((value) {});
-                        });
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 20),
-                      minimumSize: const Size.fromHeight(50),
-                      backgroundColor: Theme.of(context).colorScheme.primary,
+      body: ref.watch(authViewModelProvider).when(
+            data: (data) {
+              return SafeArea(
+                child: Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const TopSectionAuth(
+                            isAvatarNeeded: false,
+                            name: 'Informasi Internal',
+                            description:
+                                "Lengkapi personalisasi informasi internal Anda",
+                          ),
+                          const SizedBox(height: 15),
+                          CustomTextField(
+                            hintText: "Masukkan kode undangan toko",
+                            controller: _inviteCodeController,
+                            labelText: "Kode Undangan Toko (Opsional)",
+                            obscureText: false,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return null;
+                              }
+                              if (!(value.isNotEmpty && value.length > 6)) {
+                                return "Format kode undangan toko tidak valid. Harap masukkan kode undangan yang valid.";
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
+                          const SizedBox(height: 10),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate() &&
+                                  authCustomer.role != null) {
+                                ref
+                                    .read(pushNotificationRepositoryProvider)
+                                    .getTokenDatabase(ref)
+                                    .then((value) {
+                                  ref
+                                      .read(authViewModelProvider.notifier)
+                                      .signUpKaryawanPersonalization(
+                                          authPersonalization: authCustomer,
+                                          code: _userCodeController.text,
+                                          role: authCustomer.role!,
+                                          inviteCode:
+                                              _inviteCodeController.text == ""
+                                                  ? null
+                                                  : _inviteCodeController.text,
+                                          deviceToken: value ?? "")
+                                      .then((value) {});
+                                });
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 20),
+                              minimumSize: const Size.fromHeight(50),
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.primary,
+                            ),
+                            child: Text(
+                              "Selesaikan Personalisasi",
+                              style: appStyle(
+                                  size: 18,
+                                  color: Colors.white,
+                                  fw: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    child: Text(
-                      "Selesaikan Personalisasi",
-                      style: appStyle(
-                          size: 18, color: Colors.white, fw: FontWeight.w500),
-                    ),
                   ),
-                ],
+                ),
+              );
+            },
+            error: (error, stackTrace) => Center(
+              child: Text(
+                error.toString(),
               ),
             ),
+            loading: () => Center(
+              child: CircularProgressIndicator(),
+            ),
           ),
-        ),
-      ),
     );
   }
 }
