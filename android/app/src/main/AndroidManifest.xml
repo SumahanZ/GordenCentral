@@ -2,7 +2,7 @@
 <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:usesCleartextTraffic="true"
-        android:label="tugas_akhir_project"
+        android:label="Gorden Central"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
