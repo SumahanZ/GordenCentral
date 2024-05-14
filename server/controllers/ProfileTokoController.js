@@ -232,7 +232,7 @@ module.exports = {
             }
 
             const beranda = await models.promotional.findAll({
-                order: [['createdAt', 'ASC']],
+                order: [['createdAt', 'DESC']],
                 where: {
                     tokoId: toko.id
                 },
@@ -920,7 +920,7 @@ module.exports = {
                     }],
 
                 order: [
-                    ['name', 'ASC'],
+                    ['name', 'DESC'],
                 ]
             })
 

@@ -41,7 +41,7 @@ module.exports = {
                 }, {
                     model: models.promotional,
                     required: true,
-                    order: [['createdAt', 'ASC']],
+                    order: [['createdAt', 'DESC']],
                     where: {
                         tokoId: tokoId
                     },

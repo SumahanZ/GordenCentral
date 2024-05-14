@@ -391,7 +391,7 @@ module.exports = {
                 }],
 
                 order: [
-                    ['name', 'ASC'],
+                    ['name', 'DESC'],
                 ]
             })
 

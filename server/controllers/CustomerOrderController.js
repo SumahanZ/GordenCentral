@@ -72,7 +72,7 @@ module.exports = {
                     model: models.toko
                 }],
                 order: [
-                    ['createdAt', 'ASC']
+                    ['createdAt', 'DESC']
                 ],
                 transaction: t
             })
