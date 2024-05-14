@@ -181,8 +181,8 @@ module.exports = {
 
             return res.status(200).json({
                 getTotalStockAmount: getTotalStockAmount.map(e => parseInt(e.totalAmount)).reduce((accumulator, value) => accumulator + value, 0),
-                totalAmountBarangMasuk: totalAmountBarangMasuk.map(e => parseInt(e.amount)).reduce((accumulator, value) => accumulator + value, 0),
-                totalAmountBarangKeluar: totalAmountBarangKeluar.map(e => parseInt(e.amount)).reduce((accumulator, value) => accumulator + value, 0),
+                totalAmountBarangMasuk: totalAmountBarangMasuk.length,
+                totalAmountBarangKeluar: totalAmountBarangKeluar.length,
             });
         } catch (error) {
             await t.rollback();
