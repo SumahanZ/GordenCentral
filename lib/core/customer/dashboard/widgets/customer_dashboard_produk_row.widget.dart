@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/models/produk.dart';
 import 'package:tugas_akhir_project/utils/extensions/double_extension.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -21,7 +22,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       width: double.infinity,
-      height: 350,
+      height: 350.h,
       child: produkList.isEmpty
           ? Center(
               child: Text("Tidak ada produk",
@@ -43,7 +44,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                     }
                   },
                   child: SizedBox(
-                    width: 200,
+                    width: 200.w,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 10),
@@ -138,7 +139,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                                         imageUrl: produkList[index]
                                             .produkGlobalImages[0]
                                             .globalImageUrl,
-                                        height: 120,
+                                        height: 120.h,
                                         imageBuilder:
                                             (context, imageProvider) =>
                                                 Container(
@@ -172,7 +173,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                                               color: mainBlack,
                                               fw: FontWeight.w600),
                                           textAlign: TextAlign.center),
-                                      const SizedBox(height: 5),
+                                      SizedBox(height: 5.h),
                                       Text(
                                         PriceFormatter.getFormattedValue(
                                             produkList[index].promo == null ||
@@ -197,7 +198,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                                             color: mainBlack,
                                             fw: FontWeight.bold),
                                       ),
-                                      const SizedBox(height: 5),
+                                      SizedBox(height: 5.h),
                                       // if (produkList[index].rating.isNotEmpty)
                                       Row(
                                         mainAxisAlignment:
@@ -233,7 +234,7 @@ class CustomerDashboardProdukRow extends ConsumerWidget {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 5),
+                                      SizedBox(height: 5.h),
                                     ],
                                   ),
                                 ),

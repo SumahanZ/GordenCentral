@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/core/auth/repositories/implementations/token_push_notification_repository_impl.dart';
 import 'package:tugas_akhir_project/core/customer/cart/repositories/sources/whatsapp_communicator_repository.dart';
 import 'package:tugas_akhir_project/utils/extensions/string_extension.dart';
@@ -157,12 +158,12 @@ class _PemilikPersonalizationPageState
                             description:
                                 "Buat toko dengan konfigurasi yang kamu miliki",
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           TokoConfigureImage(
                             pickTheImage: pickTheImage,
                             selectedImage: selectedImage,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           CustomTextField(
                               hintText: "Masukkan nama toko",
                               controller: _tokoNameController,
@@ -175,8 +176,8 @@ class _PemilikPersonalizationPageState
                                   return null;
                                 }
                               }),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           CustomTextArea(
                               hintText: "Masukkan bio toko",
@@ -190,8 +191,8 @@ class _PemilikPersonalizationPageState
                                   return null;
                                 }
                               }),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           //logic for whatsapp later
                           CustomTextField(
@@ -206,8 +207,8 @@ class _PemilikPersonalizationPageState
                                   return null;
                                 }
                               }),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           CustomTextField(
                               hintText: "Masukkan kode undangan toko",
@@ -267,8 +268,8 @@ class _PemilikPersonalizationPageState
                                                       children: [
                                                         Column(
                                                           children: [
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             CustomTextField(
                                                               labelText:
                                                                   "Negara",
@@ -311,8 +312,8 @@ class _PemilikPersonalizationPageState
                                                                 });
                                                               },
                                                             ),
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             if (selectedCity !=
                                                                 null)
                                                               Column(
@@ -338,9 +339,9 @@ class _PemilikPersonalizationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          5),
+                                                                          5.h),
                                                                   CustomTextField(
                                                                     hintText:
                                                                         "Masukkan kode pos",
@@ -360,9 +361,9 @@ class _PemilikPersonalizationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          10),
+                                                                          10.h),
                                                                   ElevatedButton(
                                                                     onPressed:
                                                                         () {

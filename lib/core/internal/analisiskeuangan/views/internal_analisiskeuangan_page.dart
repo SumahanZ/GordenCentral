@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/analisiskeuangan/repositories/implementations/internal_analisiskeuangan_repository_impl.dart';
@@ -251,7 +252,7 @@ class _InternalAnalisaKeuanganPageState
                                 description:
                                     "Analisis penjualan dan pendapatan Anda",
                                 isAvatarNeeded: false),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             Card(
                               surfaceTintColor: Colors.white,
                               elevation: 5,
@@ -273,7 +274,7 @@ class _InternalAnalisaKeuanganPageState
                                                     size: 20,
                                                     color: mainBlack,
                                                     fw: FontWeight.w600)),
-                                            const SizedBox(height: 20),
+                                            SizedBox(height: 20.h),
                                             Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -336,7 +337,7 @@ class _InternalAnalisaKeuanganPageState
                                                     )
                                                   ])
                                                 ]),
-                                            const SizedBox(height: 15),
+                                            SizedBox(height: 15.h),
                                           ],
                                         ),
                                       ),
@@ -345,7 +346,7 @@ class _InternalAnalisaKeuanganPageState
                                 ]),
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             Card(
                               surfaceTintColor: Colors.white,
                               elevation: 5,
@@ -372,7 +373,7 @@ class _InternalAnalisaKeuanganPageState
                                     ]),
                               ),
                             ),
-                            const SizedBox(height: 40),
+                            SizedBox(height: 40.h),
                             Row(
                               children: [
                                 Text(
@@ -382,7 +383,7 @@ class _InternalAnalisaKeuanganPageState
                                       color: mainBlack,
                                       fw: FontWeight.w500),
                                 ),
-                                const SizedBox(width: 20),
+                                SizedBox(width: 20.w),
                                 Expanded(
                                   child: CustomDropdownChart(
                                       values: const [
@@ -401,10 +402,10 @@ class _InternalAnalisaKeuanganPageState
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             SizedBox(
                               width: double.infinity,
-                              height: 400,
+                              height: 400.h,
                               child: salesData.isEmpty
                                   ? Center(
                                       child: Text("Data kosong",
@@ -441,7 +442,7 @@ class _InternalAnalisaKeuanganPageState
                                       series: <LineSeries<SalesData, String>>[
                                           LineSeries(
                                               dataSource: salesData,
-                                              width: 3,
+                                              width: 3.w,
                                               xValueMapper: (sales, _) =>
                                                   sales.timeFrame,
                                               yValueMapper: (sales, _) =>
@@ -481,7 +482,7 @@ class _InternalAnalisaKeuanganPageState
                                               ))
                                         ]),
                             ),
-                            const SizedBox(height: 40),
+                            SizedBox(height: 40.h),
                             Row(
                               children: [
                                 Text(
@@ -493,8 +494,8 @@ class _InternalAnalisaKeuanganPageState
                                 ),
                               ],
                             ),
-                            const SizedBox(
-                              height: 10,
+                            SizedBox(
+                              height: 10.h,
                             ),
                             ListView.builder(
                               shrinkWrap: true,
@@ -510,9 +511,9 @@ class _InternalAnalisaKeuanganPageState
                                     contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 20, vertical: 10),
                                     title: Column(children: [
-                                      IntrinsicHeight(
-                                        child: Row(children: [
-                                          Column(
+                                      Row(children: [
+                                        Expanded(
+                                          child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             crossAxisAlignment:
@@ -521,13 +522,13 @@ class _InternalAnalisaKeuanganPageState
                                               Text(
                                                   "ID Pesanan: #${recentTransactions[index].code}",
                                                   style: appStyle(
-                                                      size: 14,
+                                                      size: 13,
                                                       color: mainBlack,
                                                       fw: FontWeight.bold)),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    "${recentTransactions[index].customer?.user?.name} #123234",
+                                                    "User Code: #${recentTransactions[index].customer?.customerCode}",
                                                     style: appStyle(
                                                       size: 12,
                                                       color: mainBlack,
@@ -553,22 +554,22 @@ class _InternalAnalisaKeuanganPageState
                                               ),
                                             ],
                                           ),
-                                          const Spacer(),
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                  "+${PriceFormatter.getFormattedValue(recentTransactions[index].finalPriceTotal)}",
-                                                  style: appStyle(
-                                                    size: 16,
-                                                    color: mainBlack,
-                                                    fw: FontWeight.bold,
-                                                  ))
-                                            ],
-                                          ),
-                                        ]),
-                                      ),
+                                        ),
+                                        // const Spacer(),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                                "+${PriceFormatter.getFormattedValue(recentTransactions[index].finalPriceTotal)}",
+                                                style: appStyle(
+                                                  size: 14,
+                                                  color: mainBlack,
+                                                  fw: FontWeight.bold,
+                                                ))
+                                          ],
+                                        ),
+                                      ]),
                                     ]),
                                   ),
                                 );

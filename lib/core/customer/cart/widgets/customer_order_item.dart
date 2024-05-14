@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:tugas_akhir_project/core/customer/order/repositories/implementations/customer_order_repository_impl.dart';
 // import 'package:tugas_akhir_project/core/customer/order/viewmodels/customer_order_viewmodel.dart';
 import 'package:tugas_akhir_project/models/orderitem.dart';
@@ -28,14 +29,14 @@ class CustomerOrderItem extends ConsumerWidget {
           Row(
             children: [
               const Icon(Icons.discount_outlined),
-              const SizedBox(width: 5),
+              SizedBox(width: 5.w),
               Text(
                   "${orderItem?.produkCombination?.product?.promo?.discountPercent}% OFF",
                   style: appStyle(
                       size: 12, color: mainBlack, fw: FontWeight.w600)),
             ],
           ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         IntrinsicHeight(
           child: Row(children: [
             ClipRRect(
@@ -44,7 +45,7 @@ class CustomerOrderItem extends ConsumerWidget {
                   imageUrl: orderItem
                           ?.produkCombination?.color?.produkColorImageUrl ??
                       "",
-                  width: 70,
+                  width: 70.w,
                   imageBuilder: (context, imageProvider) => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -59,7 +60,7 @@ class CustomerOrderItem extends ConsumerWidget {
                   errorWidget: (context, url, error) =>
                       const Icon(Icons.error),
                 )),
-            const SizedBox(width: 15),
+            SizedBox(width: 15.w),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +130,7 @@ class CustomerOrderItem extends ConsumerWidget {
                                 : TextDecoration.none,
                             decorationThickness: 2),
                       ),
-                      const SizedBox(width: 10),
+                      SizedBox(width: 10.w),
                       if (orderItem?.produkCombination?.product?.promo !=
                               null &&
                           (orderItem?.produkCombination?.product?.promo

@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/repositories/implementations/token_push_notification_repository_impl.dart';
 import 'package:tugas_akhir_project/core/auth/viewmodels/auth_viewmodel.dart';
@@ -87,13 +88,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 const TopSectionAuth(
                   isAvatarNeeded: true,
                   name: 'Login',
                   description: "Login untuk melanjutkan penggunaan aplikasi",
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 CustomTextField(
                   hintText: "Masukkan email Anda",
                   controller: _emailController,
@@ -107,7 +108,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     }
                   },
                 ),
-                const SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 CustomTextField(
                   hintText: "Masukkan kata sandi Anda",
                   controller: _passwordController,
@@ -121,7 +122,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     }
                   },
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -151,7 +152,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         size: 18, color: Colors.white, fw: FontWeight.w500),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -164,7 +165,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -180,9 +181,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             fw: FontWeight.bold),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    SizedBox(width: 10.w),
                     const HorizontalOrLine(label: "ATAU", height: 1),
-                    const SizedBox(width: 10),
+                    SizedBox(width: 10.w),
                     GestureDetector(
                       onTap: () {
                         Routemaster.of(context).push("/registration-customer");

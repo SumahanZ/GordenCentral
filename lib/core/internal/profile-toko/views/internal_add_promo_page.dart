@@ -4,6 +4,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
@@ -115,7 +116,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                             name: "Tambah Promo",
                             description: "Pilih promo untuk ditambahkan",
                             isAvatarNeeded: false),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         Card(
                           surfaceTintColor: Colors.white,
                           elevation: 5,
@@ -159,7 +160,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                                       fw: FontWeight.w600,
                                                     ),
                                                   ),
-                                                  const SizedBox(height: 5),
+                                                  SizedBox(height: 5.h),
                                                   IntrinsicHeight(
                                                     child: Row(children: [
                                                       ClipRRect(
@@ -172,9 +173,9 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                                                 .first
                                                                 .globalImageUrl,
                                                             fit: BoxFit.contain,
-                                                            width: 70),
+                                                            width: 70.w),
                                                       ),
-                                                      const SizedBox(width: 15),
+                                                      SizedBox(width: 15.w),
                                                       Expanded(
                                                         child: Column(
                                                           mainAxisAlignment:
@@ -245,7 +246,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                                       ),
                                                     ]),
                                                   ),
-                                                  const SizedBox(height: 5),
+                                                  SizedBox(height: 5.h),
                                                 ]),
                                           ),
                                         ],
@@ -276,7 +277,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                                   const Icon(
                                                       AntIcons.plusCircleFilled,
                                                       size: 25),
-                                                  const SizedBox(width: 5),
+                                                  SizedBox(width: 5.w),
                                                   GestureDetector(
                                                     onTap: () => Routemaster.of(
                                                             context)
@@ -301,7 +302,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -318,7 +319,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         SfSlider(
                           min: 0.0,
                           stepSize: 1,
@@ -341,7 +342,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                             });
                           },
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         DateCustomTextField(
                           hintText: "Pilih tanggal berakhir promo",
                           controller: _deliveredAtController,
@@ -375,7 +376,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                 : null,
                             textEditingController: _deliveryTimeController,
                           ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         if (selectedPromoItem != null) ...[
                           Material(
                             elevation: 5,
@@ -391,7 +392,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                           size: 15,
                                           color: mainBlack,
                                           fw: FontWeight.w600)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Row(
                                     children: [
                                       Text(
@@ -412,7 +413,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Row(
                                     children: [
                                       Text(
@@ -432,9 +433,9 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 5),
+                                  SizedBox(height: 5.h),
                                   Divider(color: Colors.black.withOpacity(0.5)),
-                                  const SizedBox(height: 5),
+                                  SizedBox(height: 5.h),
                                   Row(
                                     children: [
                                       Text(
@@ -461,7 +462,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 30.h),
                           ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate() &&

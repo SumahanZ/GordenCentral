@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_saved.dart';
@@ -140,7 +141,7 @@ class _InternalAddStokProdukPageState
                             description:
                                 "Tambahkan stok dari produk yang telah Anda masukkan",
                             isAvatarNeeded: false),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         ProdukStokCombinationCard(
                             produkStok: productStok,
                             titleName: "Detail Stok Produk",
@@ -149,7 +150,7 @@ class _InternalAddStokProdukPageState
                                 '/internal-dashboard/produkstok/input-produk/add-stok/add-details',
                             routeDestination:
                                 '/internal-dashboard/produkstok/input-produk/add-stok/edit-details'),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         DateCustomTextField(
                           maxTime: DateTime.now(),
                           hintText: "Pilih tanggal dipesan",
@@ -176,7 +177,7 @@ class _InternalAddStokProdukPageState
                             });
                           },
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         DateCustomTextField(
                           hintText: "Pilih tanggal diterima",
                           controller: _deliveredAtController,
@@ -204,7 +205,7 @@ class _InternalAddStokProdukPageState
                             });
                           },
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         if (_issuedFromController.text != "" &&
                             _deliveredAtController.text != "")
                           DisableCustomTextField(
@@ -235,7 +236,7 @@ class _InternalAddStokProdukPageState
                                 : null,
                             textEditingController: _deliveryTimeController,
                           ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         DisableCustomTextField(
                           key: Key(testValue.toString()),
                           labelText: "Total Jumlah",
@@ -244,7 +245,7 @@ class _InternalAddStokProdukPageState
                           value: testValue,
                           textEditingController: _totalAmountController,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         ElevatedButton(
                           onPressed: () {
                             if (formKey.currentState!.validate() &&

@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/repositories/implementations/profile_toko_repository_impl.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -88,7 +89,7 @@ class InternalKatalogProdukPage extends ConsumerWidget {
                                                 color: mainBlack,
                                                 fw: FontWeight.w600),
                                           ),
-                                          const SizedBox(height: 5),
+                                          SizedBox(height: 5.h),
                                           Row(
                                             children: [
                                               Text(
@@ -123,7 +124,7 @@ class InternalKatalogProdukPage extends ConsumerWidget {
                                 ]),
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                           ]);
                         })
                   ]),

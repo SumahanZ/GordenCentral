@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/providers/auth_personalization_provider.dart';
 import 'package:tugas_akhir_project/widgets/form_field_widget.dart';
@@ -67,7 +68,7 @@ class _RegisterPageCustomerState extends ConsumerState<RegisterPageCustomer> {
                     description:
                         "Register sebagai customer to memakai aplikasi",
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   CustomTextField(
                       hintText: "Masukkan nama Anda",
                       controller: _nameController,
@@ -80,7 +81,7 @@ class _RegisterPageCustomerState extends ConsumerState<RegisterPageCustomer> {
                           return null;
                         }
                       }),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomTextField(
                     hintText: "Masukkan email Anda",
                     controller: _emailController,
@@ -94,7 +95,7 @@ class _RegisterPageCustomerState extends ConsumerState<RegisterPageCustomer> {
                       }
                     },
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomTextField(
                     hintText: "Masukkan kata sandi Anda",
                     controller: _passwordController,
@@ -108,7 +109,7 @@ class _RegisterPageCustomerState extends ConsumerState<RegisterPageCustomer> {
                       }
                     },
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomTextField(
                     hintText: "Konfirmasi kata sandi Anda",
                     controller: _confirmPasswordController,
@@ -124,7 +125,7 @@ class _RegisterPageCustomerState extends ConsumerState<RegisterPageCustomer> {
                       }
                     },
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -151,7 +152,7 @@ class _RegisterPageCustomerState extends ConsumerState<RegisterPageCustomer> {
                           size: 18, color: Colors.white, fw: FontWeight.w500),
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

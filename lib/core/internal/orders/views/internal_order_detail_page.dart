@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/customer/cart/widgets/customer_order_item.dart';
 import 'package:tugas_akhir_project/core/customer/orders/providers/order_detail_selection_notifier.dart';
@@ -34,7 +35,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                 style:
                     appStyle(size: 16, color: mainBlack, fw: FontWeight.w600),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Card(
                 surfaceTintColor: Colors.white,
                 elevation: 5,
@@ -126,7 +127,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Row(
                 children: [
                   Text(
@@ -150,7 +151,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                   // ),
                 ],
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Card(
                 surfaceTintColor: Colors.white,
                 elevation: 5,
@@ -214,7 +215,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                 color: mainBlack,
                                 fw: FontWeight.w600),
                           ),
-                          const SizedBox(height: 5),
+                          SizedBox(height: 5.h),
                           Text(
                             orderDetail?.note ?? "Tidak ada deskripsi.",
                             style: appStyle(
@@ -227,7 +228,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                       if (orderDetail?.status?.name != "Cancelled" &&
                           orderDetail?.status?.name != "Completed") ...[
                         Divider(color: Colors.black.withOpacity(0.5)),
-                        const SizedBox(height: 5),
+                        SizedBox(height: 5.h),
                         ElevatedButton(
                           onPressed: () {
                             Routemaster.of(context).push(
@@ -253,13 +254,13 @@ class InternalOrderDetailPage extends ConsumerWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Text(
                 " Informasi Pesanan",
                 style:
                     appStyle(size: 16, color: mainBlack, fw: FontWeight.w600),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Card(
                 surfaceTintColor: Colors.white,
                 elevation: 5,
@@ -307,7 +308,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                       size: 15,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(height: 5),
+                              SizedBox(height: 5.h),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -318,7 +319,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                         color: mainBlack,
                                         fw: FontWeight.w500),
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Row(
                                     children: [
                                       Text(
@@ -338,7 +339,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Row(
                                     children: [
                                       Text(
@@ -358,7 +359,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Row(
                                     children: [
                                       Text(
@@ -378,7 +379,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Row(
                                     children: [
                                       Text(
@@ -400,14 +401,14 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 5),
+                              SizedBox(height: 5.h),
                               Divider(color: Colors.black.withOpacity(0.5)),
                               Text("Ringkasan Pesanan",
                                   style: appStyle(
                                       size: 15,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(height: 10),
+                              SizedBox(height: 10.h),
                               Row(
                                 children: [
                                   Text(
@@ -448,7 +449,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                               //     ),
                               //   ],
                               // ),
-                              const SizedBox(height: 10),
+                              SizedBox(height: 10.h),
                               Row(
                                 children: [
                                   Text(
@@ -468,9 +469,9 @@ class InternalOrderDetailPage extends ConsumerWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 5),
+                              SizedBox(height: 5.h),
                               Divider(color: Colors.black.withOpacity(0.5)),
-                              const SizedBox(height: 5),
+                              SizedBox(height: 5.h),
                               Row(
                                 children: [
                                   Text(

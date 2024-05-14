@@ -1,5 +1,6 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -53,7 +54,7 @@ class _InternalAddLaporanBarangMasukPageState
                   name: "Add Laporan Barang Masuk",
                   description: "Add a laporan barang masuk entry",
                   isAvatarNeeded: false),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Card(
                 surfaceTintColor: Colors.white,
                 elevation: 5,
@@ -144,7 +145,7 @@ class _InternalAddLaporanBarangMasukPageState
                                 ),
                               ]),
                             ),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                           ]),
                         ),
                         const Divider(),
@@ -189,7 +190,7 @@ class _InternalAddLaporanBarangMasukPageState
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               CustomDropdown(
                 labelText: "Produk Color",
                 hintText: "Choose Produk Color",
@@ -204,7 +205,7 @@ class _InternalAddLaporanBarangMasukPageState
                   selectedRoleDropdownValue = value!;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               CustomDropdown(
                 labelText: "Produk Size",
                 hintText: "Choose Produk Size",
@@ -219,7 +220,7 @@ class _InternalAddLaporanBarangMasukPageState
                   selectedRoleDropdownValue = value!;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               //if not exist show disable form field
               CustomTextField(
                   hintText: "Enter produk unit",
@@ -233,7 +234,7 @@ class _InternalAddLaporanBarangMasukPageState
                       return null;
                     }
                   }),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DisableCustomTextField(
                 labelText: "Before Stok Amount",
                 validator: (value) {
@@ -246,7 +247,7 @@ class _InternalAddLaporanBarangMasukPageState
                 value: '15',
                 defaultValue: '0',
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               CustomTextField(
                   hintText: "Entered entered stok amount",
                   controller: _amountController,
@@ -259,7 +260,7 @@ class _InternalAddLaporanBarangMasukPageState
                       return null;
                     }
                   }),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DisableCustomTextField(
                 labelText: "After Stok Amount",
                 validator: (value) {
@@ -272,7 +273,7 @@ class _InternalAddLaporanBarangMasukPageState
                 value: '15',
                 defaultValue: '0',
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DateCustomTextField(
                   hintText: "Select issued from date",
                   controller: _issuedFromController,
@@ -284,7 +285,7 @@ class _InternalAddLaporanBarangMasukPageState
                       return null;
                     }
                   }),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DateCustomTextField(
                   hintText: "Select delivered at date",
                   controller: _deliveredAtController,
@@ -296,7 +297,7 @@ class _InternalAddLaporanBarangMasukPageState
                       return null;
                     }
                   }),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DisableCustomTextField(
                 labelText: "Delivery Time",
                 value: "15",
@@ -309,7 +310,7 @@ class _InternalAddLaporanBarangMasukPageState
                 },
                 defaultValue: '0',
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DisableCustomTextField(
                 labelText: "Total Amount",
                 value: "80",
@@ -322,7 +323,7 @@ class _InternalAddLaporanBarangMasukPageState
                 },
                 defaultValue: '0',
               ),
-              const SizedBox(height: 25),
+              SizedBox(height: 25.h),
               ElevatedButton(
                 onPressed: () {
                   Routemaster.of(context)

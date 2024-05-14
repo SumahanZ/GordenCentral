@@ -1,5 +1,6 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -48,7 +49,7 @@ class _InternalEditStokDetailsPageState
                   description: "Edit detail stok produk",
                   isAvatarNeeded: false,
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Card(
                   surfaceTintColor: Colors.white,
                   elevation: 5,
@@ -82,9 +83,9 @@ class _InternalEditStokDetailsPageState
                                         child: Image.asset(
                                             "assets/images/test-shoes-image.jpg",
                                             fit: BoxFit.contain,
-                                            width: 70),
+                                            width: 70.w),
                                       ),
-                                      const SizedBox(width: 15),
+                                      SizedBox(width: 15.w),
                                       Expanded(
                                         child: Column(
                                           mainAxisAlignment:
@@ -143,7 +144,7 @@ class _InternalEditStokDetailsPageState
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 5),
+                                SizedBox(height: 5.h),
                               ],
                             ),
                           ),
@@ -167,7 +168,7 @@ class _InternalEditStokDetailsPageState
                                         children: [
                                           const Icon(AntIcons.plusCircleFilled,
                                               size: 25),
-                                          const SizedBox(width: 5),
+                                          SizedBox(width: 5.w),
                                           GestureDetector(
                                             onTap: () => Routemaster.of(context)
                                                 .push(
@@ -193,7 +194,7 @@ class _InternalEditStokDetailsPageState
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                   labelText: "Warna Produk",
                   hintText: "Pilih Warna Produk",
@@ -208,7 +209,7 @@ class _InternalEditStokDetailsPageState
                     selectedRoleDropdownValue = value!;
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                   labelText: "Ukuran Produk",
                   hintText: "Pilih Ukuran Produk",
@@ -223,7 +224,7 @@ class _InternalEditStokDetailsPageState
                     selectedRoleDropdownValue = value!;
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 DisableCustomTextField(
                   value: "Centimeters (cm)",
                   labelText: "Satuan Produk",
@@ -236,7 +237,7 @@ class _InternalEditStokDetailsPageState
                   },
                   defaultValue: '0',
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomTextField(
                   hintText: "Masukkan jumlah stok",
                   controller: _productUnitController,
@@ -250,7 +251,7 @@ class _InternalEditStokDetailsPageState
                     }
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomTextField(
                   hintText: "Masukkan rata-rata penjualan harian",
                   controller: _productUnitController,
@@ -264,7 +265,7 @@ class _InternalEditStokDetailsPageState
                     }
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomTextField(
                   hintText: "Masukkan rata-rata waktu harian",
                   controller: _productUnitController,
@@ -278,7 +279,7 @@ class _InternalEditStokDetailsPageState
                     }
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 DisableCustomTextField(
                   value: "Masukkan stok aman",
                   labelText: "Stok Aman",
@@ -291,7 +292,7 @@ class _InternalEditStokDetailsPageState
                   },
                   defaultValue: '0',
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 DisableCustomTextField(
                   value: "Masukkan titik pesan ulang",
                   labelText: "Titik Pesan Ulang",
@@ -304,7 +305,7 @@ class _InternalEditStokDetailsPageState
                   },
                   defaultValue: '0',
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: 25.h),
                 ElevatedButton(
                   onPressed: () {
                     Routemaster.of(context)
@@ -323,7 +324,7 @@ class _InternalEditStokDetailsPageState
                         size: 16, color: Colors.white, fw: FontWeight.w500),
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: 25.h),
                 ElevatedButton(
                   onPressed: () {
                     Routemaster.of(context)

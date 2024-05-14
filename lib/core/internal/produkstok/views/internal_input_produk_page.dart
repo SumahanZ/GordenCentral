@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
@@ -77,11 +78,11 @@ class _InternalInputProdukPageState
                       name: "Input Produk",
                       description: "Masukkan informasi produk Anda",
                       isAvatarNeeded: false),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   ProdukImagePicker(
                       selectedImages: selectedImages,
                       pickTheImage: pickTheImage),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   CustomTextField(
                       hintText: "Masukkan nama produk",
                       controller: _nameController,
@@ -94,7 +95,7 @@ class _InternalInputProdukPageState
                           return null;
                         }
                       }),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomTextArea(
                       hintText: "Masukkan deskripsi produk",
                       controller: _descriptionController,
@@ -107,7 +108,7 @@ class _InternalInputProdukPageState
                         }
                       },
                       obscureText: false),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomPriceTextField(
                       formatter: formatter,
                       hintText: "Masukkan harga produk",
@@ -121,7 +122,7 @@ class _InternalInputProdukPageState
                         }
                       },
                       obscureText: false),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   ProdukCard(
                     selections: productSelections.sizes,
                     routeDestination:
@@ -130,7 +131,7 @@ class _InternalInputProdukPageState
                     buttonDescription: 'Tambahkan ukuran',
                     type: 'size',
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   ProdukColorWidget(
                     titleName: 'Warna Produk',
                     buttonDescription: 'Tambahkan warna',
@@ -138,7 +139,7 @@ class _InternalInputProdukPageState
                         '/internal-dashboard/produkstok/input-produk/color',
                     selections: productSelections.colors,
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   ProdukCard(
                     selections: productSelections.categories,
                     routeDestination:
@@ -147,7 +148,7 @@ class _InternalInputProdukPageState
                     buttonDescription: 'Pilih kategori',
                     type: "category",
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height: 40.h),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate() &&

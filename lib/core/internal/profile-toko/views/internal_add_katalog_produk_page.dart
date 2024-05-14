@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/providers/katalog_produk_selection_notifier.dart';
@@ -62,9 +63,7 @@ class _InternalAddKatalogProdukPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: "Terjadi kesalahan respons!",
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       } else if (state is AsyncError && state.error is RequestError) {
         showPopupModal(
             context: context,
@@ -72,9 +71,7 @@ class _InternalAddKatalogProdukPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: "Permintaan jaringan telah terjadi!",
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       } else if (state is AsyncError) {
         showPopupModal(
             context: context,
@@ -82,9 +79,7 @@ class _InternalAddKatalogProdukPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: (state.error as ApiError).message,
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       }
     });
 
@@ -111,7 +106,7 @@ class _InternalAddKatalogProdukPageState
                                 name: "Tambah Katalog Produk",
                                 description: "Tambah Katalog Produk Toko",
                                 isAvatarNeeded: false),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             CustomTextField(
                               hintText: "Masukkan nama kategori produk katalog",
                               controller: _nameKatalogController,
@@ -185,14 +180,13 @@ class _InternalAddKatalogProdukPageState
                                                                     .promo
                                                                     ?.expiredAt ??
                                                                 DateTime.now())
-                                                            .isAfter(
-                                                                DateTime.now()))
+                                                            .isAfter(DateTime
+                                                                .now())) ...[
                                                       Row(
                                                         children: [
                                                           const Icon(Icons
                                                               .discount_outlined),
-                                                          const SizedBox(
-                                                              width: 5),
+                                                          SizedBox(width: 5.w),
                                                           Text(
                                                               "${selectedProduks[index].promo?.discountPercent}% OFF",
                                                               style: appStyle(
@@ -201,13 +195,20 @@ class _InternalAddKatalogProdukPageState
                                                                       mainBlack,
                                                                   fw: FontWeight
                                                                       .w600)),
-                                                          const Spacer(),
+                                                        ],
+                                                      ),
+                                                      SizedBox(height: 5.h),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
                                                           Text(
                                                             textAlign: TextAlign
                                                                 .center,
                                                             "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), selectedProduks[index].promo!.expiredAt!)}",
                                                             style: appStyle(
-                                                              size: 11,
+                                                              size: 12,
                                                               color: mainBlack,
                                                               fw: FontWeight
                                                                   .w600,
@@ -215,7 +216,8 @@ class _InternalAddKatalogProdukPageState
                                                           ),
                                                         ],
                                                       ),
-                                                    const SizedBox(height: 5),
+                                                      SizedBox(height: 10.h),
+                                                    ],
                                                     IntrinsicHeight(
                                                       child: Row(children: [
                                                         ClipRRect(
@@ -230,7 +232,7 @@ class _InternalAddKatalogProdukPageState
                                                                   .produkGlobalImages[
                                                                       0]
                                                                   .globalImageUrl,
-                                                              width: 70,
+                                                              width: 70.w,
                                                               imageBuilder:
                                                                   (context,
                                                                           imageProvider) =>
@@ -255,8 +257,7 @@ class _InternalAddKatalogProdukPageState
                                                                   const Icon(Icons
                                                                       .error),
                                                             )),
-                                                        const SizedBox(
-                                                            width: 15),
+                                                        SizedBox(width: 15.w),
                                                         Expanded(
                                                           child: Column(
                                                             mainAxisAlignment:
@@ -399,7 +400,7 @@ class _InternalAddKatalogProdukPageState
                                                           AntIcons
                                                               .plusCircleFilled,
                                                           size: 25),
-                                                      const SizedBox(width: 5),
+                                                      SizedBox(width: 5.w),
                                                       Text(
                                                         "Pilih item",
                                                         style: appStyle(
@@ -419,7 +420,7 @@ class _InternalAddKatalogProdukPageState
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             ElevatedButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate() &&

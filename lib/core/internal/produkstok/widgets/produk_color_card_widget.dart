@@ -4,6 +4,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -68,7 +69,7 @@ class ProdukColorWidget extends ConsumerWidget {
                                   "http://res.cloudinary.com/dkintlemd/image/upload/")
                               ? CachedNetworkImage(
                                   imageUrl: selections[i]["imagePath"] ?? "",
-                                  width: 50,
+                                  width: 50.w,
                                   imageBuilder: (context, imageProvider) =>
                                       Container(
                                     decoration: BoxDecoration(
@@ -84,9 +85,9 @@ class ProdukColorWidget extends ConsumerWidget {
                                       const Icon(Icons.error),
                                 )
                               : Image.file(File((selections[i]["imagePath"]!)),
-                                  fit: BoxFit.contain, width: 50),
+                                  fit: BoxFit.contain, width: 50.w),
                         ),
-                        const SizedBox(width: 15),
+                        SizedBox(width: 15.w),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -136,7 +137,7 @@ class ProdukColorWidget extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Icon(AntIcons.plusCircleFilled, size: 25),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(
                                 buttonDescription,
                                 style: appStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:tugas_akhir_project/core/customer/notifications/repositories/implementations/customer_notification_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/notifications/views/internal_notification_page.dart';
@@ -166,7 +167,7 @@ class CustomerNotificationSectionPromo extends StatelessWidget {
                       if (todayNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(context, 'Hari Ini',
                             todayNotification, NotificationTimestamp.today),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (yesterdayNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(
@@ -174,12 +175,12 @@ class CustomerNotificationSectionPromo extends StatelessWidget {
                             'Kemarin',
                             yesterdayNotification,
                             NotificationTimestamp.yesterday),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisWeekNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(context, 'Minggu Ini',
                             thisWeekNotification, NotificationTimestamp.other),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisMonthNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(context, 'Bulan Ini',
@@ -263,7 +264,7 @@ class CustomerNotificationSectionPesanan extends StatelessWidget {
                       if (todayNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(context, 'Hari Ini',
                             todayNotification, NotificationTimestamp.today),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (yesterdayNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(
@@ -271,12 +272,12 @@ class CustomerNotificationSectionPesanan extends StatelessWidget {
                             'Kemarin',
                             yesterdayNotification,
                             NotificationTimestamp.yesterday),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisWeekNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(context, 'Minggu Ini',
                             thisWeekNotification, NotificationTimestamp.other),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisMonthNotification.isNotEmpty) ...[
                         _buildNotificationGroupCustomer(context, 'Bulan Ini',
@@ -300,7 +301,7 @@ Widget _buildNotificationGroupCustomer(BuildContext context, String date,
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      const SizedBox(height: 10),
+      SizedBox(height: 10.h),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Text(
@@ -308,7 +309,7 @@ Widget _buildNotificationGroupCustomer(BuildContext context, String date,
           style: appStyle(size: 16, color: mainBlack, fw: FontWeight.w600),
         ),
       ),
-      const SizedBox(height: 10),
+      SizedBox(height: 10.h),
       ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 10),
           shrinkWrap: true,
@@ -336,7 +337,7 @@ Widget _buildNotificationGroupCustomer(BuildContext context, String date,
                                     size: 13,
                                     color: mainBlack,
                                     fw: FontWeight.w500)),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                             Text(
                               timeStamp == NotificationTimestamp.other
                                   ? (notifications[index].createdAt ??
@@ -361,7 +362,7 @@ Widget _buildNotificationGroupCustomer(BuildContext context, String date,
                     ],
                   ),
                 ),
-                const SizedBox(height: 10)
+                SizedBox(height: 10.h)
               ],
             );
           }),

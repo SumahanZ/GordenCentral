@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/repositories/implementations/profile_toko_repository_impl.dart';
@@ -106,7 +107,7 @@ class _InternalBerandaTokoPageState
                                 name: "Beranda Toko",
                                 description: "Konfigurasi beranda toko Anda",
                                 isAvatarNeeded: false),
-                            const SizedBox(height: 30),
+                            SizedBox(height: 30.h),
                             BerandaTokoCarouselSlider(
                                 berandaImageUrls: r
                                     .map((e) => e.berandaImageUrl ?? "")

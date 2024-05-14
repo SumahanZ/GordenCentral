@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/customer/orders/repositories/implementations/customer_order_repository_impl.dart';
@@ -111,7 +112,7 @@ class _CustomerCompleteOrderRatingPageState
                                     description:
                                         "Beri peringkat pada produk yang Anda pesan untuk menyelesaikan pesanan.",
                                     isAvatarNeeded: false),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ListView.builder(
                                     physics:
                                         const NeverScrollableScrollPhysics(),
@@ -140,15 +141,15 @@ class _CustomerCompleteOrderRatingPageState
                                                           color: mainBlack,
                                                           fw: FontWeight.w500)),
                                                 ),
-                                                const SizedBox(
-                                                  height: 10,
+                                                SizedBox(
+                                                  height: 10.h,
                                                 ),
                                                 CachedNetworkImage(
                                                   imageUrl: r[index]
                                                       .produkGlobalImages
                                                       .first
                                                       .globalImageUrl,
-                                                  height: 200,
+                                                  height: 200.h,
                                                   imageBuilder: (context,
                                                           imageProvider) =>
                                                       Container(
@@ -162,7 +163,7 @@ class _CustomerCompleteOrderRatingPageState
                                                           error) =>
                                                       const Icon(Icons.error),
                                                 ),
-                                                const SizedBox(height: 15),
+                                                SizedBox(height: 15.h),
                                                 Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -201,7 +202,7 @@ class _CustomerCompleteOrderRatingPageState
                                         ),
                                       );
                                     }),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ElevatedButton(
                                   onPressed: () {
                                     if (listSelectedRatings.isNotEmpty) {

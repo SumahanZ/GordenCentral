@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/core/internal/settings/repositories/implementations/internal_settings_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/settings/widgets/account_bottom_tile_widget.dart';
 import 'package:tugas_akhir_project/core/internal/settings/widgets/account_top_section_internal_widget.dart';
@@ -42,7 +43,7 @@ class InternalAccountPage extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 25),
+                          SizedBox(height: 25.h),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20.0),
@@ -55,7 +56,7 @@ class InternalAccountPage extends ConsumerWidget {
                             ),
                           ),
                           if (r.toko != null && r.status != "pending") ...[
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                             Card(
                               margin: const EdgeInsets.all(15),
                               elevation: 5,
@@ -87,7 +88,7 @@ class InternalAccountPage extends ConsumerWidget {
                               ),
                             ),
                           ] else ...[
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                             Card(
                               margin: const EdgeInsets.all(15),
                               elevation: 5,
@@ -118,7 +119,7 @@ class InternalAccountPage extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 25),
+                          SizedBox(height: 25.h),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20.0),
@@ -130,7 +131,7 @@ class InternalAccountPage extends ConsumerWidget {
                                   fw: FontWeight.w400),
                             ),
                           ),
-                          const SizedBox(height: 5),
+                          SizedBox(height: 5.h),
                           const Card(
                             margin: EdgeInsets.all(15),
                             elevation: 5,

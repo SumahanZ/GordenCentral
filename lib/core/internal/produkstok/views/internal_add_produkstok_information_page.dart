@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_saved.dart';
@@ -55,7 +56,7 @@ class _InternalAddProdukStokInformationPageState
                     description:
                         "Tambahkan kombinasi stok produk yang Anda masukkan",
                     isAvatarNeeded: false),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                     labelText: "Warna Produk",
                     hintText: "Pilih Warna Produk",
@@ -72,7 +73,7 @@ class _InternalAddProdukStokInformationPageState
                     values: productSelection?.productSelection.colors
                         .map((e) => e["name"] as String)
                         .toList()),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                     labelText: "Ukuran Produk",
                     hintText: "Pilih Ukuran Produk",
@@ -87,7 +88,7 @@ class _InternalAddProdukStokInformationPageState
                       selectedProdukSize = value;
                     },
                     values: productSelection?.productSelection.sizes),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomTextField(
                     keyboard: TextInputType.number,
                     hintText: "Masukkan jumlah stok",
@@ -101,7 +102,7 @@ class _InternalAddProdukStokInformationPageState
                         return null;
                       }
                     }),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate() &&

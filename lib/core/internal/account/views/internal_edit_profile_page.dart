@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/account/viewmodels/internal_account_viewmodel.dart';
@@ -138,14 +139,14 @@ class _InternalEditProfilePageState
                           name: 'Edit Profile',
                           description: "Konfigurasikan profil internal.",
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         InternalEditProfileImage(
                           internal: r,
                           pickTheImage: pickTheImage,
                           selectedImage: selectedImage,
                           imageFromfile: imageFromfile,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         CustomTextField(
                             hintText: "Masukkan nama Anda",
                             controller: _nameController,
@@ -158,7 +159,7 @@ class _InternalEditProfilePageState
                                 return null;
                               }
                             }),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         CustomTextField(
                           hintText: "Masukkan email Anda",
                           controller: _emailController,
@@ -172,7 +173,7 @@ class _InternalEditProfilePageState
                             }
                           },
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         CustomTextField(
                           hintText: "Masukkan kata sandi Anda",
                           controller: _passwordController,
@@ -186,7 +187,7 @@ class _InternalEditProfilePageState
                             }
                           },
                         ),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 15.h),
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {

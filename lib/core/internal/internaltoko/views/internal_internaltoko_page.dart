@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:searchable_listview/searchable_listview.dart';
 import 'package:tugas_akhir_project/core/internal/internaltoko/repositories/implementations/internal_internaltoko_repository_impl.dart';
@@ -110,14 +111,14 @@ class _InternalInternalTokoPageState
                                         IntrinsicHeight(
                                           child: Row(children: [
                                             item.profilePhotoURL == null
-                                                ? const CircleAvatar(radius: 30)
+                                                ? CircleAvatar(radius: 30.r)
                                                 : ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             50),
                                                     child: Image.network(
                                                         item.profilePhotoURL!,
-                                                        width: 60)),
+                                                        width: 60.w)),
                                             const SizedBox(width: 15),
                                             Expanded(
                                               child: Column(
@@ -223,7 +224,7 @@ class _InternalInternalTokoPageState
                                                         ),
                                                       ),
                                                     ),
-                                                    const SizedBox(height: 10),
+                                                    SizedBox(height: 10.h),
                                                     GestureDetector(
                                                       onTap: () {
                                                         ref

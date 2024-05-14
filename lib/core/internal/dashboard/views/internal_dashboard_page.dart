@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/dashboard/repositories/implementations/internal_dashboard_repository_impl.dart';
@@ -54,7 +55,7 @@ class InternalDashboardPage extends ConsumerWidget {
                                       description:
                                           "This is the dashboard, where you receive information of the overall sales of the toko.",
                                       isAvatarNeeded: false),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   Card(
                                     surfaceTintColor: Colors.white,
                                     elevation: 5,
@@ -70,7 +71,7 @@ class InternalDashboardPage extends ConsumerWidget {
                                                       size: 20,
                                                       color: mainBlack,
                                                       fw: FontWeight.w600)),
-                                              const SizedBox(height: 20),
+                                              SizedBox(height: 20.h),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -136,7 +137,7 @@ class InternalDashboardPage extends ConsumerWidget {
                                                             maxWidth: 100,
                                                           ),
                                                           child: Text(
-                                                              "Pesanan Processing",
+                                                              "Pesanan Process",
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -154,7 +155,7 @@ class InternalDashboardPage extends ConsumerWidget {
                                               ),
                                             ])),
                                   ),
-                                  const SizedBox(height: 15),
+                                  SizedBox(height: 15.h),
                                   GestureDetector(
                                     onTap: () => Routemaster.of(context)
                                         .push('/internal-dashboard/produkstok'),
@@ -165,14 +166,14 @@ class InternalDashboardPage extends ConsumerWidget {
                                         padding: const EdgeInsets.fromLTRB(
                                             20, 30, 10, 30),
                                         child: Row(children: [
-                                          const CircleAvatar(
-                                            radius: 35,
+                                          CircleAvatar(
+                                            radius: 35.r,
                                             child: Icon(
                                                 AntIcons.projectOutlined,
                                                 size: 35),
                                           ),
-                                          const SizedBox(
-                                            width: 15,
+                                          SizedBox(
+                                            width: 15.w,
                                           ),
                                           Expanded(
                                             child: Column(
@@ -199,7 +200,7 @@ class InternalDashboardPage extends ConsumerWidget {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(height: 15),
+                                  SizedBox(height: 15.h),
                                   GestureDetector(
                                     onTap: () => Routemaster.of(context).push(
                                         '/internal-dashboard/analisa-keuangan'),
@@ -210,13 +211,13 @@ class InternalDashboardPage extends ConsumerWidget {
                                         padding: const EdgeInsets.fromLTRB(
                                             20, 30, 10, 30),
                                         child: Row(children: [
-                                          const CircleAvatar(
-                                            radius: 35,
+                                          CircleAvatar(
+                                            radius: 35.r,
                                             child: Icon(AntIcons.stockOutlined,
                                                 size: 35),
                                           ),
-                                          const SizedBox(
-                                            width: 15,
+                                          SizedBox(
+                                            width: 15.w,
                                           ),
                                           Expanded(
                                             child: Column(
@@ -243,7 +244,7 @@ class InternalDashboardPage extends ConsumerWidget {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(height: 15),
+                                  SizedBox(height: 15.h),
                                   GestureDetector(
                                     onTap: () => Routemaster.of(context).push(
                                         '/internal-dashboard/laporan-barang'),
@@ -254,12 +255,12 @@ class InternalDashboardPage extends ConsumerWidget {
                                         padding: const EdgeInsets.fromLTRB(
                                             20, 30, 10, 30),
                                         child: Row(children: [
-                                          const CircleAvatar(
-                                            radius: 35,
+                                          CircleAvatar(
+                                            radius: 35.r,
                                             child: Icon(Icons.inbox, size: 35),
                                           ),
-                                          const SizedBox(
-                                            width: 15,
+                                          SizedBox(
+                                            width: 15.w,
                                           ),
                                           Expanded(
                                             child: Column(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
 
@@ -19,20 +20,20 @@ class TopSectionAuth extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (isAvatarNeeded) const SizedBox(height: 20),
+          if (isAvatarNeeded) SizedBox(height: 20.h),
           if (isAvatarNeeded)
-            const Center(
+            Center(
               child: CircleAvatar(
-                radius: 50,
+                radius: 50.r,
                 child: Icon(Icons.abc),
               ),
             ),
-          if (isAvatarNeeded) const SizedBox(height: 20),
+          if (isAvatarNeeded) SizedBox(height: 20.h),
           Text(
             name,
             style: appStyle(size: 26, color: mainBlack, fw: FontWeight.w600),
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: 5.h),
           Text(
             description,
             style: appStyle(size: 18, color: mainBlack, fw: FontWeight.w400),

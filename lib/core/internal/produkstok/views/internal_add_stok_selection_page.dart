@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_stok_selection_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/repositories/implementations/produk_stok_repository_impl.dart';
@@ -72,13 +73,14 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                               if (r[index].promo != null &&
                                                   (r[index].promo?.expiredAt ??
                                                           DateTime.now())
-                                                      .isAfter(DateTime.now()))
+                                                      .isAfter(
+                                                          DateTime.now())) ...[
                                                 Row(
                                                   children: [
                                                     const Icon(
                                                         Icons.discount_outlined,
                                                         size: 20),
-                                                    const SizedBox(width: 5),
+                                                    SizedBox(width: 5.w),
                                                     Text(
                                                         "${r[index].promo?.discountPercent}% OFF",
                                                         style: appStyle(
@@ -86,10 +88,14 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                             color: mainBlack,
                                                             fw: FontWeight
                                                                 .w600)),
-                                                    const Spacer(),
+                                                  ],
+                                                ),
+                                                SizedBox(height: 5.h),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  children: [
                                                     Text(
-                                                      textAlign:
-                                                          TextAlign.center,
+                                                      textAlign: TextAlign.center,
                                                       "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), r[index].promo!.expiredAt!)}",
                                                       style: appStyle(
                                                         size: 11,
@@ -99,7 +105,8 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                     ),
                                                   ],
                                                 ),
-                                              const SizedBox(height: 5),
+                                                SizedBox(height: 10.h),
+                                              ],
                                               Row(children: [
                                                 Text(
                                                     "Stok: ${r[index].stok?.totalAmount ?? 0}",
@@ -108,7 +115,7 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                         color: mainBlack,
                                                         fw: FontWeight.w600))
                                               ]),
-                                              const SizedBox(height: 10),
+                                              SizedBox(height: 10.h),
                                               IntrinsicHeight(
                                                 child: Row(children: [
                                                   ClipRRect(
@@ -120,7 +127,7 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                             .produkGlobalImages[
                                                                 0]
                                                             .globalImageUrl,
-                                                        width: 80,
+                                                        width: 80.w,
                                                         imageBuilder: (context,
                                                                 imageProvider) =>
                                                             Container(
@@ -143,7 +150,7 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                             const Icon(
                                                                 Icons.error),
                                                       )),
-                                                  const SizedBox(width: 15),
+                                                  SizedBox(width: 15.w),
                                                   Expanded(
                                                     child: Column(
                                                       crossAxisAlignment:
@@ -210,8 +217,8 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                                   decorationThickness:
                                                                       2),
                                                             ),
-                                                            const SizedBox(
-                                                                width: 10),
+                                                            SizedBox(
+                                                                width: 10.w),
                                                             if (r[index].promo !=
                                                                     null &&
                                                                 (r[index]

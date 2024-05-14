@@ -4,6 +4,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_stok_notifier.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -66,7 +67,7 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     IntrinsicHeight(
                       child: Row(children: [
                         ClipRRect(
@@ -79,7 +80,7 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                                     imageUrl: produkStok[i]
                                             .produkColor["imagePath"] ??
                                         "",
-                                    width: 60,
+                                    width: 60.w,
                                     imageBuilder: (context, imageProvider) =>
                                         Container(
                                       decoration: BoxDecoration(
@@ -100,8 +101,8 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                                     File((produkStok[i]
                                         .produkColor["imagePath"]!)),
                                     fit: BoxFit.contain,
-                                    width: 60)),
-                        const SizedBox(width: 15),
+                                    width: 60.w)),
+                        SizedBox(width: 15.w),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +149,7 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                                 child: const Icon(AntIcons.deleteFilled),
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             CircleAvatar(
                               child: GestureDetector(
                                 onTap: () => Routemaster.of(context)
@@ -160,7 +161,7 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                         ),
                       ]),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                   ]),
                 ),
                 if (produkStok[i] != produkStok[produkStok.length - 1] &&
@@ -186,7 +187,7 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Icon(AntIcons.plusCircleFilled, size: 25),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(
                                 buttonDescription,
                                 style: appStyle(

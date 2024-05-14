@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:searchable_listview/searchable_listview.dart';
 import 'package:tugas_akhir_project/core/customer/browse-toko/repositories/implementations/browse_toko_repository_impl.dart';
@@ -74,8 +75,8 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                             IntrinsicHeight(
                                               child: Row(children: [
                                                 item.profilePhotoURL == null
-                                                    ? const CircleAvatar(
-                                                        radius: 32,
+                                                    ? CircleAvatar(
+                                                        radius: 32.r,
                                                       )
                                                     : ClipRRect(
                                                         borderRadius:
@@ -86,7 +87,7 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                                           imageUrl: item
                                                                   .profilePhotoURL ??
                                                               "",
-                                                          width: 64,
+                                                          width: 64.w,
                                                           imageBuilder: (context,
                                                                   imageProvider) =>
                                                               Container(
@@ -106,7 +107,7 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                                               const Icon(
                                                                   Icons.error),
                                                         )),
-                                                const SizedBox(width: 15),
+                                                SizedBox(width: 15.w),
                                                 Expanded(
                                                   child: Column(
                                                     mainAxisAlignment:
@@ -162,17 +163,17 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                       FloatingLabelBehavior.never,
                                   hintText: "Search Toko...",
                                   fillColor: Colors.white,
-                                  enabledBorder: const OutlineInputBorder(
+                                  enabledBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(30)),
                                     borderSide: BorderSide(
-                                        color: Colors.black, width: 1),
+                                        color: Colors.black, width: 1.w),
                                   ),
-                                  disabledBorder: const OutlineInputBorder(
+                                  disabledBorder: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(30)),
                                     borderSide: BorderSide(
-                                        color: Colors.black, width: 2),
+                                        color: Colors.black, width: 2.w),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: const BorderRadius.all(
@@ -181,7 +182,7 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                         color: Theme.of(context)
                                             .colorScheme
                                             .primary,
-                                        width: 2),
+                                        width: 2.w),
                                   ),
                                 ),
                               ),

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/models/katalog_produk.dart';
 import 'package:tugas_akhir_project/utils/extensions/double_extension.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -22,13 +23,13 @@ class KatalogProdukRow extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h),
         Text(
           katalogProduk.name ??  "No name",
           style: appStyle(size: 18, color: mainBlack, fw: FontWeight.w600),
         ),
         SizedBox(
-          height: 350,
+          height: 350.h,
           child: ListView.builder(
               physics: const ClampingScrollPhysics(),
               padding: const EdgeInsets.all(10),
@@ -44,7 +45,7 @@ class KatalogProdukRow extends ConsumerWidget {
                     }
                   },
                   child: SizedBox(
-                    width: 200,
+                    width: 200.w,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 10),
@@ -143,7 +144,7 @@ class KatalogProdukRow extends ConsumerWidget {
                                             .produkGlobalImages[0]
                                             .globalImageUrl,
 
-                                        height: 120,
+                                        height: 120.h,
                                         imageBuilder:
                                             (context, imageProvider) =>
                                                 Container(
@@ -180,7 +181,7 @@ class KatalogProdukRow extends ConsumerWidget {
                                               color: mainBlack,
                                               fw: FontWeight.w600),
                                           textAlign: TextAlign.center),
-                                      const SizedBox(height: 5),
+                                      SizedBox(height: 5.h),
                                       Text(
                                         PriceFormatter.getFormattedValue(katalogProduk
                                                         .produkList[index]
@@ -209,7 +210,7 @@ class KatalogProdukRow extends ConsumerWidget {
                                             color: mainBlack,
                                             fw: FontWeight.bold),
                                       ),
-                                      const SizedBox(height: 5),
+                                      SizedBox(height: 5.h),
                                       // if(katalogProduk.produkList[index].rating.isNotEmpty)
                                       Row(
                                         mainAxisAlignment:
@@ -235,7 +236,7 @@ class KatalogProdukRow extends ConsumerWidget {
                                             ),
                                             onRatingUpdate: (rating) {},
                                           ),
-                                          const SizedBox(width: 5),
+                                          SizedBox(width: 5.w),
                                           Text(
                                             "(${katalogProduk.produkList[index].averageRating?.toStringAsPrecision(2) ?? 0})",
                                             style: appStyle(
@@ -245,7 +246,7 @@ class KatalogProdukRow extends ConsumerWidget {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 5),
+                                      SizedBox(height: 5.h),
                                     ],
                                   ),
                                 ),

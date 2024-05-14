@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/models/toko.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
@@ -25,13 +26,13 @@ class TokoInformationCard extends ConsumerWidget {
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: Image.network(toko?.profilePhotoURL ?? "",
-                          fit: BoxFit.contain, width: 90)
+                          fit: BoxFit.contain, width: 90.w)
 
                       // Image.network(toko?.profilePhotoURL ?? "",
                       //     fit: BoxFit.contain, width: 90),
                       )
-                  : const CircleAvatar(radius: 45),
-              const SizedBox(width: 15),
+                  : CircleAvatar(radius: 45.r),
+              SizedBox(width: 15.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

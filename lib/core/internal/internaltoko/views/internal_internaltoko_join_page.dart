@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/internaltoko/repositories/implementations/internal_internaltoko_repository_impl.dart';
@@ -96,7 +97,7 @@ class _InternalInternalTokoJoinPageState
                     description:
                         "Masukkan kode undangan untuk mengirim permintaan bergabung ke toko",
                     isAvatarNeeded: false),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomTextField(
                   hintText: "Masukkan kode undangan toko",
                   controller: _inviteCodeController,
@@ -113,7 +114,7 @@ class _InternalInternalTokoJoinPageState
                     }
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {

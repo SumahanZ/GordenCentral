@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_stok_notifier.dart';
@@ -60,7 +61,7 @@ class _InternalAddProdukStokInformationPageState
                     description:
                         "Tambahkan kombinasi stok produk yang Anda masukkan",
                     isAvatarNeeded: false),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                   labelText: "Warna Produk",
                   hintText: "Pilih Warna Produk",
@@ -81,7 +82,7 @@ class _InternalAddProdukStokInformationPageState
                       .toSet()
                       .toList(),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                   labelText: "Ukuran Produk",
                   hintText: "Pilih Ukuran Produk",
@@ -102,7 +103,7 @@ class _InternalAddProdukStokInformationPageState
                       .toSet()
                       .toList(),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomTextField(
                   keyboard: TextInputType.number,
                   hintText: "Masukkan jumlah stok",
@@ -122,7 +123,7 @@ class _InternalAddProdukStokInformationPageState
                     }
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Builder(builder: (context) {
                   final listVariations = productInformation?.produkCombination;
                   final foundVariation = listVariations?.firstWhere(
@@ -143,7 +144,7 @@ class _InternalAddProdukStokInformationPageState
                         value: foundVariation.variantAmount.toString(),
                         textEditingController: _beforeAmountController,
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       DisableCustomTextField(
                         key: Key((foundVariation.variantAmount +
                                 int.parse(_amountController.text))
@@ -155,7 +156,7 @@ class _InternalAddProdukStokInformationPageState
                             .toString(),
                         textEditingController: _afterAmountController,
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                     ]);
                   } else {
                     return const SizedBox.shrink();

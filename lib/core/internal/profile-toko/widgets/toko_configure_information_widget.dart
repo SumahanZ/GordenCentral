@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/models/toko.dart';
 
 class TokoConfigureImage extends StatelessWidget {
@@ -18,8 +19,8 @@ class TokoConfigureImage extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(200),
                       color: Colors.black,
-                      border: Border.all(width: 2)),
-                  width: 150,
+                      border: Border.all(width: 2.w)),
+                  width: 150.w,
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(200),
                       child: Image.network(toko!.profilePhotoURL ?? ""))),
@@ -27,9 +28,9 @@ class TokoConfigureImage extends StatelessWidget {
                 onTap: () {
                   pickTheImage();
                 },
-                child: const CircleAvatar(
+                child: CircleAvatar(
                     backgroundColor: Color.fromARGB(255, 215, 230, 255),
-                    radius: 20,
+                    radius: 20.r,
                     child: Icon(Icons.edit, size: 18, color: Colors.black)),
               )
             ]),
@@ -37,17 +38,17 @@ class TokoConfigureImage extends StatelessWidget {
         : selectedImage == null
             ? Center(
                 child: Stack(alignment: Alignment.bottomRight, children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                       foregroundColor: Colors.white,
-                      radius: 75,
+                      radius: 75.r,
                       child: Icon(Icons.person, size: 50)),
                   GestureDetector(
                     onTap: () {
                       pickTheImage();
                     },
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                         backgroundColor: Color.fromARGB(255, 215, 230, 255),
-                        radius: 20,
+                        radius: 20.r,
                         child: Icon(Icons.edit, size: 18, color: Colors.black)),
                   ),
                 ]),
@@ -58,8 +59,8 @@ class TokoConfigureImage extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(200),
                           color: Colors.black,
-                          border: Border.all(width: 2)),
-                      width: 150,
+                          border: Border.all(width: 2.w)),
+                      width: 150.w,
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(200),
                           child: Image.file(selectedImage!))),
@@ -67,9 +68,9 @@ class TokoConfigureImage extends StatelessWidget {
                     onTap: () {
                       pickTheImage();
                     },
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                         backgroundColor: Color.fromARGB(255, 215, 230, 255),
-                        radius: 20,
+                        radius: 20.r,
                         child: Icon(Icons.edit, size: 18, color: Colors.black)),
                   )
                 ]),

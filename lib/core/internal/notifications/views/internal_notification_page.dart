@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:tugas_akhir_project/core/internal/notifications/repositories/implementations/internal_notification_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/settings/repositories/implementations/internal_settings_repository_impl.dart';
@@ -197,7 +198,7 @@ class InternalNotificationSectionOrder extends StatelessWidget {
                       if (todayNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Hari Ini',
                             todayNotification, NotificationTimestamp.today),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (yesterdayNotification.isNotEmpty) ...[
                         _buildNotificationGroup(
@@ -205,12 +206,12 @@ class InternalNotificationSectionOrder extends StatelessWidget {
                             'Kemarin',
                             yesterdayNotification,
                             NotificationTimestamp.yesterday),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisWeekNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Minggu Ini',
                             thisWeekNotification, NotificationTimestamp.other),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisMonthNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Bulan Ini',
@@ -294,7 +295,7 @@ class InternalNotificationSectionStok extends StatelessWidget {
                       if (todayNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Hari Ini',
                             todayNotification, NotificationTimestamp.today),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (yesterdayNotification.isNotEmpty) ...[
                         _buildNotificationGroup(
@@ -302,12 +303,12 @@ class InternalNotificationSectionStok extends StatelessWidget {
                             'Kemarin',
                             yesterdayNotification,
                             NotificationTimestamp.yesterday),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisWeekNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Minggu Ini',
                             thisWeekNotification, NotificationTimestamp.other),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisMonthNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Bulan Ini',
@@ -391,7 +392,7 @@ class InternalNotificationSectionInternalToko extends StatelessWidget {
                       if (todayNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Hari Ini',
                             todayNotification, NotificationTimestamp.today),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (yesterdayNotification.isNotEmpty) ...[
                         _buildNotificationGroup(
@@ -399,12 +400,12 @@ class InternalNotificationSectionInternalToko extends StatelessWidget {
                             'Kemarin',
                             yesterdayNotification,
                             NotificationTimestamp.yesterday),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisWeekNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Minggu Ini',
                             thisWeekNotification, NotificationTimestamp.other),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                       if (thisMonthNotification.isNotEmpty) ...[
                         _buildNotificationGroup(context, 'Bulan Ini',
@@ -428,7 +429,7 @@ Widget _buildNotificationGroup(BuildContext context, String date,
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      const SizedBox(height: 10),
+      SizedBox(height: 10.h),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Text(
@@ -436,7 +437,7 @@ Widget _buildNotificationGroup(BuildContext context, String date,
           style: appStyle(size: 16, color: mainBlack, fw: FontWeight.w600),
         ),
       ),
-      const SizedBox(height: 10),
+      SizedBox(height: 10.h),
       ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 10),
           shrinkWrap: true,
@@ -464,7 +465,7 @@ Widget _buildNotificationGroup(BuildContext context, String date,
                                     size: 13,
                                     color: mainBlack,
                                     fw: FontWeight.w500)),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                             Text(
                               timeStamp == NotificationTimestamp.other
                                   ? (notifications[index].createdAt ??
@@ -489,7 +490,7 @@ Widget _buildNotificationGroup(BuildContext context, String date,
                     ],
                   ),
                 ),
-                const SizedBox(height: 10)
+                SizedBox(height: 10.h)
               ],
             );
           }),

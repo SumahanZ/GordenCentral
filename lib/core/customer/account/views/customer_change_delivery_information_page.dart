@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/customer/account/repositories/implementations/customer_account_repository_impl.dart';
 import 'package:tugas_akhir_project/core/customer/account/viewmodels/customer_account_viewmodel.dart';
@@ -124,7 +125,7 @@ class _CustomerChangeDeliveryInformationPageState
                                   description:
                                       "Konfigurasikan informasi pengiriman pelanggan",
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ref.watch(fetchProvinceslistFromAccount).when(
                                     data: (data) {
                                       return data.match(
@@ -190,9 +191,9 @@ class _CustomerChangeDeliveryInformationPageState
                                                             children: [
                                                               Column(
                                                                 children: [
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          5),
+                                                                          5.h),
                                                                   CustomTextField(
                                                                     labelText:
                                                                         "Negara",
@@ -242,9 +243,9 @@ class _CustomerChangeDeliveryInformationPageState
                                                                       });
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          5),
+                                                                          5.h),
                                                                   if (selectedCity !=
                                                                       null)
                                                                     Column(
@@ -268,9 +269,9 @@ class _CustomerChangeDeliveryInformationPageState
                                                                             }
                                                                           },
                                                                         ),
-                                                                        const SizedBox(
+                                                                        SizedBox(
                                                                             height:
-                                                                                5),
+                                                                                5.h),
                                                                         CustomTextField(
                                                                           hintText:
                                                                               "Masukkan kode pos",
@@ -289,9 +290,9 @@ class _CustomerChangeDeliveryInformationPageState
                                                                             }
                                                                           },
                                                                         ),
-                                                                        const SizedBox(
+                                                                        SizedBox(
                                                                             height:
-                                                                                10),
+                                                                                10.h),
                                                                         ElevatedButton(
                                                                           onPressed:
                                                                               () {

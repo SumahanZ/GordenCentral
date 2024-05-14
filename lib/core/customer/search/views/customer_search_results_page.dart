@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/customer/search/providers/customer_search_filters_provider.dart';
@@ -44,7 +45,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                             description:
                                 "${r.isEmpty ? 0 : r.length} item${r.length > 1 ? "s" : ""} found",
                             isAvatarNeeded: false),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         GridView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
@@ -166,7 +167,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                   imageUrl: r[index]
                                                       .produkGlobalImages[0]
                                                       .globalImageUrl,
-                                                  height: 120,
+                                                  height: 120.h,
                                                   imageBuilder: (context,
                                                           imageProvider) =>
                                                       Container(
@@ -182,7 +183,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                       const Icon(Icons.error),
                                                 )),
                                           ),
-                                          const SizedBox(height: 10),
+                                          SizedBox(height: 10.h),
                                           Expanded(
                                             child: Padding(
                                               padding:
@@ -203,7 +204,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                           fw: FontWeight.w600),
                                                       textAlign:
                                                           TextAlign.center),
-                                                  const SizedBox(height: 5),
+                                                  SizedBox(height: 5.h),
                                                   Text(
                                                     PriceFormatter.getFormattedValue(r[
                                                                         index]
@@ -266,8 +267,8 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                           onRatingUpdate:
                                                               (rating) {},
                                                         ),
-                                                        const SizedBox(
-                                                            width: 5),
+                                                        SizedBox(
+                                                            width: 5.w),
                                                         Text(
                                                             "(${r[index].averageRating?.toStringAsPrecision(2) ?? 0})",
                                                             style: appStyle(
@@ -278,7 +279,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                                     .w600)),
                                                       ],
                                                     ),
-                                                  const SizedBox(height: 5),
+                                                  SizedBox(height: 5.h),
                                                 ],
                                               ),
                                             ),

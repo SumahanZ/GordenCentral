@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/customer/search/repositories/implementations/customer_search_repository_impl.dart';
 import 'package:tugas_akhir_project/core/customer/search/widgets/modal_search_filter_widget.dart';
@@ -56,7 +57,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
               child: Row(
                 children: [
                   const Icon(AntIcons.filterOutlined),
-                  const SizedBox(width: 5),
+                  SizedBox(width: 5.w),
                   Text("Filter",
                       style: appStyle(
                           size: 14, color: mainBlack, fw: FontWeight.w500)),
@@ -199,7 +200,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                 imageUrl: r[index]
                                                     .produkGlobalImages[0]
                                                     .globalImageUrl,
-                                                height: 120,
+                                                height: 120.h,
                                                 imageBuilder:
                                                     (context, imageProvider) =>
                                                         Container(
@@ -215,7 +216,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                         const Icon(Icons.error),
                                               )),
                                         ),
-                                        const SizedBox(height: 10),
+                                        SizedBox(height: 10.h),
                                         Expanded(
                                           child: Padding(
                                             padding: const EdgeInsets.all(6.0),
@@ -233,7 +234,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                         fw: FontWeight.w600),
                                                     textAlign:
                                                         TextAlign.center),
-                                                const SizedBox(height: 5),
+                                                SizedBox(height: 5.h),
                                                 Text(
                                                   PriceFormatter.getFormattedValue(r[
                                                                       index]
@@ -260,7 +261,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                       color: mainBlack,
                                                       fw: FontWeight.bold),
                                                 ),
-                                                const SizedBox(height: 5),
+                                                SizedBox(height: 5.h),
                                                 // if (r[index].rating.isNotEmpty)
                                                 Row(
                                                   mainAxisAlignment:
@@ -290,7 +291,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                       onRatingUpdate:
                                                           (rating) {},
                                                     ),
-                                                    const SizedBox(width: 5),
+                                                    SizedBox(width: 5.w),
                                                     Text(
                                                         "(${r[index].averageRating?.toStringAsPrecision(2) ?? 0})",
                                                         style: appStyle(
@@ -300,7 +301,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                                 .w600)),
                                                   ],
                                                 ),
-                                                const SizedBox(height: 5),
+                                                SizedBox(height: 5.h),
                                               ],
                                             ),
                                           ),

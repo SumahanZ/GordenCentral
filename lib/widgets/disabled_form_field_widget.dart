@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
 
@@ -52,13 +53,13 @@ class _DisableCustomTextFieldState extends State<DisableCustomTextField> {
               filled: true,
               fillColor: Colors.grey.withOpacity(0.3),
               contentPadding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
-              errorBorder: const OutlineInputBorder(
+              errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                borderSide: BorderSide(color: Colors.red, width: 0.5),
+                borderSide: BorderSide(color: Colors.red, width: 0.5.w),
               ),
-              disabledBorder: const OutlineInputBorder(
+              disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                borderSide: BorderSide(color: Colors.black, width: 0.5),
+                borderSide: BorderSide(color: Colors.black, width: 0.5.w),
               ),
             ),
             cursorHeight: 20,

@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_stok_notifier.dart';
@@ -120,7 +121,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
                               description:
                                   "Tambahkan stok dari produk yang Anda masukkan",
                               isAvatarNeeded: false),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           ProdukStokCombinationCard(
                             produkStok: productStok,
                             titleName: "Detail Stok Produk",
@@ -130,7 +131,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
                             routeDestination:
                                 '/internal-dashboard/produkstok/add-stok/selection/edit-details',
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           DateCustomTextField(
                             maxTime: DateTime.now(),
                             hintText: "Pilih tanggal dipesan",
@@ -160,7 +161,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
                               });
                             },
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           DateCustomTextField(
                             hintText: "Pilih tanggal diterima",
                             controller: _deliveredAtController,
@@ -187,7 +188,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
                               });
                             },
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           if (_issuedFromController.text != "" &&
                               _deliveredAtController.text != "")
                             DisableCustomTextField(
@@ -218,7 +219,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
                                   : null,
                               textEditingController: _deliveryTimeController,
                             ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           DisableCustomTextField(
                             key: Key(testValue.toString()),
                             labelText: "Total Jumlah",
@@ -227,7 +228,7 @@ class _InternalAddStokPageState extends ConsumerState<InternalAddStokPage> {
                             value: testValue,
                             textEditingController: _totalAmountController,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           ElevatedButton(
                             onPressed: () {
                               if (formKey.currentState!.validate() &&

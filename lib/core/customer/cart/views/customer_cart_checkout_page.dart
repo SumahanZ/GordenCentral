@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/customer/cart/repositories/implementations/customer_cart_repository_impl.dart';
 import 'package:tugas_akhir_project/core/customer/cart/viewmodels/customer_cart_viewmodel.dart';
@@ -95,7 +96,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                             size: 18,
                                             color: mainBlack,
                                             fw: FontWeight.w600)),
-                                    const SizedBox(width: 5),
+                                    SizedBox(width: 5.w),
                                     Text(
                                         "${r?.cartItemList.map((e) => e.amount).reduce((value, element) => value! + element!)}",
                                         style: appStyle(
@@ -104,7 +105,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                             fw: FontWeight.w600)),
                                   ],
                                 ),
-                                const SizedBox(height: 10),
+                                SizedBox(height: 10.h),
                                 ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: r?.cartItemList.length,
@@ -114,7 +115,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                     );
                                   },
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 Card(
                                   surfaceTintColor: Colors.white,
                                   elevation: 5,
@@ -158,7 +159,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(height: 10),
+                                            SizedBox(height: 10.h),
                                             Row(
                                               children: [
                                                 Text(
@@ -178,7 +179,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(height: 10),
+                                            SizedBox(height: 10.h),
                                             Row(
                                               children: [
                                                 Text(
@@ -198,7 +199,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(height: 10),
+                                            SizedBox(height: 10.h),
                                             Row(
                                               children: [
                                                 Text(
@@ -224,7 +225,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 Card(
                                   surfaceTintColor: Colors.white,
                                   elevation: 5,
@@ -294,7 +295,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(height: 10),
+                                            SizedBox(height: 10.h),
                                             Row(
                                               children: [
                                                 Text(
@@ -356,11 +357,11 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(height: 5),
+                                            SizedBox(height: 5.h),
                                             Divider(
                                                 color: Colors.black
                                                     .withOpacity(0.5)),
-                                            const SizedBox(height: 5),
+                                            SizedBox(height: 5.h),
                                             Row(
                                               children: [
                                                 Text(
@@ -405,7 +406,7 @@ class CustomerCartCheckoutPage extends ConsumerWidget {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ElevatedButton(
                                   onPressed: () async {
                                     List<Invoice> invoiceList =

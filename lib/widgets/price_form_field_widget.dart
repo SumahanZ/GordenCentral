@@ -1,6 +1,7 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
 
@@ -82,26 +83,26 @@ class _CustomPriceTextFieldState extends State<CustomPriceTextField> {
               hintStyle:
                   appStyle(size: 16, color: Colors.grey, fw: FontWeight.w500),
               contentPadding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
-              errorBorder: const OutlineInputBorder(
+              errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                borderSide: BorderSide(color: Colors.red, width: 0.5),
+                borderSide: BorderSide(color: Colors.red, width: 0.5.w),
               ),
-              focusedErrorBorder: const OutlineInputBorder(
+              focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                borderSide: BorderSide(color: Colors.red, width: 0.5),
+                borderSide: BorderSide(color: Colors.red, width: 0.5.w),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: const BorderRadius.all(Radius.circular(30)),
                 borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary, width: 2),
+                    color: Theme.of(context).colorScheme.primary, width: 2.w),
               ),
-              disabledBorder: const OutlineInputBorder(
+              disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                borderSide: BorderSide(color: Colors.black, width: 0.5),
+                borderSide: BorderSide(color: Colors.black, width: 0.5.w),
               ),
-              enabledBorder: const OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
-                borderSide: BorderSide(color: Colors.black, width: 0.5),
+                borderSide: BorderSide(color: Colors.black, width: 0.5.w),
               ),
             ),
             controller: widget.controller,

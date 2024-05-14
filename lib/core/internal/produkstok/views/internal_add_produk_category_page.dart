@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/viewmodels/produk_stok_viewmodel.dart';
@@ -99,7 +100,7 @@ class _InternalAddProdukCategoryPageState
                             description:
                                 "Add the produk category for your shop",
                             isAvatarNeeded: false),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         CustomTextField(
                             hintText: "Enter produk category name",
                             controller: _nameController,
@@ -112,7 +113,7 @@ class _InternalAddProdukCategoryPageState
                                 return null;
                               }
                             }),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {

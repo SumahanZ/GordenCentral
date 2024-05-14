@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/providers/katalog_produk_selection_notifier.dart';
@@ -66,9 +67,7 @@ class _InternalEditKatalogProdukPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: "Kesalahan respons telah terjadi!",
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       } else if (state is AsyncError && state.error is RequestError) {
         showPopupModal(
             context: context,
@@ -76,9 +75,7 @@ class _InternalEditKatalogProdukPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: "Permintaan jaringan telah terjadi!",
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       } else if (state is AsyncError) {
         showPopupModal(
             context: context,
@@ -86,9 +83,7 @@ class _InternalEditKatalogProdukPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: (state.error as ApiError).message,
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       }
     });
 
@@ -129,7 +124,7 @@ class _InternalEditKatalogProdukPageState
                                     description:
                                         "Konfigurasi katalog produk toko",
                                     isAvatarNeeded: false),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 CustomTextField(
                                     hintText:
                                         "Masukkan nama kategori katalog produk",
@@ -231,15 +226,14 @@ class _InternalEditKatalogProdukPageState
                                                                             ?.expiredAt ??
                                                                         DateTime
                                                                             .now())
-                                                                .isAfter(
-                                                                    DateTime
-                                                                        .now()))
+                                                                .isAfter(DateTime
+                                                                    .now())) ...[
                                                           Row(
                                                             children: [
                                                               const Icon(Icons
                                                                   .discount_outlined),
-                                                              const SizedBox(
-                                                                  width: 5),
+                                                              SizedBox(
+                                                                  width: 5.w),
                                                               Text(
                                                                   "${((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.discountPercent : r?.produkList[index].promo?.discountPercent)}% OFF",
                                                                   style: appStyle(
@@ -248,14 +242,22 @@ class _InternalEditKatalogProdukPageState
                                                                           mainBlack,
                                                                       fw: FontWeight
                                                                           .w600)),
-                                                              const Spacer(),
+                                                              // const Spacer(),
+                                                            ],
+                                                          ),
+                                                          SizedBox(height: 5.h),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
                                                               Text(
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
                                                                 "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), (selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now())}",
                                                                 style: appStyle(
-                                                                  size: 11,
+                                                                  size: 12,
                                                                   color:
                                                                       mainBlack,
                                                                   fw: FontWeight
@@ -264,8 +266,9 @@ class _InternalEditKatalogProdukPageState
                                                               ),
                                                             ],
                                                           ),
-                                                        const SizedBox(
-                                                            height: 5),
+                                                          SizedBox(
+                                                              height: 10.h),
+                                                        ],
                                                         IntrinsicHeight(
                                                           child: Row(children: [
                                                             ClipRRect(
@@ -288,7 +291,7 @@ class _InternalEditKatalogProdukPageState
                                                                       : r?.produkList[index].produkGlobalImages[0]
                                                                               .globalImageUrl ??
                                                                           "None",
-                                                                  width: 70,
+                                                                  width: 70.w,
                                                                   imageBuilder:
                                                                       (context,
                                                                               imageProvider) =>
@@ -321,8 +324,8 @@ class _InternalEditKatalogProdukPageState
                                                                           Icons
                                                                               .error),
                                                                 )),
-                                                            const SizedBox(
-                                                                width: 15),
+                                                            SizedBox(
+                                                                width: 15.w),
                                                             Expanded(
                                                               child: Column(
                                                                 mainAxisAlignment:
@@ -465,8 +468,7 @@ class _InternalEditKatalogProdukPageState
                                                               AntIcons
                                                                   .plusCircleFilled,
                                                               size: 25),
-                                                          const SizedBox(
-                                                              width: 5),
+                                                          SizedBox(width: 5.w),
                                                           Text(
                                                             "Pilih Item",
                                                             style: appStyle(
@@ -487,12 +489,12 @@ class _InternalEditKatalogProdukPageState
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ElevatedButton(
                                   onPressed: () {
                                     if (_formKey.currentState!.validate() &&
-                                        (r!.produkList.isNotEmpty || selectedProduks.isNotEmpty)) {
-                                          
+                                        (r!.produkList.isNotEmpty ||
+                                            selectedProduks.isNotEmpty)) {
                                       ref
                                           .read(katalogProdukViewModelProvider
                                               .notifier)

@@ -1,5 +1,6 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -51,7 +52,7 @@ class _InternalAddLaporanBarangKeluarPageState
                   name: "Tambah Laporan Barang Keluar",
                   description: "Tambahkan entri laporan barang keluar",
                   isAvatarNeeded: false),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Card(
                 surfaceTintColor: Colors.white,
                 elevation: 5,
@@ -83,9 +84,9 @@ class _InternalAddLaporanBarangKeluarPageState
                                   child: Image.asset(
                                       "assets/images/test-shoes-image.jpg",
                                       fit: BoxFit.contain,
-                                      width: 70),
+                                      width: 70.w),
                                 ),
-                                const SizedBox(width: 15),
+                                SizedBox(width: 15.w),
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +143,7 @@ class _InternalAddLaporanBarangKeluarPageState
                                 ),
                               ]),
                             ),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                           ]),
                         ),
                         const Divider(),
@@ -164,7 +165,7 @@ class _InternalAddLaporanBarangKeluarPageState
                                       children: [
                                         const Icon(AntIcons.plusCircleFilled,
                                             size: 25),
-                                        const SizedBox(width: 5),
+                                        SizedBox(width: 5.w),
                                         GestureDetector(
                                           onTap: () => Routemaster.of(context).push(
                                               '/internal-account/profile-toko/promosi/edit/item'),
@@ -187,7 +188,7 @@ class _InternalAddLaporanBarangKeluarPageState
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               CustomDropdown(
                 labelText: "Produk Color",
                 hintText: "Choose Produk Color",
@@ -202,7 +203,7 @@ class _InternalAddLaporanBarangKeluarPageState
                   selectedRoleDropdownValue = value!;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               CustomDropdown(
                 labelText: "Produk Size",
                 hintText: "Choose Produk Size",
@@ -217,7 +218,7 @@ class _InternalAddLaporanBarangKeluarPageState
                   selectedRoleDropdownValue = value!;
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               //if not exist show disable form field
               CustomTextField(
                   hintText: "Enter produk unit",
@@ -231,7 +232,7 @@ class _InternalAddLaporanBarangKeluarPageState
                       return null;
                     }
                   }),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DisableCustomTextField(
                 labelText: "Before Stok Amount",
                 validator: (value) {
@@ -244,7 +245,7 @@ class _InternalAddLaporanBarangKeluarPageState
                 value: '15',
                 defaultValue: '0',
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DisableCustomTextField(
                 labelText: "Before Stok Amount",
                 validator: (value) {
@@ -257,7 +258,7 @@ class _InternalAddLaporanBarangKeluarPageState
                 value: '15',
                 defaultValue: '0',
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               CustomTextField(
                   hintText: "Entered entered stok amount",
                   controller: _amountController,
@@ -270,7 +271,7 @@ class _InternalAddLaporanBarangKeluarPageState
                       return null;
                     }
                   }),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DisableCustomTextField(
                 labelText: "After Stok Amount",
                 validator: (value) {
@@ -283,7 +284,7 @@ class _InternalAddLaporanBarangKeluarPageState
                 value: '15',
                 defaultValue: '0',
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               DateCustomTextField(
                   hintText: "Select exited date",
                   controller: _issuedFromController,
@@ -295,7 +296,7 @@ class _InternalAddLaporanBarangKeluarPageState
                       return null;
                     }
                   }),
-              const SizedBox(height: 25),
+              SizedBox(height: 25.h),
               ElevatedButton(
                 onPressed: () {
                   Routemaster.of(context)

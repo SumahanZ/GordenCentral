@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/utils/enums/role_selection_enum.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
@@ -38,7 +39,7 @@ class _NoLabelCustomDropdownState extends State<NoLabelCustomDropdown> {
         fillColor: const Color.fromARGB(255, 243, 243, 243),
         contentPadding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
         border: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.black, width: 0.5),
+          borderSide: BorderSide(color: Colors.black, width: 0.5.w),
           borderRadius: BorderRadius.circular(30),
         ),
         // Add more decoration..

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
@@ -26,7 +27,7 @@ class InternalLayananPage extends StatelessWidget {
                 child: Row(
                   children: [
                     const Icon(Icons.add),
-                    const SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Text("Add",
                         style: appStyle(
                             size: 14, color: mainBlack, fw: FontWeight.w500)),
@@ -90,9 +91,9 @@ class InternalLayananPage extends StatelessWidget {
                                     const Spacer(),
                                     GestureDetector(
                                       onTap: () => Routemaster.of(context).push('/internal-dashboard/layanan/edit'),
-                                      child: const CircleAvatar(
+                                      child: CircleAvatar(
                                         backgroundColor: Colors.deepPurpleAccent,
-                                        radius: 14,
+                                        radius: 14.r,
                                         child: Icon(Icons.edit,
                                             size: 16, color: Colors.white),
                                       ),
@@ -154,7 +155,7 @@ class InternalLayananPage extends StatelessWidget {
                                               ),
                                               onRatingUpdate: (rating) {},
                                             ),
-                                            const SizedBox(width: 5),
+                                            SizedBox(width: 5.w),
                                             Text("(3.5)",
                                                 style: appStyle(
                                                     size: 13,

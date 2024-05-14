@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
@@ -38,12 +39,12 @@ class InternalProfileTokoPage extends ConsumerWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(20, 30, 10, 30),
                         child: Row(children: [
-                          const CircleAvatar(
-                            radius: 35,
+                          CircleAvatar(
+                            radius: 35.r,
                             child: Icon(AntIcons.shopOutlined, size: 35),
                           ),
-                          const SizedBox(
-                            width: 15,
+                          SizedBox(
+                            width: 15.w,
                           ),
                           Expanded(
                             child: Column(
@@ -67,7 +68,7 @@ class InternalProfileTokoPage extends ConsumerWidget {
                       ),
                     ),
                   ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 GestureDetector(
                   onTap: () => Routemaster.of(context)
                       .push("/internal-account/profile-toko/katalog-produk"),
@@ -77,12 +78,12 @@ class InternalProfileTokoPage extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(20, 30, 10, 30),
                       child: Row(children: [
-                        const CircleAvatar(
-                          radius: 35,
+                        CircleAvatar(
+                          radius: 35.r,
                           child: Icon(Icons.shop_2_outlined, size: 35),
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: 15.w,
                         ),
                         Expanded(
                           child: Column(
@@ -106,7 +107,7 @@ class InternalProfileTokoPage extends ConsumerWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 GestureDetector(
                   onTap: () => Routemaster.of(context)
                       .push("/internal-account/profile-toko/beranda-toko"),
@@ -116,12 +117,12 @@ class InternalProfileTokoPage extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(20, 30, 10, 30),
                       child: Row(children: [
-                        const CircleAvatar(
-                          radius: 35,
+                        CircleAvatar(
+                          radius: 35.r,
                           child: Icon(AntIcons.pictureOutlined, size: 35),
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: 15.w,
                         ),
                         Expanded(
                           child: Column(
@@ -145,7 +146,7 @@ class InternalProfileTokoPage extends ConsumerWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 GestureDetector(
                   onTap: () => Routemaster.of(context)
                       .push("/internal-account/profile-toko/promosi"),
@@ -155,12 +156,12 @@ class InternalProfileTokoPage extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(20, 30, 10, 30),
                       child: Row(children: [
-                        const CircleAvatar(
-                          radius: 35,
+                        CircleAvatar(
+                          radius: 35.r,
                           child: Icon(Icons.discount_outlined, size: 35),
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: 15.w,
                         ),
                         Expanded(
                           child: Column(
@@ -184,7 +185,7 @@ class InternalProfileTokoPage extends ConsumerWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 GestureDetector(
                   onTap: () => Routemaster.of(context).push(
                       "/internal-account/profile-toko/preview-profile-toko"),
@@ -194,12 +195,12 @@ class InternalProfileTokoPage extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(20, 30, 10, 30),
                       child: Row(children: [
-                        const CircleAvatar(
-                          radius: 35,
+                        CircleAvatar(
+                          radius: 35.r,
                           child: Icon(Icons.view_carousel_outlined, size: 40),
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: 15.w,
                         ),
                         Expanded(
                           child: Column(

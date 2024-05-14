@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/repositories/implementations/produk_stok_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/providers/promo_item_selection_notifier.dart';
@@ -59,7 +60,7 @@ class _InternalPromoItemPageState extends ConsumerState<InternalPromoItemPage> {
                             return const Icon(Icons.cancel_outlined);
                           }
                         }),
-                        const SizedBox(width: 5),
+                        SizedBox(width: 5.w),
                         Builder(builder: (context) {
                           if (!isSelectionMode) {
                             return Text("Pilih",
@@ -113,7 +114,7 @@ class _InternalPromoItemPageState extends ConsumerState<InternalPromoItemPage> {
                                 bool isSelected = selectedProduk == r[index];
                                 return Column(
                                   children: [
-                                    const SizedBox(height: 5),
+                                    SizedBox(height: 5.h),
                                     Card(
                                       elevation: 5,
                                       surfaceTintColor: Colors.white,
@@ -149,9 +150,9 @@ class _InternalPromoItemPageState extends ConsumerState<InternalPromoItemPage> {
                                                             .first
                                                             .globalImageUrl,
                                                         fit: BoxFit.contain,
-                                                        width: 70),
+                                                        width: 70.w),
                                                   ),
-                                                  const SizedBox(width: 15),
+                                                  SizedBox(width: 15.w),
                                                   Expanded(
                                                     child: Column(
                                                       mainAxisAlignment:
@@ -202,7 +203,7 @@ class _InternalPromoItemPageState extends ConsumerState<InternalPromoItemPage> {
                                                                       .price ??
                                                                   0),
                                                           style: appStyle(
-                                                            size: 16,
+                                                            size: 14,
                                                             color: mainBlack,
                                                             fw: FontWeight.bold,
                                                           ),
@@ -212,18 +213,18 @@ class _InternalPromoItemPageState extends ConsumerState<InternalPromoItemPage> {
                                                   ),
                                                 ]),
                                               ),
-                                              const SizedBox(height: 5),
+                                              SizedBox(height: 5.h),
                                             ]),
                                       ),
                                     ),
-                                    const SizedBox(height: 5),
+                                    SizedBox(height: 5.h),
                                   ],
                                 );
                               },
                               itemCount: r.length,
                             ),
                             if (isSelectionMode && selectedProduk != null) ...[
-                              const SizedBox(height: 20),
+                              SizedBox(height: 20.h),
                               ElevatedButton(
                                 onPressed: () {
                                   ref

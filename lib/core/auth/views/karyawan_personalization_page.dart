@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/providers/auth_personalization_provider.dart';
 import 'package:tugas_akhir_project/core/auth/repositories/implementations/token_push_notification_repository_impl.dart';
@@ -118,7 +119,7 @@ class _KaryawanPersonalizationPageState
                             description:
                                 "Lengkapi personalisasi informasi internal Anda",
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           CustomTextField(
                             hintText: "Masukkan kode undangan toko",
                             controller: _inviteCodeController,
@@ -135,7 +136,7 @@ class _KaryawanPersonalizationPageState
                               }
                             },
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate() &&

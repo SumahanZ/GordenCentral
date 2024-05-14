@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -112,7 +113,7 @@ class ProdukCard extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Icon(AntIcons.plusCircleFilled, size: 25),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(
                                 buttonDescription,
                                 style: appStyle(

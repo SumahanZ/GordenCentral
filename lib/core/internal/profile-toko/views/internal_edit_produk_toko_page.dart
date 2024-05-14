@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
@@ -165,14 +166,14 @@ class _InternalEditProdukTokoPageState
                                     description:
                                         "Konfigurasikan informasi produk Anda",
                                     isAvatarNeeded: false),
-                                const SizedBox(height: 30),
+                                SizedBox(height: 30.h),
                                 ProdukImagePickerWithProduk(
                                   selectedImages: selectedImages,
                                   pickTheImage: pickTheImage,
                                   produk: r!,
                                   imageFromfile: imageFromfile,
                                 ),
-                                const SizedBox(height: 30),
+                                SizedBox(height: 30.h),
                                 CustomTextField(
                                     hintText: "Masukkan nama produk",
                                     controller: _nameController,
@@ -186,20 +187,20 @@ class _InternalEditProdukTokoPageState
                                         return null;
                                       }
                                     }),
-                                const SizedBox(height: 10),
+                                SizedBox(height: 10.h),
                                 CustomTextArea(
                                     hintText: "Masukkan deskripsi produk",
                                     controller: _descriptionController,
                                     labelText: "Deskripsi Produk",
                                     obscureText: false),
-                                const SizedBox(height: 10),
+                                SizedBox(height: 10.h),
                                 CustomPriceTextField(
                                     formatter: formatter,
                                     hintText: "Masukkan harga produk",
                                     controller: _priceController,
                                     labelText: "Harga Produk (Rp)",
                                     obscureText: false),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ProdukCard(
                                   selections: productSelections.sizes,
                                   routeDestination:
@@ -208,7 +209,7 @@ class _InternalEditProdukTokoPageState
                                   buttonDescription: 'Tambah ukuran',
                                   type: 'size',
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ProdukColorWidget(
                                   titleName: 'Warna Produk',
                                   buttonDescription: 'Tambah warna',
@@ -216,7 +217,7 @@ class _InternalEditProdukTokoPageState
                                       '/internal-account/profile-toko/preview-profile-toko/${widget.produkId}/edit/color',
                                   selections: productSelections.colors,
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: 20.h),
                                 ProdukCard(
                                   selections: productSelections.categories,
                                   routeDestination:
@@ -225,7 +226,7 @@ class _InternalEditProdukTokoPageState
                                   buttonDescription: 'Pilih kategori',
                                   type: "category",
                                 ),
-                                const SizedBox(height: 40),
+                                SizedBox(height: 40.h),
                                 ElevatedButton(
                                   onPressed: () {
                                     ref

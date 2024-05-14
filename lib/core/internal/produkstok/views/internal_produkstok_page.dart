@@ -5,6 +5,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/repositories/implementations/produk_stok_repository_impl.dart';
@@ -163,7 +164,7 @@ class _InternalProdukStokPageState
                                               ],
                                             ),
                                           ),
-                                          const SizedBox(height: 20),
+                                          SizedBox(height: 20.h),
                                           LayoutBuilder(
                                             builder: ((context, constraints) {
                                               return Row(
@@ -307,14 +308,14 @@ class _InternalProdukStokPageState
                                               );
                                             }),
                                           ),
-                                          const SizedBox(height: 20),
+                                          SizedBox(height: 20.h),
                                           LayoutBuilder(
                                             builder: ((context, constraints) {
                                               return Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
                                                 children: [
-                                                  const SizedBox(width: 7),
+                                                  SizedBox(width: 7.w),
                                                   InkWell(
                                                     onTap: () => ref
                                                         .read(
@@ -353,7 +354,7 @@ class _InternalProdukStokPageState
                                                               Column(children: [
                                                             Center(
                                                               child: Text(
-                                                                  "Cek \n Level Stok",
+                                                                  "Cek \n Stok",
                                                                   textAlign:
                                                                       TextAlign
                                                                           .center,
@@ -373,7 +374,7 @@ class _InternalProdukStokPageState
                                               );
                                             }),
                                           ),
-                                          const SizedBox(height: 30),
+                                          SizedBox(height: 30.h),
                                           Card(
                                             surfaceTintColor: Colors.white,
                                             elevation: 5,
@@ -470,7 +471,7 @@ class _InternalProdukStokPageState
                                                               maxWidth: 120,
                                                             ),
                                                             child: Text(
-                                                                "Sampai Reorder Point",
+                                                                "Reorder Point",
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -489,7 +490,7 @@ class _InternalProdukStokPageState
                                               ]),
                                             ),
                                           ),
-                                          const SizedBox(height: 30),
+                                          SizedBox(height: 30.h),
                                           IntrinsicHeight(
                                             child: Row(
                                               children: [
@@ -506,7 +507,7 @@ class _InternalProdukStokPageState
                                               ],
                                             ),
                                           ),
-                                          const SizedBox(height: 20),
+                                          SizedBox(height: 20.h),
                                           NoLabelCustomTextField(
                                             hintText:
                                                 "Search nama/kode produk...",
@@ -523,9 +524,9 @@ class _InternalProdukStokPageState
                                               });
                                             },
                                           ),
-                                          const SizedBox(height: 10),
+                                          SizedBox(height: 10.h),
                                           SizedBox(
-                                            height: 500,
+                                            height: 500.h,
                                             child: PaginatedDataTable2(
                                               renderEmptyRowsInTheEnd: false,
                                               empty: Center(

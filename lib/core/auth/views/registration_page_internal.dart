@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/providers/auth_personalization_provider.dart';
 import 'package:tugas_akhir_project/widgets/custom_dropdown_button_widget.dart';
@@ -68,7 +69,7 @@ class _RegisterPageInternalState extends ConsumerState<RegisterPageInternal> {
                     description:
                         "Daftar sebagai internal toko untuk menggunakan aplikasi",
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   CustomTextField(
                       hintText: "Masukkan nama Anda",
                       controller: _nameController,
@@ -81,7 +82,7 @@ class _RegisterPageInternalState extends ConsumerState<RegisterPageInternal> {
                           return null;
                         }
                       }),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomTextField(
                     hintText: "Masukkan email Anda",
                     controller: _emailController,
@@ -95,7 +96,7 @@ class _RegisterPageInternalState extends ConsumerState<RegisterPageInternal> {
                       }
                     },
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomTextField(
                     hintText: "Masukkan kata sandi Anda",
                     controller: _passwordController,
@@ -109,7 +110,7 @@ class _RegisterPageInternalState extends ConsumerState<RegisterPageInternal> {
                       }
                     },
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomTextField(
                     hintText: "Konfirmasi kata sandi Anda",
                     controller: _confirmPasswordController,
@@ -125,7 +126,7 @@ class _RegisterPageInternalState extends ConsumerState<RegisterPageInternal> {
                       }
                     },
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CustomDropdown(
                     labelText: "Role",
                     hintText: "Pilih Role",
@@ -140,7 +141,7 @@ class _RegisterPageInternalState extends ConsumerState<RegisterPageInternal> {
                       selectedRoleDropdownValue = value!;
                     },
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -173,7 +174,7 @@ class _RegisterPageInternalState extends ConsumerState<RegisterPageInternal> {
                           size: 18, color: Colors.white, fw: FontWeight.w500),
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

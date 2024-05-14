@@ -4,6 +4,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/utils/methods/utilmethods.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -75,7 +76,7 @@ class _InternalEditLayananPageState extends State<InternalEditLayananPage> {
                                     child: Stack(
                                       children: <Widget>[
                                         Image.file(item,
-                                            fit: BoxFit.cover, width: 1000.0),
+                                            fit: BoxFit.cover, width: 1000.0.w),
                                         Positioned(
                                           bottom: 0.0,
                                           left: 0.0,

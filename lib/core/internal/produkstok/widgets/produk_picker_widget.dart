@@ -4,6 +4,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/models/produk.dart';
 
 class ProdukImagePicker extends StatefulWidget {
@@ -37,7 +38,7 @@ class _ProdukImagePickerState extends State<ProdukImagePicker> {
                           child: Stack(
                             children: <Widget>[
                               Image.file(item,
-                                  fit: BoxFit.cover, width: 1000.0),
+                                  fit: BoxFit.cover, width: 1000.0.w),
                               Positioned(
                                 bottom: 0.0,
                                 left: 0.0,
@@ -139,7 +140,7 @@ class _ProdukImagePickerWithProdukState
                             children: <Widget>[
                               CachedNetworkImage(
                                 imageUrl: item.globalImageUrl,
-                                width: 1000,
+                                width: 1000.w,
                                 imageBuilder: (context, imageProvider) =>
                                     Container(
                                   decoration: BoxDecoration(
@@ -214,7 +215,7 @@ class _ProdukImagePickerWithProdukState
                               child: Stack(
                                 children: <Widget>[
                                   Image.file(item,
-                                      fit: BoxFit.cover, width: 1000.0),
+                                      fit: BoxFit.cover, width: 1000.0.w),
                                   Positioned(
                                     bottom: 0.0,
                                     left: 0.0,

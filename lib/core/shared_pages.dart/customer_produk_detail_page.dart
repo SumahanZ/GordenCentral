@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -173,7 +174,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                   child: selectedVariant == null
                       ? Column(
                           children: [
-                            const SizedBox(height: 50),
+                            SizedBox(height: 50.h),
                             Center(
                                 child: Text("Varian belum dipilih!",
                                     style: appStyle(
@@ -184,7 +185,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                         )
                       : Column(
                           children: [
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -265,17 +266,17 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                                 elevation: 5,
                                                 borderRadius:
                                                     BorderRadius.circular(20),
-                                                child: const CircleAvatar(
+                                                child: CircleAvatar(
                                                     backgroundColor:
                                                         Colors.white,
-                                                    radius: 15,
+                                                    radius: 15.r,
                                                     child: Icon(
                                                       AntIcons.minusOutlined,
                                                     )),
                                               ),
                                             ),
                                           ),
-                                          const SizedBox(width: 15),
+                                          SizedBox(width: 15.w),
                                           Text(
                                             itemQuantity.toString(),
                                             style: appStyle(
@@ -284,7 +285,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                               fw: FontWeight.w600,
                                             ),
                                           ),
-                                          const SizedBox(width: 15),
+                                          SizedBox(width: 15.w),
                                           Opacity(
                                             opacity: itemQuantity >=
                                                     selectedVariant!
@@ -306,8 +307,8 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                                 elevation: 5,
                                                 borderRadius:
                                                     BorderRadius.circular(20),
-                                                child: const CircleAvatar(
-                                                  radius: 15,
+                                                child: CircleAvatar(
+                                                  radius: 15.r,
                                                   backgroundColor:
                                                       Colors.greenAccent,
                                                   child:
@@ -318,7 +319,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 10),
+                                      SizedBox(height: 10.h),
                                       Opacity(
                                         opacity: itemQuantity == 0 ? 0 : 1,
                                         child: ElevatedButton(
@@ -442,7 +443,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                           children: <Widget>[
                                             CachedNetworkImage(
                                               imageUrl: item["imageUrl"] ?? "",
-                                              width: 1000,
+                                              width: 1000.w,
                                               imageBuilder:
                                                   (context, imageProvider) =>
                                                       Container(
@@ -515,8 +516,8 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                     onTap: () =>
                                         _controller.animateToPage(entry.key),
                                     child: Container(
-                                      width: 8.0,
-                                      height: 8.0,
+                                      width: 8.0.w,
+                                      height: 8.0.h,
                                       margin: const EdgeInsets.symmetric(
                                           vertical: 4.0, horizontal: 4.0),
                                       decoration: BoxDecoration(
@@ -535,7 +536,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -585,7 +586,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                           children: [
                                             const Icon(AntIcons.deleteFilled,
                                                 size: 16, color: Colors.white),
-                                            const SizedBox(width: 10),
+                                            SizedBox(width: 10.w),
                                             Text("Hapus dari Wishlist",
                                                 style: appStyle(
                                                     size: 14,
@@ -604,7 +605,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                           children: [
                                             const Icon(AntIcons.heartFilled,
                                                 size: 16, color: Colors.white),
-                                            const SizedBox(width: 10),
+                                            SizedBox(width: 10.w),
                                             Text("Tambah ke Wishlist",
                                                 style: appStyle(
                                                     size: 14,
@@ -617,7 +618,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                   }
                                 }),
                               ),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               if (r?.averageRating != 0) ...[
                                 const Spacer(),
                                 const Icon(AntIcons.starFilled,
@@ -632,7 +633,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                               ]
                             ],
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           Row(
                             children: [
                               Expanded(
@@ -674,7 +675,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                 ),
                             ],
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           if (r?.promo != null &&
                               (r?.promo?.expiredAt ?? DateTime.now())
                                   .isAfter(DateTime.now()))
@@ -686,13 +687,13 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                 fw: FontWeight.w500,
                               ),
                             ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           Text(r?.description ?? "Tidak ada deskripsi",
                               style: appStyle(
                                   size: 16,
                                   color: mainBlack,
                                   fw: FontWeight.w400)),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Text("Ukuran:",
                               style: appStyle(
                                   size: 16,
@@ -740,7 +741,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                               ]),
                             ),
                           ]),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Text("Warna:",
                               style: appStyle(
                                   size: 16,
@@ -790,7 +791,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                               ]),
                             ),
                           ]),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Wrap(
                             children: [
                               Text("Kategori: ",
@@ -798,7 +799,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                       size: 16,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(
                                   r?.produkCategories
                                           .map((e) => e.name)
@@ -811,7 +812,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                       fw: FontWeight.w500))
                             ],
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Row(
                             children: [
                               Text("Dijual Oleh: ",
@@ -819,7 +820,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                       size: 16,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(r?.toko?.name ?? "No name",
                                   style: appStyle(
                                       size: 14,
@@ -827,7 +828,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                       fw: FontWeight.w500))
                             ],
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Row(
                             children: [
                               Text("Created At: ",
@@ -835,7 +836,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                       size: 16,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(
                                   (r?.createdAt ?? DateTime.now()).formatDate(),
                                   style: appStyle(
@@ -844,7 +845,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                       fw: FontWeight.w500))
                             ],
                           ),
-                          const SizedBox(height: 400),
+                          SizedBox(height: 400.h),
                         ],
                       ),
                     ),

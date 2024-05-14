@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/viewmodels/auth_viewmodel.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -35,12 +36,12 @@ class AccountBottomTile extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
         child: Row(
           children: [
-            const SizedBox(width: 5),
+            SizedBox(width: 5.w),
             Icon(
               icon,
               color: iconColor,
             ),
-            const SizedBox(width: 20),
+            SizedBox(width: 20.w),
             Text(
               title,
               style: appStyle(size: 14, color: textColor, fw: FontWeight.w500),

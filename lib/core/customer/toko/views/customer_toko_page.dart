@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/customer/toko/repositories/implementations/customer_toko_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/widgets/katalog_produk_row_widget.dart';
@@ -56,7 +57,7 @@ class CustomerTokoPage extends ConsumerWidget {
                               if (tokoInfo!.berandaToko.isNotEmpty) {
                                 return Column(
                                   children: [
-                                    const SizedBox(height: 20),
+                                    SizedBox(height: 20.h),
                                     ProfileTokoBerandaList(
                                       controller: _controller,
                                       berandaTokoList: tokoInfo.berandaToko,

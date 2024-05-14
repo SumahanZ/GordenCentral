@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
@@ -23,19 +24,19 @@ class RegistrationConfirmationCustomerPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 Image.asset(
                   "assets/images/auth-image.png",
                   fit: BoxFit.fitWidth,
                 ),
-                const SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Text(
                   "Hanya satu langkah lagi! Silakan masukkan beberapa penyesuaian lebih lanjut untuk menikmati pengalaman kami.",
                   textAlign: TextAlign.center,
                   style:
                       appStyle(size: 16, color: mainBlack, fw: FontWeight.w300),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
         
                 ElevatedButton(
                   onPressed: () {

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/providers/katalog_produk_selection_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/repositories/implementations/profile_toko_repository_impl.dart';
@@ -62,7 +63,7 @@ class _PickItemsKatalogProdukPageState
                             return const Icon(Icons.cancel_outlined);
                           }
                         }),
-                        const SizedBox(width: 5),
+                        SizedBox(width: 5.w),
                         Builder(builder: (context) {
                           if (!isSelectionMode) {
                             return Text("Pilih",
@@ -140,7 +141,7 @@ class _PickItemsKatalogProdukPageState
                                               imageUrl: r[index]
                                                   .produkGlobalImages[0]
                                                   .globalImageUrl,
-                                              width: 70,
+                                              width: 70.w,
                                               imageBuilder:
                                                   (context, imageProvider) =>
                                                       Container(
@@ -159,7 +160,7 @@ class _PickItemsKatalogProdukPageState
                                                   (context, url, error) =>
                                                       const Icon(Icons.error),
                                             )),
-                                        const SizedBox(width: 15),
+                                        SizedBox(width: 15.w),
                                         Expanded(
                                           child: Column(
                                             mainAxisAlignment:
@@ -213,14 +214,14 @@ class _PickItemsKatalogProdukPageState
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                           ],
                         );
                       },
                       itemCount: r.length,
                     ),
                     if (isSelectionMode && selectedFlag.isNotEmpty) ...[
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       ElevatedButton(
                         onPressed: () {
                           if (selectedFlag.isNotEmpty) {

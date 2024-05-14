@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/laporanbarang/repositories/implementations/internal_laporanbarang_repository_impl.dart';
 import 'package:tugas_akhir_project/models/laporanbarangkeluar.dart';
@@ -251,7 +252,7 @@ class _InternalLaporanBarangPageState
                                 description:
                                     "Lihat laporan barang keluar dan masuk dari produk",
                                 isAvatarNeeded: false),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             Card(
                               surfaceTintColor: Colors.white,
                               elevation: 5,
@@ -273,7 +274,7 @@ class _InternalLaporanBarangPageState
                                                     size: 20,
                                                     color: mainBlack,
                                                     fw: FontWeight.w600)),
-                                            const SizedBox(height: 20),
+                                            SizedBox(height: 20.h),
                                             Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -367,7 +368,7 @@ class _InternalLaporanBarangPageState
                                                     ),
                                                   )
                                                 ]),
-                                            const SizedBox(height: 15),
+                                            SizedBox(height: 15.h),
                                           ],
                                         ),
                                       ),
@@ -376,7 +377,7 @@ class _InternalLaporanBarangPageState
                                 ]),
                               ),
                             ),
-                            const SizedBox(height: 30),
+                            SizedBox(height: 30.h),
                             IntrinsicHeight(
                               child: Row(
                                 children: [
@@ -390,7 +391,7 @@ class _InternalLaporanBarangPageState
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             TabBar(
                               physics: const NeverScrollableScrollPhysics(),
                               isScrollable: false,
@@ -424,7 +425,7 @@ class _InternalLaporanBarangPageState
                               padding:
                                   const EdgeInsets.symmetric(vertical: 10.0),
                               child: SizedBox(
-                                height: 500,
+                                height: 500.h,
                                 child: TabBarView(
                                   physics: const NeverScrollableScrollPhysics(),
                                   controller: _tabController,
@@ -433,13 +434,13 @@ class _InternalLaporanBarangPageState
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const SizedBox(height: 10),
+                                        SizedBox(height: 10.h),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
                                           children: [
                                             Container(
-                                              width: 160,
+                                              width: 160.w,
                                               child: CustomDropdownChart(
                                                   values: const [
                                                     "Semua",
@@ -457,7 +458,7 @@ class _InternalLaporanBarangPageState
                                             ),
                                           ],
                                         ),
-                                        const SizedBox(height: 20),
+                                        SizedBox(height: 20.h),
                                         NoLabelCustomTextField(
                                           hintText:
                                               "Search name/code produk...",
@@ -618,13 +619,13 @@ class _InternalLaporanBarangPageState
                                     ),
                                     Column(
                                       children: [
-                                        const SizedBox(height: 10),
+                                        SizedBox(height: 10.h),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
                                           children: [
                                             Container(
-                                              width: 160,
+                                              width: 160.w,
                                               child: CustomDropdownChart(
                                                   values: const [
                                                     "Semua",
@@ -642,7 +643,7 @@ class _InternalLaporanBarangPageState
                                             ),
                                           ],
                                         ),
-                                        const SizedBox(height: 20),
+                                        SizedBox(height: 20.h),
                                         NoLabelCustomTextField(
                                           hintText: "Search nama produk...",
                                           controller:

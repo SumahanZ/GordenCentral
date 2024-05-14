@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/providers/promo_item_selection_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/providers/promo_selection_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/repositories/implementations/profile_toko_repository_impl.dart';
@@ -139,7 +140,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                     children: [
                                                       const Icon(Icons
                                                           .discount_outlined),
-                                                      const SizedBox(width: 5),
+                                                      SizedBox(width: 5.w),
                                                       Text(
                                                           "${filteredPromosOngoing[index].discountPercent}% OFF",
                                                           style: appStyle(
@@ -147,7 +148,13 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                               color: mainBlack,
                                                               fw: FontWeight
                                                                   .w600)),
-                                                      const Spacer(),
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 5.h),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
                                                       Text(
                                                         textAlign:
                                                             TextAlign.center,
@@ -162,14 +169,14 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                             ? "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), filteredPromosOngoing[index].expiredAt!)}"
                                                             : "Expired At: ${filteredPromosOngoing[index].expiredAt?.formatDatePDF()}",
                                                         style: appStyle(
-                                                          size: 11,
+                                                          size: 12,
                                                           color: mainBlack,
                                                           fw: FontWeight.w600,
                                                         ),
                                                       ),
                                                     ],
                                                   ),
-                                                  const SizedBox(height: 5),
+                                                  SizedBox(height: 10.h),
                                                   IntrinsicHeight(
                                                     child: Row(children: [
                                                       ClipRRect(
@@ -185,9 +192,9 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                     .globalImageUrl ??
                                                                 "",
                                                             fit: BoxFit.contain,
-                                                            width: 70),
+                                                            width: 70.w),
                                                       ),
-                                                      const SizedBox(width: 15),
+                                                      SizedBox(width: 15.w),
                                                       Expanded(
                                                         child: Column(
                                                           crossAxisAlignment:
@@ -251,7 +258,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                               0),
                                                                   style:
                                                                       appStyle(
-                                                                    size: 14,
+                                                                    size: 12,
                                                                     color:
                                                                         mainBlack,
                                                                     fw: FontWeight
@@ -262,8 +269,8 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                           decorationThickness:
                                                                               2),
                                                                 ),
-                                                                const SizedBox(
-                                                                    width: 5),
+                                                                SizedBox(
+                                                                    width: 5.w),
                                                                 Text(
                                                                   maxLines: 1,
                                                                   overflow:
@@ -279,7 +286,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                               100)),
                                                                   style:
                                                                       appStyle(
-                                                                    size: 14,
+                                                                    size: 12,
                                                                     color:
                                                                         mainBlack,
                                                                     fw: FontWeight
@@ -291,7 +298,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                           ],
                                                         ),
                                                       ),
-                                                      const SizedBox(width: 20),
+                                                      // SizedBox(width: 20.w),
                                                       GestureDetector(
                                                         onTap: () {
                                                           if (filteredPromosOngoing[
@@ -323,8 +330,8 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(20),
-                                                          child: const CircleAvatar(
-                                                              radius: 17,
+                                                          child: CircleAvatar(
+                                                              radius: 15.r,
                                                               child: Icon(AntIcons
                                                                   .editFilled)),
                                                         ),
@@ -398,7 +405,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                     children: [
                                                       const Icon(Icons
                                                           .discount_outlined),
-                                                      const SizedBox(width: 5),
+                                                      SizedBox(width: 5.w),
                                                       Text(
                                                           "${filteredPromosExpired[index].discountPercent}% OFF",
                                                           style: appStyle(
@@ -406,16 +413,21 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                               color: mainBlack,
                                                               fw: FontWeight
                                                                   .w600)),
-                                                      const Spacer(),
+                                                    ],
+                                                  ),
+                                                  SizedBox(height: 5.h),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    children: [
                                                       Text(
-                                                        textAlign:
-                                                            TextAlign.center,
+                                                        textAlign: TextAlign.center,
                                                         (filteredPromosExpired[
                                                                             index]
                                                                         .produk
                                                                         ?.promo !=
                                                                     null &&
-                                                                (filteredPromosExpired[index]
+                                                                (filteredPromosExpired[
+                                                                                index]
                                                                             .produk
                                                                             ?.promo
                                                                             ?.expiredAt ??
@@ -434,7 +446,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                       ),
                                                     ],
                                                   ),
-                                                  const SizedBox(height: 5),
+                                                  SizedBox(height: 10.h),
                                                   IntrinsicHeight(
                                                     child: Row(children: [
                                                       ClipRRect(
@@ -450,9 +462,9 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                     .globalImageUrl ??
                                                                 "",
                                                             fit: BoxFit.contain,
-                                                            width: 70),
+                                                            width: 70.w),
                                                       ),
-                                                      const SizedBox(width: 15),
+                                                      SizedBox(width: 15.w),
                                                       Expanded(
                                                         child: Column(
                                                           crossAxisAlignment:
@@ -527,8 +539,8 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                           decorationThickness:
                                                                               2),
                                                                 ),
-                                                                const SizedBox(
-                                                                    width: 5),
+                                                                SizedBox(
+                                                                    width: 5.w),
                                                                 Text(
                                                                   maxLines: 1,
                                                                   overflow:
@@ -556,7 +568,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                           ],
                                                         ),
                                                       ),
-                                                      const SizedBox(width: 20),
+                                                      SizedBox(width: 20.w),
                                                       GestureDetector(
                                                         onTap: () {
                                                           if (filteredPromosExpired[
@@ -588,8 +600,8 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(20),
-                                                          child: const CircleAvatar(
-                                                              radius: 17,
+                                                          child: CircleAvatar(
+                                                              radius: 17.r,
                                                               child: Icon(AntIcons
                                                                   .editFilled)),
                                                         ),

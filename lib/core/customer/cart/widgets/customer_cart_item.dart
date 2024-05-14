@@ -2,6 +2,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/core/customer/cart/repositories/implementations/customer_cart_repository_impl.dart';
 import 'package:tugas_akhir_project/core/customer/cart/viewmodels/customer_cart_viewmodel.dart';
 import 'package:tugas_akhir_project/models/cartitem.dart';
@@ -31,28 +32,34 @@ class CustomerCartItem extends ConsumerWidget {
             if (cartItem?.produkCombination?.product?.promo != null &&
                 (cartItem?.produkCombination?.product?.promo?.expiredAt ??
                         DateTime.now())
-                    .isAfter(DateTime.now()))
+                    .isAfter(DateTime.now())) ...[
               Row(
                 children: [
                   const Icon(Icons.discount_outlined),
-                  const SizedBox(width: 5),
+                  SizedBox(width: 5.w),
                   Text(
                       "${cartItem?.produkCombination?.product?.promo?.discountPercent}% OFF",
                       style: appStyle(
                           size: 12, color: mainBlack, fw: FontWeight.w600)),
-                  const Spacer(),
+                ],
+              ),
+              SizedBox(height: 5.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
                   Text(
                     textAlign: TextAlign.center,
                     "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), cartItem?.produkCombination?.product?.promo?.expiredAt ?? DateTime.now())}",
                     style: appStyle(
-                      size: 11,
+                      size: 12,
                       color: mainBlack,
                       fw: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
-            const SizedBox(height: 5),
+              SizedBox(height: 10.h),
+            ],
             IntrinsicHeight(
               child: Row(children: [
                 ClipRRect(
@@ -61,7 +68,7 @@ class CustomerCartItem extends ConsumerWidget {
                       imageUrl: cartItem
                               ?.produkCombination?.color?.produkColorImageUrl ??
                           "",
-                      width: 70,
+                      width: 70.w,
                       imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -76,7 +83,7 @@ class CustomerCartItem extends ConsumerWidget {
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                     )),
-                const SizedBox(width: 15),
+                SizedBox(width: 15.w),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +153,7 @@ class CustomerCartItem extends ConsumerWidget {
                                     : TextDecoration.none,
                                 decorationThickness: 2),
                           ),
-                          const SizedBox(width: 10),
+                          SizedBox(width: 10.w),
                           if (cartItem?.produkCombination?.product?.promo !=
                                   null &&
                               (cartItem?.produkCombination?.product?.promo
@@ -208,13 +215,13 @@ class CustomerCartItem extends ConsumerWidget {
                         elevation: 5,
                         borderRadius: BorderRadius.circular(20),
                         child: CircleAvatar(
-                            radius: 17,
+                            radius: 17.r,
                             child: Icon((cartItem?.amount ?? 0) == 1
                                 ? AntIcons.deleteFilled
                                 : AntIcons.minusOutlined)),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     Text(
                       cartItem?.amount.toString() ?? "0",
                       style: appStyle(
@@ -223,7 +230,7 @@ class CustomerCartItem extends ConsumerWidget {
                         fw: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     GestureDetector(
                       onTap: (cartItem != null &&
                               ((cartItem!.amount ?? 0) <
@@ -248,8 +255,8 @@ class CustomerCartItem extends ConsumerWidget {
                         child: Material(
                           elevation: 5,
                           borderRadius: BorderRadius.circular(20),
-                          child: const CircleAvatar(
-                            radius: 17,
+                          child: CircleAvatar(
+                            radius: 17.r,
                             foregroundColor: Colors.white,
                             backgroundColor: Colors.purple,
                             child: Icon(Icons.add_outlined),

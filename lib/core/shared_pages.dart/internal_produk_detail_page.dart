@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
@@ -128,7 +129,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                   child: selectedVariant == null
                       ? Column(
                           children: [
-                            const SizedBox(height: 50),
+                            SizedBox(height: 50.h),
                             Center(
                               child: Text(
                                 "Varian belum dipilih!",
@@ -142,7 +143,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                         )
                       : Column(
                           children: [
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -269,7 +270,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                           children: <Widget>[
                                             CachedNetworkImage(
                                               imageUrl: item["imageUrl"] ?? "",
-                                              width: 1000,
+                                              width: 1000.w,
                                               imageBuilder:
                                                   (context, imageProvider) =>
                                                       Container(
@@ -342,8 +343,8 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                     onTap: () =>
                                         _controller.animateToPage(entry.key),
                                     child: Container(
-                                      width: 8.0,
-                                      height: 8.0,
+                                      width: 8.0.w,
+                                      height: 8.0.h,
                                       margin: const EdgeInsets.symmetric(
                                           vertical: 4.0, horizontal: 4.0),
                                       decoration: BoxDecoration(
@@ -362,14 +363,14 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           if (r?.averageRating != 0)
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 const Icon(AntIcons.starFilled,
                                     color: Colors.yellow),
-                                const SizedBox(width: 5),
+                                SizedBox(width: 5.w),
                                 Text(
                                   "${r?.averageRating?.toStringAsPrecision(2) ?? ""} (${r?.totalRating ?? 0} Pembeli)",
                                   style: appStyle(
@@ -379,7 +380,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                 ),
                               ],
                             ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           Row(
                             children: [
                               Expanded(
@@ -421,7 +422,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                 ),
                             ],
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           if (r?.promo != null &&
                               (r?.promo?.expiredAt ?? DateTime.now())
                                   .isAfter(DateTime.now()))
@@ -433,13 +434,13 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                 fw: FontWeight.w500,
                               ),
                             ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           Text(r?.description ?? "No description",
                               style: appStyle(
                                   size: 16,
                                   color: mainBlack,
                                   fw: FontWeight.w400)),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Text("Ukuran:",
                               style: appStyle(
                                   size: 16,
@@ -487,7 +488,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                               ]),
                             ),
                           ]),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Text("Warna:",
                               style: appStyle(
                                   size: 16,
@@ -537,7 +538,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                               ]),
                             ),
                           ]),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Wrap(
                             children: [
                               Text("Kategori: ",
@@ -545,7 +546,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                       size: 16,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(
                                   r?.produkCategories
                                           .map((e) => e.name)
@@ -558,7 +559,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                       fw: FontWeight.w500))
                             ],
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Row(
                             children: [
                               Text("Dijual Oleh: ",
@@ -566,7 +567,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                       size: 16,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(r?.toko?.name ?? "No name",
                                   style: appStyle(
                                       size: 14,
@@ -574,7 +575,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                       fw: FontWeight.w500))
                             ],
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           Row(
                             children: [
                               Text("Created At: ",
@@ -582,7 +583,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                       size: 16,
                                       color: mainBlack,
                                       fw: FontWeight.w600)),
-                              const SizedBox(width: 5),
+                              SizedBox(width: 5.w),
                               Text(
                                   (r?.createdAt ?? DateTime.now()).formatDate(),
                                   style: appStyle(
@@ -591,7 +592,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                       fw: FontWeight.w500))
                             ],
                           ),
-                          const SizedBox(height: 400),
+                          SizedBox(height: 400.h),
                         ],
                       ),
                     ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/viewmodels/auth_viewmodel.dart';
 import 'package:tugas_akhir_project/utils/helpers/awesome_notification_helper.dart';
@@ -11,6 +13,9 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   await Firebase.initializeApp(
     name: "TugasAkhirSkripsi-PN",
     options: DefaultFirebaseOptions.currentPlatform,
@@ -44,24 +49,31 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     final userState = ref.watch(userStateProvider);
-    return MaterialApp.router(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        dividerColor: Colors.transparent,
-        primaryColor: const Color.fromARGB(255, 248, 248, 255),
-        useMaterial3: true,
-      ),
-      routerDelegate: RoutemasterDelegate(
-        routesBuilder: (context) {
-          if (userState != null && userState.personalizationFinished == true) {
-            return (userState.type == "pemilik" || userState.type == "karyawan")
-                ? loggedInInternalRoute
-                : loggedInCustomerRoute;
-          }
-          return loggedOutRoute;
-        },
-      ),
-      routeInformationParser: const RoutemasterParser(),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        builder: (_, child) {
+          return MaterialApp.router(
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              dividerColor: Colors.transparent,
+              primaryColor: const Color.fromARGB(255, 248, 248, 255),
+              useMaterial3: true,
+            ),
+            routerDelegate: RoutemasterDelegate(
+              routesBuilder: (context) {
+                if (userState != null &&
+                    userState.personalizationFinished == true) {
+                  return (userState.type == "pemilik" ||
+                          userState.type == "karyawan")
+                      ? loggedInInternalRoute
+                      : loggedInCustomerRoute;
+                }
+                return loggedOutRoute;
+              },
+            ),
+            routeInformationParser: const RoutemasterParser(),
+          );
+        });
   }
 }

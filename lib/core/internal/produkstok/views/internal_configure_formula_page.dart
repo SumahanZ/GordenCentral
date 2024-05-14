@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tex/flutter_tex.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
@@ -42,10 +43,10 @@ class _InternalConfigureFormulaPageState
                     description:
                         "Configure the formula of the Safety Stock and Reorder Point Method",
                     isAvatarNeeded: false),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 //enter penjelasan rumus here
                 const SafetyStockFormulaWidget(),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -59,7 +60,7 @@ class _InternalConfigureFormulaPageState
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 SfSlider(
                   min: 0.0,
                   stepSize: 1,
@@ -76,7 +77,7 @@ class _InternalConfigureFormulaPageState
                     });
                   },
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -90,7 +91,7 @@ class _InternalConfigureFormulaPageState
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 SfSlider(
                   min: 0.0,
                   stepSize: 1,
@@ -107,7 +108,7 @@ class _InternalConfigureFormulaPageState
                     });
                   },
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(

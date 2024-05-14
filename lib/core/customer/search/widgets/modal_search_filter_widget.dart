@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
@@ -104,7 +105,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                           )
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       ExpansionTile(
                         title: Text(
                           "Nama",
@@ -121,7 +122,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       ExpansionTile(
                         title: Text(
                           "Lokasi",
@@ -163,7 +164,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       ExpansionTile(
                         title: Text(
                           "Kategori",
@@ -172,7 +173,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                         ),
                         children: [
                           Row(children: [
-                            const SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                             Expanded(
                               child: Wrap(
                                 children: [
@@ -216,11 +217,11 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                                 ],
                               ),
                             ),
-                            const SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                           ]),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       ExpansionTile(
                         title: Text(
                           "Harga",
@@ -253,7 +254,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       ExpansionTile(
                         title: Text(
                           "Rating",
@@ -288,7 +289,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       ExpansionTile(
                         title: Text(
                           "Toko",
@@ -334,7 +335,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(height: 30.h),
                       ElevatedButton(
                         onPressed: () {
                           if ((selectedLocation != null &&
@@ -386,7 +387,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                               fw: FontWeight.w500),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       ElevatedButton(
                         onPressed: () {
                           setState(() {

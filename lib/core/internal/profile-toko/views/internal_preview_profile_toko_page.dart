@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/repositories/implementations/profile_toko_repository_impl.dart';
 import 'package:tugas_akhir_project/core/internal/profile-toko/widgets/katalog_produk_row_widget.dart';
@@ -72,7 +73,7 @@ class _InternalPreviewProfileTokoPageState
                             if (berandaTokoList.isNotEmpty) {
                               return Column(
                                 children: [
-                                  const SizedBox(height: 20),
+                                  SizedBox(height: 20.h),
                                   ProfileTokoBerandaList(
                                     controller: _controller,
                                     berandaTokoList: berandaTokoList,
@@ -81,7 +82,7 @@ class _InternalPreviewProfileTokoPageState
                               );
                             } else {
                               return SizedBox(
-                                height: 200,
+                                height: 200.h,
                                 child: Center(
                                   child: Text(
                                     "Beranda Toko belum diatur",
@@ -111,7 +112,7 @@ class _InternalPreviewProfileTokoPageState
                                   });
                             } else {
                               return SizedBox(
-                                height: 400,
+                                height: 400.h,
                                 child: Center(
                                   child: Text(
                                     "Katalog Produk belum diatur",

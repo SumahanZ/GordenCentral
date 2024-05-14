@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
@@ -36,7 +37,7 @@ class ButtonSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
               side: BorderSide(
                 color: mainBlack,
-                width: 1,
+                width: 1.w,
               ),
             ),
           ),

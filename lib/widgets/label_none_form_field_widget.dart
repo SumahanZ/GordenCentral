@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 
 class NoLabelCustomTextField extends StatefulWidget {
@@ -41,18 +42,18 @@ class _NoLabelCustomTextFieldState extends State<NoLabelCustomTextField> {
           floatingLabelBehavior: FloatingLabelBehavior.never,
           hintText: widget.hintText,
           fillColor: const Color.fromARGB(255, 243, 243, 243),
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            borderSide: BorderSide(color: Colors.black, width: 1),
+            borderSide: BorderSide(color: Colors.black, width: 1.w),
           ),
-          disabledBorder: const OutlineInputBorder(
+          disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            borderSide: BorderSide(color: Colors.black, width: 2),
+            borderSide: BorderSide(color: Colors.black, width: 2.w),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(Radius.circular(30)),
             borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.primary, width: 2),
+                color: Theme.of(context).colorScheme.primary, width: 2.w),
           ),
         ),
         controller: widget.controller,

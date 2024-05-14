@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/providers/auth_personalization_provider.dart';
 import 'package:tugas_akhir_project/core/auth/repositories/implementations/auth_repository_impl.dart';
@@ -119,7 +120,7 @@ class _CustomerPersonalizationPageState
                             description:
                                 "Lengkapi personalisasi alamat pengiriman Anda",
                           ),
-                          const SizedBox(height: 15),
+                          SizedBox(height: 15.h),
                           ref.watch(fetchProvinceslist).when(
                               data: (data) {
                                 return data.match(
@@ -165,8 +166,8 @@ class _CustomerPersonalizationPageState
                                                       children: [
                                                         Column(
                                                           children: [
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             CustomTextField(
                                                               labelText:
                                                                   "Negara",
@@ -209,8 +210,8 @@ class _CustomerPersonalizationPageState
                                                                 });
                                                               },
                                                             ),
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             if (selectedCity !=
                                                                 null)
                                                               Column(
@@ -236,9 +237,9 @@ class _CustomerPersonalizationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          5),
+                                                                          5.h),
                                                                   CustomTextField(
                                                                     hintText:
                                                                         "Masukkan kode pos",
@@ -258,9 +259,9 @@ class _CustomerPersonalizationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          10),
+                                                                          10.h),
                                                                   ElevatedButton(
                                                                     onPressed:
                                                                         () {

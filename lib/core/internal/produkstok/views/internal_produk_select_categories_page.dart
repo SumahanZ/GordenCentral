@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/repositories/implementations/produk_stok_repository_impl.dart';
@@ -58,7 +59,7 @@ class _InternalProdukSelectCategoryPageState
                         return const Icon(Icons.cancel_outlined);
                       }
                     }),
-                    const SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Builder(builder: (context) {
                       if (!isSelectionMode) {
                         return Text("Pilih",
@@ -106,7 +107,7 @@ class _InternalProdukSelectCategoryPageState
                             bool isSelected = selectedFlag.contains(r[index]);
                             return Column(
                               children: [
-                                const SizedBox(height: 5),
+                                SizedBox(height: 5.h),
                                 Card(
                                   elevation: 5,
                                   surfaceTintColor: Colors.white,
@@ -149,18 +150,18 @@ class _InternalProdukSelectCategoryPageState
                                           ),
                                         ]),
                                       ),
-                                      const SizedBox(height: 5),
+                                      SizedBox(height: 5.h),
                                     ]),
                                   ),
                                 ),
-                                const SizedBox(height: 5),
+                                SizedBox(height: 5.h),
                               ],
                             );
                           },
                           itemCount: r.length,
                         ),
                         if (isSelectionMode && selectedFlag.isNotEmpty) ...[
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           ElevatedButton(
                             onPressed: () {
                               if (selectedFlag.isNotEmpty) {

@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/customer/wishlist/repositories/implementations/customer_wishlist_repository_impl.dart';
 import 'package:tugas_akhir_project/core/customer/wishlist/viewmodels/customer_wishlist_viewmodel.dart';
@@ -135,10 +136,10 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                       ref.invalidate(
                                                           fetchWishlist);
                                                     },
-                                                    child: const CircleAvatar(
+                                                    child: CircleAvatar(
                                                       backgroundColor:
                                                           Colors.red,
-                                                      radius: 14,
+                                                      radius: 14.r,
                                                       child: Icon(
                                                           AntIcons.deleteFilled,
                                                           size: 16,
@@ -157,7 +158,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                           .produkList[index]
                                                           .produkGlobalImages[0]
                                                           .globalImageUrl,
-                                                      width: 44,
+                                                      width: 44.w,
                                                       imageBuilder: (context,
                                                               imageProvider) =>
                                                           Container(
@@ -177,7 +178,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                     )),
                                               ),
                                             ),
-                                            const SizedBox(height: 10),
+                                            SizedBox(height: 10.h),
                                             Expanded(
                                               child: Padding(
                                                 padding:
@@ -199,7 +200,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                             fw: FontWeight.w600),
                                                         textAlign:
                                                             TextAlign.center),
-                                                    const SizedBox(height: 5),
+                                                    SizedBox(height: 5.h),
                                                     Text(
                                                       PriceFormatter.getFormattedValue(r
                                                                       .produkList[
@@ -228,7 +229,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                           color: mainBlack,
                                                           fw: FontWeight.bold),
                                                     ),
-                                                    const SizedBox(height: 5),
+                                                    SizedBox(height: 5.h),
                                                     // if (r.produkList[index].rating
                                                     //     != null)
                                                       Row(
@@ -259,8 +260,8 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                             onRatingUpdate:
                                                                 (rating) {},
                                                           ),
-                                                          const SizedBox(
-                                                              width: 5),
+                                                          SizedBox(
+                                                              width: 5.w),
                                                           Text(
                                                               "(${r.produkList[index].averageRating?.toStringAsPrecision(2) ?? 0})",
                                                               style: appStyle(
@@ -271,7 +272,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                                                                       .w600)),
                                                         ],
                                                       ),
-                                                    const SizedBox(height: 5),
+                                                    SizedBox(height: 5.h),
                                                   ],
                                                 ),
                                               ),

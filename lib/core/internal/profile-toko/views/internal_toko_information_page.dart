@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/customer/cart/repositories/sources/whatsapp_communicator_repository.dart';
@@ -160,12 +161,12 @@ class _InternalTokoInformationPageState
                             name: 'Informasi Toko',
                             description: "Konfigurasikan informasi toko Anda",
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           TokoConfigureImage(
                             pickTheImage: pickTheImage,
                             selectedImage: selectedImage,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           CustomTextField(
                               hintText: "Masukkan nama toko",
                               controller: _tokoNameController,
@@ -178,8 +179,8 @@ class _InternalTokoInformationPageState
                                   return null;
                                 }
                               }),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           CustomTextField(
                               hintText: "Masukkan nomor WhatsApp toko",
@@ -193,8 +194,8 @@ class _InternalTokoInformationPageState
                                   return null;
                                 }
                               }),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           CustomTextArea(
                               hintText: "Masukkan bio toko",
@@ -208,9 +209,8 @@ class _InternalTokoInformationPageState
                                   return null;
                                 }
                               }),
-
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           //logic for whatsapp later
                           // CustomTextField(
@@ -241,8 +241,8 @@ class _InternalTokoInformationPageState
                                 }
                               }),
 
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           ref.watch(fetchProvinceslistFromProfileToko).when(
                               data: (data) {
@@ -290,8 +290,8 @@ class _InternalTokoInformationPageState
                                                       children: [
                                                         Column(
                                                           children: [
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             CustomTextField(
                                                               labelText:
                                                                   "Negara",
@@ -334,8 +334,8 @@ class _InternalTokoInformationPageState
                                                                 });
                                                               },
                                                             ),
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             if (selectedCity !=
                                                                 null)
                                                               Column(
@@ -361,9 +361,9 @@ class _InternalTokoInformationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          5),
+                                                                          5.h),
                                                                   CustomTextField(
                                                                     hintText:
                                                                         "Masukkan kode pos",
@@ -383,9 +383,9 @@ class _InternalTokoInformationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          10),
+                                                                          10.h),
                                                                   ElevatedButton(
                                                                     onPressed:
                                                                         () async {
@@ -495,8 +495,8 @@ class _InternalTokoInformationPageState
                               loading: () => const Center(
                                     child: CircularProgressIndicator(),
                                   )),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           )
                         ]),
                       ),
@@ -527,13 +527,13 @@ class _InternalTokoInformationPageState
                             name: 'Informasi Toko',
                             description: "Konfigurasikan informasi toko Anda",
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           TokoConfigureImage(
                             toko: r,
                             pickTheImage: pickTheImage,
                             selectedImage: selectedImage,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           CustomTextField(
                             hintText: "Masukkan nama toko",
                             controller: _tokoNameController,
@@ -548,8 +548,8 @@ class _InternalTokoInformationPageState
                             },
                           ),
 
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           CustomTextField(
                             hintText: "Masukkan nomor WhatsApp toko",
@@ -564,8 +564,8 @@ class _InternalTokoInformationPageState
                               }
                             },
                           ),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           CustomTextArea(
                             hintText: "Masukkan bio toko",
@@ -581,8 +581,8 @@ class _InternalTokoInformationPageState
                             },
                           ),
 
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           //logic for whatsapp later
                           // CustomTextField(
@@ -614,8 +614,8 @@ class _InternalTokoInformationPageState
                             },
                           ),
 
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
 
                           ref.watch(fetchProvinceslistFromProfileToko).when(
@@ -679,8 +679,8 @@ class _InternalTokoInformationPageState
                                                       children: [
                                                         Column(
                                                           children: [
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             CustomTextField(
                                                               labelText:
                                                                   "Negara",
@@ -729,8 +729,8 @@ class _InternalTokoInformationPageState
                                                                 });
                                                               },
                                                             ),
-                                                            const SizedBox(
-                                                                height: 5),
+                                                            SizedBox(
+                                                                height: 5.h),
                                                             if (selectedCity !=
                                                                 null)
                                                               Column(
@@ -756,9 +756,9 @@ class _InternalTokoInformationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          5),
+                                                                          5.h),
                                                                   CustomTextField(
                                                                     hintText:
                                                                         "Masukkan kode pos",
@@ -778,9 +778,9 @@ class _InternalTokoInformationPageState
                                                                       }
                                                                     },
                                                                   ),
-                                                                  const SizedBox(
+                                                                  SizedBox(
                                                                       height:
-                                                                          10),
+                                                                          10.h),
                                                                 ],
                                                               ),
                                                           ],
@@ -806,8 +806,8 @@ class _InternalTokoInformationPageState
                                     child: CircularProgressIndicator(),
                                   )),
 
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           ElevatedButton(
                             onPressed: () {

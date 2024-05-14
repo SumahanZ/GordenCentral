@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/customer/orders/providers/order_detail_selection_notifier.dart';
@@ -114,7 +115,7 @@ class _InternalConfigureOrderLogPageState
                             description:
                                 "Konfigurasikan status pesanan dan catatan pesanan",
                             isAvatarNeeded: false),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         CustomDropdown(
                           values: r.map((e) => e.name).toList(),
                           labelText: "Status Pesanan",
@@ -136,7 +137,7 @@ class _InternalConfigureOrderLogPageState
                             });
                           },
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         CustomTextArea(
                             hintText: "Masukkan Catatan Pesanan",
                             controller: _descriptionController,
@@ -149,7 +150,7 @@ class _InternalConfigureOrderLogPageState
                               }
                             },
                             obscureText: false),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate() &&

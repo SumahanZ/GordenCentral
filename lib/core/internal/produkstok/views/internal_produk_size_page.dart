@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_creation_selection_notifier.dart';
@@ -47,7 +48,7 @@ class _InternalProdukSizePageState
                     name: "Ukuran Produk",
                     description: "Konfigurasikan ukuran produk Anda",
                     isAvatarNeeded: false),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 CustomTextField(
                     hintText: "Masukkan nama ukuran produk",
                     controller: _nameController,

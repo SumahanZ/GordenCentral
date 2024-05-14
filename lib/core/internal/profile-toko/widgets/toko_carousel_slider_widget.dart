@@ -4,6 +4,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BerandaTokoCarouselSlider extends StatefulWidget {
   final List<String> berandaImageUrls;
@@ -43,7 +44,7 @@ class _BerandaTokoCarouselSliderState extends State<BerandaTokoCarouselSlider> {
                             children: <Widget>[
                               CachedNetworkImage(
                                 imageUrl: item,
-                                width: 1000.0,
+                                width: 1000.0.w,
                                 imageBuilder: (context, imageProvider) =>
                                     Container(
                                   decoration: BoxDecoration(
@@ -108,8 +109,8 @@ class _BerandaTokoCarouselSliderState extends State<BerandaTokoCarouselSlider> {
                   return GestureDetector(
                     onTap: () => _controller.animateToPage(entry.key),
                     child: Container(
-                      width: 12.0,
-                      height: 12.0,
+                      width: 12.0.w,
+                      height: 12.0.h,
                       margin: const EdgeInsets.symmetric(
                           vertical: 8.0, horizontal: 4.0),
                       decoration: BoxDecoration(
@@ -143,7 +144,7 @@ class _BerandaTokoCarouselSliderState extends State<BerandaTokoCarouselSlider> {
                                     widget.pickTheImage();
                                   },
                                   child: Image.file(item,
-                                      fit: BoxFit.cover, width: 1000.0),
+                                      fit: BoxFit.cover, width: 1000.0.w),
                                 ),
                                 Positioned(
                                   bottom: 0.0,
@@ -195,8 +196,8 @@ class _BerandaTokoCarouselSliderState extends State<BerandaTokoCarouselSlider> {
                       return GestureDetector(
                         onTap: () => _controller.animateToPage(entry.key),
                         child: Container(
-                          width: 12.0,
-                          height: 12.0,
+                          width: 12.0.w,
+                          height: 12.0.h,
                           margin: const EdgeInsets.symmetric(
                               vertical: 8.0, horizontal: 4.0),
                           decoration: BoxDecoration(

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/customer/account/viewmodels/customer_account_viewmodel.dart';
@@ -145,14 +146,14 @@ class _CustomerEditProfilePageState
                                     description:
                                         "Konfigurasikan informasi profil pelanggan Anda",
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   CustomerEditProfileImage(
                                     customer: r,
                                     pickTheImage: pickTheImage,
                                     imageFromfile: imageFromfile,
                                     selectedImage: selectedImage,
                                   ),
-                                  const SizedBox(height: 20),
+                                  SizedBox(height: 20.h),
                                   CustomTextField(
                                       hintText: "Masukkan nama Anda",
                                       controller: _nameController,
@@ -166,7 +167,7 @@ class _CustomerEditProfilePageState
                                           return null;
                                         }
                                       }),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   CustomTextField(
                                     hintText: "Masukkan email Anda",
                                     controller: _emailController,
@@ -180,7 +181,7 @@ class _CustomerEditProfilePageState
                                       }
                                     },
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.h),
                                   CustomTextField(
                                     hintText: "Masukkan kata sandi Anda",
                                     controller: _passwordController,
@@ -195,7 +196,7 @@ class _CustomerEditProfilePageState
                                       }
                                     },
                                   ),
-                                  const SizedBox(height: 15),
+                                  SizedBox(height: 15.h),
                                   ElevatedButton(
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
@@ -220,7 +221,7 @@ class _CustomerEditProfilePageState
                                     style: ElevatedButton.styleFrom(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 20),
-                                      minimumSize: const Size.fromHeight(50),
+                                      minimumSize: Size.fromHeight(50.h),
                                       backgroundColor:
                                           Theme.of(context).colorScheme.primary,
                                     ),

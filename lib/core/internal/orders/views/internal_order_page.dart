@@ -1,6 +1,7 @@
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tugas_akhir_project/core/customer/orders/providers/order_detail_selection_notifier.dart';
@@ -273,7 +274,7 @@ Widget _buildOrderGroup({
                             Row(
                               children: [
                                 CircleAvatar(
-                                  radius: 20,
+                                  radius: 20.r,
                                   child: Icon(
                                     (order.status?.name == "Completed")
                                         ? AntIcons.checkOutlined
@@ -283,7 +284,7 @@ Widget _buildOrderGroup({
                                     size: 25,
                                   ),
                                 ),
-                                const SizedBox(width: 15),
+                                SizedBox(width: 15.w),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -303,7 +304,7 @@ Widget _buildOrderGroup({
                                 const Icon(Icons.chevron_right_outlined)
                               ],
                             ),
-                            const SizedBox(height: 15),
+                            SizedBox(height: 15.h),
                             Row(
                               children: [
                                 Text(
@@ -402,7 +403,7 @@ Widget _buildOrderGroup({
                                 ],
                               ),
                             ],
-                            const SizedBox(height: 15),
+                            SizedBox(height: 15.h),
                             if (order.status?.name != "Cancelled" &&
                                 order.status?.name != "Delivered" &&
                                 order.status?.name != "Completed" &&
@@ -455,7 +456,7 @@ Widget _buildOrderGroup({
                         },
                       ),
                     ),
-                    const SizedBox(height: 15)
+                    SizedBox(height: 15.h)
                   ],
                 ),
               )

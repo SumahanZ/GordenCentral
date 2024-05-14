@@ -2,6 +2,7 @@ import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sliding_up_panel2/sliding_up_panel2.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
@@ -41,7 +42,7 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10.0),
             child: Column(
               children: [
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -65,15 +66,15 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                             Material(
                               elevation: 5,
                               borderRadius: BorderRadius.circular(20),
-                              child: const CircleAvatar(
+                              child: CircleAvatar(
                                 backgroundColor: Colors.white,
-                                radius: 15,
+                                radius: 15.r,
                                 child: Icon(
                                   AntIcons.minusOutlined,
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 15),
+                            SizedBox(width: 15.w),
                             Text(
                               "3",
                               style: appStyle(
@@ -82,19 +83,19 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                                 fw: FontWeight.w600,
                               ),
                             ),
-                            const SizedBox(width: 15),
+                            SizedBox(width: 15.w),
                             Material(
                               elevation: 5,
                               borderRadius: BorderRadius.circular(20),
-                              child: const CircleAvatar(
-                                radius: 15,
+                              child: CircleAvatar(
+                                radius: 15.r,
                                 backgroundColor: Colors.greenAccent,
                                 child: Icon(Icons.add_outlined),
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
@@ -144,7 +145,7 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                                     children: <Widget>[
                                       CachedNetworkImage(
                                         imageUrl: item,
-                                        width: 1000,
+                                        width: 1000.w,
                                         imageBuilder:
                                             (context, imageProvider) =>
                                                 Container(
@@ -183,8 +184,8 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                             return GestureDetector(
                               onTap: () => _controller.animateToPage(entry.key),
                               child: Container(
-                                width: 8.0,
-                                height: 8.0,
+                                width: 8.0.w,
+                                height: 8.0.h,
                                 margin: const EdgeInsets.symmetric(
                                     vertical: 4.0, horizontal: 4.0),
                                 decoration: BoxDecoration(
@@ -202,12 +203,12 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                       ],
                     ),
 
-                    const SizedBox(height: 15),
+                    SizedBox(height: 15.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const Icon(AntIcons.starFilled, color: Colors.yellow),
-                        const SizedBox(width: 5),
+                        SizedBox(width: 5.w),
                         Text(
                           "4.5 (760 Buyers)",
                           style: appStyle(
@@ -228,12 +229,12 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Text(
                         "This product is only available for a short period of time and this: This is a pretty long description so its hard to test this out and i dont know if I can get the description correctly",
                         style: appStyle(
                             size: 16, color: mainBlack, fw: FontWeight.w400)),
-                    const SizedBox(height: 15),
+                    SizedBox(height: 15.h),
                     Row(
                       children: [
                         Text("Category: ",
@@ -241,7 +242,7 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                                 size: 16,
                                 color: mainBlack,
                                 fw: FontWeight.w600)),
-                        const SizedBox(width: 5),
+                        SizedBox(width: 5.w),
                         Text("Indonesian Brand",
                             style: appStyle(
                                 size: 14,
@@ -249,7 +250,7 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                                 fw: FontWeight.w500))
                       ],
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: 15.h),
                     Row(
                       children: [
                         Text("Sold By: ",
@@ -257,7 +258,7 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                                 size: 16,
                                 color: mainBlack,
                                 fw: FontWeight.w600)),
-                        const SizedBox(width: 5),
+                        SizedBox(width: 5.w),
                         Text("CurtainStudios.id",
                             style: appStyle(
                                 size: 14,
@@ -265,7 +266,7 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                                 fw: FontWeight.w500))
                       ],
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: 15.h),
                     Row(
                       children: [
                         Text("Created At: ",
@@ -273,7 +274,7 @@ class _CustomerLayananDetailPageState extends State<CustomerLayananDetailPage> {
                                 size: 16,
                                 color: mainBlack,
                                 fw: FontWeight.w600)),
-                        const SizedBox(width: 5),
+                        SizedBox(width: 5.w),
                         Text("Thursday, 27 February 2024",
                             style: appStyle(
                                 size: 14,

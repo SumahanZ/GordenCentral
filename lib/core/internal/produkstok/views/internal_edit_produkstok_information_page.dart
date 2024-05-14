@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/top_section_auth_widget.dart';
 import 'package:tugas_akhir_project/core/internal/produkstok/providers/product_saved.dart';
@@ -62,7 +63,7 @@ class _InternalEditProdukStokInformationPageState
                     description:
                         "Edit kombinasi stok produk yang telah Anda masukkan",
                     isAvatarNeeded: false),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                   preValue: produkStok.produkColor["name"],
                   labelText: "Warna Produk",
@@ -82,7 +83,7 @@ class _InternalEditProdukStokInformationPageState
                       .map((e) => e["name"] as String)
                       .toList(),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomDropdown(
                   preValue: produkStok.produkSize,
                   labelText: "Ukuran Produk",
@@ -100,7 +101,7 @@ class _InternalEditProdukStokInformationPageState
                     selectedProdukSize = value;
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 CustomTextField(
                   keyboard: TextInputType.number,
                   hintText: "Masukkan jumlah stok",
@@ -115,7 +116,7 @@ class _InternalEditProdukStokInformationPageState
                     }
                   },
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate() &&

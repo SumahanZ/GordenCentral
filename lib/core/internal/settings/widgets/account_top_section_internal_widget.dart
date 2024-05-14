@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/models/internal.dart';
 import 'package:tugas_akhir_project/utils/extensions/string_extension.dart';
@@ -21,17 +22,17 @@ class SettingTopSectionInternal extends ConsumerWidget {
           children: [
             Row(
               children: [
-                const SizedBox(width: 5),
+                SizedBox(width: 5.w),
                 internal.profilePhotoURL == null
-                    ? const CircleAvatar(
-                        radius: 22,
+                    ? CircleAvatar(
+                        radius: 22.r,
                       )
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(50),
                         child:
-                            Image.network(internal.profilePhotoURL!, width: 44),
+                            Image.network(internal.profilePhotoURL ?? "", width: 44.w),
                       ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12.w),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -62,10 +63,10 @@ class SettingTopSectionInternal extends ConsumerWidget {
                             size: 12, color: Colors.black, fw: FontWeight.w500))
                   ],
                 ),
-                const SizedBox(width: 5),
+                SizedBox(width: 5.w),
               ],
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15.h),
             ElevatedButton(
               onPressed: () {
                 Routemaster.of(context).push('/internal-account/edit-profile');

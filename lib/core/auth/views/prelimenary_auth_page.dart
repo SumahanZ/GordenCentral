@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/auth/widgets/button_section_widget.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
@@ -28,12 +29,12 @@ class _PrelimenaryAuthPageState extends ConsumerState<PrelimenaryAuthPage> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                const SizedBox(height: 50),
+                SizedBox(height: 50.h),
                 Image.asset(
                   "assets/images/auth-image.png",
                   fit: BoxFit.fitWidth,
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 Row(
                   children: [
                     RichText(
@@ -54,21 +55,21 @@ class _PrelimenaryAuthPageState extends ConsumerState<PrelimenaryAuthPage> {
                     )
                   ],
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 Text(
                   "Semua yang kamu butuhkan ada di satu tempat",
                   style:
                       appStyle(size: 28, color: mainBlack, fw: FontWeight.w600),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 Text(
                   "Temukan kebutuhan produk gorden favorit Anda di Brand. E-commerce gorden terbesar di dunia telah tiba dalam bentuk mobile. Belanja sekarang!",
                   style:
                       appStyle(size: 16, color: mainBlack, fw: FontWeight.w300),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 const ButtonSection(),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
