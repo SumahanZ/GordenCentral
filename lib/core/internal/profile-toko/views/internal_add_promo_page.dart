@@ -161,91 +161,90 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                                     ),
                                                   ),
                                                   SizedBox(height: 5.h),
-                                                  IntrinsicHeight(
-                                                    child: Row(children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        child: Image.network(
-                                                            selectedPromoItem
-                                                                .produkGlobalImages
-                                                                .first
-                                                                .globalImageUrl,
-                                                            fit: BoxFit.contain,
-                                                            width: 70.w),
+                                                  Row(children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(10),
+                                                      child: Image.network(
+                                                          selectedPromoItem
+                                                              .produkGlobalImages
+                                                              .first
+                                                              .globalImageUrl,
+                                                          fit: BoxFit.contain,
+                                                          height: 80.h,
+                                                          width: 70.w),
+                                                    ),
+                                                    SizedBox(width: 15.w),
+                                                    Expanded(
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                              selectedPromoItem
+                                                                  .name!,
+                                                              maxLines: 2,
+                                                              style: appStyle(
+                                                                  size: 16,
+                                                                  color:
+                                                                      mainBlack,
+                                                                  fw: FontWeight
+                                                                      .w600)),
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            "Ukuran: ${selectedPromoItem.produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                                            style: appStyle(
+                                                              size: 12,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .w500,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            "Warna: ${selectedPromoItem.produkColors.map((e) => e.name).toList().getConcatenatedList()}",
+                                                            style: appStyle(
+                                                              size: 12,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .w500,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            PriceFormatter
+                                                                .getFormattedValue(
+                                                                    selectedPromoItem
+                                                                            .price ??
+                                                                        0),
+                                                            style: appStyle(
+                                                              size: 16,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .bold,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      SizedBox(width: 15.w),
-                                                      Expanded(
-                                                        child: Column(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                                selectedPromoItem
-                                                                    .name!,
-                                                                maxLines: 2,
-                                                                style: appStyle(
-                                                                    size: 16,
-                                                                    color:
-                                                                        mainBlack,
-                                                                    fw: FontWeight
-                                                                        .w600)),
-                                                            Text(
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              "Ukuran: ${selectedPromoItem.produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
-                                                              style: appStyle(
-                                                                size: 12,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .w500,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              "Warna: ${selectedPromoItem.produkColors.map((e) => e.name).toList().getConcatenatedList()}",
-                                                              style: appStyle(
-                                                                size: 12,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .w500,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              PriceFormatter
-                                                                  .getFormattedValue(
-                                                                      selectedPromoItem
-                                                                              .price ??
-                                                                          0),
-                                                              style: appStyle(
-                                                                size: 16,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .bold,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ]),
-                                                  ),
+                                                    ),
+                                                  ]),
                                                   SizedBox(height: 5.h),
                                                 ]),
                                           ),

@@ -118,7 +118,7 @@ class _InternalInternalTokoPageState
                                                             50),
                                                     child: Image.network(
                                                         item.profilePhotoURL!,
-                                                        width: 60.w)),
+                                                        width: 60.w, )),
                                             const SizedBox(width: 15),
                                             Expanded(
                                               child: Column(

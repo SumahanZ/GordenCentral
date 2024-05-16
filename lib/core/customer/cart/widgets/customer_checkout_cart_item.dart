@@ -50,151 +50,150 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
             ),
             SizedBox(height: 10.h),
           ],
-          IntrinsicHeight(
-            child: Row(children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: CachedNetworkImage(
-                    imageUrl: cartItem
-                            ?.produkCombination?.color?.produkColorImageUrl ??
-                        "",
-                    width: 70.w,
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.contain,
-                        ),
+          Row(children: [
+            ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: CachedNetworkImage(
+                  imageUrl: cartItem
+                          ?.produkCombination?.color?.produkColorImageUrl ??
+                      "",
+                  width: 70.w,
+                  height: 80.h,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.contain,
                       ),
                     ),
-                    // placeholder: (context, url) =>
-                    //     const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  )),
-              SizedBox(width: 15.w),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                        maxLines: 2,
+                  ),
+                  // placeholder: (context, url) =>
+                  //     const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.error),
+                )),
+            SizedBox(width: 15.w),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      cartItem?.produkCombination?.product?.name ?? "No name",
+                      style: appStyle(
+                          size: 14, color: mainBlack, fw: FontWeight.w600)),
+                  Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    "Size: ${cartItem?.produkCombination?.size?.name ?? "No Size"}",
+                    style: appStyle(
+                      size: 12,
+                      color: mainBlack,
+                      fw: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    "Warna: ${cartItem?.produkCombination?.color?.name ?? "No Color"}",
+                    style: appStyle(
+                      size: 12,
+                      color: mainBlack,
+                      fw: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    "Toko: ${cartItem?.produkCombination?.product?.toko?.name ?? "No Name"}",
+                    style: appStyle(
+                      size: 12,
+                      color: mainBlack,
+                      fw: FontWeight.w500,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        cartItem?.produkCombination?.product?.name ?? "No name",
+                        PriceFormatter.getFormattedValue((cartItem?.amount ??
+                                0) *
+                            ((cartItem?.produkCombination?.product?.price ??
+                                    0)
+                                .toDouble())),
                         style: appStyle(
-                            size: 14, color: mainBlack, fw: FontWeight.w600)),
-                    Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      "Size: ${cartItem?.produkCombination?.size?.name ?? "No Size"}",
-                      style: appStyle(
-                        size: 12,
-                        color: mainBlack,
-                        fw: FontWeight.w500,
+                          size: 14,
+                          color: mainBlack,
+                          fw: FontWeight.bold,
+                        ).copyWith(
+                            decoration:
+                                cartItem?.produkCombination?.product?.promo !=
+                                            null &&
+                                        (cartItem?.produkCombination?.product
+                                                    ?.promo?.expiredAt ??
+                                                DateTime.now())
+                                            .isAfter(DateTime.now())
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none,
+                            decorationThickness: 2),
                       ),
-                    ),
-                    Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      "Warna: ${cartItem?.produkCombination?.color?.name ?? "No Color"}",
-                      style: appStyle(
-                        size: 12,
-                        color: mainBlack,
-                        fw: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      "Toko: ${cartItem?.produkCombination?.product?.toko?.name ?? "No Name"}",
-                      style: appStyle(
-                        size: 12,
-                        color: mainBlack,
-                        fw: FontWeight.w500,
-                      ),
-                    ),
-                    Row(
-                      children: [
+                      SizedBox(width: 10.w),
+                      if (cartItem?.produkCombination?.product?.promo !=
+                              null &&
+                          (cartItem?.produkCombination?.product?.promo
+                                      ?.expiredAt ??
+                                  DateTime.now())
+                              .isAfter(DateTime.now()))
                         Text(
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          PriceFormatter.getFormattedValue((cartItem?.amount ??
+                          PriceFormatter.getFormattedValue((cartItem
+                                      ?.amount ??
                                   0) *
-                              ((cartItem?.produkCombination?.product?.price ??
-                                      0)
+                              ((cartItem?.produkCombination?.product?.promo ==
+                                          null
+                                      ? cartItem?.produkCombination?.product
+                                              ?.price ??
+                                          0
+                                      : (cartItem?.produkCombination?.product
+                                                  ?.price ??
+                                              0) -
+                                          (cartItem?.produkCombination
+                                                      ?.product?.price ??
+                                                  0) *
+                                              ((cartItem
+                                                          ?.produkCombination
+                                                          ?.product
+                                                          ?.promo
+                                                          ?.discountPercent
+                                                          ?.toInt() ??
+                                                      0) /
+                                                  100))
                                   .toDouble())),
                           style: appStyle(
                             size: 14,
                             color: mainBlack,
                             fw: FontWeight.bold,
-                          ).copyWith(
-                              decoration:
-                                  cartItem?.produkCombination?.product?.promo !=
-                                              null &&
-                                          (cartItem?.produkCombination?.product
-                                                      ?.promo?.expiredAt ??
-                                                  DateTime.now())
-                                              .isAfter(DateTime.now())
-                                      ? TextDecoration.lineThrough
-                                      : TextDecoration.none,
-                              decorationThickness: 2),
-                        ),
-                        SizedBox(width: 10.w),
-                        if (cartItem?.produkCombination?.product?.promo !=
-                                null &&
-                            (cartItem?.produkCombination?.product?.promo
-                                        ?.expiredAt ??
-                                    DateTime.now())
-                                .isAfter(DateTime.now()))
-                          Text(
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            PriceFormatter.getFormattedValue((cartItem
-                                        ?.amount ??
-                                    0) *
-                                ((cartItem?.produkCombination?.product?.promo ==
-                                            null
-                                        ? cartItem?.produkCombination?.product
-                                                ?.price ??
-                                            0
-                                        : (cartItem?.produkCombination?.product
-                                                    ?.price ??
-                                                0) -
-                                            (cartItem?.produkCombination
-                                                        ?.product?.price ??
-                                                    0) *
-                                                ((cartItem
-                                                            ?.produkCombination
-                                                            ?.product
-                                                            ?.promo
-                                                            ?.discountPercent
-                                                            ?.toInt() ??
-                                                        0) /
-                                                    100))
-                                    .toDouble())),
-                            style: appStyle(
-                              size: 14,
-                              color: mainBlack,
-                              fw: FontWeight.bold,
-                            ),
                           ),
-                      ],
-                    ),
-                  ],
-                ),
+                        ),
+                    ],
+                  ),
+                ],
               ),
-              Text(
-                "${cartItem?.amount}x",
-                style: appStyle(
-                  size: 18,
-                  color: mainBlack,
-                  fw: FontWeight.w600,
-                ),
+            ),
+            Text(
+              "${cartItem?.amount}x",
+              style: appStyle(
+                size: 18,
+                color: mainBlack,
+                fw: FontWeight.w600,
               ),
-            ]),
-          ),
+            ),
+          ]),
         ]),
       ),
     );

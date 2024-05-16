@@ -26,12 +26,9 @@ class TokoInformationCard extends ConsumerWidget {
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: Image.network(toko?.profilePhotoURL ?? "",
-                          fit: BoxFit.contain, width: 90.w)
-
-                      // Image.network(toko?.profilePhotoURL ?? "",
-                      //     fit: BoxFit.contain, width: 90),
+                          fit: BoxFit.contain, width: 80.w)
                       )
-                  : CircleAvatar(radius: 45.r),
+                  : CircleAvatar(radius: 40.r),
               SizedBox(width: 15.w),
               Expanded(
                 child: Column(

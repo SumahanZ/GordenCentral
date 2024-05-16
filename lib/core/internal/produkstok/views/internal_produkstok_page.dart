@@ -268,10 +268,11 @@ class _InternalProdukStokPageState
                                                     ),
                                                   ),
                                                   InkWell(
-                                                    onTap: () => Routemaster.of(
-                                                            context)
-                                                        .push(
-                                                            '/internal-dashboard/produkstok/input-produk'),
+                                                    onTap: () {
+                                                      ref.read(productCreationSelectionNotifierProvider.notifier).resetState();
+                                                      Routemaster.of(context).push(
+                                                          '/internal-dashboard/produkstok/input-produk');
+                                                    },
                                                     child: SizedBox(
                                                       width:
                                                           constraints.maxWidth *
@@ -501,9 +502,6 @@ class _InternalProdukStokPageState
                                                       color: mainBlack,
                                                       fw: FontWeight.w600),
                                                 ),
-                                                const Spacer(),
-                                                const Icon(
-                                                    AntIcons.reloadOutlined)
                                               ],
                                             ),
                                           ),

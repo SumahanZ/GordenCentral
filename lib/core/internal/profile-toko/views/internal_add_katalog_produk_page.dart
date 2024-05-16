@@ -218,154 +218,153 @@ class _InternalAddKatalogProdukPageState
                                                       ),
                                                       SizedBox(height: 10.h),
                                                     ],
-                                                    IntrinsicHeight(
-                                                      child: Row(children: [
-                                                        ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                            child:
-                                                                CachedNetworkImage(
-                                                              imageUrl: selectedProduks[
-                                                                      index]
-                                                                  .produkGlobalImages[
-                                                                      0]
-                                                                  .globalImageUrl,
-                                                              width: 70.w,
-                                                              imageBuilder:
-                                                                  (context,
-                                                                          imageProvider) =>
-                                                                      Container(
-                                                                decoration:
-                                                                    BoxDecoration(
+                                                    Row(children: [
+                                                      ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10),
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            imageUrl: selectedProduks[
+                                                                    index]
+                                                                .produkGlobalImages[
+                                                                    0]
+                                                                .globalImageUrl,
+                                                                height: 80.h,
+                                                            width: 70.w,
+                                                            imageBuilder:
+                                                                (context,
+                                                                        imageProvider) =>
+                                                                    Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                image:
+                                                                    DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .contain,
                                                                   image:
-                                                                      DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                    image:
-                                                                        imageProvider,
-                                                                  ),
+                                                                      imageProvider,
                                                                 ),
                                                               ),
-                                                              // placeholder: (context,
-                                                              //         url) =>
-                                                              //     const CircularProgressIndicator(),
-                                                              errorWidget: (context,
-                                                                      url,
-                                                                      error) =>
-                                                                  const Icon(Icons
-                                                                      .error),
-                                                            )),
-                                                        SizedBox(width: 15.w),
-                                                        Expanded(
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                  selectedProduks[
-                                                                              index]
-                                                                          .name ??
-                                                                      "No name",
-                                                                  style: appStyle(
-                                                                      size: 16,
-                                                                      color:
-                                                                          mainBlack,
-                                                                      fw: FontWeight
-                                                                          .w600)),
-                                                              Text(
-                                                                maxLines: 1,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                "Ukuran: ${selectedProduks[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                                            ),
+                                                            // placeholder: (context,
+                                                            //         url) =>
+                                                            //     const CircularProgressIndicator(),
+                                                            errorWidget: (context,
+                                                                    url,
+                                                                    error) =>
+                                                                const Icon(Icons
+                                                                    .error),
+                                                          )),
+                                                      SizedBox(width: 15.w),
+                                                      Expanded(
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                                selectedProduks[
+                                                                            index]
+                                                                        .name ??
+                                                                    "No name",
                                                                 style: appStyle(
-                                                                  size: 12,
-                                                                  color:
-                                                                      mainBlack,
-                                                                  fw: FontWeight
-                                                                      .w500,
-                                                                ),
+                                                                    size: 16,
+                                                                    color:
+                                                                        mainBlack,
+                                                                    fw: FontWeight
+                                                                        .w600)),
+                                                            Text(
+                                                              maxLines: 1,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              "Ukuran: ${selectedProduks[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                                              style: appStyle(
+                                                                size: 12,
+                                                                color:
+                                                                    mainBlack,
+                                                                fw: FontWeight
+                                                                    .w500,
                                                               ),
-                                                              Text(
-                                                                maxLines: 1,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                "Warna: ${selectedProduks[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
-                                                                style: appStyle(
-                                                                  size: 12,
-                                                                  color:
-                                                                      mainBlack,
-                                                                  fw: FontWeight
-                                                                      .w500,
-                                                                ),
+                                                            ),
+                                                            Text(
+                                                              maxLines: 1,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              "Warna: ${selectedProduks[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
+                                                              style: appStyle(
+                                                                size: 12,
+                                                                color:
+                                                                    mainBlack,
+                                                                fw: FontWeight
+                                                                    .w500,
                                                               ),
-                                                              Row(
-                                                                children: [
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  maxLines: 1,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  PriceFormatter
+                                                                      .getFormattedValue(
+                                                                          selectedProduks[index].price ??
+                                                                              0),
+                                                                  style:
+                                                                      appStyle(
+                                                                    size: 16,
+                                                                    color:
+                                                                        mainBlack,
+                                                                    fw: FontWeight
+                                                                        .bold,
+                                                                  ).copyWith(
+                                                                          decoration: selectedProduks[index].promo != null && (selectedProduks[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime.now())
+                                                                              ? TextDecoration.lineThrough
+                                                                              : TextDecoration.none,
+                                                                          decorationThickness: 2),
+                                                                ),
+                                                                const SizedBox(
+                                                                    width:
+                                                                        10),
+                                                                if (selectedProduks[index]
+                                                                            .promo !=
+                                                                        null &&
+                                                                    (selectedProduks[index].promo?.expiredAt ??
+                                                                            DateTime.now())
+                                                                        .isAfter(DateTime.now()))
                                                                   Text(
-                                                                    maxLines: 1,
+                                                                    maxLines:
+                                                                        1,
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    PriceFormatter
-                                                                        .getFormattedValue(
-                                                                            selectedProduks[index].price ??
-                                                                                0),
+                                                                    PriceFormatter.getFormattedValue((selectedProduks[index].price ??
+                                                                            0) -
+                                                                        (selectedProduks[index].price ?? 0) *
+                                                                            ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) / 100)),
                                                                     style:
                                                                         appStyle(
-                                                                      size: 16,
+                                                                      size:
+                                                                          16,
                                                                       color:
                                                                           mainBlack,
                                                                       fw: FontWeight
                                                                           .bold,
-                                                                    ).copyWith(
-                                                                            decoration: selectedProduks[index].promo != null && (selectedProduks[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime.now())
-                                                                                ? TextDecoration.lineThrough
-                                                                                : TextDecoration.none,
-                                                                            decorationThickness: 2),
-                                                                  ),
-                                                                  const SizedBox(
-                                                                      width:
-                                                                          10),
-                                                                  if (selectedProduks[index]
-                                                                              .promo !=
-                                                                          null &&
-                                                                      (selectedProduks[index].promo?.expiredAt ??
-                                                                              DateTime.now())
-                                                                          .isAfter(DateTime.now()))
-                                                                    Text(
-                                                                      maxLines:
-                                                                          1,
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                      PriceFormatter.getFormattedValue((selectedProduks[index].price ??
-                                                                              0) -
-                                                                          (selectedProduks[index].price ?? 0) *
-                                                                              ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) / 100)),
-                                                                      style:
-                                                                          appStyle(
-                                                                        size:
-                                                                            16,
-                                                                        color:
-                                                                            mainBlack,
-                                                                        fw: FontWeight
-                                                                            .bold,
-                                                                      ),
                                                                     ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
+                                                                  ),
+                                                              ],
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ]),
-                                                    ),
+                                                      ),
+                                                    ]),
                                                   ]),
                                                 )
                                               ],

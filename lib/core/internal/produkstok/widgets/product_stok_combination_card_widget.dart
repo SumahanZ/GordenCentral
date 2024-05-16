@@ -67,100 +67,99 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10.h),
-                    IntrinsicHeight(
-                      child: Row(children: [
-                        ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: produkStok[i]
-                                    .produkColor["imagePath"]
-                                    .startsWith(
-                                        "http://res.cloudinary.com/dkintlemd/image/upload/")
-                                ? CachedNetworkImage(
-                                    imageUrl: produkStok[i]
-                                            .produkColor["imagePath"] ??
-                                        "",
-                                    width: 60.w,
-                                    imageBuilder: (context, imageProvider) =>
-                                        Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.rectangle,
-                                        borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
-                                          fit: BoxFit.contain,
-                                          image: imageProvider,
-                                        ),
+                    Row(children: [
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: produkStok[i]
+                                  .produkColor["imagePath"]
+                                  .startsWith(
+                                      "http://res.cloudinary.com/dkintlemd/image/upload/")
+                              ? CachedNetworkImage(
+                                  imageUrl: produkStok[i]
+                                          .produkColor["imagePath"] ??
+                                      "",
+                                  height: 80.h,
+                                  width: 70.w,
+                                  imageBuilder: (context, imageProvider) =>
+                                      Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: DecorationImage(
+                                        fit: BoxFit.contain,
+                                        image: imageProvider,
                                       ),
                                     ),
-                                    // placeholder: (context, url) => const Center(
-                                    //     child: CircularProgressIndicator()),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
-                                  )
-                                : Image.file(
-                                    File((produkStok[i]
-                                        .produkColor["imagePath"]!)),
-                                    fit: BoxFit.contain,
-                                    width: 60.w)),
-                        SizedBox(width: 15.w),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Ukuran: ${produkStok[i].produkSize}",
-                                  style: appStyle(
-                                    size: 14,
-                                    color: mainBlack,
-                                    fw: FontWeight.w600,
                                   ),
+                                  // placeholder: (context, url) => const Center(
+                                  //     child: CircularProgressIndicator()),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                )
+                              : Image.file(
+                                  File((produkStok[i]
+                                      .produkColor["imagePath"]!)),
+                                  fit: BoxFit.contain,
+                                  width: 60.w)),
+                      SizedBox(width: 15.w),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Ukuran:\n ${produkStok[i].produkSize}",
+                                style: appStyle(
+                                  size: 14,
+                                  color: mainBlack,
+                                  fw: FontWeight.w600,
                                 ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Warna: ${produkStok[i].produkColor["name"]}",
-                                  style: appStyle(
-                                    size: 14,
-                                    color: mainBlack,
-                                    fw: FontWeight.w600,
-                                  ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Warna: \n ${produkStok[i].produkColor["name"]}",
+                                style: appStyle(
+                                  size: 14,
+                                  color: mainBlack,
+                                  fw: FontWeight.w600,
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.red,
-                              child: GestureDetector(
-                                onTap: () {
-                                  ref
-                                      .read(
-                                          productStokNotifierProvider.notifier)
-                                      .remove(i);
-                                },
-                                child: const Icon(AntIcons.deleteFilled),
                               ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.red,
+                            child: GestureDetector(
+                              onTap: () {
+                                ref
+                                    .read(
+                                        productStokNotifierProvider.notifier)
+                                    .remove(i);
+                              },
+                              child: const Icon(AntIcons.deleteFilled),
                             ),
-                            SizedBox(height: 20.h),
-                            CircleAvatar(
-                              child: GestureDetector(
-                                onTap: () => Routemaster.of(context)
-                                    .push("$routeDestination/$i"),
-                                child: const Icon(AntIcons.editFilled),
-                              ),
+                          ),
+                          SizedBox(height: 15.h),
+                          CircleAvatar(
+                            child: GestureDetector(
+                              onTap: () => Routemaster.of(context)
+                                  .push("$routeDestination/$i"),
+                              child: const Icon(AntIcons.editFilled),
                             ),
-                          ],
-                        ),
-                      ]),
-                    ),
+                          ),
+                        ],
+                      ),
+                    ]),
+                    SizedBox(height: 10.h),
                     SizedBox(height: 10.h),
                   ]),
                 ),

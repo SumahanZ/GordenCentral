@@ -127,7 +127,7 @@ class CustomerAccountPage extends ConsumerWidget {
                                   child: Column(
                                     children: [
                                       AccountBottomTile(
-                                        title: "Configure Informasi Pengiriman",
+                                        title: "Informasi Pengiriman",
                                         icon: AntIcons.userOutlined,
                                         routeDestination:
                                             '/customer-account/change-delivery',

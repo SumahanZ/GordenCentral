@@ -108,6 +108,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                             return Center(
                                 child: Text(
                                     "Tidak ada promo yang sedang berlangsung",
+                                    textAlign: TextAlign.center,
                                     style: appStyle(
                                         size: 16,
                                         color: mainBlack,
@@ -177,167 +178,142 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                     ],
                                                   ),
                                                   SizedBox(height: 10.h),
-                                                  IntrinsicHeight(
-                                                    child: Row(children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        child: Image.network(
-                                                            filteredPromosOngoing[
-                                                                        index]
-                                                                    .produk
-                                                                    ?.produkGlobalImages
-                                                                    .first
-                                                                    .globalImageUrl ??
-                                                                "",
-                                                            fit: BoxFit.contain,
-                                                            width: 70.w),
-                                                      ),
-                                                      SizedBox(width: 15.w),
-                                                      Expanded(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                                filteredPromosOngoing[
-                                                                            index]
-                                                                        .produk
-                                                                        ?.name ??
-                                                                    "No name",
-                                                                maxLines: 2,
+                                                  Row(children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(10),
+                                                      child: Image.network(
+                                                          filteredPromosOngoing[
+                                                                      index]
+                                                                  .produk
+                                                                  ?.produkGlobalImages
+                                                                  .first
+                                                                  .globalImageUrl ??
+                                                              "",
+                                                          fit: BoxFit.contain,
+                                                          height: 80.h,
+                                                          width: 70.w),
+                                                    ),
+                                                    SizedBox(width: 15.w),
+                                                    Expanded(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                              filteredPromosOngoing[
+                                                                          index]
+                                                                      .produk
+                                                                      ?.name ??
+                                                                  "No name",
+                                                              maxLines: 2,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: appStyle(
+                                                                  size: 14,
+                                                                  color:
+                                                                      mainBlack,
+                                                                  fw: FontWeight
+                                                                      .w600)),
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            "Ukuran: ${filteredPromosOngoing[index].produk?.produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                                            style: appStyle(
+                                                              size: 11,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .w500,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            "Warna: ${filteredPromosOngoing[index].produk?.produkColors.map((e) => e.name).toList().getConcatenatedList()}",
+                                                            style: appStyle(
+                                                              size: 11,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .w500,
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                maxLines: 1,
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
-                                                                style: appStyle(
-                                                                    size: 14,
-                                                                    color:
-                                                                        mainBlack,
-                                                                    fw: FontWeight
-                                                                        .w600)),
-                                                            Text(
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              "Ukuran: ${filteredPromosOngoing[index].produk?.produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
-                                                              style: appStyle(
-                                                                size: 11,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .w500,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              "Warna: ${filteredPromosOngoing[index].produk?.produkColors.map((e) => e.name).toList().getConcatenatedList()}",
-                                                              style: appStyle(
-                                                                size: 11,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .w500,
-                                                              ),
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  PriceFormatter
-                                                                      .getFormattedValue(
-                                                                          filteredPromosOngoing[index].produk?.price ??
-                                                                              0),
-                                                                  style:
-                                                                      appStyle(
-                                                                    size: 12,
-                                                                    color:
-                                                                        mainBlack,
-                                                                    fw: FontWeight
-                                                                        .bold,
-                                                                  ).copyWith(
-                                                                          decoration: TextDecoration
-                                                                              .lineThrough,
-                                                                          decorationThickness:
-                                                                              2),
+                                                                PriceFormatter.getFormattedValue((filteredPromosOngoing[index]
+                                                                            .produk
+                                                                            ?.price ??
+                                                                        0) -
+                                                                    (filteredPromosOngoing[index].produk?.price ??
+                                                                            0) *
+                                                                        ((filteredPromosOngoing[index].discountPercent?.toInt() ?? 0) /
+                                                                            100)),
+                                                                style:
+                                                                    appStyle(
+                                                                  size: 12,
+                                                                  color:
+                                                                      mainBlack,
+                                                                  fw: FontWeight
+                                                                      .bold,
                                                                 ),
-                                                                SizedBox(
-                                                                    width: 5.w),
-                                                                Text(
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  PriceFormatter.getFormattedValue((filteredPromosOngoing[index]
-                                                                              .produk
-                                                                              ?.price ??
-                                                                          0) -
-                                                                      (filteredPromosOngoing[index].produk?.price ??
-                                                                              0) *
-                                                                          ((filteredPromosOngoing[index].discountPercent?.toInt() ?? 0) /
-                                                                              100)),
-                                                                  style:
-                                                                      appStyle(
-                                                                    size: 12,
-                                                                    color:
-                                                                        mainBlack,
-                                                                    fw: FontWeight
-                                                                        .bold,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
                                                       ),
-                                                      // SizedBox(width: 20.w),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          if (filteredPromosOngoing[
-                                                                      index]
-                                                                  .produk !=
-                                                              null) {
-                                                            ref
-                                                                .read(promoItemSelectionNotifierProvider
-                                                                    .notifier)
-                                                                .selectProduct(
-                                                                    filteredPromosOngoing[
-                                                                            index]
-                                                                        .produk!);
-
-                                                            ref
-                                                                .read(promoSelectionNotifierProvider
-                                                                    .notifier)
-                                                                .selectPromo(
-                                                                    filteredPromosOngoing[
-                                                                        index]);
-                                                            Routemaster.of(
-                                                                    context)
-                                                                .push(
-                                                                    '/internal-account/profile-toko/promosi/edit');
-                                                          }
-                                                        },
-                                                        child: Material(
-                                                          elevation: 5,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(20),
-                                                          child: CircleAvatar(
-                                                              radius: 15.r,
-                                                              child: Icon(AntIcons
-                                                                  .editFilled)),
-                                                        ),
+                                                    ),
+                                                    // SizedBox(width: 20.w),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        if (filteredPromosOngoing[
+                                                                    index]
+                                                                .produk !=
+                                                            null) {
+                                                          ref
+                                                              .read(promoItemSelectionNotifierProvider
+                                                                  .notifier)
+                                                              .selectProduct(
+                                                                  filteredPromosOngoing[
+                                                                          index]
+                                                                      .produk!);
+                                                  
+                                                          ref
+                                                              .read(promoSelectionNotifierProvider
+                                                                  .notifier)
+                                                              .selectPromo(
+                                                                  filteredPromosOngoing[
+                                                                      index]);
+                                                          Routemaster.of(
+                                                                  context)
+                                                              .push(
+                                                                  '/internal-account/profile-toko/promosi/edit');
+                                                        }
+                                                      },
+                                                      child: Material(
+                                                        elevation: 5,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
+                                                        child: CircleAvatar(
+                                                            radius: 15.r,
+                                                            child: Icon(AntIcons
+                                                                .editFilled)),
                                                       ),
-                                                    ]),
-                                                  ),
+                                                    ),
+                                                  ]),
                                                 ]),
                                           ),
                                         ),
@@ -373,6 +349,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                             return Center(
                                 child: Text(
                                     "Tidak ada promo yang sudah expired",
+                                    textAlign: TextAlign.center,
                                     style: appStyle(
                                         size: 16,
                                         color: mainBlack,
@@ -447,167 +424,142 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                     ],
                                                   ),
                                                   SizedBox(height: 10.h),
-                                                  IntrinsicHeight(
-                                                    child: Row(children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        child: Image.network(
-                                                            filteredPromosExpired[
-                                                                        index]
-                                                                    .produk
-                                                                    ?.produkGlobalImages
-                                                                    .first
-                                                                    .globalImageUrl ??
-                                                                "",
-                                                            fit: BoxFit.contain,
-                                                            width: 70.w),
-                                                      ),
-                                                      SizedBox(width: 15.w),
-                                                      Expanded(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                                filteredPromosExpired[
-                                                                            index]
-                                                                        .produk
-                                                                        ?.name ??
-                                                                    "No name",
-                                                                maxLines: 2,
+                                                  Row(children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(10),
+                                                      child: Image.network(
+                                                          filteredPromosExpired[
+                                                                      index]
+                                                                  .produk
+                                                                  ?.produkGlobalImages
+                                                                  .first
+                                                                  .globalImageUrl ??
+                                                              "",
+                                                          fit: BoxFit.contain,
+                                                          height: 80.h,
+                                                          width: 70.w),
+                                                    ),
+                                                    SizedBox(width: 15.w),
+                                                    Expanded(
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                              filteredPromosExpired[
+                                                                          index]
+                                                                      .produk
+                                                                      ?.name ??
+                                                                  "No name",
+                                                              maxLines: 2,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: appStyle(
+                                                                  size: 14,
+                                                                  color:
+                                                                      mainBlack,
+                                                                  fw: FontWeight
+                                                                      .w600)),
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            "Ukuran: ${filteredPromosExpired[index].produk?.produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                                            style: appStyle(
+                                                              size: 11,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .w500,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            "Warna: ${filteredPromosExpired[index].produk?.produkColors.map((e) => e.name).toList().getConcatenatedList()}",
+                                                            style: appStyle(
+                                                              size: 11,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .w500,
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            children: [
+                                                              Text(
+                                                                maxLines: 1,
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
-                                                                style: appStyle(
-                                                                    size: 14,
-                                                                    color:
-                                                                        mainBlack,
-                                                                    fw: FontWeight
-                                                                        .w600)),
-                                                            Text(
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              "Ukuran: ${filteredPromosExpired[index].produk?.produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
-                                                              style: appStyle(
-                                                                size: 11,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .w500,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              "Warna: ${filteredPromosExpired[index].produk?.produkColors.map((e) => e.name).toList().getConcatenatedList()}",
-                                                              style: appStyle(
-                                                                size: 11,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .w500,
-                                                              ),
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Text(
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  PriceFormatter
-                                                                      .getFormattedValue(
-                                                                          filteredPromosExpired[index].produk?.price ??
-                                                                              0),
-                                                                  style:
-                                                                      appStyle(
-                                                                    size: 14,
-                                                                    color:
-                                                                        mainBlack,
-                                                                    fw: FontWeight
-                                                                        .bold,
-                                                                  ).copyWith(
-                                                                          decoration: TextDecoration
-                                                                              .lineThrough,
-                                                                          decorationThickness:
-                                                                              2),
+                                                                PriceFormatter.getFormattedValue((filteredPromosExpired[index]
+                                                                            .produk
+                                                                            ?.price ??
+                                                                        0) -
+                                                                    (filteredPromosExpired[index].produk?.price ??
+                                                                            0) *
+                                                                        ((filteredPromosExpired[index].discountPercent?.toInt() ?? 0) /
+                                                                            100)),
+                                                                style:
+                                                                    appStyle(
+                                                                  size: 14,
+                                                                  color:
+                                                                      mainBlack,
+                                                                  fw: FontWeight
+                                                                      .bold,
                                                                 ),
-                                                                SizedBox(
-                                                                    width: 5.w),
-                                                                Text(
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  PriceFormatter.getFormattedValue((filteredPromosExpired[index]
-                                                                              .produk
-                                                                              ?.price ??
-                                                                          0) -
-                                                                      (filteredPromosExpired[index].produk?.price ??
-                                                                              0) *
-                                                                          ((filteredPromosExpired[index].discountPercent?.toInt() ?? 0) /
-                                                                              100)),
-                                                                  style:
-                                                                      appStyle(
-                                                                    size: 14,
-                                                                    color:
-                                                                        mainBlack,
-                                                                    fw: FontWeight
-                                                                        .bold,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
                                                       ),
-                                                      SizedBox(width: 20.w),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          if (filteredPromosExpired[
-                                                                      index]
-                                                                  .produk !=
-                                                              null) {
-                                                            ref
-                                                                .read(promoItemSelectionNotifierProvider
-                                                                    .notifier)
-                                                                .selectProduct(
-                                                                    filteredPromosExpired[
-                                                                            index]
-                                                                        .produk!);
-
-                                                            ref
-                                                                .read(promoSelectionNotifierProvider
-                                                                    .notifier)
-                                                                .selectPromo(
-                                                                    filteredPromosExpired[
-                                                                        index]);
-                                                            Routemaster.of(
-                                                                    context)
-                                                                .push(
-                                                                    '/internal-account/profile-toko/promosi/edit');
-                                                          }
-                                                        },
-                                                        child: Material(
-                                                          elevation: 5,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(20),
-                                                          child: CircleAvatar(
-                                                              radius: 17.r,
-                                                              child: Icon(AntIcons
-                                                                  .editFilled)),
-                                                        ),
+                                                    ),
+                                                    SizedBox(width: 20.w),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        if (filteredPromosExpired[
+                                                                    index]
+                                                                .produk !=
+                                                            null) {
+                                                          ref
+                                                              .read(promoItemSelectionNotifierProvider
+                                                                  .notifier)
+                                                              .selectProduct(
+                                                                  filteredPromosExpired[
+                                                                          index]
+                                                                      .produk!);
+                                                  
+                                                          ref
+                                                              .read(promoSelectionNotifierProvider
+                                                                  .notifier)
+                                                              .selectPromo(
+                                                                  filteredPromosExpired[
+                                                                      index]);
+                                                          Routemaster.of(
+                                                                  context)
+                                                              .push(
+                                                                  '/internal-account/profile-toko/promosi/edit');
+                                                        }
+                                                      },
+                                                      child: Material(
+                                                        elevation: 5,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
+                                                        child: CircleAvatar(
+                                                            radius: 17.r,
+                                                            child: Icon(AntIcons
+                                                                .editFilled)),
                                                       ),
-                                                    ]),
-                                                  ),
+                                                    ),
+                                                  ]),
                                                 ]),
                                           ),
                                         ),

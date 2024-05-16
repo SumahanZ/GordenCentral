@@ -72,80 +72,82 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
                                               const EdgeInsets.symmetric(
                                                   horizontal: 20, vertical: 15),
                                           title: Column(children: [
-                                            IntrinsicHeight(
-                                              child: Row(children: [
-                                                item.profilePhotoURL == null
-                                                    ? CircleAvatar(
+                                            Row(children: [
+                                              item.profilePhotoURL == null
+                                                  ? SizedBox(
+                                                    height: 100,
+                                                    child: CircleAvatar(
                                                         radius: 32.r,
-                                                      )
-                                                    : ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          imageUrl: item
-                                                                  .profilePhotoURL ??
-                                                              "",
-                                                          width: 64.w,
-                                                          imageBuilder: (context,
-                                                                  imageProvider) =>
-                                                              Container(
-                                                            decoration:
-                                                                BoxDecoration(
+                                                      ),
+                                                  )
+                                                  : ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(50),
+                                                      child:
+                                                          CachedNetworkImage(
+                                                        imageUrl: item
+                                                                .profilePhotoURL ??
+                                                            "",
+                                                        width: 64.w,
+                                                        height: 60.h,
+                                                        imageBuilder: (context,
+                                                                imageProvider) =>
+                                                            Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            image:
+                                                                DecorationImage(
                                                               image:
-                                                                  DecorationImage(
-                                                                image:
-                                                                    imageProvider,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
+                                                                  imageProvider,
+                                                              fit: BoxFit
+                                                                  .cover,
                                                             ),
                                                           ),
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              const Icon(
-                                                                  Icons.error),
-                                                        )),
-                                                SizedBox(width: 15.w),
-                                                Expanded(
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                          item.name ??
-                                                              "No name",
-                                                          style: appStyle(
-                                                              size: 15,
-                                                              color: mainBlack,
-                                                              fw: FontWeight
-                                                                  .w600)),
-                                                      Text(
-                                                        "No HP: ${item.whatsAppURL}",
+                                                        ),
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            const Icon(
+                                                                Icons.error),
+                                                      )),
+                                              SizedBox(width: 15.w),
+                                              Expanded(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .start,
+                                                  children: [
+                                                    Text(
+                                                        item.name ??
+                                                            "No name",
                                                         style: appStyle(
-                                                            size: 13,
+                                                            size: 15,
                                                             color: mainBlack,
                                                             fw: FontWeight
-                                                                .w500),
-                                                      ),
-                                                      Text(
-                                                        "Lokasi: ${item.address?.streetAddress}",
-                                                        style: appStyle(
-                                                          size: 12,
+                                                                .w600)),
+                                                    Text(
+                                                      "No HP: ${item.whatsAppURL}",
+                                                      style: appStyle(
+                                                          size: 13,
                                                           color: mainBlack,
-                                                          fw: FontWeight.w500,
-                                                        ),
+                                                          fw: FontWeight
+                                                              .w500),
+                                                    ),
+                                                    Text(
+                                                      "Lokasi: ${item.address?.streetAddress}",
+                                                      style: appStyle(
+                                                        size: 12,
+                                                        color: mainBlack,
+                                                        fw: FontWeight.w500,
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ]),
-                                            ),
+                                              ),
+                                            ]),
                                           ]),
                                         ),
                                       ),

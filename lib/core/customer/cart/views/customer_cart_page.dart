@@ -88,7 +88,7 @@ class CustomerCartPage extends ConsumerWidget {
                                       .toList()
                                       .reduce((value, element) => value + element)),
                                   style: appStyle(
-                                    size: 22,
+                                    size: 20,
                                     color: mainBlack,
                                     fw: FontWeight.w600,
                                   ),

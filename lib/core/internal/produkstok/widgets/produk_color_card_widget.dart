@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:antdesign_icons/antdesign_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
@@ -61,57 +62,58 @@ class ProdukColorWidget extends ConsumerWidget {
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   title: Column(children: [
-                    IntrinsicHeight(
-                      child: Row(children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: selections[i]["imagePath"]!.startsWith(
-                                  "http://res.cloudinary.com/dkintlemd/image/upload/")
-                              ? CachedNetworkImage(
-                                  imageUrl: selections[i]["imagePath"] ?? "",
-                                  width: 50.w,
-                                  imageBuilder: (context, imageProvider) =>
-                                      Container(
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.contain,
-                                        image: imageProvider,
-                                      ),
+                    Row(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: selections[i]["imagePath"]!.startsWith(
+                                "http://res.cloudinary.com/dkintlemd/image/upload/")
+                            ? CachedNetworkImage(
+                                imageUrl: selections[i]["imagePath"] ?? "",
+                                height: 60.h,
+                                width: 60.w,
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.contain,
+                                      image: imageProvider,
                                     ),
                                   ),
-                                  // placeholder: (context, url) => const Center(
-                                  //     child: CircularProgressIndicator()),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                )
-                              : Image.file(File((selections[i]["imagePath"]!)),
-                                  fit: BoxFit.contain, width: 50.w),
+                                ),
+                                // placeholder: (context, url) => const Center(
+                                //     child: CircularProgressIndicator()),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              )
+                            : Image.file(File((selections[i]["imagePath"]!)),
+                                fit: BoxFit.fill, 
+                                height: 60.h,
+                                width: 60.w),
+                      ),
+                      SizedBox(width: 15.w),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(selections[i]["name"]!,
+                                style: appStyle(
+                                    size: 18,
+                                    color: mainBlack,
+                                    fw: FontWeight.w600)),
+                          ],
                         ),
-                        SizedBox(width: 15.w),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(selections[i]["name"]!,
-                                  style: appStyle(
-                                      size: 18,
-                                      color: mainBlack,
-                                      fw: FontWeight.w600)),
-                            ],
-                          ),
-                        ),
-                        const Spacer(),
-                        GestureDetector(
-                            onTap: () {
-                              ref
-                                  .read(productCreationSelectionNotifierProvider
-                                      .notifier)
-                                  .removeFromColors(index: i);
-                            },
-                            child: const Icon(Icons.remove_circle_outline))
-                      ]),
-                    ),
+                      ),
+                      const Spacer(),
+                      GestureDetector(
+                          onTap: () {
+                            ref
+                                .read(productCreationSelectionNotifierProvider
+                                    .notifier)
+                                .removeFromColors(index: i);
+                          },
+                          child: const Icon(Icons.remove_circle_outline))
+                    ]),
                   ]),
                 ),
                 if (selections[i] != selections[selections.length - 1] &&

@@ -207,7 +207,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                       PriceFormatter.getFormattedValue(
                                           r?.price ?? 0),
                                       style: appStyle(
-                                        size: 22,
+                                        size: 20,
                                         color: mainBlack,
                                         fw: FontWeight.w600,
                                       ).copyWith(
@@ -232,7 +232,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                                         .toInt() /
                                                     100)),
                                         style: appStyle(
-                                          size: 22,
+                                          size: 20,
                                           color: mainBlack,
                                           fw: FontWeight.w600,
                                         ),
@@ -280,7 +280,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                           Text(
                                             itemQuantity.toString(),
                                             style: appStyle(
-                                              size: 16,
+                                              size: 14,
                                               color: mainBlack,
                                               fw: FontWeight.w600,
                                             ),
@@ -402,9 +402,9 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                             backgroundColor: Colors.greenAccent,
                                           ),
                                           child: Text(
-                                            "Tambah Ke Keranjang",
+                                            "Tambah Keranjang",
                                             style: appStyle(
-                                                size: 16,
+                                                size: 14,
                                                 color: Colors.white,
                                                 fw: FontWeight.w500),
                                           ),
@@ -608,7 +608,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                             SizedBox(width: 10.w),
                                             Text("Tambah ke Wishlist",
                                                 style: appStyle(
-                                                    size: 14,
+                                                    size: 12,
                                                     color: Colors.white,
                                                     fw: FontWeight.w600))
                                           ],
@@ -626,7 +626,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                 Text(
                                   "${r?.averageRating?.toStringAsPrecision(2) ?? ""} (${r?.totalRating ?? 0} Pembeli)",
                                   style: appStyle(
-                                      size: 14,
+                                      size: 13,
                                       color: mainBlack,
                                       fw: FontWeight.w600),
                                 ),

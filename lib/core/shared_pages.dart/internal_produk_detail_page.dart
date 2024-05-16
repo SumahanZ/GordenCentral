@@ -165,7 +165,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                       PriceFormatter.getFormattedValue(
                                           r?.price ?? 0),
                                       style: appStyle(
-                                        size: 22,
+                                        size: 20,
                                         color: mainBlack,
                                         fw: FontWeight.w600,
                                       ).copyWith(
@@ -190,7 +190,7 @@ class _InternalProdukPageState extends ConsumerState<InternalProdukPage> {
                                                         .toInt() /
                                                     100)),
                                         style: appStyle(
-                                          size: 22,
+                                          size: 20,
                                           color: mainBlack,
                                           fw: FontWeight.w600,
                                         ),

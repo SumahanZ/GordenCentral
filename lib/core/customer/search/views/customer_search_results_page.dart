@@ -55,7 +55,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                     crossAxisCount: 2,
                                     crossAxisSpacing: 10,
                                     mainAxisSpacing: 10,
-                                    childAspectRatio: 0.57),
+                                    childAspectRatio: 0.55),
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () => Routemaster.of(context).push(
@@ -199,7 +199,7 @@ class CustomerSearchResultsPage extends ConsumerWidget {
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: appStyle(
-                                                          size: 16,
+                                                          size: 14,
                                                           color: mainBlack,
                                                           fw: FontWeight.w600),
                                                       textAlign:

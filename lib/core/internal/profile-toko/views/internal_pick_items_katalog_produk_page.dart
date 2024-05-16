@@ -126,90 +126,88 @@ class _PickItemsKatalogProdukPageState
                                     ? onTap(isSelected, index, r)
                                     : null,
                                 title: ListTile(
-                                  onTap: () {
-                                  },
+                                  onTap: () {},
                                   shape: const RoundedRectangleBorder(),
                                   contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 10),
                                   title: Column(children: [
-                                    IntrinsicHeight(
-                                      child: Row(children: [
-                                        ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: CachedNetworkImage(
-                                              imageUrl: r[index]
-                                                  .produkGlobalImages[0]
-                                                  .globalImageUrl,
-                                              width: 70.w,
-                                              imageBuilder:
-                                                  (context, imageProvider) =>
-                                                      Container(
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.contain,
-                                                    image: imageProvider,
-                                                  ),
+                                    Row(children: [
+                                      ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: CachedNetworkImage(
+                                            imageUrl: r[index]
+                                                .produkGlobalImages[0]
+                                                .globalImageUrl,
+                                            height: 80.h,
+                                            width: 70.w,
+                                            imageBuilder:
+                                                (context, imageProvider) =>
+                                                    Container(
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                  fit: BoxFit.contain,
+                                                  image: imageProvider,
                                                 ),
                                               ),
-                                              // placeholder: (context, url) =>
-                                              //     const Center(
-                                              //         child:
-                                              //             CircularProgressIndicator()),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      const Icon(Icons.error),
-                                            )),
-                                        SizedBox(width: 15.w),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(r[index].name ?? "No name",
-                                                  style: appStyle(
-                                                      size: 16,
-                                                      color: mainBlack,
-                                                      fw: FontWeight.w600)),
-                                              Text(
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                "Ukuran: ${r[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                            ),
+                                            // placeholder: (context, url) =>
+                                            //     const Center(
+                                            //         child:
+                                            //             CircularProgressIndicator()),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(Icons.error),
+                                          )),
+                                      SizedBox(width: 15.w),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(r[index].name ?? "No name",
                                                 style: appStyle(
-                                                  size: 12,
-                                                  color: mainBlack,
-                                                  fw: FontWeight.w500,
-                                                ),
+                                                    size: 16,
+                                                    color: mainBlack,
+                                                    fw: FontWeight.w600)),
+                                            Text(
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              "Ukuran: ${r[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                              style: appStyle(
+                                                size: 12,
+                                                color: mainBlack,
+                                                fw: FontWeight.w500,
                                               ),
-                                              Text(
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                "Warna: ${r[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
-                                                style: appStyle(
-                                                  size: 12,
-                                                  color: mainBlack,
-                                                  fw: FontWeight.w500,
-                                                ),
+                                            ),
+                                            Text(
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              "Warna: ${r[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
+                                              style: appStyle(
+                                                size: 12,
+                                                color: mainBlack,
+                                                fw: FontWeight.w500,
                                               ),
-                                              Text(
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                PriceFormatter
-                                                    .getFormattedValue(
-                                                        r[index].price ?? 0),
-                                                style: appStyle(
-                                                  size: 16,
-                                                  color: mainBlack,
-                                                  fw: FontWeight.bold,
-                                                ),
+                                            ),
+                                            Text(
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              PriceFormatter
+                                                  .getFormattedValue(
+                                                      r[index].price ?? 0),
+                                              style: appStyle(
+                                                size: 16,
+                                                color: mainBlack,
+                                                fw: FontWeight.bold,
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ]),
-                                    ),
+                                      ),
+                                    ]),
                                   ]),
                                 ),
                               ),

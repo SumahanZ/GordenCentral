@@ -37,154 +37,153 @@ class CustomerOrderItem extends ConsumerWidget {
             ],
           ),
         SizedBox(height: 5.h),
-        IntrinsicHeight(
-          child: Row(children: [
-            ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: CachedNetworkImage(
-                  imageUrl: orderItem
-                          ?.produkCombination?.color?.produkColorImageUrl ??
-                      "",
-                  width: 70.w,
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.contain,
-                      ),
+        Row(children: [
+          ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: CachedNetworkImage(
+                imageUrl: orderItem
+                        ?.produkCombination?.color?.produkColorImageUrl ??
+                    "",
+                    height: 80.h,
+                width: 70.w,
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.contain,
                     ),
                   ),
-                  // placeholder: (context, url) =>
-                  //     const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) =>
-                      const Icon(Icons.error),
-                )),
-            SizedBox(width: 15.w),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                      maxLines: 2,
+                ),
+                // placeholder: (context, url) =>
+                //     const CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.error),
+              )),
+          SizedBox(width: 15.w),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    orderItem?.produkCombination?.product?.name ??
+                        "No name",
+                    style: appStyle(
+                        size: 14, color: mainBlack, fw: FontWeight.w600)),
+                Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  "Ukuran: ${orderItem?.produkCombination?.size?.name ?? "No Size"}",
+                  style: appStyle(
+                    size: 12,
+                    color: mainBlack,
+                    fw: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  "Warna: ${orderItem?.produkCombination?.color?.name ?? "No Color"}",
+                  style: appStyle(
+                    size: 12,
+                    color: mainBlack,
+                    fw: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  "Toko: ${orderItem?.produkCombination?.product?.toko?.name ?? "No Name"}",
+                  style: appStyle(
+                    size: 12,
+                    color: mainBlack,
+                    fw: FontWeight.w500,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      orderItem?.produkCombination?.product?.name ??
-                          "No name",
+                      PriceFormatter.getFormattedValue(
+                          (orderItem?.amount ?? 0) *
+                              ((orderItem?.produkCombination?.product
+                                          ?.price ??
+                                      0)
+                                  .toDouble())),
                       style: appStyle(
-                          size: 14, color: mainBlack, fw: FontWeight.w600)),
-                  Text(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    "Ukuran: ${orderItem?.produkCombination?.size?.name ?? "No Size"}",
-                    style: appStyle(
-                      size: 12,
-                      color: mainBlack,
-                      fw: FontWeight.w500,
+                        size: 14,
+                        color: mainBlack,
+                        fw: FontWeight.bold,
+                      ).copyWith(
+                          decoration: orderItem?.produkCombination
+                                          ?.product?.promo !=
+                                      null &&
+                                  (orderItem?.produkCombination?.product
+                                              ?.promo?.expiredAt ??
+                                          DateTime.now())
+                                      .isAfter(orderItem?.order?.createdAt ?? DateTime.now())
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                          decorationThickness: 2),
                     ),
-                  ),
-                  Text(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    "Warna: ${orderItem?.produkCombination?.color?.name ?? "No Color"}",
-                    style: appStyle(
-                      size: 12,
-                      color: mainBlack,
-                      fw: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    "Toko: ${orderItem?.produkCombination?.product?.toko?.name ?? "No Name"}",
-                    style: appStyle(
-                      size: 12,
-                      color: mainBlack,
-                      fw: FontWeight.w500,
-                    ),
-                  ),
-                  Row(
-                    children: [
+                    SizedBox(width: 5.w),
+                    if (orderItem?.produkCombination?.product?.promo !=
+                            null &&
+                        (orderItem?.produkCombination?.product?.promo
+                                    ?.expiredAt ??
+                                DateTime.now())
+                            .isAfter(orderItem?.order?.createdAt ?? DateTime.now()))
                       Text(
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        PriceFormatter.getFormattedValue(
-                            (orderItem?.amount ?? 0) *
-                                ((orderItem?.produkCombination?.product
-                                            ?.price ??
-                                        0)
-                                    .toDouble())),
+                        PriceFormatter.getFormattedValue((orderItem
+                                    ?.amount ??
+                                0) *
+                            ((orderItem?.produkCombination?.product
+                                            ?.promo ==
+                                        null
+                                    ? orderItem?.produkCombination
+                                            ?.product?.price ??
+                                        0
+                                    : (orderItem?.produkCombination
+                                                ?.product?.price ??
+                                            0) -
+                                        (orderItem?.produkCombination
+                                                    ?.product?.price ??
+                                                0) *
+                                            ((orderItem
+                                                        ?.produkCombination
+                                                        ?.product
+                                                        ?.promo
+                                                        ?.discountPercent
+                                                        ?.toInt() ??
+                                                    0) /
+                                                100))
+                                .toDouble())),
                         style: appStyle(
                           size: 14,
                           color: mainBlack,
                           fw: FontWeight.bold,
-                        ).copyWith(
-                            decoration: orderItem?.produkCombination
-                                            ?.product?.promo !=
-                                        null &&
-                                    (orderItem?.produkCombination?.product
-                                                ?.promo?.expiredAt ??
-                                            DateTime.now())
-                                        .isAfter(orderItem?.order?.createdAt ?? DateTime.now())
-                                ? TextDecoration.lineThrough
-                                : TextDecoration.none,
-                            decorationThickness: 2),
-                      ),
-                      SizedBox(width: 10.w),
-                      if (orderItem?.produkCombination?.product?.promo !=
-                              null &&
-                          (orderItem?.produkCombination?.product?.promo
-                                      ?.expiredAt ??
-                                  DateTime.now())
-                              .isAfter(orderItem?.order?.createdAt ?? DateTime.now()))
-                        Text(
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          PriceFormatter.getFormattedValue((orderItem
-                                      ?.amount ??
-                                  0) *
-                              ((orderItem?.produkCombination?.product
-                                              ?.promo ==
-                                          null
-                                      ? orderItem?.produkCombination
-                                              ?.product?.price ??
-                                          0
-                                      : (orderItem?.produkCombination
-                                                  ?.product?.price ??
-                                              0) -
-                                          (orderItem?.produkCombination
-                                                      ?.product?.price ??
-                                                  0) *
-                                              ((orderItem
-                                                          ?.produkCombination
-                                                          ?.product
-                                                          ?.promo
-                                                          ?.discountPercent
-                                                          ?.toInt() ??
-                                                      0) /
-                                                  100))
-                                  .toDouble())),
-                          style: appStyle(
-                            size: 14,
-                            color: mainBlack,
-                            fw: FontWeight.bold,
-                          ),
                         ),
-                    ],
-                  ),
-                ],
-              ),
+                      ),
+                  ],
+                ),
+              ],
             ),
-            Text(
-              "${orderItem?.amount}x",
-              style: appStyle(
-                size: 18,
-                color: mainBlack,
-                fw: FontWeight.w600,
-              ),
+          ),
+          Text(
+            "${orderItem?.amount}x",
+            style: appStyle(
+              size: 18,
+              color: mainBlack,
+              fw: FontWeight.w600,
             ),
-          ]),
-        ),
+          ),
+        ]),
       ]),
     );
   }

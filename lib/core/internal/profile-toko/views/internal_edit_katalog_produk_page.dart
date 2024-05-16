@@ -269,170 +269,169 @@ class _InternalEditKatalogProdukPageState
                                                           SizedBox(
                                                               height: 10.h),
                                                         ],
-                                                        IntrinsicHeight(
-                                                          child: Row(children: [
-                                                            ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
+                                                        Row(children: [
+                                                          ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              child:
+                                                                  CachedNetworkImage(
+                                                                imageUrl: (selectedProduks
+                                                                            .isNotEmpty &&
+                                                                        selectedProduks !=
+                                                                            r
+                                                                                ?.produkList)
+                                                                    ? selectedProduks[
+                                                                            index]
+                                                                        .produkGlobalImages[
+                                                                            0]
+                                                                        .globalImageUrl
+                                                                    : r?.produkList[index].produkGlobalImages[0]
+                                                                            .globalImageUrl ??
+                                                                        "None",
+                                                                        height: 80.h,
+                                                                width: 70.w,
+                                                                imageBuilder:
+                                                                    (context,
+                                                                            imageProvider) =>
+                                                                        Container(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .rectangle,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
                                                                             10),
-                                                                child:
-                                                                    CachedNetworkImage(
-                                                                  imageUrl: (selectedProduks
-                                                                              .isNotEmpty &&
-                                                                          selectedProduks !=
-                                                                              r
-                                                                                  ?.produkList)
-                                                                      ? selectedProduks[
-                                                                              index]
-                                                                          .produkGlobalImages[
-                                                                              0]
-                                                                          .globalImageUrl
-                                                                      : r?.produkList[index].produkGlobalImages[0]
-                                                                              .globalImageUrl ??
-                                                                          "None",
-                                                                  width: 70.w,
-                                                                  imageBuilder:
-                                                                      (context,
-                                                                              imageProvider) =>
-                                                                          Container(
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      shape: BoxShape
-                                                                          .rectangle,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10),
+                                                                    image:
+                                                                        DecorationImage(
                                                                       image:
-                                                                          DecorationImage(
-                                                                        image:
-                                                                            imageProvider,
-                                                                        fit: BoxFit
-                                                                            .contain,
-                                                                      ),
+                                                                          imageProvider,
+                                                                      fit: BoxFit
+                                                                          .contain,
                                                                     ),
                                                                   ),
-                                                                  // placeholder: (context,
-                                                                  //         url) =>
-                                                                  //     const Center(
-                                                                  //         child:
-                                                                  //             CircularProgressIndicator()),
-                                                                  errorWidget: (context,
-                                                                          url,
-                                                                          error) =>
-                                                                      const Icon(
-                                                                          Icons
-                                                                              .error),
-                                                                )),
-                                                            SizedBox(
-                                                                width: 15.w),
-                                                            Expanded(
-                                                              child: Column(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                      (selectedProduks.isNotEmpty && selectedProduks != r?.produkList)
-                                                                          ? selectedProduks[index].name ??
-                                                                              "No name"
-                                                                          : r?.produkList[index].name ??
-                                                                              "No name",
-                                                                      style: appStyle(
-                                                                          size:
-                                                                              16,
-                                                                          color:
-                                                                              mainBlack,
-                                                                          fw: FontWeight
-                                                                              .w600)),
-                                                                  Text(
-                                                                    maxLines: 1,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    "Ukuran: ${(selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].produkSizes.map((e) => e.name).toList().getConcatenatedList() : r?.produkList[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
-                                                                    style:
-                                                                        appStyle(
-                                                                      size: 12,
-                                                                      color:
-                                                                          mainBlack,
-                                                                      fw: FontWeight
-                                                                          .w500,
-                                                                    ),
+                                                                ),
+                                                                // placeholder: (context,
+                                                                //         url) =>
+                                                                //     const Center(
+                                                                //         child:
+                                                                //             CircularProgressIndicator()),
+                                                                errorWidget: (context,
+                                                                        url,
+                                                                        error) =>
+                                                                    const Icon(
+                                                                        Icons
+                                                                            .error),
+                                                              )),
+                                                          SizedBox(
+                                                              width: 15.w),
+                                                          Expanded(
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                    (selectedProduks.isNotEmpty && selectedProduks != r?.produkList)
+                                                                        ? selectedProduks[index].name ??
+                                                                            "No name"
+                                                                        : r?.produkList[index].name ??
+                                                                            "No name",
+                                                                    style: appStyle(
+                                                                        size:
+                                                                            16,
+                                                                        color:
+                                                                            mainBlack,
+                                                                        fw: FontWeight
+                                                                            .w600)),
+                                                                Text(
+                                                                  maxLines: 1,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  "Ukuran: ${(selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].produkSizes.map((e) => e.name).toList().getConcatenatedList() : r?.produkList[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                                                  style:
+                                                                      appStyle(
+                                                                    size: 12,
+                                                                    color:
+                                                                        mainBlack,
+                                                                    fw: FontWeight
+                                                                        .w500,
                                                                   ),
-                                                                  Text(
-                                                                    maxLines: 1,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    "Warna: ${(selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].produkColors.map((e) => e.name).toList().getConcatenatedList() : r?.produkList[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
-                                                                    style:
-                                                                        appStyle(
-                                                                      size: 12,
-                                                                      color:
-                                                                          mainBlack,
-                                                                      fw: FontWeight
-                                                                          .w500,
-                                                                    ),
+                                                                ),
+                                                                Text(
+                                                                  maxLines: 1,
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  "Warna: ${(selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].produkColors.map((e) => e.name).toList().getConcatenatedList() : r?.produkList[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
+                                                                  style:
+                                                                      appStyle(
+                                                                    size: 12,
+                                                                    color:
+                                                                        mainBlack,
+                                                                    fw: FontWeight
+                                                                        .w500,
                                                                   ),
-                                                                  Row(
-                                                                    children: [
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    Text(
+                                                                      maxLines:
+                                                                          1,
+                                                                      overflow:
+                                                                          TextOverflow.ellipsis,
+                                                                      PriceFormatter.getFormattedValue((selectedProduks.isNotEmpty && selectedProduks != r?.produkList)
+                                                                          ? selectedProduks[index].price ??
+                                                                              0
+                                                                          : r?.produkList[index].price ??
+                                                                              0),
+                                                                      style:
+                                                                          appStyle(
+                                                                        size:
+                                                                            16,
+                                                                        color:
+                                                                            mainBlack,
+                                                                        fw: FontWeight
+                                                                            .bold,
+                                                                      ).copyWith(
+                                                                              decoration: (((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo : r?.produkList[index].promo) != null) && ((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime.now()) ? TextDecoration.lineThrough : TextDecoration.none,
+                                                                              decorationThickness: 2),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                        width:
+                                                                            10),
+                                                                    if (((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo : r?.produkList[index].promo) !=
+                                                                            null &&
+                                                                        ((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now())
+                                                                            .isAfter(DateTime.now()))
                                                                       Text(
                                                                         maxLines:
                                                                             1,
                                                                         overflow:
                                                                             TextOverflow.ellipsis,
-                                                                        PriceFormatter.getFormattedValue((selectedProduks.isNotEmpty && selectedProduks != r?.produkList)
-                                                                            ? selectedProduks[index].price ??
-                                                                                0
-                                                                            : r?.produkList[index].price ??
-                                                                                0),
+                                                                        PriceFormatter.getFormattedValue((((selectedProduks.isNotEmpty && selectedProduks != r?.produkList)))
+                                                                            ? (selectedProduks[index].price ?? 0) - (selectedProduks[index].price ?? 0) * ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) / 100)
+                                                                            : (r?.produkList[index].price ?? 0) - (r?.produkList[index].price ?? 0) * ((r?.produkList[index].promo?.discountPercent?.toInt() ?? 0) / 100)),
                                                                         style:
                                                                             appStyle(
                                                                           size:
                                                                               16,
                                                                           color:
                                                                               mainBlack,
-                                                                          fw: FontWeight
-                                                                              .bold,
-                                                                        ).copyWith(
-                                                                                decoration: (((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo : r?.produkList[index].promo) != null) && ((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime.now()) ? TextDecoration.lineThrough : TextDecoration.none,
-                                                                                decorationThickness: 2),
-                                                                      ),
-                                                                      const SizedBox(
-                                                                          width:
-                                                                              10),
-                                                                      if (((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo : r?.produkList[index].promo) !=
-                                                                              null &&
-                                                                          ((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now())
-                                                                              .isAfter(DateTime.now()))
-                                                                        Text(
-                                                                          maxLines:
-                                                                              1,
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          PriceFormatter.getFormattedValue((((selectedProduks.isNotEmpty && selectedProduks != r?.produkList)))
-                                                                              ? (selectedProduks[index].price ?? 0) - (selectedProduks[index].price ?? 0) * ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) / 100)
-                                                                              : (r?.produkList[index].price ?? 0) - (r?.produkList[index].price ?? 0) * ((r?.produkList[index].promo?.discountPercent?.toInt() ?? 0) / 100)),
-                                                                          style:
-                                                                              appStyle(
-                                                                            size:
-                                                                                16,
-                                                                            color:
-                                                                                mainBlack,
-                                                                            fw: FontWeight.bold,
-                                                                          ),
+                                                                          fw: FontWeight.bold,
                                                                         ),
-                                                                    ],
-                                                                  ),
-                                                                ],
-                                                              ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ],
                                                             ),
-                                                          ]),
-                                                        ),
+                                                          ),
+                                                        ]),
                                                       ]),
                                                     )
                                                   ],

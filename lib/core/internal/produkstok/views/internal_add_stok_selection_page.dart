@@ -92,10 +92,12 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                 ),
                                                 SizedBox(height: 5.h),
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      textAlign: TextAlign.center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), r[index].promo!.expiredAt!)}",
                                                       style: appStyle(
                                                         size: 11,
@@ -116,150 +118,149 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                         fw: FontWeight.w600))
                                               ]),
                                               SizedBox(height: 10.h),
-                                              IntrinsicHeight(
-                                                child: Row(children: [
-                                                  ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      child: CachedNetworkImage(
-                                                        imageUrl: r[index]
-                                                            .produkGlobalImages[
-                                                                0]
-                                                            .globalImageUrl,
-                                                        width: 80.w,
-                                                        imageBuilder: (context,
-                                                                imageProvider) =>
-                                                            Container(
-                                                          decoration:
-                                                              BoxDecoration(
+                                              Row(children: [
+                                                ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: r[index]
+                                                          .produkGlobalImages[
+                                                              0]
+                                                          .globalImageUrl,
+                                                      height: 80.h,
+                                                      width: 70.w,
+                                                      imageBuilder: (context,
+                                                              imageProvider) =>
+                                                          Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            fit: BoxFit
+                                                                .contain,
                                                             image:
-                                                                DecorationImage(
-                                                              fit: BoxFit
-                                                                  .contain,
-                                                              image:
-                                                                  imageProvider,
-                                                            ),
+                                                                imageProvider,
                                                           ),
                                                         ),
-                                                        // placeholder: (context,
-                                                        //         url) =>
-                                                        //     const CircularProgressIndicator(),
-                                                        errorWidget: (context,
-                                                                url, error) =>
-                                                            const Icon(
-                                                                Icons.error),
-                                                      )),
-                                                  SizedBox(width: 15.w),
-                                                  Expanded(
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                            r[index].name ??
-                                                                "No name",
+                                                      ),
+                                                      // placeholder: (context,
+                                                      //         url) =>
+                                                      //     const CircularProgressIndicator(),
+                                                      errorWidget: (context,
+                                                              url, error) =>
+                                                          const Icon(
+                                                              Icons.error),
+                                                    )),
+                                                SizedBox(width: 15.w),
+                                                Expanded(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                          r[index].name ??
+                                                              "No name",
+                                                          style: appStyle(
+                                                              size: 14,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .w600)),
+                                                      Text(
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        "Ukuran: ${r[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
+                                                        style: appStyle(
+                                                          size: 12,
+                                                          color: mainBlack,
+                                                          fw: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        "Warna: ${r[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
+                                                        style: appStyle(
+                                                          size: 12,
+                                                          color: mainBlack,
+                                                          fw: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Text(
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            PriceFormatter
+                                                                .getFormattedValue(
+                                                                    r[index].price ??
+                                                                        0),
                                                             style: appStyle(
-                                                                size: 14,
-                                                                color:
-                                                                    mainBlack,
-                                                                fw: FontWeight
-                                                                    .w600)),
-                                                        Text(
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          "Ukuran: ${r[index].produkSizes.map((e) => e.name).toList().getConcatenatedList()}",
-                                                          style: appStyle(
-                                                            size: 12,
-                                                            color: mainBlack,
-                                                            fw: FontWeight.w500,
+                                                              size: 16,
+                                                              color:
+                                                                  mainBlack,
+                                                              fw: FontWeight
+                                                                  .bold,
+                                                            ).copyWith(
+                                                                decoration: r[index].promo !=
+                                                                            null &&
+                                                                        (r[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime
+                                                                            .now())
+                                                                    ? TextDecoration
+                                                                        .lineThrough
+                                                                    : TextDecoration
+                                                                        .none,
+                                                                decorationThickness:
+                                                                    2),
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          "Warna: ${r[index].produkColors.map((e) => e.name).toList().getConcatenatedList()}",
-                                                          style: appStyle(
-                                                            size: 12,
-                                                            color: mainBlack,
-                                                            fw: FontWeight.w500,
-                                                          ),
-                                                        ),
-                                                        Row(
-                                                          children: [
+                                                          SizedBox(
+                                                              width: 10.w),
+                                                          if (r[index].promo !=
+                                                                  null &&
+                                                              (r[index]
+                                                                          .promo
+                                                                          ?.expiredAt ??
+                                                                      DateTime
+                                                                          .now())
+                                                                  .isAfter(
+                                                                      DateTime
+                                                                          .now()))
                                                             Text(
                                                               maxLines: 1,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              PriceFormatter
-                                                                  .getFormattedValue(
-                                                                      r[index].price ??
-                                                                          0),
+                                                              PriceFormatter.getFormattedValue((r[index]
+                                                                          .price ??
+                                                                      0) -
+                                                                  (r[index].price ??
+                                                                          0) *
+                                                                      ((r[index].promo?.discountPercent?.toInt() ??
+                                                                              0) /
+                                                                          100)),
                                                               style: appStyle(
                                                                 size: 16,
                                                                 color:
                                                                     mainBlack,
                                                                 fw: FontWeight
                                                                     .bold,
-                                                              ).copyWith(
-                                                                  decoration: r[index].promo !=
-                                                                              null &&
-                                                                          (r[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime
-                                                                              .now())
-                                                                      ? TextDecoration
-                                                                          .lineThrough
-                                                                      : TextDecoration
-                                                                          .none,
-                                                                  decorationThickness:
-                                                                      2),
-                                                            ),
-                                                            SizedBox(
-                                                                width: 10.w),
-                                                            if (r[index].promo !=
-                                                                    null &&
-                                                                (r[index]
-                                                                            .promo
-                                                                            ?.expiredAt ??
-                                                                        DateTime
-                                                                            .now())
-                                                                    .isAfter(
-                                                                        DateTime
-                                                                            .now()))
-                                                              Text(
-                                                                maxLines: 1,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                PriceFormatter.getFormattedValue((r[index]
-                                                                            .price ??
-                                                                        0) -
-                                                                    (r[index].price ??
-                                                                            0) *
-                                                                        ((r[index].promo?.discountPercent?.toInt() ??
-                                                                                0) /
-                                                                            100)),
-                                                                style: appStyle(
-                                                                  size: 16,
-                                                                  color:
-                                                                      mainBlack,
-                                                                  fw: FontWeight
-                                                                      .bold,
-                                                                ),
                                                               ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
+                                                            ),
+                                                        ],
+                                                      ),
+                                                    ],
                                                   ),
-                                                  const Icon(
-                                                      Icons.chevron_right,
-                                                      size: 30),
-                                                ]),
-                                              ),
+                                                ),
+                                                const Icon(
+                                                    Icons.chevron_right,
+                                                    size: 30),
+                                              ]),
                                             ]),
                                       ),
                                     ),

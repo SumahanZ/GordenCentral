@@ -229,7 +229,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: appStyle(
-                                                        size: 16,
+                                                        size: 14,
                                                         color: mainBlack,
                                                         fw: FontWeight.w600),
                                                     textAlign:
