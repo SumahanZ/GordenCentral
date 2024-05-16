@@ -508,10 +508,10 @@ class InternalOrderDetailPage extends ConsumerWidget {
               ElevatedButton(
                 onPressed: () {
                   List<Invoice> invoiceList =
-                      orderDetail!.orderItemList.map((e) {
+                      (orderDetail?.orderItemList ?? []).map((e) {
                     return Invoice(
-                        customer: orderDetail.customer,
-                        toko: orderDetail.toko,
+                        customer: orderDetail?.customer,
+                        toko: orderDetail?.toko,
                         cartItem: CartItem(
                             id: e.id,
                             amount: e.amount,
