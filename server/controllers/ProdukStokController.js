@@ -606,7 +606,7 @@ module.exports = {
 
             const internals = await models.internal.findAll({
                 where: {
-                    tokoId: createdOrder.tokoId,
+                    tokoId: toko.id,
                     status: "joined"
                 },
                 include: {
