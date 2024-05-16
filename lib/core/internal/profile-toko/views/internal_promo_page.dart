@@ -167,8 +167,8 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                 .isAfter(
                                                                     DateTime
                                                                         .now()))
-                                                            ? "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), filteredPromosOngoing[index].expiredAt!)}"
-                                                            : "Expired At: ${filteredPromosOngoing[index].expiredAt?.formatDatePDF()}",
+                                                            ? "${DateTimeHourMin.durationBetween(DateTime.now(), filteredPromosOngoing[index].expiredAt!)}"
+                                                            : "Expired: ${filteredPromosOngoing[index].expiredAt?.formatDatePDF()}",
                                                         style: appStyle(
                                                           size: 12,
                                                           color: mainBlack,
@@ -192,8 +192,8 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                   .globalImageUrl ??
                                                               "",
                                                           fit: BoxFit.contain,
-                                                          height: 80.h,
-                                                          width: 70.w),
+                                                          height: 70.h,
+                                                          width: 60.w),
                                                     ),
                                                     SizedBox(width: 15.w),
                                                     Expanded(
@@ -413,8 +413,8 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                     .isAfter(
                                                                         DateTime
                                                                             .now()))
-                                                            ? "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), filteredPromosExpired[index].expiredAt!)}"
-                                                            : "Expired At: ${filteredPromosExpired[index].expiredAt?.formatDatePDF()}",
+                                                            ? "${DateTimeHourMin.durationBetween(DateTime.now(), filteredPromosExpired[index].expiredAt!)}"
+                                                            : "Expired: ${filteredPromosExpired[index].expiredAt?.formatDatePDF()}",
                                                         style: appStyle(
                                                           size: 12,
                                                           color: mainBlack,
@@ -438,7 +438,7 @@ class _InternalPromoPageState extends ConsumerState<InternalPromoPage>
                                                                   .globalImageUrl ??
                                                               "",
                                                           fit: BoxFit.contain,
-                                                          height: 80.h,
+                                                          height: 70.h,
                                                           width: 70.w),
                                                     ),
                                                     SizedBox(width: 15.w),

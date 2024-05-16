@@ -41,24 +41,24 @@ class CustomerCartItem extends ConsumerWidget {
                       "${cartItem?.produkCombination?.product?.promo?.discountPercent}% OFF",
                       style: appStyle(
                           size: 12, color: mainBlack, fw: FontWeight.w600)),
-                ],
-              ),
-              SizedBox(height: 5.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    textAlign: TextAlign.center,
-                    "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), cartItem?.produkCombination?.product?.promo?.expiredAt ?? DateTime.now())}",
-                    style: appStyle(
-                      size: 12,
-                      color: mainBlack,
-                      fw: FontWeight.w600,
-                    ),
+                  Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        textAlign: TextAlign.center,
+                        "${DateTimeHourMin.durationBetween(DateTime.now(), cartItem?.produkCombination?.product?.promo?.expiredAt ?? DateTime.now())}",
+                        style: appStyle(
+                          size: 12,
+                          color: mainBlack,
+                          fw: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 10.h),
+              SizedBox(height: 5.h),
             ],
             Row(children: [
               ClipRRect(
@@ -68,7 +68,7 @@ class CustomerCartItem extends ConsumerWidget {
                             ?.produkCombination?.color?.produkColorImageUrl ??
                         "",
                     width: 70.w,
-                    height: 80.h,
+                    height: 70.h,
                     imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -92,8 +92,7 @@ class CustomerCartItem extends ConsumerWidget {
                     Text(
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        cartItem?.produkCombination?.product?.name ??
-                            "No name",
+                        cartItem?.produkCombination?.product?.name ?? "No name",
                         style: appStyle(
                             size: 14, color: mainBlack, fw: FontWeight.w600)),
                     Text(
@@ -133,7 +132,7 @@ class CustomerCartItem extends ConsumerWidget {
                             (cartItem?.produkCombination?.product?.promo
                                         ?.expiredAt ??
                                     DateTime.now())
-                                .isAfter(DateTime.now()))
+                                .isAfter(DateTime.now())) ...[
                           Text(
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -145,8 +144,8 @@ class CustomerCartItem extends ConsumerWidget {
                                         ? cartItem?.produkCombination?.product
                                                 ?.price ??
                                             0
-                                        : (cartItem?.produkCombination
-                                                    ?.product?.price ??
+                                        : (cartItem?.produkCombination?.product
+                                                    ?.price ??
                                                 0) -
                                             (cartItem?.produkCombination
                                                         ?.product?.price ??
@@ -165,6 +164,32 @@ class CustomerCartItem extends ConsumerWidget {
                               color: mainBlack,
                               fw: FontWeight.bold,
                             ),
+                          ),
+                        ] else
+                          Text(
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            PriceFormatter.getFormattedValue(
+                                (cartItem?.amount ?? 0) *
+                                    ((cartItem?.produkCombination?.product
+                                                ?.price ??
+                                            0)
+                                        .toDouble())),
+                            style: appStyle(
+                              size: 14,
+                              color: mainBlack,
+                              fw: FontWeight.bold,
+                            ).copyWith(
+                                decoration: cartItem?.produkCombination?.product
+                                                ?.promo !=
+                                            null &&
+                                        (cartItem?.produkCombination?.product
+                                                    ?.promo?.expiredAt ??
+                                                DateTime.now())
+                                            .isAfter(DateTime.now())
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none,
+                                decorationThickness: 2),
                           ),
                       ],
                     )
@@ -190,8 +215,7 @@ class CustomerCartItem extends ConsumerWidget {
                     child: Opacity(
                       opacity: (cartItem != null &&
                               ((cartItem!.amount ?? 0) <
-                                  (cartItem!
-                                          .produkCombination?.variantAmount ??
+                                  (cartItem!.produkCombination?.variantAmount ??
                                       0)))
                           ? 1
                           : 0,
@@ -224,7 +248,7 @@ class CustomerCartItem extends ConsumerWidget {
                             .read(customerCartViewModelProvider.notifier)
                             .decreaseItemQuantityCartItem(
                                 cartItemId: cartItem!.id);
-            
+
                         ref.invalidate(fetchCart);
                       }
                     },
@@ -233,9 +257,12 @@ class CustomerCartItem extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(20),
                       child: CircleAvatar(
                           radius: 17.r,
-                          child: Icon((cartItem?.amount ?? 0) == 1
-                              ? AntIcons.deleteFilled
-                              : AntIcons.minusOutlined, color: Colors.black,)),
+                          child: Icon(
+                            (cartItem?.amount ?? 0) == 1
+                                ? AntIcons.deleteFilled
+                                : AntIcons.minusOutlined,
+                            color: Colors.black,
+                          )),
                     ),
                   ),
                 ],

@@ -90,12 +90,12 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                           const TopSectionAuth(
                               name: "Filter Pencarian",
                               description:
-                                  "Konfigurasikan filter pencarian Anda",
+                                  "Konfigurasikan filter pencarian",
                               isAvatarNeeded: false),
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10),
+                                  vertical: 10.0, horizontal: 5),
                               child: GestureDetector(
                                   onTap: () {
                                     Routemaster.of(context).pop();

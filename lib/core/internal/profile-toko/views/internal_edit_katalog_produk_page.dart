@@ -242,32 +242,31 @@ class _InternalEditKatalogProdukPageState
                                                                           mainBlack,
                                                                       fw: FontWeight
                                                                           .w600)),
-                                                              // const Spacer(),
-                                                            ],
-                                                          ),
-                                                          SizedBox(height: 5.h),
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), (selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now())}",
-                                                                style: appStyle(
-                                                                  size: 12,
-                                                                  color:
-                                                                      mainBlack,
-                                                                  fw: FontWeight
-                                                                      .w600,
-                                                                ),
+                                                              const Spacer(),
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    "${DateTimeHourMin.durationBetween(DateTime.now(), (selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now())}",
+                                                                    style:
+                                                                        appStyle(
+                                                                      size: 12,
+                                                                      color:
+                                                                          mainBlack,
+                                                                      fw: FontWeight
+                                                                          .w600,
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
                                                           ),
-                                                          SizedBox(
-                                                              height: 10.h),
+                                                          SizedBox(height: 5.h),
                                                         ],
                                                         Row(children: [
                                                           ClipRRect(
@@ -290,7 +289,7 @@ class _InternalEditKatalogProdukPageState
                                                                     : r?.produkList[index].produkGlobalImages[0]
                                                                             .globalImageUrl ??
                                                                         "None",
-                                                                        height: 80.h,
+                                                                height: 70.h,
                                                                 width: 70.w,
                                                                 imageBuilder:
                                                                     (context,
@@ -320,12 +319,10 @@ class _InternalEditKatalogProdukPageState
                                                                 errorWidget: (context,
                                                                         url,
                                                                         error) =>
-                                                                    const Icon(
-                                                                        Icons
-                                                                            .error),
+                                                                    const Icon(Icons
+                                                                        .error),
                                                               )),
-                                                          SizedBox(
-                                                              width: 15.w),
+                                                          SizedBox(width: 15.w),
                                                           Expanded(
                                                             child: Column(
                                                               mainAxisAlignment:
@@ -336,7 +333,10 @@ class _InternalEditKatalogProdukPageState
                                                                       .start,
                                                               children: [
                                                                 Text(
-                                                                    (selectedProduks.isNotEmpty && selectedProduks != r?.produkList)
+                                                                    (selectedProduks.isNotEmpty &&
+                                                                            selectedProduks !=
+                                                                                r
+                                                                                    ?.produkList)
                                                                         ? selectedProduks[index].name ??
                                                                             "No name"
                                                                         : r?.produkList[index].name ??
@@ -384,7 +384,8 @@ class _InternalEditKatalogProdukPageState
                                                                       maxLines:
                                                                           1,
                                                                       overflow:
-                                                                          TextOverflow.ellipsis,
+                                                                          TextOverflow
+                                                                              .ellipsis,
                                                                       PriceFormatter.getFormattedValue((selectedProduks.isNotEmpty && selectedProduks != r?.produkList)
                                                                           ? selectedProduks[index].price ??
                                                                               0
@@ -407,7 +408,9 @@ class _InternalEditKatalogProdukPageState
                                                                             10),
                                                                     if (((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo : r?.produkList[index].promo) !=
                                                                             null &&
-                                                                        ((selectedProduks.isNotEmpty && selectedProduks != r?.produkList) ? selectedProduks[index].promo?.expiredAt ?? DateTime.now() : r?.produkList[index].promo?.expiredAt ?? DateTime.now())
+                                                                        ((selectedProduks.isNotEmpty && selectedProduks != r?.produkList)
+                                                                                ? selectedProduks[index].promo?.expiredAt ?? DateTime.now()
+                                                                                : r?.produkList[index].promo?.expiredAt ?? DateTime.now())
                                                                             .isAfter(DateTime.now()))
                                                                       Text(
                                                                         maxLines:
@@ -415,7 +418,8 @@ class _InternalEditKatalogProdukPageState
                                                                         overflow:
                                                                             TextOverflow.ellipsis,
                                                                         PriceFormatter.getFormattedValue((((selectedProduks.isNotEmpty && selectedProduks != r?.produkList)))
-                                                                            ? (selectedProduks[index].price ?? 0) - (selectedProduks[index].price ?? 0) * ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) / 100)
+                                                                            ? (selectedProduks[index].price ?? 0) -
+                                                                                (selectedProduks[index].price ?? 0) * ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) / 100)
                                                                             : (r?.produkList[index].price ?? 0) - (r?.produkList[index].price ?? 0) * ((r?.produkList[index].promo?.discountPercent?.toInt() ?? 0) / 100)),
                                                                         style:
                                                                             appStyle(
@@ -423,7 +427,8 @@ class _InternalEditKatalogProdukPageState
                                                                               16,
                                                                           color:
                                                                               mainBlack,
-                                                                          fw: FontWeight.bold,
+                                                                          fw: FontWeight
+                                                                              .bold,
                                                                         ),
                                                                       ),
                                                                   ],

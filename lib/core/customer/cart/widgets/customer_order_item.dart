@@ -44,7 +44,7 @@ class CustomerOrderItem extends ConsumerWidget {
                 imageUrl: orderItem
                         ?.produkCombination?.color?.produkColorImageUrl ??
                     "",
-                    height: 80.h,
+                    height: 70.h,
                 width: 70.w,
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(

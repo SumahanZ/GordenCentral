@@ -88,32 +88,33 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                             color: mainBlack,
                                                             fw: FontWeight
                                                                 .w600)),
-                                                  ],
-                                                ),
-                                                SizedBox(height: 5.h),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), r[index].promo!.expiredAt!)}",
-                                                      style: appStyle(
-                                                        size: 11,
-                                                        color: mainBlack,
-                                                        fw: FontWeight.w600,
-                                                      ),
+                                                    Spacer(),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          "${DateTimeHourMin.durationBetween(DateTime.now(), r[index].promo!.expiredAt!)}",
+                                                          style: appStyle(
+                                                            size: 12,
+                                                            color: mainBlack,
+                                                            fw: FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ],
                                                 ),
-                                                SizedBox(height: 10.h),
+                                                SizedBox(height: 5.h),
                                               ],
                                               Row(children: [
                                                 Text(
                                                     "Stok: ${r[index].stok?.totalAmount ?? 0}",
                                                     style: appStyle(
-                                                        size: 16,
+                                                        size: 14,
                                                         color: mainBlack,
                                                         fw: FontWeight.w600))
                                               ]),
@@ -125,10 +126,9 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                             10),
                                                     child: CachedNetworkImage(
                                                       imageUrl: r[index]
-                                                          .produkGlobalImages[
-                                                              0]
+                                                          .produkGlobalImages[0]
                                                           .globalImageUrl,
-                                                      height: 80.h,
+                                                      height: 70.h,
                                                       width: 70.w,
                                                       imageBuilder: (context,
                                                               imageProvider) =>
@@ -137,8 +137,7 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                             BoxDecoration(
                                                           image:
                                                               DecorationImage(
-                                                            fit: BoxFit
-                                                                .contain,
+                                                            fit: BoxFit.contain,
                                                             image:
                                                                 imageProvider,
                                                           ),
@@ -164,8 +163,7 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                               "No name",
                                                           style: appStyle(
                                                               size: 14,
-                                                              color:
-                                                                  mainBlack,
+                                                              color: mainBlack,
                                                               fw: FontWeight
                                                                   .w600)),
                                                       Text(
@@ -192,35 +190,6 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                       ),
                                                       Row(
                                                         children: [
-                                                          Text(
-                                                            maxLines: 1,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            PriceFormatter
-                                                                .getFormattedValue(
-                                                                    r[index].price ??
-                                                                        0),
-                                                            style: appStyle(
-                                                              size: 16,
-                                                              color:
-                                                                  mainBlack,
-                                                              fw: FontWeight
-                                                                  .bold,
-                                                            ).copyWith(
-                                                                decoration: r[index].promo !=
-                                                                            null &&
-                                                                        (r[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime
-                                                                            .now())
-                                                                    ? TextDecoration
-                                                                        .lineThrough
-                                                                    : TextDecoration
-                                                                        .none,
-                                                                decorationThickness:
-                                                                    2),
-                                                          ),
-                                                          SizedBox(
-                                                              width: 10.w),
                                                           if (r[index].promo !=
                                                                   null &&
                                                               (r[index]
@@ -228,15 +197,15 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                                           ?.expiredAt ??
                                                                       DateTime
                                                                           .now())
-                                                                  .isAfter(
-                                                                      DateTime
-                                                                          .now()))
+                                                                  .isAfter(DateTime
+                                                                      .now())) ...[
                                                             Text(
                                                               maxLines: 1,
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              PriceFormatter.getFormattedValue((r[index]
+                                                              PriceFormatter.getFormattedValue((r[
+                                                                              index]
                                                                           .price ??
                                                                       0) -
                                                                   (r[index].price ??
@@ -252,13 +221,40 @@ class InternalAddStokProdukSelection extends ConsumerWidget {
                                                                     .bold,
                                                               ),
                                                             ),
+                                                          ] else
+                                                            Text(
+                                                              maxLines: 1,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              PriceFormatter
+                                                                  .getFormattedValue(
+                                                                      r[index].price ??
+                                                                          0),
+                                                              style: appStyle(
+                                                                size: 16,
+                                                                color:
+                                                                    mainBlack,
+                                                                fw: FontWeight
+                                                                    .bold,
+                                                              ).copyWith(
+                                                                  decoration: r[index].promo !=
+                                                                              null &&
+                                                                          (r[index].promo?.expiredAt ?? DateTime.now()).isAfter(DateTime
+                                                                              .now())
+                                                                      ? TextDecoration
+                                                                          .lineThrough
+                                                                      : TextDecoration
+                                                                          .none,
+                                                                  decorationThickness:
+                                                                      2),
+                                                            ),
                                                         ],
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                                const Icon(
-                                                    Icons.chevron_right,
+                                                const Icon(Icons.chevron_right,
                                                     size: 30),
                                               ]),
                                             ]),

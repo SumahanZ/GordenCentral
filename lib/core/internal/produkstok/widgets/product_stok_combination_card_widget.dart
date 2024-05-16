@@ -60,7 +60,7 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                         Text(
                           "Stok: ${produkStok[i].stokAmount}",
                           style: appStyle(
-                            size: 16,
+                            size: 14,
                             color: mainBlack,
                             fw: FontWeight.w600,
                           ),
@@ -78,7 +78,7 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                                   imageUrl: produkStok[i]
                                           .produkColor["imagePath"] ??
                                       "",
-                                  height: 80.h,
+                                  height: 70.h,
                                   width: 70.w,
                                   imageBuilder: (context, imageProvider) =>
                                       Container(

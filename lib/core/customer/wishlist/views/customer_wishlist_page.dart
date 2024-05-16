@@ -32,6 +32,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                   (l) => Center(
                           child: Text(
                         "Tidak ada produk dalam wishlist Anda!",
+                        textAlign: TextAlign.center,
                         style: appStyle(
                             size: 18, color: mainBlack, fw: FontWeight.w600),
                       )), (r) {
@@ -39,6 +40,7 @@ class CustomerWishlistPage extends ConsumerWidget {
                     ? Center(
                         child: Text(
                         "Tidak ada produk dalam wishlist Anda",
+                        textAlign: TextAlign.center,
                         style: appStyle(
                             size: 18, color: mainBlack, fw: FontWeight.w600),
                       ))

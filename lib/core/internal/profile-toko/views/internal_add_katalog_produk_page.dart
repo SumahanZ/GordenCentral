@@ -195,35 +195,36 @@ class _InternalAddKatalogProdukPageState
                                                                       mainBlack,
                                                                   fw: FontWeight
                                                                       .w600)),
-                                                        ],
-                                                      ),
-                                                      SizedBox(height: 5.h),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), selectedProduks[index].promo!.expiredAt!)}",
-                                                            style: appStyle(
-                                                              size: 12,
-                                                              color: mainBlack,
-                                                              fw: FontWeight
-                                                                  .w600,
-                                                            ),
+                                                          Spacer(),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                "${DateTimeHourMin.durationBetween(DateTime.now(), selectedProduks[index].promo!.expiredAt!)}",
+                                                                style: appStyle(
+                                                                  size: 12,
+                                                                  color:
+                                                                      mainBlack,
+                                                                  fw: FontWeight
+                                                                      .w600,
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ],
                                                       ),
-                                                      SizedBox(height: 10.h),
+                                                      SizedBox(height: 5.h),
                                                     ],
                                                     Row(children: [
                                                       ClipRRect(
                                                           borderRadius:
                                                               BorderRadius
-                                                                  .circular(
-                                                                      10),
+                                                                  .circular(10),
                                                           child:
                                                               CachedNetworkImage(
                                                             imageUrl: selectedProduks[
@@ -231,12 +232,11 @@ class _InternalAddKatalogProdukPageState
                                                                 .produkGlobalImages[
                                                                     0]
                                                                 .globalImageUrl,
-                                                                height: 80.h,
+                                                            height: 70.h,
                                                             width: 70.w,
-                                                            imageBuilder:
-                                                                (context,
-                                                                        imageProvider) =>
-                                                                    Container(
+                                                            imageBuilder: (context,
+                                                                    imageProvider) =>
+                                                                Container(
                                                               decoration:
                                                                   BoxDecoration(
                                                                 image:
@@ -331,28 +331,29 @@ class _InternalAddKatalogProdukPageState
                                                                           decorationThickness: 2),
                                                                 ),
                                                                 const SizedBox(
-                                                                    width:
-                                                                        10),
+                                                                    width: 10),
                                                                 if (selectedProduks[index]
                                                                             .promo !=
                                                                         null &&
                                                                     (selectedProduks[index].promo?.expiredAt ??
-                                                                            DateTime.now())
-                                                                        .isAfter(DateTime.now()))
+                                                                            DateTime
+                                                                                .now())
+                                                                        .isAfter(
+                                                                            DateTime.now()))
                                                                   Text(
-                                                                    maxLines:
-                                                                        1,
+                                                                    maxLines: 1,
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
                                                                     PriceFormatter.getFormattedValue((selectedProduks[index].price ??
                                                                             0) -
-                                                                        (selectedProduks[index].price ?? 0) *
-                                                                            ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) / 100)),
+                                                                        (selectedProduks[index].price ??
+                                                                                0) *
+                                                                            ((selectedProduks[index].promo?.discountPercent?.toInt() ?? 0) /
+                                                                                100)),
                                                                     style:
                                                                         appStyle(
-                                                                      size:
-                                                                          16,
+                                                                      size: 16,
                                                                       color:
                                                                           mainBlack,
                                                                       fw: FontWeight

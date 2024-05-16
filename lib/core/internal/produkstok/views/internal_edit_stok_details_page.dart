@@ -82,7 +82,7 @@ class _InternalEditStokDetailsPageState
                                       child: Image.asset(
                                           "assets/images/test-shoes-image.jpg",
                                           fit: BoxFit.contain,
-                                          height: 80.h,
+                                          height: 70.h,
                                           width: 70.w),
                                     ),
                                     SizedBox(width: 15.w),

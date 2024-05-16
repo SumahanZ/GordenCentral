@@ -139,7 +139,7 @@ class _PickItemsKatalogProdukPageState
                                             imageUrl: r[index]
                                                 .produkGlobalImages[0]
                                                 .globalImageUrl,
-                                            height: 80.h,
+                                            height: 70.h,
                                             width: 70.w,
                                             imageBuilder:
                                                 (context, imageProvider) =>

@@ -195,7 +195,7 @@ class _CustomerProdukPageState extends ConsumerState<CustomerProdukPage> {
                                     Text(
                                       "Stok: ${selectedVariant != null ? selectedVariant?.variantAmount : 0}",
                                       style: appStyle(
-                                        size: 18,
+                                        size: 16,
                                         color:
                                             selectedVariant?.variantAmount == 0
                                                 ? Colors.red

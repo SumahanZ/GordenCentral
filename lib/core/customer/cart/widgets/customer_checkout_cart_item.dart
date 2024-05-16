@@ -36,29 +36,34 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
                     "${cartItem?.produkCombination?.product?.promo?.discountPercent}% OFF",
                     style: appStyle(
                         size: 12, color: mainBlack, fw: FontWeight.w600)),
+                Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      textAlign: TextAlign.center,
+                      "${DateTimeHourMin.durationBetween(DateTime.now(), cartItem?.produkCombination?.product?.promo?.expiredAt ?? DateTime.now())}",
+                      style: appStyle(
+                        size: 12,
+                        color: mainBlack,
+                        fw: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             SizedBox(height: 5.h),
-            Text(
-              textAlign: TextAlign.center,
-              "Expires: ${DateTimeHourMin.durationBetween(DateTime.now(), cartItem?.produkCombination?.product?.promo?.expiredAt ?? DateTime.now())}",
-              style: appStyle(
-                size: 12,
-                color: mainBlack,
-                fw: FontWeight.w600,
-              ),
-            ),
-            SizedBox(height: 10.h),
           ],
           Row(children: [
             ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: CachedNetworkImage(
-                  imageUrl: cartItem
-                          ?.produkCombination?.color?.produkColorImageUrl ??
-                      "",
+                  imageUrl:
+                      cartItem?.produkCombination?.color?.produkColorImageUrl ??
+                          "",
                   width: 70.w,
-                  height: 80.h,
+                  height: 70.h,
                   imageBuilder: (context, imageProvider) => Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -70,8 +75,7 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
                   ),
                   // placeholder: (context, url) =>
                   //     const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) =>
-                      const Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 )),
             SizedBox(width: 15.w),
             Expanded(
@@ -122,8 +126,7 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
                         overflow: TextOverflow.ellipsis,
                         PriceFormatter.getFormattedValue((cartItem?.amount ??
                                 0) *
-                            ((cartItem?.produkCombination?.product?.price ??
-                                    0)
+                            ((cartItem?.produkCombination?.product?.price ?? 0)
                                 .toDouble())),
                         style: appStyle(
                           size: 14,
@@ -141,9 +144,8 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
                                     : TextDecoration.none,
                             decorationThickness: 2),
                       ),
-                      SizedBox(width: 10.w),
-                      if (cartItem?.produkCombination?.product?.promo !=
-                              null &&
+                      SizedBox(width: 5.w),
+                      if (cartItem?.produkCombination?.product?.promo != null &&
                           (cartItem?.produkCombination?.product?.promo
                                       ?.expiredAt ??
                                   DateTime.now())
@@ -151,8 +153,7 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
                         Text(
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          PriceFormatter.getFormattedValue((cartItem
-                                      ?.amount ??
+                          PriceFormatter.getFormattedValue((cartItem?.amount ??
                                   0) *
                               ((cartItem?.produkCombination?.product?.promo ==
                                           null
@@ -162,8 +163,8 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
                                       : (cartItem?.produkCombination?.product
                                                   ?.price ??
                                               0) -
-                                          (cartItem?.produkCombination
-                                                      ?.product?.price ??
+                                          (cartItem?.produkCombination?.product
+                                                      ?.price ??
                                                   0) *
                                               ((cartItem
                                                           ?.produkCombination
@@ -188,7 +189,7 @@ class CustomerCheckoutCartItem extends ConsumerWidget {
             Text(
               "${cartItem?.amount}x",
               style: appStyle(
-                size: 18,
+                size: 14,
                 color: mainBlack,
                 fw: FontWeight.w600,
               ),

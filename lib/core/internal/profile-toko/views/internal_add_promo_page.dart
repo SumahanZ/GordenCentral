@@ -155,7 +155,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                                   Text(
                                                     "Stok: ${selectedPromoItem.stok?.totalAmount ?? 0}",
                                                     style: appStyle(
-                                                      size: 16,
+                                                      size: 14,
                                                       color: mainBlack,
                                                       fw: FontWeight.w600,
                                                     ),
@@ -172,7 +172,7 @@ class _InternalAddPromoPageState extends ConsumerState<InternalAddPromoPage> {
                                                               .first
                                                               .globalImageUrl,
                                                           fit: BoxFit.contain,
-                                                          height: 80.h,
+                                                          height: 70.h,
                                                           width: 70.w),
                                                     ),
                                                     SizedBox(width: 15.w),
