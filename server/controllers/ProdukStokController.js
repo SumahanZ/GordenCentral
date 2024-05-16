@@ -559,13 +559,7 @@ module.exports = {
                 safetyStock,
                 reorderPoint
             }, { transaction: t })
-
-            await models.tokonotification.create({
-                description: `Produk ${foundProduk.name} telah diisi kembali sebanyak ${totalAmount} pada ${format(Date.now(), "EEEE, MMMM d, yyyy h:mm a")}.`,
-                tokoId: toko.id,
-                typeId: 3,
-            }, { transaction: t })
-
+            
             await foundProduk.createStockin({ amount: totalAmount, issuedFrom: new Date(issuedAt), deliveredAt: new Date(deliveredAt), deliveryTime: deliveryTime }, { transaction: t });
 
             const foundColors = await models.produkcolor.findAll({ where: { produkId: foundProduk.id }, transaction: t });
@@ -610,39 +604,36 @@ module.exports = {
                 }
             }
 
-            // const foundProducts = await models.produk.findAll({
-            //     where: {
-            //         tokoId: toko.id
-            //     },
-            //     transaction: t,
-            //     include: {
-            //         model: models.stok,
-            //     }
-            // })
+            const internals = await models.internal.findAll({
+                where: {
+                    tokoId: createdOrder.tokoId,
+                    status: "joined"
+                },
+                include: {
+                    model: models.user,
+                    include: {
+                        model: models.device
+                    }
+                },
+                transaction: t
+            });
 
-            // const outOfStockProductCountList = (foundProducts.filter((e) => e.stok.totalAmount === 0) ?? [])
-            // const criticalStockProductCountList = foundProducts.filter((e) => {
-            //     return ((e.stok.totalAmount - e.stok.safetyStock) <= e.stok.reorderPoint)
-            // }) ?? []
+            const internalUsers = internals.map(e => e.user).filter(e => e.device != null && e.device.deviceToken != null) ?? [];
+            const internalDevicesTokens = internalUsers.length > 0 ? internalUsers.map(e => e.device.deviceToken) : [];
 
-            // if (outOfStockProductCountList.length > 0) {
-            //     await models.tokonotification.create({
-            //         description: `Produk ${outOfStockProductCountList.map((e) => e.name).join(", ")} habis, harap isi kembali stoknya.`,
-            //         tokoId: toko.id,
-            //         typeId: 3,
-            //     }, { transaction: t })
+            await models.tokonotification.create({
+                description: `Produk ${foundProduk.name} telah diisi kembali sebanyak ${totalAmount} pada ${format(Date.now(), "EEEE, MMMM d, yyyy h:mm a")}.`,
+                tokoId: toko.id,
+                typeId: 3,
+            }, { transaction: t })
 
-            // }
-
-            // if (criticalStockProductCountList.length > 0) {
-            //     await models.tokonotification.create({
-            //         description: `Produk ${criticalStockProductCountList.map((e) => e.name).join(", ")} mendekati titik pemesanan ulang dan stok segera harus dipulihkan.`,
-            //         tokoId: toko.id,
-            //         typeId: 4,
-            //     }, { transaction: t })
-
-            // }
-
+            if (internalDevicesTokens.length > 0) {
+                sendMulticastNotification(internalDevicesTokens, {
+                    title: "Notifikasi Stok",
+                    body: `Produk ${foundProduk.name} telah diisi kembali sebanyak ${totalAmount} pada ${format(Date.now(), "EEEE, MMMM d, yyyy h:mm a")}.`
+                });
+            }
+            
             await t.commit();
 
             return res.status(200).json({

@@ -100,39 +100,35 @@ class ProdukStokCombinationCard extends ConsumerWidget {
                                   File((produkStok[i]
                                       .produkColor["imagePath"]!)),
                                   fit: BoxFit.contain,
-                                  width: 60.w)),
-                      SizedBox(width: 15.w),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Ukuran:\n ${produkStok[i].produkSize}",
-                                style: appStyle(
-                                  size: 14,
-                                  color: mainBlack,
-                                  fw: FontWeight.w600,
-                                ),
+                                  height: 70.h,
+                                  width: 70.w)),
+                      SizedBox(width: 5.w),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${produkStok[i].produkSize}",
+                              style: appStyle(
+                                size: 16,
+                                color: mainBlack,
+                                fw: FontWeight.w600,
                               ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "Warna: \n ${produkStok[i].produkColor["name"]}",
-                                style: appStyle(
-                                  size: 14,
-                                  color: mainBlack,
-                                  fw: FontWeight.w600,
-                                ),
+                            ),
+                            SizedBox(height: 5.h),
+                            Text(
+                              maxLines: 2,
+                              "${produkStok[i].produkColor["name"]}",
+                              style: appStyle(
+                                size: 16,
+                                color: mainBlack,
+                                fw: FontWeight.w600,
                               ),
-                            ],
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
-                      Spacer(),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
