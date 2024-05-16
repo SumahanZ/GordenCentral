@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:tugas_akhir_project/core/customer/cart/widgets/customer_order_item.dart';
 import 'package:tugas_akhir_project/core/customer/orders/providers/order_detail_selection_notifier.dart';
+import 'package:tugas_akhir_project/core/internal/orders/viewmodels/internal_order_viewmodel.dart';
+import 'package:tugas_akhir_project/models/cartitem.dart';
+import 'package:tugas_akhir_project/models/invoice.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/extensions/date_extension.dart';
 import 'package:tugas_akhir_project/utils/extensions/double_extension.dart';
@@ -471,6 +474,7 @@ class InternalOrderDetailPage extends ConsumerWidget {
                               ),
                               SizedBox(height: 5.h),
                               Divider(color: Colors.black.withOpacity(0.5)),
+
                               SizedBox(height: 5.h),
                               Row(
                                 children: [
@@ -498,6 +502,35 @@ class InternalOrderDetailPage extends ConsumerWidget {
                       ],
                     ),
                   ],
+                ),
+              ),
+              SizedBox(height: 15.h),
+              ElevatedButton(
+                onPressed: () {
+                  List<Invoice> invoiceList =
+                      orderDetail!.orderItemList.map((e) {
+                    return Invoice(
+                        customer: orderDetail.customer,
+                        toko: orderDetail.toko,
+                        cartItem: CartItem(
+                            id: e.id,
+                            amount: e.amount,
+                            produkCombination: e.produkCombination));
+                  }).toList();
+                  ref
+                      .read(internalOrderViewModelProvider.notifier)
+                      .downloadOpenPDF(invoiceList);
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(50),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                ),
+                child: Text(
+                  "Download Invoice",
+                  style: appStyle(
+                      size: 14, color: Colors.white, fw: FontWeight.w500),
                 ),
               ),
             ]),

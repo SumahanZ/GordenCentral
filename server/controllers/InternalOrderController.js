@@ -63,6 +63,17 @@ module.exports = {
                                 model: models.promo,
                             }, {
                                 model: models.toko,
+                                include: {
+                                    model: models.address,
+                                    include: {
+                                        model: models.city,
+                                        as: "city",
+                                        include: {
+                                            model: models.province,
+                                            as: "province"
+                                        }
+                                    }
+                                }
                             }]
                         }]
                     }, {
