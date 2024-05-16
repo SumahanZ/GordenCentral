@@ -92,7 +92,7 @@ class PDFGeneratorRepository {
           pw.Text(invoice.first.toko?.name ?? "No name"),
           pw.Text(invoice.first.toko?.address?.streetAddress ?? "No Address"),
           pw.Text(
-              "${invoice.first.toko?.address?.city?.province?.name.toTitleCase() ?? "No Province"}, ${invoice.first.customer?.address?.city?.name.toTitleCase()}"),
+              "${invoice.first.toko?.address?.city?.province?.name.toTitleCase() ?? "No Province"}, ${invoice.first.toko?.address?.city?.name.toTitleCase()}"),
           pw.Text("${invoice.first.toko?.address?.country}"),
           pw.Text("${invoice.first.toko?.address?.postalCode}"),
         ]));
