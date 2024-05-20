@@ -92,12 +92,6 @@ module.exports = {
                     }, {
                         model: models.produkrating,
                         as: "rating",
-                        // attributes: {
-                        //     include: [
-                        //         [sequelize.fn('AVG', sequelize.col('products.rating.rating')), 'averageRating'],
-                        //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('products.rating.id'))), 'totalRating']
-                        //     ]
-                        // },
                     }]
                 }]
             })

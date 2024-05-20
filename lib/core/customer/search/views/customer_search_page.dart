@@ -91,7 +91,7 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10,
                                   mainAxisSpacing: 10,
-                                  childAspectRatio: 0.57),
+                                  childAspectRatio: 0.55),
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () => Routemaster.of(context).push(

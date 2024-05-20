@@ -16,14 +16,7 @@ module.exports = {
                 }, {
                     model: models.produkrating,
                     required: false,
-                    // separate: true,
                     as: "rating",
-                    // attributes: {
-                    //     include: [
-                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                    //     ]
-                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",

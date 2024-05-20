@@ -142,12 +142,6 @@ module.exports = {
                     model: models.produkrating,
                     as: "rating",
                     required: false,
-                    // attributes: {
-                    //     include: [
-                    //         [sequelize.fn('AVG', sequelize.col('rating.rating')), 'averageRating'],
-                    //         [sequelize.fn('COUNT', sequelize.fn('DISTINCT', sequelize.col('rating.id'))), 'totalRating']
-                    //     ]
-                    // },
                 }, {
                     model: models.katalogproduk,
                     as: "catalogs",
@@ -157,11 +151,6 @@ module.exports = {
                 }],
                 order: [['createdAt', 'DESC']],
             })
-
-            // if (products.length === 0) {
-            //     await t.rollback();
-            //     return res.status(400).json({ error: "Tidak ada produk yang ditemukan dengan promosi yang valid" });
-            // }
 
             const productsWithValidPromo = products.filter(product => product.promo !== null);
 
