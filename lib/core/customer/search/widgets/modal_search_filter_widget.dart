@@ -36,7 +36,6 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _nameController.dispose();
     super.dispose();
   }
@@ -135,7 +134,7 @@ class _ModalSearchFilterState extends ConsumerState<ModalSearchFilter> {
                             child: NoLabelCustomDropdown(
                               preValue: selectedLocation?.name.toTitleCase(),
                               values: r.availableLocations
-                                  .map((e) => e.name.toTitleCase())
+                                  .map((e) => e.name.toTitleCase()).toSet()
                                   .toList(),
                               hintText: "Pilih lokasi",
                               validator: (value) {

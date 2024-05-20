@@ -262,7 +262,6 @@ class _CustomerSearchPageState extends ConsumerState<CustomerSearchPage>
                                                       fw: FontWeight.bold),
                                                 ),
                                                 SizedBox(height: 5.h),
-                                                // if (r[index].rating.isNotEmpty)
                                                 Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
