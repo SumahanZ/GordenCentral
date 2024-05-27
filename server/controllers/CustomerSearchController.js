@@ -78,7 +78,6 @@ module.exports = {
                     as: "catalogs",
                     required: true
                 },
-                group: ['produk.id', 'catalogs.id'],
                 transaction: t
             })
 

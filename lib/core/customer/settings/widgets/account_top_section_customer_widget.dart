@@ -41,7 +41,7 @@ class SectionTopCustomer extends ConsumerWidget {
                     Text(
                       customer.user?.name ?? "No name",
                       style: appStyle(
-                          size: 14, color: Colors.black, fw: FontWeight.w500),
+                          size: 14, color: Colors.black, fw: FontWeight.bold),
                     ),
                     Text("#${customer.customerCode ?? "No name"}",
                         style: appStyle(

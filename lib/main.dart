@@ -16,6 +16,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  
   await Firebase.initializeApp(
     name: "TugasAkhirSkripsi-PN",
     options: DefaultFirebaseOptions.currentPlatform,
@@ -54,6 +55,7 @@ class _MyAppState extends ConsumerState<MyApp> {
         minTextAdapt: true,
         builder: (_, child) {
           return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: ThemeData(
               dividerColor: Colors.transparent,
