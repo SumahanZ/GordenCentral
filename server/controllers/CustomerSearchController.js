@@ -76,9 +76,9 @@ module.exports = {
                 include: {
                     model: models.katalogproduk,
                     as: "catalogs",
-                    attributes: [],
                     required: true
                 },
+                group: ['catalogs.id'],
                 transaction: t
             })
 
