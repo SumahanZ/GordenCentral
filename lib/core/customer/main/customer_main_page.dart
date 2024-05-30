@@ -61,7 +61,7 @@ class CustomerMainPage extends ConsumerWidget {
             badgeStyle: const badges.BadgeStyle(badgeColor: Colors.purple),
             child: const Tab(
               icon: Icon(AntIcons.globalOutlined),
-              text: 'Browse Toko',
+              text: 'Browse',
             ),
           ),
           const Tab(
