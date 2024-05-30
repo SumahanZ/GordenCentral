@@ -81,6 +81,7 @@ module.exports = {
                         attributes: []
                     }
                 },
+                group: ['catalogs.id'],
                 transaction: t
             })
 
