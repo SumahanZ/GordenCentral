@@ -152,6 +152,7 @@ class InternalNotificationSectionOrder extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.3),
                     Center(
                         child: Text("Tidak ada notifikasi pesanan",
+                            textAlign: TextAlign.center,
                             style: appStyle(
                                 size: 16,
                                 color: mainBlack,
@@ -249,6 +250,7 @@ class InternalNotificationSectionStok extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.3),
                     Center(
                         child: Text("Tidak ada notifikasi stok",
+                            textAlign: TextAlign.center,
                             style: appStyle(
                                 size: 16,
                                 color: mainBlack,
@@ -346,6 +348,7 @@ class InternalNotificationSectionInternalToko extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.3),
                     Center(
                         child: Text("Tidak ada notifikasi internal",
+                            textAlign: TextAlign.center,
                             style: appStyle(
                                 size: 16,
                                 color: mainBlack,

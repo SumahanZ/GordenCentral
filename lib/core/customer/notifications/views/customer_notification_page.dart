@@ -121,6 +121,7 @@ class CustomerNotificationSectionPromo extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.3),
                     Center(
                         child: Text("Tidak ada notifikasi pesanan",
+                            textAlign: TextAlign.center,
                             style: appStyle(
                                 size: 16,
                                 color: mainBlack,
@@ -218,6 +219,7 @@ class CustomerNotificationSectionPesanan extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.3),
                     Center(
                         child: Text("Tidak ada notifikasi pesanan",
+                            textAlign: TextAlign.center,
                             style: appStyle(
                                 size: 16,
                                 color: mainBlack,

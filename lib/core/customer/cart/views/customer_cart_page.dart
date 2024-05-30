@@ -31,6 +31,7 @@ class CustomerCartPage extends ConsumerWidget {
                 (l) => Center(
                         child: Text(
                       "Tidak ada barang di keranjang Anda!",
+                      textAlign: TextAlign.center,
                       style: appStyle(
                           size: 18, color: mainBlack, fw: FontWeight.w600),
                     )), (r) {
@@ -38,6 +39,7 @@ class CustomerCartPage extends ConsumerWidget {
                 return Center(
                     child: Text(
                   "Tidak ada barang di keranjang Anda!",
+                  textAlign: TextAlign.center,
                   style:
                       appStyle(size: 18, color: mainBlack, fw: FontWeight.w600),
                 ));

@@ -38,6 +38,7 @@ class CustomerBrowseTokoPage extends ConsumerWidget {
               return r.isEmpty
                   ? Center(
                       child: Text("Tidak ada toko ditemukan",
+                          textAlign: TextAlign.center,
                           style: appStyle(
                               size: 16, color: mainBlack, fw: FontWeight.w600)))
                   : SafeArea(

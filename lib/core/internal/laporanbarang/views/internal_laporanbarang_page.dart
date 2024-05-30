@@ -481,6 +481,7 @@ class _InternalLaporanBarangPageState
                                             empty: Center(
                                               child: Text(
                                                   "Tidak ada laporan barang masuk ${laporanBarangMasukselectedDropdownSelection == "Semua" ? "" : laporanBarangMasukselectedDropdownSelection?.toLowerCase()}",
+                                                  textAlign: TextAlign.center,
                                                   style: appStyle(
                                                       size: 13,
                                                       color: mainBlack,
@@ -665,6 +666,7 @@ class _InternalLaporanBarangPageState
                                             empty: Center(
                                               child: Text(
                                                   "Tidak ada laporan barang keluar ${laporanBarangKeluarselectedDropdownSelection == "Semua" ? "" : laporanBarangKeluarselectedDropdownSelection?.toLowerCase()}",
+                                                  textAlign: TextAlign.center,
                                                   style: appStyle(
                                                       size: 13,
                                                       color: mainBlack,
