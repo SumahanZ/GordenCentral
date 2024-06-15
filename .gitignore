@@ -1,3 +1,7 @@
+# Node Related gitignore
+/server/node_modules/
+/server/utils/push_notification_key.json
+
 # Miscellaneous
 *.class
 *.log
