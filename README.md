@@ -1,6 +1,6 @@
 # Gorden Central
 
-Gorden Central is a comprehensive application designed to assist customers in finding curtains effortlessly and providing curtain sellers with a dedicated stock management system. The app employs the Safety Stock and Reorder Point method for efficient inventory management.
+Gorden Central is a comprehensive application designed to assist customers in finding curtains effortlessly and providing curtain sellers with a dedicated stock and sales management system. The app employs the Safety Stock and Reorder Point method for efficient inventory management.
 
 Tech Stack
 Client Side
