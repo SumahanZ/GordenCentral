@@ -41,8 +41,7 @@ class TokoInformationViewModel extends _$TokoInformationViewModel {
     }
   }
 
-  Future<void> configureBerandaToko(
-      {required List<String> imageUrls}) async {
+  Future<void> configureBerandaToko({required List<String> imageUrls}) async {
     try {
       final List<String> cloudinaryImageUrls = [];
       final profileTokoRepository = ref.read(profileTokoProvider);

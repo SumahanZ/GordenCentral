@@ -12,7 +12,6 @@ import 'package:tugas_akhir_project/utils/errors/api_errors.dart';
 import 'package:tugas_akhir_project/utils/methods/utilmethods.dart';
 import 'package:tugas_akhir_project/utils/styles/appStyles.dart';
 import 'package:tugas_akhir_project/utils/styles/colorStyles.dart';
-import 'package:tugas_akhir_project/widgets/global_providers/enrolled_toko_state.dart';
 
 class InternalBerandaTokoPage extends ConsumerStatefulWidget {
   const InternalBerandaTokoPage({Key? key}) : super(key: key);
@@ -53,9 +52,7 @@ class _InternalBerandaTokoPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: "Kesalahan respons telah terjadi!",
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       } else if (state is AsyncError && state.error is RequestError) {
         showPopupModal(
             context: context,
@@ -63,9 +60,7 @@ class _InternalBerandaTokoPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: "Permintaan jaringan telah terjadi!",
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       } else if (state is AsyncError) {
         showPopupModal(
             context: context,
@@ -73,9 +68,7 @@ class _InternalBerandaTokoPageState
             info: DialogType.error,
             animType: AnimType.scale,
             desc: (state.error as ApiError).message,
-            onOkPress: () {
-              
-            });
+            onOkPress: () {});
       }
     });
 
