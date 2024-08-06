@@ -1,7 +1,7 @@
 # Node Related gitignore
-/server/node_modules/
-/server/.env
-/server/utils/push_notification_key.json
+server/node_modules/
+server/.env
+server/utils/push_notification_key.json
 
 # Miscellaneous
 *.class
